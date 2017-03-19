@@ -1,0 +1,76 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/colorBeige"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_marginTop="100px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="abdo"
+        android:textAlignment="center"
+        android:textColor="@color/colorOrange"
+        android:textSize="48dp"/>
+
+    <RelativeLayout
+        android:layout_width="300dip"
+        android:layout_height="300dip"
+        android:layout_gravity="center"
+        android:layout_marginTop="150px">
+
+        <ImageView
+            android:scaleType="fitXY"
+            android:textAlignment="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/monkey_full"
+            />
+    </RelativeLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnNewChild"
+            android:layout_marginTop="50px"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20px"
+            android:layout_marginRight="20px"
+            android:layout_height="50dip"
+            android:layout_gravity="center"
+            android:text="Opret barn"
+            />
+        <Button
+            android:id="@+id/btnTypeCode"
+            android:layout_marginTop="20px"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20px"
+            android:layout_marginRight="20px"
+            android:layout_height="50dip"
+            android:layout_gravity="center"
+            android:text="Indtast kode"
+            />
+        <Button
+            android:id="@+id/btnRestoreFromEmail"
+            android:layout_marginTop="20px"
+            android:layout_marginBottom="20px"
+            android:layout_marginLeft="20px"
+            android:layout_marginRight="20px"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:layout_gravity="center"
+            android:text="Gendan fra email"
+            />
+
+
+    </LinearLayout>
+</LinearLayout>
