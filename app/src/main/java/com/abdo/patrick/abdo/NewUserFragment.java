@@ -53,7 +53,7 @@ public class NewUserFragment extends Fragment implements View.OnClickListener {
             case R.id.btnNewChild:{
                 Toast.makeText(getActivity(), "New Child",
                         Toast.LENGTH_LONG).show();
-                break;
+                return;
             }
             case R.id.btnTypeCode:{
                 fragment = new TypeCodeFragment();
