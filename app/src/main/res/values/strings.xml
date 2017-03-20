@@ -1,6 +1,20 @@
 <resources>
-    <string name="app_name">Abdo</string>
+    <string name="app_name">abdo</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Button strings -->
+    <string name="button_ok">Ok</string>
+    <string name="button_new_child">Opret barn</string>
+    <string name="button_type_code">Indtast kode</string>
+    <string name="button_restore_from_email">Gendan fra email</string>
+
+    <!-- EditText strings -->
+    <string name="type_code_hint">Indtast delekoden</string>
+    <string name="type_email_hint">Indtast din email</string>
+
+    <!-- TextView strings -->
+
+
 </resources>
