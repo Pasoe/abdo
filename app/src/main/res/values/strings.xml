@@ -15,6 +15,7 @@
     <string name="type_email_hint">Indtast din email</string>
 
     <!-- TextView strings -->
-
+    <string name="title_code">Delekode</string>
+    <string name="title_restore">Gendan</string>
 
 </resources>

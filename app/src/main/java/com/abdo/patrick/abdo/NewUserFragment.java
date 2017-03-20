@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.abdo.patrick.abdo.R;
@@ -33,6 +35,8 @@ public class NewUserFragment extends Fragment implements View.OnClickListener {
         Button newChild = (Button) view.findViewById(R.id.btnNewChild);
         Button typeCode = (Button) view.findViewById(R.id.btnTypeCode);
         Button restoreFromEmail = (Button) view.findViewById(R.id.btnRestoreFromEmail);
+        TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
+        toolbarTitle.setText(getResources().getString(R.string.app_name));
 
         newChild.setOnClickListener(this);
         typeCode.setOnClickListener(this);
@@ -43,6 +47,8 @@ public class NewUserFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        Fragment fragment = null;
+
         switch(v.getId()){
             case R.id.btnNewChild:{
                 Toast.makeText(getActivity(), "New Child",
@@ -50,19 +56,18 @@ public class NewUserFragment extends Fragment implements View.OnClickListener {
                 break;
             }
             case R.id.btnTypeCode:{
-                FragmentManager fragmentManager2 = getFragmentManager();
-                FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
-                TypeCodeFragment fragment2 = new TypeCodeFragment();
-                fragmentTransaction2.addToBackStack("wat");
-                fragmentTransaction2.replace(R.id.main_activity_fragment, fragment2);
-                fragmentTransaction2.commit();
+                fragment = new TypeCodeFragment();
                 break;
             }
             case R.id.btnRestoreFromEmail:{
-                Toast.makeText(getActivity(), "Restore from email",
-                        Toast.LENGTH_LONG).show();
-                break;
+                fragment = new RestoreFromEmailFragment();
             }
         }
+
+        FragmentManager fragmentManager2 = getFragmentManager();
+        FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
+        fragmentTransaction2.addToBackStack("wat");
+        fragmentTransaction2.replace(R.id.main_activity_fragment, fragment);
+        fragmentTransaction2.commit();
     }
 }

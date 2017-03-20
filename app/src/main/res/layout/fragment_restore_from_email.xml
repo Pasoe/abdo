@@ -1,5 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/type_code_layout"
+    android:id="@+id/restore_from_email_layout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/colorBeige"
@@ -23,10 +23,10 @@
         android:orientation="vertical"
         android:layout_gravity="bottom">
         <EditText
-            android:id="@+id/editTextInputCode"
+            android:id="@+id/editTextInputEmail"
             android:layout_width="match_parent"
             android:layout_height="50dip"
-            android:hint="@string/type_code_hint"
+            android:hint="@string/type_email_hint"
             android:textColorHint="@color/colorGreen"
             android:layout_marginLeft="20px"
             android:layout_marginRight="20px"
