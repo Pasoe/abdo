@@ -24,7 +24,7 @@
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/icon_plus"
+        android:src="@drawable/icon_edit"
         android:tint="@color/colorWhite"
         />
 </RelativeLayout>
@@ -34,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:layout_marginBottom="10dp"
         android:overScrollMode="never"/>
 
     <RelativeLayout
@@ -52,7 +53,7 @@
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/icon_plus"
+            android:src="@drawable/icon_edit"
             android:tint="@color/colorWhite"
             />
     </RelativeLayout>
@@ -62,6 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:layout_marginBottom="10dp"
         android:overScrollMode="never"/>
 
     <RelativeLayout
@@ -80,7 +82,7 @@
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/icon_plus"
+            android:src="@drawable/icon_edit"
             android:tint="@color/colorWhite"
             />
     </RelativeLayout>
@@ -90,6 +92,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:layout_marginBottom="10dp"
         android:overScrollMode="never"/>
 
     <RelativeLayout
@@ -108,7 +111,7 @@
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/icon_plus"
+            android:src="@drawable/icon_edit"
             android:tint="@color/colorWhite"
             />
     </RelativeLayout>

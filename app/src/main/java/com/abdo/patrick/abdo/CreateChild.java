@@ -85,7 +85,7 @@ public class CreateChild extends Fragment {
     private void initViews(RecyclerView recyclerView, ArrayList data){
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerView.Adapter adapter = new Adapter(data);
+        final RecyclerView.Adapter adapter = new Adapter(data);
         recyclerView.setAdapter(adapter);
 
         recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
@@ -98,11 +98,11 @@ public class CreateChild extends Fragment {
             });
             @Override
             public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-
+                Adapter rvAdapter = (Adapter)rv.getAdapter();
                 View child = rv.findChildViewUnder(e.getX(), e.getY());
                 if(child != null && gestureDetector.onTouchEvent(e)) {
                     int position = rv.getChildAdapterPosition(child);
-                    Toast.makeText(getActivity().getApplicationContext(), "pressed"+position, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(), "pressed "+rvAdapter.getItemName(position), Toast.LENGTH_SHORT).show();
                 }
 
                 return false;

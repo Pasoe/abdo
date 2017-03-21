@@ -36,6 +36,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         return list.size();
     }
 
+    public String getItemName(int position){
+        return list.get(position);
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView row_text;
         public ViewHolder(View view) {
