@@ -1,4 +1,4 @@
-package com.abdo.patrick.abdo;
+package com.abdo.patrick.abdo.Views;
 
 
 import android.content.Context;
@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.abdo.patrick.abdo.R;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 

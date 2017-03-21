@@ -1,13 +1,13 @@
-package com.abdo.patrick.abdo;
+package com.abdo.patrick.abdo.Views;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.View;
+
+import com.abdo.patrick.abdo.R;
 
 public class MainActivity extends AppCompatActivity {
 
