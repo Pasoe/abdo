@@ -11,74 +11,74 @@ import java.util.Date;
 
 public class Anonymous {
 
-    private int _id;
-    private String _deviceId;
-    private String _deviceName;
-    private String _createdTime;
-    private String _modifiedTime;
-    private JSONArray _children;
+    private int id;
+    private String deviceId;
+    private String deviceName;
+    private String createdTime;
+    private String modifiedTime;
+    private JSONArray children;
 
     public Anonymous() {
     }
 
-    public int get_id() {
-        return _id;
-    }
-
-    public void set_id(int _id) {
-        this._id = _id;
-    }
-
-    public String get_deviceId() {
-        return _deviceId;
-    }
-
-    public void set_deviceId(String _deviceId) {
-        this._deviceId = _deviceId;
-    }
-
-    public String get_deviceName() {
-        return _deviceName;
-    }
-
-    public void set_deviceName(String _deviceName) {
-        this._deviceName = _deviceName;
-    }
-
-    public String get_createdTime() {
-        return _createdTime;
-    }
-
-    public void set_createdTime(String _createdTime) {
-        this._createdTime = _createdTime;
-    }
-
-    public String get_modifiedTime() {
-        return _modifiedTime;
-    }
-
-    public void set_modifiedTime(String _modifiedTime) {
-        this._modifiedTime = _modifiedTime;
-    }
-
-    public JSONArray get_children() {
-        return _children;
-    }
-
-    public void set_children(JSONArray _children) {
-        this._children = _children;
-    }
-
-
     @Override
     public String toString() {
         return "Anonymous{" +
-                "_id=" + _id +
-                ", _deviceId='" + _deviceId + '\'' +
-                ", _deviceName='" + _deviceName + '\'' +
-                ", _createdTime='" + _createdTime + '\'' +
-                ", _modifiedTime='" + _modifiedTime + '\'' +
-                ", _children=" + _children +
+                "id=" + id +
+                ", deviceId='" + deviceId + '\'' +
+                ", deviceName='" + deviceName + '\'' +
+                ", createdTime='" + createdTime + '\'' +
+                ", modifiedTime='" + modifiedTime + '\'' +
+                ", children=" + children +
                 '}';
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
+    }
+
+    public String getDeviceName() {
+        return deviceName;
+    }
+
+    public void setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
+    }
+
+    public String getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(String createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public String getModifiedTime() {
+        return modifiedTime;
+    }
+
+    public void setModifiedTime(String modifiedTime) {
+        this.modifiedTime = modifiedTime;
+    }
+
+    public JSONArray getChildren() {
+        return children;
+    }
+
+    public void setChildren(JSONArray children) {
+        this.children = children;
+    }
+
 }

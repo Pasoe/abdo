@@ -65,10 +65,10 @@ public class GetById extends AsyncTask<String, Void, String> {
                 JSONObject object = (JSONObject) new JSONTokener(response).nextValue();
 
                 Child child = new Child();
-                child.set_id(object.getInt("Id"));
-                child.set_createdTime(object.getString("CreatedTime"));
-                child.set_modifiedTime(object.getString("ModifiedTime"));
-                child.set_anonymous(object.getJSONArray("Anonymous"));
+                child.setId(object.getInt("Id"));
+                child.setCreatedTime(object.getString("CreatedTime"));
+                child.setModifiedTime(object.getString("ModifiedTime"));
+                child.setAnonymous(object.getJSONArray("Anonymous"));
 
                 Log.d("DATA", child.toString());
                 Application.getInstance().add_child(child);
