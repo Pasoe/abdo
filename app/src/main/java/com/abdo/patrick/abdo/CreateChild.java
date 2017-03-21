@@ -25,27 +25,67 @@ public class CreateChild extends Fragment {
         // Required empty public constructor
     }
 
-    private ArrayList countries;
+    private ArrayList stamdataList;
+    private ArrayList medicineList;
+    private ArrayList allergiesList;
+    private ArrayList supplementsList;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_create_child, container, false);
-        initViews(view);
+        View view = inflater.inflate(R.layout.create_child_list, container, false);
+
+        generateDummyDate();
+
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.stamdata_list);
+        initViews(recyclerView, stamdataList);
+
+        RecyclerView recyclerView1 = (RecyclerView) view.findViewById(R.id.medicine_list);
+        initViews(recyclerView1, medicineList);
+
+        RecyclerView recyclerView2 = (RecyclerView) view.findViewById(R.id.allergies_list);
+        initViews(recyclerView2, allergiesList);
+
+        RecyclerView recyclerView3 = (RecyclerView) view.findViewById(R.id.supplements_list);
+        initViews(recyclerView3, supplementsList);
+
         return view;
     }
 
-    private void initViews(View view){
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+    private void generateDummyDate(){
+        stamdataList = new ArrayList<>();
+        stamdataList.add("Hans");
+        stamdataList.add("Dreng");
+        stamdataList.add("12-01-2007");
+
+        medicineList = new ArrayList<>();
+        medicineList.add("Rohypnol");
+        medicineList.add("Kodimagnyl");
+        medicineList.add("Random astma ting");
+
+        allergiesList = new ArrayList<>();
+        allergiesList.add("Ananas");
+        allergiesList.add("Heste");
+
+        supplementsList = new ArrayList<>();
+        supplementsList.add("Jern");
+        supplementsList.add("A-vitamin");
+        supplementsList.add("B-vitamin");
+        supplementsList.add("C-vitamin");
+        supplementsList.add("D-vitamin");
+        supplementsList.add("E-vitamin");
+        supplementsList.add("F-vitamin");
+        supplementsList.add("G-vitamin");
+
+        return;
+    }
+
+    private void initViews(RecyclerView recyclerView, ArrayList data){
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
-        countries = new ArrayList<>();
-        countries.add("Australia");
-        countries.add("India");
-        countries.add("United States of America");
-        countries.add("Germany");
-        countries.add("Russia");
-        RecyclerView.Adapter adapter = new Adapter(countries);
+        RecyclerView.Adapter adapter = new Adapter(data);
         recyclerView.setAdapter(adapter);
 
         recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
@@ -62,7 +102,7 @@ public class CreateChild extends Fragment {
                 View child = rv.findChildViewUnder(e.getX(), e.getY());
                 if(child != null && gestureDetector.onTouchEvent(e)) {
                     int position = rv.getChildAdapterPosition(child);
-                    Toast.makeText(getActivity().getApplicationContext(), countries.get(position).toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(), "pressed"+position, Toast.LENGTH_SHORT).show();
                 }
 
                 return false;
