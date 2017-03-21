@@ -41,7 +41,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         public ViewHolder(View view) {
             super(view);
 
-            row_text = (TextView)view.findViewById(R.id.);
+            row_text = (TextView)view.findViewById(R.id.row_text);
         }
     }
 
