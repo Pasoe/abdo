@@ -47,12 +47,22 @@ public class ChildDataListFagment extends Fragment {
         if(listType.equals("allergies")){
             toolbarTitle.setText("Allergier");
             header.setText("Allergier");
-            initViews(recyclerView, Application.getInstance().GetAllergyList());
+
+            //Get allergies from server if it's empty
+            if (Application.getInstance().get_allergyList().isEmpty()){
+                new com.abdo.patrick.abdo.Api.Allergy.Get().execute();
+            }
+            initViews(recyclerView, Application.getInstance().get_allergyList());
         }
         if(listType.equals("supplements")){
             toolbarTitle.setText("Kosttilskud");
             header.setText("Kosttilskud");
-            initViews(recyclerView, Application.getInstance().GetSupplementslist());
+
+            //Get supplements from server if it's empty
+            if (Application.getInstance().get_supplementsList().isEmpty()){
+                new com.abdo.patrick.abdo.Api.Supplement.Get().execute();
+            }
+            initViews(recyclerView, Application.getInstance().get_supplementsList());
         }
 
         return view;
