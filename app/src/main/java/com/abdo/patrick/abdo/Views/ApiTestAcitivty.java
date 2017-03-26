@@ -7,7 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.abdo.patrick.abdo.Api.Anonymous.*;
+import com.abdo.patrick.abdo.Api.Allergy.*;
+import com.abdo.patrick.abdo.Api.Child.GetById;
 import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.Models.Anonymous;
 import com.abdo.patrick.abdo.R;
@@ -35,14 +36,18 @@ public class ApiTestAcitivty extends AppCompatActivity implements View.OnClickLi
 
         if (view.getId() == button.getId()){
 
-            //Post a new anonymous
-            Anonymous anonymous = new Anonymous();
-            anonymous.setDeviceId("DeviceIdFromAndroid");
-            anonymous.setDeviceName("Samsung Galaxy S7");
-            new Post().execute(anonymous);
+            //Get all allergies
+            new Get().execute();
+//            new GetById().execute("1");
 
-            // Get anonymous with the given DeviceId
-            new GetById(this).execute("QE58711871dds81dg838344fga");
+            //Post a new anonymous
+//            Anonymous anonymous = new Anonymous();
+//            anonymous.setDeviceId("DeviceIdFromAndroid");
+//            anonymous.setDeviceName("Samsung Galaxy S7");
+//            new Post().execute(anonymous);
+//
+//            // Get anonymous with the given DeviceId
+//            new GetById(this).execute("QE58711871dds81dg838344fga");
 
         }
     }
