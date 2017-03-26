@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.abdo.patrick.abdo.Adapter;
+import com.abdo.patrick.abdo.Controllers.ListController;
 import com.abdo.patrick.abdo.R;
 
 import java.util.ArrayList;
@@ -32,6 +33,8 @@ public class RegisterChildFragment extends Fragment implements View.OnClickListe
         // Required empty public constructor
     }
 
+    private ListController model;
+
     private ArrayList stamdataList;
     private ArrayList medicineList;
     private ArrayList allergiesList;
@@ -41,6 +44,8 @@ public class RegisterChildFragment extends Fragment implements View.OnClickListe
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        model = new ListController(this);
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.create_child_list, container, false);
 
@@ -62,16 +67,16 @@ public class RegisterChildFragment extends Fragment implements View.OnClickListe
         child_supplement_header.setOnClickListener(this);
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.stamdata_list);
-        initViews(recyclerView, stamdataList);
+        model.InitViews(recyclerView, stamdataList);
 
         RecyclerView recyclerView1 = (RecyclerView) view.findViewById(R.id.medicine_list);
-        initViews(recyclerView1, medicineList);
+        model.InitViews(recyclerView1, medicineList);
 
         RecyclerView recyclerView2 = (RecyclerView) view.findViewById(R.id.allergies_list);
-        initViews(recyclerView2, allergiesList);
+        model.InitViews(recyclerView2, allergiesList);
 
         RecyclerView recyclerView3 = (RecyclerView) view.findViewById(R.id.supplements_list);
-        initViews(recyclerView3, supplementsList);
+        model.InitViews(recyclerView3, supplementsList);
 
         return view;
     }
@@ -104,43 +109,7 @@ public class RegisterChildFragment extends Fragment implements View.OnClickListe
         return;
     }
 
-    private void initViews(RecyclerView recyclerView, ArrayList data){
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
-        final RecyclerView.Adapter adapter = new Adapter(data);
-        recyclerView.setAdapter(adapter);
 
-        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-            GestureDetector gestureDetector = new GestureDetector(getActivity().getApplicationContext(), new GestureDetector.SimpleOnGestureListener() {
-
-                @Override public boolean onSingleTapUp(MotionEvent e) {
-                    return true;
-                }
-
-            });
-            @Override
-            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-                Adapter rvAdapter = (Adapter)rv.getAdapter();
-                View child = rv.findChildViewUnder(e.getX(), e.getY());
-                if(child != null && gestureDetector.onTouchEvent(e)) {
-                    int position = rv.getChildAdapterPosition(child);
-                    Toast.makeText(getActivity().getApplicationContext(), "pressed "+rvAdapter.getItemName(position), Toast.LENGTH_SHORT).show();
-                }
-
-                return false;
-            }
-
-            @Override
-            public void onTouchEvent(RecyclerView rv, MotionEvent e) {
-
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-            }
-        });
-    }
 
     @Override
     public void onClick(View v) {

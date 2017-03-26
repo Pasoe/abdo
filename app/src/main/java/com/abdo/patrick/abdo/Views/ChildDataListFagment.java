@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.abdo.patrick.abdo.Adapter;
+import com.abdo.patrick.abdo.Controllers.ListController;
 import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.R;
 
@@ -24,6 +25,7 @@ import java.util.ArrayList;
  */
 public class ChildDataListFagment extends Fragment {
 
+    private ListController model;
 
     public ChildDataListFagment() {
         // Required empty public constructor
@@ -33,6 +35,8 @@ public class ChildDataListFagment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        model = new ListController(this);
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_child_data_list_fagment, container, false);
 
@@ -52,7 +56,7 @@ public class ChildDataListFagment extends Fragment {
             if (Application.getInstance().get_allergyList().isEmpty()){
                 new com.abdo.patrick.abdo.Api.Allergy.Get().execute();
             }
-            initViews(recyclerView, Application.getInstance().get_allergyList());
+            model.InitViews(recyclerView, Application.getInstance().get_allergyList());
         }
         if(listType.equals("supplements")){
             toolbarTitle.setText("Kosttilskud");
@@ -62,49 +66,13 @@ public class ChildDataListFagment extends Fragment {
             if (Application.getInstance().get_supplementsList().isEmpty()){
                 new com.abdo.patrick.abdo.Api.Supplement.Get().execute();
             }
-            initViews(recyclerView, Application.getInstance().get_supplementsList());
+            model.InitViews(recyclerView, Application.getInstance().get_supplementsList());
         }
 
         return view;
     }
 
-    private void initViews(RecyclerView recyclerView, ArrayList data){
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
-        final RecyclerView.Adapter adapter = new Adapter(data);
-        recyclerView.setAdapter(adapter);
 
-        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-            GestureDetector gestureDetector = new GestureDetector(getActivity().getApplicationContext(), new GestureDetector.SimpleOnGestureListener() {
-
-                @Override public boolean onSingleTapUp(MotionEvent e) {
-                    return true;
-                }
-
-            });
-            @Override
-            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-                Adapter rvAdapter = (Adapter)rv.getAdapter();
-                View child = rv.findChildViewUnder(e.getX(), e.getY());
-                if(child != null && gestureDetector.onTouchEvent(e)) {
-                    int position = rv.getChildAdapterPosition(child);
-                    Toast.makeText(getActivity().getApplicationContext(), "pressed "+rvAdapter.getItemName(position), Toast.LENGTH_SHORT).show();
-                }
-
-                return false;
-            }
-
-            @Override
-            public void onTouchEvent(RecyclerView rv, MotionEvent e) {
-
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-            }
-        });
-    }
 
 
 
