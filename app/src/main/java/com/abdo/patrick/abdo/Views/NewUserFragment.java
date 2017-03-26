@@ -50,9 +50,8 @@ public class NewUserFragment extends Fragment implements View.OnClickListener {
 
         switch(v.getId()){
             case R.id.btnNewChild:{
-                Toast.makeText(getActivity(), "New Child",
-                        Toast.LENGTH_LONG).show();
-                return;
+                fragment = new CreateChild();
+                break;
             }
             case R.id.btnTypeCode:{
                 fragment = new TypeCodeFragment();
@@ -60,6 +59,7 @@ public class NewUserFragment extends Fragment implements View.OnClickListener {
             }
             case R.id.btnRestoreFromEmail:{
                 fragment = new RestoreFromEmailFragment();
+                break;
             }
         }
 
