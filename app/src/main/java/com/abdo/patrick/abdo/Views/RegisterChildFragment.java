@@ -148,7 +148,8 @@ public class RegisterChildFragment extends Fragment implements View.OnClickListe
 
         switch(v.getId()){
             case R.id.create_child_data_category:{
-                return;
+                fragment = new ChildStamData();
+                break;
             }
             case R.id.create_child_medicine_category:{
                 return;
