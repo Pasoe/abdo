@@ -10,79 +10,52 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.abdo.patrick.abdo.Adapter;
+import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.R;
 
 import java.util.ArrayList;
 
-
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CreateChild extends Fragment {
+public class ChildDataListFagment extends Fragment {
 
 
-    public CreateChild() {
+    public ChildDataListFagment() {
         // Required empty public constructor
     }
-
-    private ArrayList stamdataList;
-    private ArrayList medicineList;
-    private ArrayList allergiesList;
-    private ArrayList supplementsList;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.create_child_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_child_data_list_fagment, container, false);
 
-        generateDummyDate();
+        TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
 
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.stamdata_list);
-        initViews(recyclerView, stamdataList);
 
-        RecyclerView recyclerView1 = (RecyclerView) view.findViewById(R.id.medicine_list);
-        initViews(recyclerView1, medicineList);
+        TextView header = (TextView)view.findViewById(R.id.child_data_list_header);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.child_data_list);
 
-        RecyclerView recyclerView2 = (RecyclerView) view.findViewById(R.id.allergies_list);
-        initViews(recyclerView2, allergiesList);
+        String listType = getArguments().getString("listType");
 
-        RecyclerView recyclerView3 = (RecyclerView) view.findViewById(R.id.supplements_list);
-        initViews(recyclerView3, supplementsList);
+        if(listType.equals("allergies")){
+            toolbarTitle.setText("Allergier");
+            header.setText("Allergier");
+            initViews(recyclerView, Application.getInstance().GetAllergyList());
+        }
+        if(listType.equals("supplements")){
+            toolbarTitle.setText("Kosttilskud");
+            header.setText("Kosttilskud");
+            initViews(recyclerView, Application.getInstance().GetSupplementslist());
+        }
 
         return view;
-    }
-
-    private void generateDummyDate(){
-        stamdataList = new ArrayList<>();
-        stamdataList.add("Hans");
-        stamdataList.add("Dreng");
-        stamdataList.add("12-01-2007");
-
-        medicineList = new ArrayList<>();
-        medicineList.add("Rohypnol");
-        medicineList.add("Kodimagnyl");
-        medicineList.add("Random astma ting");
-
-        allergiesList = new ArrayList<>();
-        allergiesList.add("Ananas");
-        allergiesList.add("Heste");
-
-        supplementsList = new ArrayList<>();
-        supplementsList.add("Jern");
-        supplementsList.add("A-vitamin");
-        supplementsList.add("B-vitamin");
-        supplementsList.add("C-vitamin");
-        supplementsList.add("D-vitamin");
-        supplementsList.add("E-vitamin");
-        supplementsList.add("F-vitamin");
-        supplementsList.add("G-vitamin");
-
-        return;
     }
 
     private void initViews(RecyclerView recyclerView, ArrayList data){
@@ -122,5 +95,7 @@ public class CreateChild extends Fragment {
             }
         });
     }
+
+
 
 }

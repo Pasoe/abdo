@@ -36,13 +36,13 @@ public class ApiTestAcitivty extends AppCompatActivity implements View.OnClickLi
         if (view.getId() == button.getId()){
 
             //Post a new anonymous
-//            Anonymous anonymous = new Anonymous();
-//            anonymous.setDeviceId("DeviceIdFromAndroid");
-//            anonymous.setDeviceName("Samsung Galaxy S7");
-//            new Post().execute(anonymous);
+            Anonymous anonymous = new Anonymous();
+            anonymous.setDeviceId("DeviceIdFromAndroid");
+            anonymous.setDeviceName("Samsung Galaxy S7");
+            new Post().execute(anonymous);
 
             // Get anonymous with the given DeviceId
-//            new GetById(this).execute("QE58711871dds81dg838344fga");
+            new GetById(this).execute("QE58711871dds81dg838344fga");
 
         }
     }

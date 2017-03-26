@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.abdo.patrick.abdo.R;
 
@@ -50,7 +49,7 @@ public class NewUserFragment extends Fragment implements View.OnClickListener {
 
         switch(v.getId()){
             case R.id.btnNewChild:{
-                fragment = new CreateChild();
+                fragment = new RegisterChildFragment();
                 break;
             }
             case R.id.btnTypeCode:{
