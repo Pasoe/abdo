@@ -1,35 +1,27 @@
-package com.abdo.patrick.abdo.Views;
+package com.abdo.patrick.abdo.Views.RegisterChild;
 
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.GestureDetector;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.abdo.patrick.abdo.Adapter;
 import com.abdo.patrick.abdo.Controllers.ListController;
 import com.abdo.patrick.abdo.R;
-
-import java.util.ArrayList;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RegisterChildFragment extends Fragment implements View.OnClickListener{
+public class ChildOverviewFragment extends Fragment implements View.OnClickListener{
 
 
-    public RegisterChildFragment() {
+    public ChildOverviewFragment() {
         // Required empty public constructor
     }
 

@@ -1,4 +1,4 @@
-package com.abdo.patrick.abdo.Views;
+package com.abdo.patrick.abdo.Views.Shared;
 
 
 import android.content.Context;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -14,14 +15,16 @@ import android.widget.TextView;
 
 import com.abdo.patrick.abdo.R;
 
+import static android.content.Context.INPUT_METHOD_SERVICE;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RestoreFromEmailFragment extends Fragment {
+public class TypeCodeFragment extends Fragment {
 
 
-    public RestoreFromEmailFragment() {
+    public TypeCodeFragment() {
         // Required empty public constructor
     }
 
@@ -29,14 +32,16 @@ public class RestoreFromEmailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_restore_from_email, container, false);
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_type_code, container, false);
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
-        TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
-        toolbarTitle.setText(getResources().getString(R.string.title_restore));
 
-        final EditText editText = (EditText) view.findViewById(R.id.editTextInputEmail);
+        TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
+        toolbarTitle.setText(getResources().getString(R.string.title_code));
+
+        final EditText editText = (EditText) view.findViewById(R.id.editTextInputCode);
 
         editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -51,5 +56,4 @@ public class RestoreFromEmailFragment extends Fragment {
 
         return view;
     }
-
 }

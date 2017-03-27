@@ -1,4 +1,4 @@
-package com.abdo.patrick.abdo.Views;
+package com.abdo.patrick.abdo.Views.Startup;
 
 
 import android.os.Bundle;
@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.abdo.patrick.abdo.R;
+import com.abdo.patrick.abdo.Views.RegisterChild.ChildOverviewFragment;
+import com.abdo.patrick.abdo.Views.Shared.RestoreFromEmailFragment;
+import com.abdo.patrick.abdo.Views.Shared.TypeCodeFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,7 +52,7 @@ public class NewUserFragment extends Fragment implements View.OnClickListener {
 
         switch(v.getId()){
             case R.id.btnNewChild:{
-                fragment = new RegisterChildFragment();
+                fragment = new ChildOverviewFragment();
                 break;
             }
             case R.id.btnTypeCode:{

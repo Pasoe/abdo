@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.abdo.patrick.abdo.Views.ChildMedicineData">
+    tools:context="com.abdo.patrick.abdo.Views.RegisterChild.ChildMedicineData">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
