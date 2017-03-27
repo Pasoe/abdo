@@ -81,7 +81,7 @@
                     android:layout_marginRight="20dp"
                     android:layout_weight="1"
                     android:textColor="@color/colorBlack"
-                    android:text="@string/child_overview_supplement"/>
+                    android:text="@string/child_overview_stamdata"/>
                 <TextView
                     android:id="@+id/child_overview_stamdata_content"
                     android:layout_width="match_parent"
@@ -139,7 +139,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_weight="1"
                     android:textColor="@color/colorBlack"
-                    android:text="@string/child_overview_supplement"/>
+                    android:text="@string/child_overview_medicine"/>
                 <TextView
                     android:id="@+id/child_overview_medicine_content"
                     android:layout_width="match_parent"

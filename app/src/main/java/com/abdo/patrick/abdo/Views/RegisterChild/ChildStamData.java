@@ -22,6 +22,7 @@ public class ChildStamData extends Fragment implements View.OnClickListener{
         // Required empty public constructor
     }
 
+    private TextView toolbarSave;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,7 +32,7 @@ public class ChildStamData extends Fragment implements View.OnClickListener{
 
         TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
         toolbarTitle.setText("Stamdata");
-        TextView toolbarSave = (TextView) getActivity().findViewById(R.id.toolbar_save);
+        toolbarSave = (TextView) getActivity().findViewById(R.id.toolbar_save);
         toolbarSave.setVisibility(View.VISIBLE);
         toolbarSave.setOnClickListener(this);
 
@@ -43,10 +44,14 @@ public class ChildStamData extends Fragment implements View.OnClickListener{
         if(v == v.findViewById(R.id.toolbar_save)){
             //SAVE STUFF!!
 
-            v.setVisibility(View.INVISIBLE);
-
             FragmentManager fm = getFragmentManager();
             fm.popBackStack();
         }
+    }
+
+    @Override
+    public void onPause() {
+        toolbarSave.setVisibility(View.INVISIBLE);
+        super.onPause();
     }
 }

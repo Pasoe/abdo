@@ -8,9 +8,9 @@
     <RelativeLayout
         android:id="@+id/new_user"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.5"
-        android:layout_marginTop="2dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="1dp"
         android:background="@color/colorBlue"
         android:padding="20dp"
         >
@@ -38,7 +38,7 @@
             android:paddingRight="10dp"
             android:layout_toRightOf="@id/new_user_icon"
             android:layout_toLeftOf="@id/new_user_arrow"
-            android:text="Registrer dit barn hos abdo."
+            android:text="@string/new_user_register"
             android:textSize="24dp"
             android:textColor="@color/colorWhite"/>
     </RelativeLayout>
@@ -46,9 +46,10 @@
     <RelativeLayout
         android:id="@+id/new_user_code"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.5"
-        android:layout_marginTop="2dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
         android:background="@color/colorPurple"
         android:padding="20dp"
         >
@@ -76,7 +77,7 @@
             android:paddingRight="10dp"
             android:layout_toRightOf="@id/new_user_code_icon"
             android:layout_toLeftOf="@id/new_user_code_arrow"
-            android:text="Få adgang til et registreret barn, ved at bruge en delekode."
+            android:text="@string/new_user_code"
             android:textSize="24dp"
             android:textColor="@color/colorWhite"/>
     </RelativeLayout>
@@ -84,10 +85,9 @@
     <RelativeLayout
         android:id="@+id/new_user_email"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.5"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="2dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="1dp"
         android:background="@color/colorGreen"
         android:padding="20dp"
         >
@@ -115,7 +115,7 @@
             android:paddingRight="10dp"
             android:layout_toRightOf="@id/new_user_email_icon"
             android:layout_toLeftOf="@id/new_user_email_arrow"
-            android:text="Gendan din tidligere bruger via. email."
+            android:text="@string/new_user_email"
             android:textSize="24dp"
             android:textColor="@color/colorWhite"/>
     </RelativeLayout>
