@@ -1,54 +1,209 @@
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:orientation="vertical"-->
+    <!--tools:context="com.abdo.patrick.abdo.Views.ChildStamData">-->
+    <!--<Space-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1"/>-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:layout_marginRight="20dp"-->
+        <!--android:orientation="horizontal">-->
+        <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Navn"/>-->
+        <!--<EditText-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="3"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/colorWhite"-->
+            <!--android:id="@+id/child_stamdata_name"/>-->
+    <!--</LinearLayout>-->
+
+    <!--<Space-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="2"/>-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:layout_marginRight="20dp"-->
+        <!--android:layout_weight="1">-->
+        <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Køn" />-->
+        <!--<RadioGroup-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="3"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal">-->
+                <!--<RadioButton-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:textColor="@color/colorBlack"-->
+                    <!--android:text="Dreng"/>-->
+                <!--<RadioButton-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:textColor="@color/colorBlack"-->
+                    <!--android:text="Pige"/>-->
+        <!--</RadioGroup>-->
+    <!--</LinearLayout>-->
+
+    <!--<Space-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1"/>-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:layout_marginRight="20dp"-->
+        <!--android:layout_gravity="bottom">-->
+        <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:text="Fødselsdag" />-->
+        <!--<DatePicker-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="3"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:datePickerMode="spinner"-->
+            <!--android:calendarViewShown="false"-->
+            <!--android:endYear="2020"-->
+            <!--android:startYear="1970" >-->
+        <!--</DatePicker>-->
+    <!--</LinearLayout>-->
+<!--</LinearLayout>-->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorBeige"
     tools:context="com.abdo.patrick.abdo.Views.ChildStamData">
-    <Space
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:orientation="horizontal">
+        android:layout_weight="1"
+        android:background="@color/colorBlue"
+        android:padding="20dp"
+        android:layout_marginBottom="2dp"
+        >
+        <ImageView
+            android:id="@+id/stamdata_header_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/add_user_icon"
+            android:layout_centerVertical="true"
+            android:tint="@color/colorWhite"/>
         <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Navn"/>
-        <EditText
-            android:layout_width="0dp"
-            android:layout_weight="3"
-            android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
-            android:id="@+id/child_stamdata_name"/>
-    </LinearLayout>
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/stamdata_header_image"
+            android:text="Her kan du indtaste dit barns stamdata."
+            android:textSize="24dp"
+            android:textColor="@color/colorWhite"/>
+    </RelativeLayout>
 
-    <Space
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"/>
+        android:layout_height="80dp"
+        android:background="@color/colorWhite"
+        android:paddingTop="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="2dp">
+        <ImageView
+            android:id="@+id/stamdata_name_row_icon"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/user_icon"
+            android:tint="@color/colorOrange"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_toRightOf="@id/stamdata_name_row_icon"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:text="Navn"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:hint="Indtast navn her"
+                android:inputType="text"
+                android:maxLines="1"
+                android:imeOptions="actionDone"/>
+        </LinearLayout>
 
-    <LinearLayout
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_weight="1">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Køn" />
-        <RadioGroup
-            android:layout_width="0dp"
-            android:layout_weight="3"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        android:layout_height="80dp"
+        android:background="@color/colorWhite"
+        android:paddingTop="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="2dp">
+        <ImageView
+            android:id="@+id/stamdata_gender_row_icon"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/icon_gender"
+            android:tint="@color/colorOrange"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_toRightOf="@id/stamdata_gender_row_icon"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Køn"/>
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="bottom"
+                android:layout_toRightOf="@id/stamdata_gender_row_icon"
+                android:orientation="horizontal">
                 <RadioButton
                     android:layout_height="wrap_content"
                     android:layout_width="0dp"
@@ -61,36 +216,47 @@
                     android:layout_weight="1"
                     android:textColor="@color/colorBlack"
                     android:text="Pige"/>
-        </RadioGroup>
-    </LinearLayout>
+            </RadioGroup>
+        </LinearLayout>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_gravity="bottom">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
+        android:layout_height="240dp"
+        android:background="@color/colorWhite"
+        android:padding="20dp">
+        <ImageView
+            android:id="@+id/stamdata_birthday_row_icon"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/icon_birthday"
+            android:tint="@color/colorOrange"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="Fødselsdag" />
-        <DatePicker
-            android:layout_width="0dp"
-            android:layout_weight="3"
-            android:layout_height="wrap_content"
-            android:datePickerMode="spinner"
-            android:calendarViewShown="false"
-            android:endYear="2020"
-            android:startYear="1970" >
-        </DatePicker>
-    </LinearLayout>
+            android:background="@color/colorWhite"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:layout_toRightOf="@id/stamdata_birthday_row_icon"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Fødselsdag" />
+            <DatePicker
+                android:layout_width="match_parent"
+                android:layout_weight="3"
+                android:layout_height="0dp"
+                android:datePickerMode="spinner"
+                android:calendarViewShown="false"
+                android:endYear="2020"
+                android:startYear="1970" >
+            </DatePicker>
+        </LinearLayout>
+    </RelativeLayout>
+
 </LinearLayout>
-
-
