@@ -11,7 +11,7 @@
     <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:background="@color/colorGreen"
+    android:background="@color/colorBlue"
         android:id="@+id/create_child_data_category">
     <TextView
         android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorGreen"
+        android:background="@color/colorBlue"
         android:id="@+id/create_child_medicine_category">
         <TextView
             android:layout_width="wrap_content"
@@ -71,7 +71,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorGreen"
+        android:background="@color/colorBlue"
         android:id="@+id/create_child_allergy_category">
         <TextView
             android:layout_width="wrap_content"
@@ -101,7 +101,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorGreen"
+        android:background="@color/colorBlue"
         android:id="@+id/create_child_supplement_category">
         <TextView
             android:layout_width="wrap_content"
