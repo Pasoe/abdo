@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.abdo.patrick.abdo.ViewModels.ListItem;
+
 import java.util.ArrayList;
 
 /**
@@ -13,9 +15,9 @@ import java.util.ArrayList;
  */
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
-    private ArrayList<String> list;
+    private ArrayList<ListItem> list;
 
-    public Adapter(ArrayList<String> list) {
+    public Adapter(ArrayList<ListItem> list) {
         this.list = list;
     }
 
@@ -27,8 +29,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(Adapter.ViewHolder viewHolder, int i) {
-
-        viewHolder.row_text.setText(list.get(i));
+        viewHolder.row_text.setText(list.get(i).getName());
     }
 
     @Override
@@ -36,15 +37,19 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         return list.size();
     }
 
+
     public String getItemName(int position){
-        return list.get(position);
+        return list.get(position).getName();
+    }
+
+    public int getId(int position){
+        return list.get(position).getId();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView row_text;
         public ViewHolder(View view) {
             super(view);
-
             row_text = (TextView)view.findViewById(R.id.row_text);
         }
     }
