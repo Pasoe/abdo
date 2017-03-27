@@ -1,4 +1,4 @@
-package com.abdo.patrick.abdo.Views;
+package com.abdo.patrick.abdo.Views.RegisterChild;
 
 
 import android.os.Bundle;

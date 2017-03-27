@@ -3,7 +3,7 @@
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="match_parent"-->
     <!--android:orientation="vertical"-->
-    <!--tools:context="com.abdo.patrick.abdo.Views.ChildStamData">-->
+    <!--tools:context="com.abdo.patrick.abdo.Views.RegisterChild.ChildStamData">-->
     <!--<Space-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="0dp"-->
@@ -99,7 +99,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorBeige"
-    tools:context="com.abdo.patrick.abdo.Views.ChildStamData">
+    tools:context="com.abdo.patrick.abdo.Views.RegisterChild.ChildStamData">
 
     <RelativeLayout
         android:layout_width="match_parent"

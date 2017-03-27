@@ -9,9 +9,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.abdo.patrick.abdo.Adapter;
-import com.abdo.patrick.abdo.ViewModels.ListItem;
-import com.abdo.patrick.abdo.Views.ChildDataListFagment;
-import com.abdo.patrick.abdo.Views.RegisterChildFragment;
+import com.abdo.patrick.abdo.Views.RegisterChild.ChildDataListFagment;
+import com.abdo.patrick.abdo.Views.RegisterChild.ChildOverviewFragment;
 
 import java.util.ArrayList;
 
@@ -22,7 +21,7 @@ import java.util.ArrayList;
 public class ListController {
 
     private ChildDataListFagment _childDataListFagment;
-    private RegisterChildFragment _registerChildFragment;
+    private ChildOverviewFragment _childOverviewFragment;
     private Context _context;
 
     public ListController(ChildDataListFagment childDataListFagment) {
@@ -30,9 +29,9 @@ public class ListController {
         _context = _childDataListFagment.getActivity().getApplicationContext();
     }
 
-    public ListController(RegisterChildFragment registerChildFragment) {
-        _registerChildFragment = registerChildFragment;
-        _context = _registerChildFragment.getActivity().getApplicationContext();
+    public ListController(ChildOverviewFragment childOverviewFragment) {
+        _childOverviewFragment = childOverviewFragment;
+        _context = _childOverviewFragment.getActivity().getApplicationContext();
     }
 
     public void InitViews(RecyclerView recyclerView, ArrayList data){
@@ -43,7 +42,7 @@ public class ListController {
         if(_childDataListFagment != null){
             layoutManager = new LinearLayoutManager(_context);
         }
-        if(_registerChildFragment != null){
+        if(_childOverviewFragment != null){
             layoutManager = new LinearLayoutManager(_context);
         }
         recyclerView.setLayoutManager(layoutManager);

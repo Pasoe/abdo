@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.R;
+import com.abdo.patrick.abdo.Views.Startup.NewUserFragment;
 
 public class MainActivity extends AppCompatActivity {
 
