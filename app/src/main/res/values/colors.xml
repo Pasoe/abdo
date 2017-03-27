@@ -10,4 +10,6 @@
     <color name="colorBlack">#383127</color>
     <color name="colorWhite">#F4F4F2 </color>
     <color name="colorBlue">#21a2dc</color>
+    <color name="colorGrey">#C7C7CD</color>
+    <color name="colorPurple">#ab708c</color>
 </resources>
