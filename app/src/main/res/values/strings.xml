@@ -18,6 +18,16 @@
     <string name="title_code">Delekode</string>
     <string name="title_restore">Gendan</string>
 
+        <!-- Create Child Overview -->
+        <string name="child_overview_header">Udfyld informationer om dit barn herunder.</string>
+        <string name="child_overview_stamdata">Stamdata</string>
+        <string name="child_overview_medicine">Medicin</string>
+        <string name="child_overview_allergy">Allergi</string>
+        <string name="child_overview_supplement">Kosttilskud</string>
+
+
+
+
     <string name="device_id">QE58711871dds81dg838344fga</string>
 
 </resources>

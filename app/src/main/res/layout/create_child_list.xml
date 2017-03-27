@@ -1,135 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<ScrollView-->
-    <!--android:layout_height="match_parent"-->
-    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--android:layout_width="match_parent">-->
-<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:orientation="vertical" >-->
-
-    <!--<RelativeLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="50dp"-->
-    <!--android:background="@color/colorBlue"-->
-        <!--android:id="@+id/create_child_data_category">-->
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:textColor="@color/colorWhite"-->
-        <!--android:layout_marginTop="15dp"-->
-        <!--android:layout_marginLeft="15dp"-->
-        <!--android:text="Stamdata"/>-->
-    <!--<ImageView-->
-        <!--android:layout_width="40dp"-->
-        <!--android:layout_height="40dp"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--android:src="@drawable/icon_right_arrow"-->
-        <!--android:tint="@color/colorWhite"-->
-        <!--/>-->
-<!--</RelativeLayout>-->
-
-    <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:id="@+id/stamdata_list"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_centerInParent="true"-->
-        <!--android:layout_marginBottom="10dp"-->
-        <!--android:overScrollMode="never"/>-->
-
-    <!--<RelativeLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:background="@color/colorBlue"-->
-        <!--android:id="@+id/create_child_medicine_category">-->
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:textColor="@color/colorWhite"-->
-            <!--android:layout_marginTop="15dp"-->
-            <!--android:layout_marginLeft="15dp"-->
-            <!--android:text="Medicin"/>-->
-        <!--<ImageView-->
-            <!--android:layout_width="40dp"-->
-            <!--android:layout_height="40dp"-->
-            <!--android:layout_alignParentRight="true"-->
-            <!--android:layout_centerVertical="true"-->
-            <!--android:src="@drawable/icon_right_arrow"-->
-            <!--android:tint="@color/colorWhite"-->
-            <!--/>-->
-    <!--</RelativeLayout>-->
-
-    <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:id="@+id/medicine_list"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_centerInParent="true"-->
-        <!--android:layout_marginBottom="10dp"-->
-        <!--android:overScrollMode="never"/>-->
-
-    <!--<RelativeLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:background="@color/colorBlue"-->
-        <!--android:id="@+id/create_child_allergy_category">-->
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:textColor="@color/colorWhite"-->
-            <!--android:layout_marginTop="15dp"-->
-            <!--android:layout_marginLeft="15dp"-->
-            <!--android:text="Allergier"/>-->
-        <!--<ImageView-->
-            <!--android:layout_width="40dp"-->
-            <!--android:layout_height="40dp"-->
-            <!--android:layout_alignParentRight="true"-->
-            <!--android:layout_centerVertical="true"-->
-            <!--android:src="@drawable/icon_right_arrow"-->
-            <!--android:tint="@color/colorWhite"-->
-            <!--/>-->
-    <!--</RelativeLayout>-->
-
-    <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:id="@+id/allergies_list"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_centerInParent="true"-->
-        <!--android:layout_marginBottom="10dp"-->
-        <!--android:overScrollMode="never"/>-->
-
-    <!--<RelativeLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:background="@color/colorBlue"-->
-        <!--android:id="@+id/create_child_supplement_category">-->
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:textColor="@color/colorWhite"-->
-            <!--android:layout_marginTop="15dp"-->
-            <!--android:layout_marginLeft="15dp"-->
-            <!--android:text="Kosttilskud"/>-->
-        <!--<ImageView-->
-            <!--android:layout_width="40dp"-->
-            <!--android:layout_height="40dp"-->
-            <!--android:layout_alignParentRight="true"-->
-            <!--android:layout_centerVertical="true"-->
-            <!--android:src="@drawable/icon_right_arrow"-->
-            <!--android:tint="@color/colorWhite"-->
-            <!--/>-->
-    <!--</RelativeLayout>-->
-
-    <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:id="@+id/supplements_list"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_centerInParent="true"-->
-        <!--android:overScrollMode="never"-->
-        <!--/>-->
-<!--</LinearLayout>-->
-<!--</ScrollView>-->
-
 <ScrollView
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -142,9 +11,9 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@color/colorGreen"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:background="@color/colorBlue"
             android:padding="20dp"
             >
             <ImageView
@@ -160,129 +29,236 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
                 android:layout_toRightOf="@id/stamdata_header_image"
-                android:text="Registrer dit barn i appen."
+                android:text="@string/child_overview_header"
                 android:textSize="24dp"
                 android:textColor="@color/colorWhite"/>
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/colorBlue"
-            android:id="@+id/create_child_data_category">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textColor="@color/colorWhite"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="15dp"
-                android:text="Stamdata"/>
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorWhite"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="20dp"
+            android:id="@+id/create_child_data_category"
+            android:layout_marginBottom="2dp">
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/create_child_icon_small"
+                android:layout_height="@dimen/create_child_icon_small"
+                android:id="@+id/child_overview_stamdata_row_icon"
+                android:layout_centerVertical="true"
+                android:src="@drawable/user_icon"
+                android:tint="@color/colorOrange" />
+            <ImageView
+                android:id="@+id/child_overview_stamdata_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:src="@drawable/icon_right_arrow"
-                android:tint="@color/colorWhite"
-                />
-        </RelativeLayout>
+                android:tint="@color/colorBlack"/>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/stamdata_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="10dp"
-            android:overScrollMode="never"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
+                android:layout_toRightOf="@id/child_overview_stamdata_row_icon"
+                android:layout_toLeftOf="@id/child_overview_stamdata_arrow">
+                <TextView
+                    android:id="@+id/child_overview_stamdata_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorBlack"
+                    android:text="@string/child_overview_supplement"/>
+                <TextView
+                    android:id="@+id/child_overview_stamdata_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorBlack"
+                    android:visibility="invisible"
+                    android:textSize="10dp" />
+            </LinearLayout>
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/colorBlue"
-            android:id="@+id/create_child_medicine_category">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textColor="@color/colorWhite"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="15dp"
-                android:text="Medicin"/>
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorWhite"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="20dp"
+            android:id="@+id/create_child_medicine_category"
+            android:layout_marginBottom="2dp">
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/create_child_icon_small"
+                android:layout_height="@dimen/create_child_icon_small"
+                android:id="@+id/child_overview_medicine_row_icon"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_medicine"
+                android:tint="@color/colorOrange" />
+            <ImageView
+                android:id="@+id/child_overview_medicine_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:src="@drawable/icon_right_arrow"
-                android:tint="@color/colorWhite"
-                />
-        </RelativeLayout>
+                android:tint="@color/colorBlack"/>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/medicine_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="10dp"
-            android:overScrollMode="never"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
+                android:layout_toRightOf="@id/child_overview_medicine_row_icon"
+                android:layout_toLeftOf="@id/child_overview_medicine_arrow">
+                <TextView
+                    android:id="@+id/child_overview_medicine_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorBlack"
+                    android:text="@string/child_overview_supplement"/>
+                <TextView
+                    android:id="@+id/child_overview_medicine_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="10dp" />
+            </LinearLayout>
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/colorBlue"
-            android:id="@+id/create_child_allergy_category">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textColor="@color/colorWhite"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="15dp"
-                android:text="Allergier"/>
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorWhite"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="20dp"
+            android:id="@+id/create_child_allergy_category"
+            android:layout_marginBottom="2dp">
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/create_child_icon_small"
+                android:layout_height="@dimen/create_child_icon_small"
+                android:id="@+id/child_overview_allergy_row_icon"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_allergy"
+                android:tint="@color/colorOrange" />
+            <ImageView
+                android:id="@+id/child_overview_allergy_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:src="@drawable/icon_right_arrow"
-                android:tint="@color/colorWhite"
-                />
+                android:tint="@color/colorBlack"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/child_overview_allergy_row_icon"
+                android:layout_toLeftOf="@id/child_overview_allergy_arrow">
+                <TextView
+                    android:id="@+id/child_overview_allergy_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorBlack"
+                    android:text="@string/child_overview_allergy"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="10dp" />
+            </LinearLayout>
         </RelativeLayout>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/allergies_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="10dp"
-            android:overScrollMode="never"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/colorBlue"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorWhite"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="20dp"
             android:id="@+id/create_child_supplement_category">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textColor="@color/colorWhite"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="15dp"
-                android:text="Kosttilskud"/>
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/create_child_icon_small"
+                android:layout_height="@dimen/create_child_icon_small"
+                android:id="@+id/child_overview_supplement_row_icon"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_supplement"
+                android:tint="@color/colorOrange" />
+            <ImageView
+                android:id="@+id/child_overview_supplement_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:src="@drawable/icon_right_arrow"
-                android:tint="@color/colorWhite"
-                />
-        </RelativeLayout>
+                android:tint="@color/colorBlack"/>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/supplements_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:overScrollMode="never"
-            />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/child_overview_supplement_row_icon"
+                android:layout_toLeftOf="@id/child_overview_supplement_arrow">
+                <TextView
+                    android:id="@+id/child_overview_supplement_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorBlack"
+                    android:text="@string/child_overview_supplement"/>
+                <TextView
+                    android:id="@+id/child_overview_supplement_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="10dp" />
+            </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 </ScrollView>
