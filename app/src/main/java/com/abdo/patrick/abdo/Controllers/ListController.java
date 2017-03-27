@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.abdo.patrick.abdo.Adapter;
+import com.abdo.patrick.abdo.ViewModels.ListItem;
 import com.abdo.patrick.abdo.Views.ChildDataListFagment;
 import com.abdo.patrick.abdo.Views.RegisterChildFragment;
 
@@ -36,6 +37,7 @@ public class ListController {
 
     public void InitViews(RecyclerView recyclerView, ArrayList data){
 
+        final RecyclerView.Adapter adapter = new Adapter(data);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(null);
 
         if(_childDataListFagment != null){
@@ -44,9 +46,7 @@ public class ListController {
         if(_registerChildFragment != null){
             layoutManager = new LinearLayoutManager(_context);
         }
-
         recyclerView.setLayoutManager(layoutManager);
-        final RecyclerView.Adapter adapter = new Adapter(data);
         recyclerView.setAdapter(adapter);
 
         recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
@@ -63,9 +63,8 @@ public class ListController {
                 View child = rv.findChildViewUnder(e.getX(), e.getY());
                 if(child != null && gestureDetector.onTouchEvent(e)) {
                     int position = rv.getChildAdapterPosition(child);
-                    Toast.makeText(_context, "pressed "+rvAdapter.getItemName(position), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(_context, "pressed " + rvAdapter.getId(position), Toast.LENGTH_SHORT).show();
                 }
-
                 return false;
             }
 

@@ -1,5 +1,9 @@
 package com.abdo.patrick.abdo.Models;
 
+import com.abdo.patrick.abdo.ViewModels.ListItem;
+
+import java.util.ArrayList;
+
 /**
  * Created by Khaled on 26-03-2017.
  */
@@ -52,4 +56,6 @@ public class Allergy {
     public void setModifiedTime(String modifiedTime) {
         this.modifiedTime = modifiedTime;
     }
+
+
 }

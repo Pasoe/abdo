@@ -16,6 +16,8 @@ import android.widget.Toast;
 import com.abdo.patrick.abdo.Adapter;
 import com.abdo.patrick.abdo.Controllers.ListController;
 import com.abdo.patrick.abdo.Domain.Application;
+import com.abdo.patrick.abdo.Models.Allergy;
+import com.abdo.patrick.abdo.Models.Supplement;
 import com.abdo.patrick.abdo.R;
 
 import java.util.ArrayList;
@@ -52,21 +54,16 @@ public class ChildDataListFagment extends Fragment {
             toolbarTitle.setText("Allergier");
             header.setText("Allergier");
 
-            //Get allergies from server if it's empty
-            if (Application.getInstance().get_allergyList().isEmpty()){
-                new com.abdo.patrick.abdo.Api.Allergy.Get().execute();
-            }
-            model.InitViews(recyclerView, Application.getInstance().get_allergyList());
+            ArrayList<Allergy> allergies = Application.getInstance().get_allergyList();
+            model.InitViews(recyclerView, Application.getInstance().getAllergyListView(allergies));
         }
+
         if(listType.equals("supplements")){
             toolbarTitle.setText("Kosttilskud");
             header.setText("Kosttilskud");
 
-            //Get supplements from server if it's empty
-            if (Application.getInstance().get_supplementsList().isEmpty()){
-                new com.abdo.patrick.abdo.Api.Supplement.Get().execute();
-            }
-            model.InitViews(recyclerView, Application.getInstance().get_supplementsList());
+            ArrayList<Supplement> supplements = Application.getInstance().get_supplementsList();
+            model.InitViews(recyclerView, Application.getInstance().getSupplementListView(supplements));
         }
 
         return view;

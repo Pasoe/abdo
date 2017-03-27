@@ -4,6 +4,7 @@ import com.abdo.patrick.abdo.Models.Allergy;
 import com.abdo.patrick.abdo.Models.Anonymous;
 import com.abdo.patrick.abdo.Models.Child;
 import com.abdo.patrick.abdo.Models.Supplement;
+import com.abdo.patrick.abdo.ViewModels.ListItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,32 +79,37 @@ public class Application extends android.app.Application {
         this._supplementsList = _supplementsList;
     }
 
-    //    private void PopulateAlleryList(){
-//        _allergyList.add("Pollen");
-//        _allergyList.add("Laktose");
-//        _allergyList.add("Støv");
-//        _allergyList.add("Græs");
-//        _allergyList.add("Ananas");
-//        _allergyList.add("Latex");
-//        _allergyList.add("Uld");
-//        _allergyList.add("Hår");
-//        _allergyList.add("Hund");
-//        _allergyList.add("Kat");
-//        _allergyList.add("Hest");
-//        _allergyList.add("Birk");
-//        _allergyList.add("Lakrids");
-//    }
 
+    public ArrayList<ListItem> getAllergyListView(ArrayList<Allergy> list){
 
-//    private void PopulateSupplementsList(){
-//        _supplementsList.add("A-vitamin");
-//        _supplementsList.add("B-vitamin");
-//        _supplementsList.add("C-vitamin");
-//        _supplementsList.add("D-vitamin");
-//        _supplementsList.add("E-vitamin");
-//        _supplementsList.add("K-vitamin");
-//        _supplementsList.add("Kalk");
-//    }
+        ArrayList<ListItem> listView = new ArrayList<>();
+        Allergy current;
+
+        for(int i = 0; i < list.size(); i++)
+        {
+            current = list.get(i);
+            listView.add(
+                    new ListItem(current.getId(), current.getType()));
+        }
+
+        return listView;
+    }
+
+    public ArrayList<ListItem> getSupplementListView(ArrayList<Supplement> list){
+
+        ArrayList<ListItem> listView = new ArrayList<>();
+        Supplement current;
+
+        for(int i = 0; i < list.size(); i++)
+        {
+            current = list.get(i);
+            listView.add(
+                    new ListItem(current.getId(), current.getDescription()));
+        }
+
+        return listView;
+    }
+
 
 
 }
