@@ -82,6 +82,7 @@ public class Get extends AsyncTask<Void, Void, String> {
                 }
 
                 Application.getInstance().set_allergyList(list);
+                Application.getInstance().AddAllergiesToPreference();
                 response = "DATA FETCHED INTO MODEL";
 
             } catch (JSONException e) {

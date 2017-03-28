@@ -11,6 +11,14 @@ public class Supplement {
     private String createdTime;
     private String modifiedTime;
 
+    public Supplement() {
+    }
+
+    public Supplement(int id, String description) {
+        this.id = id;
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "Supplement{" +
@@ -51,5 +59,18 @@ public class Supplement {
 
     public void setModifiedTime(String modifiedTime) {
         this.modifiedTime = modifiedTime;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (!(obj instanceof Supplement))
+            return false;
+
+        Supplement supp = (Supplement) obj;
+        if (supp.getId() == this.id && supp.getDescription().equals(this.description))
+            return true;
+
+        return false;
     }
 }

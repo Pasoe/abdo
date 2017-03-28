@@ -1,9 +1,13 @@
 package com.abdo.patrick.abdo.Api.Anonymous;
 
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.Models.Anonymous;
+import com.abdo.patrick.abdo.Views.MainActivity;
 import com.google.gson.Gson;
 
 
@@ -17,13 +21,13 @@ import java.net.URL;
  * Created by Khaled on 21-03-2017.
  */
 
-public class Post extends AsyncTask<Anonymous, Void, String> {
+public class Post extends AsyncTask<Anonymous, Void, Integer> {
 
     protected void onPreExecute() {
 
     }
 
-    protected String doInBackground(Anonymous... anonymous) {
+    protected Integer doInBackground(Anonymous... anonymous) {
         // Do some validation here
 
         try {
@@ -42,34 +46,35 @@ public class Post extends AsyncTask<Anonymous, Void, String> {
                 outputStreamWriter.write(json);
                 outputStreamWriter.flush();
 
-                int HttpResult = urlConnection.getResponseCode();
-                StringBuilder stringBuilder = new StringBuilder();
-                if (HttpResult == HttpURLConnection.HTTP_OK){
 
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-                    String line;
-                    while ((line = bufferedReader.readLine()) != null) {
-                        stringBuilder.append(line).append("\n");
-                    }
-                    bufferedReader.close();
-                }
-                else{
-                    stringBuilder.append(urlConnection.getResponseMessage());
-                }
 
-                return stringBuilder.toString();
+                return urlConnection.getResponseCode();
+
             } finally {
                 urlConnection.disconnect();
             }
         } catch (Exception e) {
             Log.e("ERROR", e.getMessage(), e);
-            return null;
+            return -1;
         }
     }
 
-    protected void onPostExecute(String response) {
+    @Override
+    protected void onPostExecute(Integer response) {
+        super.onPostExecute(response);
 
-        Log.i("INFO", response);
+        //If anonymous is created or anonymous already exists
+        if(response == HttpURLConnection.HTTP_OK ||
+                response == HttpURLConnection.HTTP_CONFLICT)
+        {
+            if(response == HttpURLConnection.HTTP_CONFLICT)
+                Log.i("INFO", "User already exists");
+
+            Application.getInstance().AddAnonymousToPreference();
+        }
+
+
+        Log.i("SERVER", "Server returned: "+response);
 
     }
 }

@@ -17,9 +17,14 @@ public class Anonymous {
     private String deviceName;
     private String createdTime;
     private String modifiedTime;
-    private JSONArray children;
+    private ArrayList<Child> children;
 
     public Anonymous() {
+    }
+
+    public Anonymous(String deviceId, String deviceName) {
+        this.deviceId = deviceId;
+        this.deviceName = deviceName;
     }
 
     @Override
@@ -74,12 +79,5 @@ public class Anonymous {
         this.modifiedTime = modifiedTime;
     }
 
-    public JSONArray getChildren() {
-        return children;
-    }
-
-    public void setChildren(JSONArray children) {
-        this.children = children;
-    }
 
 }
