@@ -62,7 +62,7 @@ public class ChildDataListFagment extends Fragment {
             toolbarTitle.setText("Kosttilskud");
             header.setText("Kosttilskud");
 
-            ArrayList<Supplement> supplements = Application.getInstance().get_supplementsList();
+            ArrayList<Supplement> supplements = Application.getInstance().get_supplementList();
             model.InitViews(recyclerView, Application.getInstance().getSupplementListView(supplements));
         }
 

@@ -14,7 +14,13 @@ public class Child {
     private int id;
     private String createdTime;
     private String modifiedTime;
-    private JSONArray anonymous;
+    private ChildInfo childInfo;
+    private ShareCode shareCode;
+    private ArrayList<ChildAllergy> childAllergies;
+    private ArrayList<ChildMedicine> childMedicines;
+    private ArrayList<ChildSupplement> childSupplements;
+    private ArrayList<Anonymous> anonymous;
+    private ArrayList<Registration> registrations;
 
     public Child() {
     }
@@ -53,11 +59,5 @@ public class Child {
         this.modifiedTime = modifiedTime;
     }
 
-    public JSONArray getAnonymous() {
-        return anonymous;
-    }
 
-    public void setAnonymous(JSONArray anonymous) {
-        this.anonymous = anonymous;
-    }
 }

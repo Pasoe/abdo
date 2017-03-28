@@ -57,5 +57,17 @@ public class Allergy {
         this.modifiedTime = modifiedTime;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+
+        if (!(obj instanceof Allergy))
+            return false;
+
+        Allergy allergy = (Allergy) obj;
+        if (allergy.getId() == this.id && allergy.getType().equals(this.type))
+            return true;
+
+        return false;
+    }
 
 }

@@ -68,10 +68,10 @@ public class GetById extends AsyncTask<String, Void, String> {
                 child.setId(object.getInt("Id"));
                 child.setCreatedTime(object.getString("CreatedTime"));
                 child.setModifiedTime(object.getString("ModifiedTime"));
-                child.setAnonymous(object.getJSONArray("Anonymous"));
+
 
                 Log.d("DATA", child.toString());
-                Application.getInstance().add_child(child);
+//                Application.getInstance().set_c(child);
 
                 response = "DATA FETCHED INTO MODEL";
 

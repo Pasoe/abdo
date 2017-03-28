@@ -75,10 +75,9 @@ public class GetById extends AsyncTask<String, Void, String> {
                 anonymous.setDeviceName(object.getString("DeviceName"));
                 anonymous.setCreatedTime(object.getString("CreatedTime"));
                 anonymous.setModifiedTime(object.getString("ModifiedTime"));
-                anonymous.setChildren(object.getJSONArray("Children"));
 
                 Log.d("DATA", anonymous.toString());
-                Application.getInstance().add_anonymous(anonymous);
+                Application.getInstance().set_anonymous(anonymous);
 
                 if (_apiTestAcitivty != null) _apiTestAcitivty.getTextView().setText(anonymous.toString());
 
