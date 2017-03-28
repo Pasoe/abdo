@@ -61,6 +61,7 @@ public class TypeCodeFragment extends Fragment implements View.OnClickListener {
             }
         });
 
+
         return view;
     }
 
