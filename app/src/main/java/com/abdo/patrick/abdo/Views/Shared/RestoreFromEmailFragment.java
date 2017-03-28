@@ -4,6 +4,7 @@ package com.abdo.patrick.abdo.Views.Shared;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,13 +19,14 @@ import com.abdo.patrick.abdo.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RestoreFromEmailFragment extends Fragment {
+public class RestoreFromEmailFragment extends Fragment implements View.OnClickListener {
 
 
     public RestoreFromEmailFragment() {
         // Required empty public constructor
     }
 
+    public TextView toolbarSave;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,6 +37,10 @@ public class RestoreFromEmailFragment extends Fragment {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
         TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
         toolbarTitle.setText(getResources().getString(R.string.title_restore));
+
+        toolbarSave = (TextView) getActivity().findViewById(R.id.toolbar_save);
+        toolbarSave.setVisibility(View.VISIBLE);
+        toolbarSave.setOnClickListener(this);
 
         final EditText editText = (EditText) view.findViewById(R.id.editTextInputEmail);
 
@@ -50,6 +56,22 @@ public class RestoreFromEmailFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v == v.findViewById(R.id.toolbar_save)){
+            //SAVE CODE!
+
+            FragmentManager fm = getFragmentManager();
+            fm.popBackStack();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        toolbarSave.setVisibility(View.INVISIBLE);
+        super.onPause();
     }
 
 }

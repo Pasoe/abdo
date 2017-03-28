@@ -4,6 +4,7 @@ package com.abdo.patrick.abdo.Views.Shared;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -21,13 +22,15 @@ import static android.content.Context.INPUT_METHOD_SERVICE;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TypeCodeFragment extends Fragment {
+public class TypeCodeFragment extends Fragment implements View.OnClickListener {
 
 
     public TypeCodeFragment() {
         // Required empty public constructor
     }
 
+
+    private TextView toolbarSave;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,6 +43,10 @@ public class TypeCodeFragment extends Fragment {
 
         TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
         toolbarTitle.setText(getResources().getString(R.string.title_code));
+
+        toolbarSave = (TextView) getActivity().findViewById(R.id.toolbar_save);
+        toolbarSave.setVisibility(View.VISIBLE);
+        toolbarSave.setOnClickListener(this);
 
         final EditText editText = (EditText) view.findViewById(R.id.editTextInputCode);
 
@@ -55,5 +62,21 @@ public class TypeCodeFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v == v.findViewById(R.id.toolbar_save)){
+            //SAVE CODE!
+
+            FragmentManager fm = getFragmentManager();
+            fm.popBackStack();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        toolbarSave.setVisibility(View.INVISIBLE);
+        super.onPause();
     }
 }

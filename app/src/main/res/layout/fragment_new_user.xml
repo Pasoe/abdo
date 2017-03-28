@@ -30,17 +30,45 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:tint="@color/colorWhite"/>
-        <TextView
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:paddingLeft="20dp"
             android:paddingRight="10dp"
+            android:layout_centerVertical="true"
             android:layout_toRightOf="@id/new_user_icon"
             android:layout_toLeftOf="@id/new_user_arrow"
-            android:text="@string/new_user_register"
-            android:textSize="24dp"
-            android:textColor="@color/colorWhite"/>
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center_vertical"
+                android:text="Registrer barn"
+                android:textSize="24dp"
+                android:textColor="@color/colorWhite"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Er dit barn ikke registreret i abdo endnu, kan du gøre det her"
+                android:textSize="14dp"
+                android:textColor="@color/colorWhite"/>
+        </LinearLayout>
+
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:paddingLeft="20dp"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:layout_toRightOf="@id/new_user_icon"-->
+            <!--android:layout_toLeftOf="@id/new_user_arrow"-->
+            <!--android:text="@string/new_user_register"-->
+            <!--android:textSize="24dp"-->
+            <!--android:textColor="@color/colorWhite"/>-->
     </RelativeLayout>
 
     <RelativeLayout
@@ -69,17 +97,45 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:tint="@color/colorWhite"/>
-        <TextView
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:paddingLeft="20dp"
             android:paddingRight="10dp"
+            android:layout_centerVertical="true"
             android:layout_toRightOf="@id/new_user_code_icon"
             android:layout_toLeftOf="@id/new_user_code_arrow"
-            android:text="@string/new_user_code"
-            android:textSize="24dp"
-            android:textColor="@color/colorWhite"/>
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center_vertical"
+                android:text="Indtast delekode"
+                android:textSize="24dp"
+                android:textColor="@color/colorWhite"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Har du en delekode fra et registreret barn, som du skal have adgang til, kan du indtaste den her"
+                android:textSize="14dp"
+                android:textColor="@color/colorWhite"/>
+        </LinearLayout>
+
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:paddingLeft="20dp"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:layout_toRightOf="@id/new_user_code_icon"-->
+            <!--android:layout_toLeftOf="@id/new_user_code_arrow"-->
+            <!--android:text="@string/new_user_code"-->
+            <!--android:textSize="24dp"-->
+            <!--android:textColor="@color/colorWhite"/>-->
     </RelativeLayout>
 
     <RelativeLayout
@@ -107,17 +163,30 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:tint="@color/colorWhite"/>
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:paddingLeft="20dp"
-            android:paddingRight="10dp"
             android:layout_toRightOf="@id/new_user_email_icon"
             android:layout_toLeftOf="@id/new_user_email_arrow"
-            android:text="@string/new_user_email"
-            android:textSize="24dp"
-            android:textColor="@color/colorWhite"/>
+            android:paddingLeft="20dp"
+            android:paddingRight="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Gendan fra email"
+                android:textSize="24dp"
+                android:textColor="@color/colorWhite"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Har du tidligere benyttet abdo, og har haft tilknyttet en email til din konto, kan du gendanne din bruger her"
+                android:textSize="14dp"
+                android:textColor="@color/colorWhite"/>
+        </LinearLayout>
     </RelativeLayout>
 
 
