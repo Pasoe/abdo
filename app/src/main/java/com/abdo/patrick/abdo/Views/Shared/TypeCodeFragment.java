@@ -79,6 +79,5 @@ public class TypeCodeFragment extends Fragment implements View.OnClickListener {
     public void onPause() {
         toolbarSave.setVisibility(View.INVISIBLE);
         super.onPause();
-        throw new RuntimeException("This is a crash");
     }
 }
