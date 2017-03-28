@@ -6,6 +6,8 @@ import com.abdo.patrick.abdo.Models.Child;
 import com.abdo.patrick.abdo.Models.Supplement;
 import com.abdo.patrick.abdo.ViewModels.ListItem;
 
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +27,7 @@ public class Application extends android.app.Application {
 
     @Override
     public void onCreate() {  super.onCreate();
+  Fabric.with(this, new Crashlytics());
 
         instance = this;
 

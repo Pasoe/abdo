@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.abdo.patrick.abdo.R;
@@ -33,9 +34,9 @@ public class NewUserFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_new_user, container, false);
 
-        Button newChild = (Button) view.findViewById(R.id.btnNewChild);
-        Button typeCode = (Button) view.findViewById(R.id.btnTypeCode);
-        Button restoreFromEmail = (Button) view.findViewById(R.id.btnRestoreFromEmail);
+        RelativeLayout newChild = (RelativeLayout) view.findViewById(R.id.new_user);
+        RelativeLayout typeCode = (RelativeLayout) view.findViewById(R.id.new_user_code);
+        RelativeLayout restoreFromEmail = (RelativeLayout) view.findViewById(R.id.new_user_email);
         TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
         toolbarTitle.setText(getResources().getString(R.string.app_name));
 
@@ -51,15 +52,15 @@ public class NewUserFragment extends Fragment implements View.OnClickListener {
         Fragment fragment = null;
 
         switch(v.getId()){
-            case R.id.btnNewChild:{
+            case R.id.new_user:{
                 fragment = new ChildOverviewFragment();
                 break;
             }
-            case R.id.btnTypeCode:{
+            case R.id.new_user_code:{
                 fragment = new TypeCodeFragment();
                 break;
             }
-            case R.id.btnRestoreFromEmail:{
+            case R.id.new_user_email:{
                 fragment = new RestoreFromEmailFragment();
                 break;
             }

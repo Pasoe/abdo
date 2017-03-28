@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/type_code_layout"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/colorBeige"
     android:clickable="true"
     android:focusable="true"
@@ -10,37 +10,89 @@
 
     <!--  Her skal indsættes "guide" billede af indtastning af dele-kode-funktionaliteten  -->
 
-    <android.support.v4.widget.Space
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:layout_marginBottom="1dp"
+            android:background="@color/colorPurple"
+            android:orientation="horizontal"
+            android:padding="20dp"
+            >
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.5"
+                android:src="@drawable/icon_sharecode"
+                android:layout_gravity="center"
+                android:tint="@color/colorWhite"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="10dp"
+                android:text="Indtast delekode"
+                android:textSize="24dp"
+                android:textColor="@color/colorWhite"/>
+        </LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20px"
-        android:layout_marginBottom="20px"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:background="@color/colorPurple"
         android:orientation="vertical"
-        android:layout_gravity="bottom">
+        android:padding="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+
+        >
+            <ImageView
+                android:layout_width="125dp"
+                android:layout_height="0dp"
+                android:src="@drawable/share_code_image"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:tint="@color/colorWhite"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Når du indtaster et barns delekode, får du fuld adgang til at se og redigere det barns smerteregistreringer"
+                android:textSize="16dp"
+                android:textColor="@color/colorWhite"/>
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:layout_gravity="bottom"
+        android:background="@color/colorWhite">
         <EditText
             android:id="@+id/editTextInputCode"
             android:layout_width="match_parent"
-            android:layout_height="50dip"
+            android:layout_height="wrap_content"
             android:hint="@string/type_code_hint"
-            android:textColorHint="@color/colorGreen"
+            android:textColorHint="@color/colorPurple"
+            android:layout_gravity="center"
             android:layout_marginLeft="20px"
             android:layout_marginRight="20px"
-            android:inputType="text"
+            android:inputType="number"
             android:maxLines="1"
             android:imeOptions="actionDone"
             android:textColor="@color/colorBlack"/>
-        <Button
-            android:layout_marginTop="20px"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="20px"
-            android:layout_marginRight="20px"
-            android:layout_height="50dip"
-            android:text="@string/button_ok"/>
     </LinearLayout>
 
 </LinearLayout>
