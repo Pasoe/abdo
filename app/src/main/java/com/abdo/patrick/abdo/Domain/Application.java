@@ -142,7 +142,7 @@ public class Application extends android.app.Application {
     }
 
 
-    public ArrayList<ListItem> getAllergyListView(ArrayList<Allergy> list){
+    public ArrayList<ListItem> getAllergyListView(ArrayList<Allergy> list, Child newChild){
 
         ArrayList<ListItem> listView = new ArrayList<>();
         Allergy current;
@@ -151,13 +151,13 @@ public class Application extends android.app.Application {
         {
             current = list.get(i);
             listView.add(
-                    new ListItem(current.getId(), current.getType()));
+                    new ListItem(current.getId(), current.getType(), newChild.allergyExists(current.getId())));
         }
 
         return listView;
     }
 
-    public ArrayList<ListItem> getSupplementListView(ArrayList<Supplement> list){
+    public ArrayList<ListItem> getSupplementListView(ArrayList<Supplement> list, Child newChild){
 
         ArrayList<ListItem> listView = new ArrayList<>();
         Supplement current;
@@ -166,7 +166,7 @@ public class Application extends android.app.Application {
         {
             current = list.get(i);
             listView.add(
-                    new ListItem(current.getId(), current.getDescription()));
+                    new ListItem(current.getId(), current.getDescription(), newChild.supplementExists(current.getId())));
         }
 
         return listView;
@@ -181,7 +181,7 @@ public class Application extends android.app.Application {
         {
             current = list.get(i);
             listView.add(
-                    new ListItem(current.getId(), current.getType()+" ("+current.getDosage()+")"));
+                    new ListItem(current.getId(), current.getType()+" ("+current.getDosage()+")", false));
         }
 
         return listView;

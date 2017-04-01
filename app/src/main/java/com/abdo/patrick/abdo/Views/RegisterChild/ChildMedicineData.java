@@ -48,7 +48,7 @@ public class ChildMedicineData extends Fragment {
         header.setText("Allergier");
 
         ArrayList<Allergy> allergies = Application.getInstance().get_allergyList();
-        model.InitViews(recyclerView, Application.getInstance().getAllergyListView(allergies));
+        model.InitViews(recyclerView, Application.getInstance().getAllergyListView(allergies, Application.getInstance().getNewChild()));
 
         return view;
     }

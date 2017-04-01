@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.abdo.patrick.abdo.Adapter;
@@ -14,6 +15,7 @@ import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.Models.Allergy;
 import com.abdo.patrick.abdo.Models.Child;
 import com.abdo.patrick.abdo.Models.Supplement;
+import com.abdo.patrick.abdo.R;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildDataListFagment;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildMedicineData;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildOverviewFragment;
@@ -84,11 +86,14 @@ public class ListController {
 
                     if(listType.equals("supplements")){
                         Child newChild = Application.getInstance().getNewChild();
-                        if(newChild.supplementExists(clickedId)){
+                        boolean exists = newChild.supplementExists(clickedId);
+                        if(exists){
                             newChild.removeSupplement(clickedId);
+                            child.findViewById(R.id.row_selected_icon).setVisibility(View.INVISIBLE);
                             note = "Kosttilskud: "+clickedName + " fjernet";
                         }else{
                             newChild.addSupplement(clickedId);
+                            child.findViewById(R.id.row_selected_icon).setVisibility(View.VISIBLE);
                             note = "Kosttilskud: "+clickedName + " tilføjet";
                         }
                         Application.getInstance().setNewChild(newChild);
@@ -100,9 +105,11 @@ public class ListController {
                         Child newChild = Application.getInstance().getNewChild();
                         if(newChild.allergyExists(clickedId)){
                             newChild.removeAllergy(clickedId);
+                            child.findViewById(R.id.row_selected_icon).setVisibility(View.INVISIBLE);
                             note = "Allergi: "+clickedName + " fjernet";
                         }else{
                             newChild.addAllergy(clickedId);
+                            child.findViewById(R.id.row_selected_icon).setVisibility(View.VISIBLE);
                             note = "Allergi: "+clickedName + " tilføjet";
                         }
                         Application.getInstance().setNewChild(newChild);

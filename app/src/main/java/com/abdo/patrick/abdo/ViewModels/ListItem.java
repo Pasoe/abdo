@@ -8,10 +8,12 @@ public class ListItem {
 
     private int id;
     private String name;
+    private boolean selected;
 
-    public ListItem(int id, String name) {
+    public ListItem(int id, String name, boolean selected) {
         this.id = id;
         this.name = name;
+        this.selected = selected;
     }
 
     @Override
@@ -36,5 +38,13 @@ public class ListItem {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 }
