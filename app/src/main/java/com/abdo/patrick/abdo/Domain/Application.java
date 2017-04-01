@@ -188,5 +188,34 @@ public class Application extends android.app.Application {
     }
 
 
+    public void setNewChild(Child newChild){
+        SharedPreferences settings = getSharedPreferences("Abdo", MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+
+        Gson gson = new Gson();
+        String json = gson.toJson(newChild);
+
+        editor.putString("NewChild", json);
+
+        editor.apply();
+        editor.commit();
+
+        Log.i("INFO", "SharedPreference: New Child updated - "+json);
+    }
+
+    public Child getNewChild(){
+        SharedPreferences settings = getSharedPreferences("Abdo", MODE_PRIVATE);
+        String json = settings.getString("NewChild", "");
+
+        Gson gson = new Gson();
+
+        Child newChild = gson.fromJson(json, Child.class);
+        return newChild;
+    }
+
+    public boolean newChildExists(){
+        SharedPreferences settings = getSharedPreferences("Abdo", MODE_PRIVATE);
+        return settings.contains("NewChild");
+    }
 
 }

@@ -73,10 +73,6 @@ public class ListController {
                 View child = rv.findChildViewUnder(e.getX(), e.getY());
                 if(child != null && gestureDetector.onTouchEvent(e)) {
                     int position = rv.getChildAdapterPosition(child);
-
-//                    ArrayList<Allergy> childAllergies = Application.getInstance().get_childAllergies();
-//                    ArrayList<Supplement> childSupplements = Application.getInstance().get_childSupplements();
-
                     int clickedId = rvAdapter.getId(position);
                     String clickedName = rvAdapter.getItemName(position);
 
@@ -85,30 +81,19 @@ public class ListController {
 
                     String note = "";
 
-
-//                    if(listType.equals("allergies")){
-//                        Allergy tmp = new Allergy();
-//                        tmp.setId(clickedId);
-//                        tmp.setType(clickedName);
-//
-//                        if(!Application.getInstance().get_childAllergies().contains(tmp))
-//                            Application.getInstance().get_childAllergies().add(tmp);
-//
-//                    }
-
                     if(listType.equals("supplements")){
+
+
                         Supplement tmp = new Supplement(clickedId, clickedName);
                         boolean exists = false;
 
-//                        for (Supplement obj: childSupplements)
-//                        {
-//                            if(obj.equals(tmp)) exists = true;
-//                        }
-
-//                        if(!exists)
-//                            Application.getInstance().get_childSupplements().add(tmp);
-
                         note = exists ? clickedName + " allerede valgt" : "Tilføjet " + clickedName;
+                    }
+                    else if(listType.equals("medicine")){
+
+                    }
+                    else if(listType.equals("supplements")){
+
                     }
 
 

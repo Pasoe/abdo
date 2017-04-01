@@ -71,6 +71,9 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
             }
             case R.id.create_child_medicine_category:{
                 fragment = new ChildMedicineData();
+                Bundle i = new Bundle();
+                i.putString("listType", "medicine");
+                fragment.setArguments(i);
                 break;
             }
             case R.id.create_child_allergy_category:{

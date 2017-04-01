@@ -23,6 +23,10 @@ public class Child {
     private ArrayList<Registration> registrations;
 
     public Child() {
+        childInfo = new ChildInfo();
+        childAllergies = new ArrayList<ChildAllergy>();
+        childMedicines = new ArrayList<ChildMedicine>();
+        childSupplements = new ArrayList<ChildSupplement>();
     }
 
     @Override

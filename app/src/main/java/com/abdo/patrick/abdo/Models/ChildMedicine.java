@@ -16,8 +16,7 @@ public class ChildMedicine {
 
     }
 
-    public ChildMedicine(int id, String type, String dosage){
-        this.id = id;
+    public ChildMedicine(String type, String dosage){
         this.type = type;
         this.dosage = type;
     }

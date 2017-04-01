@@ -1,10 +1,12 @@
 package com.abdo.patrick.abdo.Views.Startup;
 
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +14,15 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.abdo.patrick.abdo.Domain.Application;
+import com.abdo.patrick.abdo.Models.Child;
 import com.abdo.patrick.abdo.R;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildOverviewFragment;
 import com.abdo.patrick.abdo.Views.Shared.RestoreFromEmailFragment;
 import com.abdo.patrick.abdo.Views.Shared.TypeCodeFragment;
+import com.google.gson.Gson;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -54,6 +61,7 @@ public class NewUserFragment extends Fragment implements View.OnClickListener {
         switch(v.getId()){
             case R.id.new_user:{
                 fragment = new ChildOverviewFragment();
+                Application.getInstance().setNewChild(new Child());
                 break;
             }
             case R.id.new_user_code:{
