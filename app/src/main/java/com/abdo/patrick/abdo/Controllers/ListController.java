@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.abdo.patrick.abdo.Adapter;
 import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.Models.Allergy;
+import com.abdo.patrick.abdo.Models.Child;
 import com.abdo.patrick.abdo.Models.Supplement;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildDataListFagment;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildMedicineData;
@@ -82,21 +83,30 @@ public class ListController {
                     String note = "";
 
                     if(listType.equals("supplements")){
-
-
-                        Supplement tmp = new Supplement(clickedId, clickedName);
-                        boolean exists = false;
-
-                        note = exists ? clickedName + " allerede valgt" : "Tilføjet " + clickedName;
+                        Child newChild = Application.getInstance().getNewChild();
+                        if(newChild.supplementExists(clickedId)){
+                            newChild.removeSupplement(clickedId);
+                            note = "Kosttilskud: "+clickedName + " fjernet";
+                        }else{
+                            newChild.addSupplement(clickedId);
+                            note = "Kosttilskud: "+clickedName + " tilføjet";
+                        }
+                        Application.getInstance().setNewChild(newChild);
                     }
                     else if(listType.equals("medicine")){
 
                     }
-                    else if(listType.equals("supplements")){
-
+                    else if(listType.equals("allergies")){
+                        Child newChild = Application.getInstance().getNewChild();
+                        if(newChild.allergyExists(clickedId)){
+                            newChild.removeAllergy(clickedId);
+                            note = "Allergi: "+clickedName + " fjernet";
+                        }else{
+                            newChild.addAllergy(clickedId);
+                            note = "Allergi: "+clickedName + " tilføjet";
+                        }
+                        Application.getInstance().setNewChild(newChild);
                     }
-
-
                     Toast.makeText(_context, note, Toast.LENGTH_SHORT).show();
                 }
                 return false;

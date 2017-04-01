@@ -1,5 +1,7 @@
 package com.abdo.patrick.abdo.Models;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 
 import java.util.ArrayList;
@@ -63,4 +65,49 @@ public class Child {
         this.modifiedTime = modifiedTime;
     }
 
+    public void addAllergy(int id){
+        ChildAllergy allergy = new ChildAllergy(id);
+        childAllergies.add(allergy);
+    }
+
+    public void removeAllergy(int id){
+        for(ChildAllergy allergy : childAllergies){
+            if(allergy.getId() == id){
+                childAllergies.remove(allergy);
+                return;
+            }
+        }
+    }
+
+    public boolean allergyExists(int id){
+        for(ChildAllergy allergy : childAllergies){
+            if(allergy.getId() == id){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void addSupplement(int id){
+        ChildSupplement supplement = new ChildSupplement(id);
+        childSupplements.add(supplement);
+    }
+
+    public void removeSupplement(int id){
+        for(ChildSupplement supplement : childSupplements){
+            if(supplement.getId() == id){
+                childSupplements.remove(supplement);
+                return;
+            }
+        }
+    }
+
+    public boolean supplementExists(int id){
+        for(ChildSupplement supplement : childSupplements){
+            if(supplement.getId() == id){
+                return true;
+            }
+        }
+        return false;
+    }
 }
