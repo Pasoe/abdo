@@ -6,11 +6,13 @@
     tools:context="com.abdo.patrick.abdo.Views.RegisterChild.ChildMedicineData">
 
     <include
+        layout="@layout/fragment_child_data_list_fagment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout="@layout/fragment_child_data_list_fagment" />
+         />
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/medicine_add_button"
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:fabSize="normal"
@@ -22,6 +24,6 @@
         android:scaleType="center"
         android:tint="@color/colorWhite"
         android:elevation="2dp"
-        android:backgroundTint="@color/colorBlue"
+        app:backgroundTint="@color/colorBlue"
         />
 </RelativeLayout>

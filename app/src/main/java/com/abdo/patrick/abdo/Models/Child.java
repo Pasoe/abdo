@@ -79,6 +79,10 @@ public class Child {
         }
     }
 
+    public ArrayList<ChildAllergy> getAllergies(){
+        return childAllergies;
+    }
+
     public boolean allergyExists(int id){
         for(ChildAllergy allergy : childAllergies){
             if(allergy.getId() == id){
@@ -102,6 +106,10 @@ public class Child {
         }
     }
 
+    public ArrayList<ChildSupplement> getSupplements(){
+        return childSupplements;
+    }
+
     public boolean supplementExists(int id){
         for(ChildSupplement supplement : childSupplements){
             if(supplement.getId() == id){
@@ -109,5 +117,22 @@ public class Child {
             }
         }
         return false;
+    }
+
+    public ArrayList<ChildMedicine> getMedicineList(){
+        return childMedicines;
+    }
+
+    public void addMedicine(ChildMedicine medicine){
+        childMedicines.add(medicine);
+    }
+
+    public void removeMedicine(int id){
+        for(ChildMedicine medicine : childMedicines){
+            if(medicine.getId() == id){
+                childMedicines.remove(medicine);
+                return;
+            }
+        }
     }
 }

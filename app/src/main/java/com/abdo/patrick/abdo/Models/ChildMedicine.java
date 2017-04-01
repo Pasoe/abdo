@@ -1,5 +1,7 @@
 package com.abdo.patrick.abdo.Models;
 
+import com.abdo.patrick.abdo.Domain.Application;
+
 /**
  * Created by Khaled on 27-03-2017.
  */
@@ -61,8 +63,9 @@ public class ChildMedicine {
         this.modifiedTime = modifiedTime;
     }
 
-
-
-
+    @Override
+    public String toString(){
+        return type+" ("+dosage+")";
+    }
 }
 

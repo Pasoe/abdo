@@ -14,6 +14,9 @@ import android.widget.TextView;
 
 import com.abdo.patrick.abdo.Controllers.ListController;
 import com.abdo.patrick.abdo.Domain.Application;
+import com.abdo.patrick.abdo.Models.Child;
+import com.abdo.patrick.abdo.Models.ChildAllergy;
+import com.abdo.patrick.abdo.Models.ChildSupplement;
 import com.abdo.patrick.abdo.R;
 
 
@@ -54,7 +57,20 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
         RelativeLayout child_supplement_header = (RelativeLayout)  view.findViewById(R.id.create_child_supplement_category);
         child_supplement_header.setOnClickListener(this);
 
+        TextView stamdataContent = (TextView) view.findViewById(R.id.child_overview_stamdata_content);
+        TextView medicineContent = (TextView) view.findViewById(R.id.child_overview_medicine_content);
+        TextView allergyContent = (TextView) view.findViewById(R.id.child_overview_allergy_content);
+        TextView supplementContent = (TextView) view.findViewById(R.id.child_overview_supplement_content);
 
+        Child newChild = Application.getInstance().getNewChild();
+
+        for(ChildAllergy allergy : newChild.getAllergies()){
+            allergyContent.append(allergy.getType()+"\n");
+        }
+
+        for(ChildSupplement supplement : newChild.getSupplements()){
+            supplementContent.append(supplement.getDescription()+"\n");
+        }
 
         return view;
     }

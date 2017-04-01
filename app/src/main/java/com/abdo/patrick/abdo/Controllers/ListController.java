@@ -2,6 +2,8 @@ package com.abdo.patrick.abdo.Controllers;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 
 import com.abdo.patrick.abdo.Adapter;
 import com.abdo.patrick.abdo.Domain.Application;
+import com.abdo.patrick.abdo.Models.Activity;
 import com.abdo.patrick.abdo.Models.Allergy;
 import com.abdo.patrick.abdo.Models.Child;
 import com.abdo.patrick.abdo.Models.Supplement;
@@ -19,6 +22,7 @@ import com.abdo.patrick.abdo.R;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildDataListFagment;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildMedicineData;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildOverviewFragment;
+import com.abdo.patrick.abdo.Views.RegisterChild.ChildStamData;
 
 import java.util.ArrayList;
 
@@ -45,7 +49,7 @@ public class ListController {
 
     public ListController(ChildMedicineData childMedicineFragment) {
         _childMedicineFragment = childMedicineFragment;
-        _context = _childOverviewFragment.getActivity().getApplicationContext();
+        _context = _childMedicineFragment.getActivity().getApplicationContext();
     }
 
     public void InitViews(RecyclerView recyclerView, ArrayList data){
@@ -99,7 +103,12 @@ public class ListController {
                         Application.getInstance().setNewChild(newChild);
                     }
                     else if(listType.equals("medicine")){
-
+                        Fragment fragment2 = new ChildStamData();
+                        FragmentManager fragmentManager2 = _childMedicineFragment.getFragmentManager();
+                        FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
+                        fragmentTransaction2.addToBackStack(null);
+                        fragmentTransaction2.replace(R.id.main_activity_fragment, fragment2);
+                        fragmentTransaction2.commit();
                     }
                     else if(listType.equals("allergies")){
                         Child newChild = Application.getInstance().getNewChild();

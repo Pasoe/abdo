@@ -172,7 +172,7 @@ public class Application extends android.app.Application {
         return listView;
     }
 
-    public ArrayList<ListItem> getMedicineListView(ArrayList<ChildMedicine> list){
+    public ArrayList<ListItem> getMedicineListView(ArrayList<ChildMedicine> list, Child newChild){
 
         ArrayList<ListItem> listView = new ArrayList<>();
         ChildMedicine current;

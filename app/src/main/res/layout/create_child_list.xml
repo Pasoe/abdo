@@ -197,6 +197,7 @@
                     android:textColor="@color/colorBlack"
                     android:text="@string/child_overview_allergy"/>
                 <TextView
+                    android:id="@+id/child_overview_allergy_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
