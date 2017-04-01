@@ -7,12 +7,10 @@ import java.util.ArrayList;
  */
 
 public class Food {
-
     private int id;
     private String type;
     private int foodCategoryId;
     private String createdTime;
     private String modifiedTime;
     private ArrayList<Registration> registrations;
-    private FoodCategory foodCategory;
 }

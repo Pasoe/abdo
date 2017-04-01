@@ -5,7 +5,6 @@ package com.abdo.patrick.abdo.Models;
  */
 
 public class Activity {
-
     private int id;
     private String level;
     private String createdTime;

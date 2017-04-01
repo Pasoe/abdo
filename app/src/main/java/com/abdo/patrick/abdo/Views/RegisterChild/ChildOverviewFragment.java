@@ -70,7 +70,8 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
                 break;
             }
             case R.id.create_child_medicine_category:{
-                return;
+                fragment = new ChildMedicineData();
+                break;
             }
             case R.id.create_child_allergy_category:{
                 fragment = new ChildDataListFagment();

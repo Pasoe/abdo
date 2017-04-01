@@ -59,5 +59,4 @@ public class Child {
         this.modifiedTime = modifiedTime;
     }
 
-
 }

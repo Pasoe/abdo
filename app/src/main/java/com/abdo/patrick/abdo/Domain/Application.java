@@ -3,6 +3,7 @@ package com.abdo.patrick.abdo.Domain;
 import com.abdo.patrick.abdo.Models.Allergy;
 import com.abdo.patrick.abdo.Models.Anonymous;
 import com.abdo.patrick.abdo.Models.Child;
+import com.abdo.patrick.abdo.Models.ChildMedicine;
 import com.abdo.patrick.abdo.Models.Feces;
 import com.abdo.patrick.abdo.Models.Food;
 import com.abdo.patrick.abdo.Models.Supplement;
@@ -35,6 +36,7 @@ public class Application extends android.app.Application {
 
     private ArrayList<Allergy> _allergyList;
     private ArrayList<Supplement> _supplementList;
+    private ArrayList<ChildMedicine> _childMedicineList;
     private ArrayList<Feces> _fecesList;
     private ArrayList<Food> _foodList;
 
@@ -51,7 +53,6 @@ public class Application extends android.app.Application {
         _supplementList = new ArrayList<>();
         _fecesList = new ArrayList<>();
         _foodList = new ArrayList<>();
-
     }
 
     public static Application getInstance() {
@@ -166,6 +167,21 @@ public class Application extends android.app.Application {
             current = list.get(i);
             listView.add(
                     new ListItem(current.getId(), current.getDescription()));
+        }
+
+        return listView;
+    }
+
+    public ArrayList<ListItem> getMedicineListView(ArrayList<ChildMedicine> list){
+
+        ArrayList<ListItem> listView = new ArrayList<>();
+        ChildMedicine current;
+
+        for(int i = 0; i < list.size(); i++)
+        {
+            current = list.get(i);
+            listView.add(
+                    new ListItem(current.getId(), current.getType()+" ("+current.getDosage()+")"));
         }
 
         return listView;

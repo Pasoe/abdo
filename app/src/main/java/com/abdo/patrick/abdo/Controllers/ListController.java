@@ -14,6 +14,7 @@ import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.Models.Allergy;
 import com.abdo.patrick.abdo.Models.Supplement;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildDataListFagment;
+import com.abdo.patrick.abdo.Views.RegisterChild.ChildMedicineData;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildOverviewFragment;
 
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class ListController {
 
     private ChildDataListFagment _childDataListFagment;
     private ChildOverviewFragment _childOverviewFragment;
+    private ChildMedicineData _childMedicineFragment;
     private Context _context;
 
     public ListController(ChildDataListFagment childDataListFagment) {
@@ -35,6 +37,11 @@ public class ListController {
 
     public ListController(ChildOverviewFragment childOverviewFragment) {
         _childOverviewFragment = childOverviewFragment;
+        _context = _childOverviewFragment.getActivity().getApplicationContext();
+    }
+
+    public ListController(ChildMedicineData childMedicineFragment) {
+        _childMedicineFragment = childMedicineFragment;
         _context = _childOverviewFragment.getActivity().getApplicationContext();
     }
 
