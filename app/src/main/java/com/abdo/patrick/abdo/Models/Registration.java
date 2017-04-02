@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Registration {
 
     private int id;
+    private String guid;
     private int childId;
     private Integer fecesId;
     private Integer activityId;

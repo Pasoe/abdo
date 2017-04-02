@@ -5,10 +5,8 @@ package com.abdo.patrick.abdo.Models;
  */
 
 public class Feces {
-
     private int id;
     private String type;
     private String createdTime;
     private String modifiedTime;
-
 }

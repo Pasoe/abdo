@@ -3,6 +3,7 @@ package com.abdo.patrick.abdo.Domain;
 import com.abdo.patrick.abdo.Models.Allergy;
 import com.abdo.patrick.abdo.Models.Anonymous;
 import com.abdo.patrick.abdo.Models.Child;
+import com.abdo.patrick.abdo.Models.ChildMedicine;
 import com.abdo.patrick.abdo.Models.Feces;
 import com.abdo.patrick.abdo.Models.Food;
 import com.abdo.patrick.abdo.Models.Supplement;
@@ -35,6 +36,7 @@ public class Application extends android.app.Application {
 
     private ArrayList<Allergy> _allergyList;
     private ArrayList<Supplement> _supplementList;
+    private ArrayList<ChildMedicine> _childMedicineList;
     private ArrayList<Feces> _fecesList;
     private ArrayList<Food> _foodList;
 
@@ -51,7 +53,6 @@ public class Application extends android.app.Application {
         _supplementList = new ArrayList<>();
         _fecesList = new ArrayList<>();
         _foodList = new ArrayList<>();
-
     }
 
     public static Application getInstance() {
@@ -141,7 +142,7 @@ public class Application extends android.app.Application {
     }
 
 
-    public ArrayList<ListItem> getAllergyListView(ArrayList<Allergy> list){
+    public ArrayList<ListItem> getAllergyListView(ArrayList<Allergy> list, Child newChild){
 
         ArrayList<ListItem> listView = new ArrayList<>();
         Allergy current;
@@ -150,13 +151,13 @@ public class Application extends android.app.Application {
         {
             current = list.get(i);
             listView.add(
-                    new ListItem(current.getId(), current.getType()));
+                    new ListItem(current.getId(), current.getType(), newChild.allergyExists(current.getId())));
         }
 
         return listView;
     }
 
-    public ArrayList<ListItem> getSupplementListView(ArrayList<Supplement> list){
+    public ArrayList<ListItem> getSupplementListView(ArrayList<Supplement> list, Child newChild){
 
         ArrayList<ListItem> listView = new ArrayList<>();
         Supplement current;
@@ -165,12 +166,56 @@ public class Application extends android.app.Application {
         {
             current = list.get(i);
             listView.add(
-                    new ListItem(current.getId(), current.getDescription()));
+                    new ListItem(current.getId(), current.getDescription(), newChild.supplementExists(current.getId())));
+        }
+
+        return listView;
+    }
+
+    public ArrayList<ListItem> getMedicineListView(ArrayList<ChildMedicine> list, Child newChild){
+
+        ArrayList<ListItem> listView = new ArrayList<>();
+        ChildMedicine current;
+
+        for(int i = 0; i < list.size(); i++)
+        {
+            current = list.get(i);
+            listView.add(
+                    new ListItem(current.getId(), current.getType()+" ("+current.getDosage()+")", false));
         }
 
         return listView;
     }
 
 
+    public void setNewChild(Child newChild){
+        SharedPreferences settings = getSharedPreferences("Abdo", MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+
+        Gson gson = new Gson();
+        String json = gson.toJson(newChild);
+
+        editor.putString("NewChild", json);
+
+        editor.apply();
+        editor.commit();
+
+        Log.i("INFO", "SharedPreference: New Child updated - "+json);
+    }
+
+    public Child getNewChild(){
+        SharedPreferences settings = getSharedPreferences("Abdo", MODE_PRIVATE);
+        String json = settings.getString("NewChild", "");
+
+        Gson gson = new Gson();
+
+        Child newChild = gson.fromJson(json, Child.class);
+        return newChild;
+    }
+
+    public boolean newChildExists(){
+        SharedPreferences settings = getSharedPreferences("Abdo", MODE_PRIVATE);
+        return settings.contains("NewChild");
+    }
 
 }

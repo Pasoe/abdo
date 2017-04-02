@@ -8,8 +8,13 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.abdo.patrick.abdo.Domain.Application;
+import com.abdo.patrick.abdo.Models.Child;
 import com.abdo.patrick.abdo.R;
 
 /**
@@ -23,6 +28,10 @@ public class ChildStamData extends Fragment implements View.OnClickListener{
     }
 
     private TextView toolbarSave;
+    private EditText nameField;
+    private RadioButton genderBoyField;
+    private RadioButton genderGirlField;
+    private DatePicker birthdayField;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,13 +45,59 @@ public class ChildStamData extends Fragment implements View.OnClickListener{
         toolbarSave.setVisibility(View.VISIBLE);
         toolbarSave.setOnClickListener(this);
 
+        nameField = (EditText) view.findViewById(R.id.stamdata_name);
+        genderBoyField = (RadioButton) view.findViewById(R.id.radio_button_boy);
+        genderGirlField = (RadioButton) view.findViewById(R.id.radio_button_girl);
+        birthdayField = (DatePicker) view.findViewById(R.id.stamdata_datepicker);
+
+        populateInputFields();
+
         return view;
+    }
+
+    private void populateInputFields(){
+        Child newChild = Application.getInstance().getNewChild();
+        if(newChild.getInfo() != null){
+            if(newChild.getInfo().getName() != null){
+                nameField.setText(newChild.getInfo().getName());
+            }
+            if(newChild.getInfo().getGender() != 0){
+                if(newChild.getInfo().getGender() == 1){
+                    genderBoyField.setChecked(true);
+                    genderGirlField.setChecked(false);
+                }
+                else if(newChild.getInfo().getGender() == 2){
+                    genderBoyField.setChecked(false);
+                    genderGirlField.setChecked(true);
+                }
+            }
+
+            if(newChild.getInfo().getName() != null){
+                nameField.setText(newChild.getInfo().getName());
+            }
+
+            if(newChild.getInfo().getBirthdate() != null) {
+                String[] datearray = newChild.getInfo().getBirthdate().split("-");
+                birthdayField.init(Integer.parseInt(datearray[2]), Integer.parseInt(datearray[1]), Integer.parseInt(datearray[0]),null);
+            }
+        }
     }
 
     @Override
     public void onClick(View v) {
         if(v == v.findViewById(R.id.toolbar_save)){
-            //SAVE STUFF!!
+            Child newChild = Application.getInstance().getNewChild();
+
+            newChild.getInfo().setName(nameField.getText().toString());
+            if(genderBoyField.isChecked()){
+                newChild.getInfo().setGender(1);
+            }else if(genderGirlField.isChecked()){
+                newChild.getInfo().setGender(2);
+            }
+            String birthday = birthdayField.getDayOfMonth()+"-"+birthdayField.getMonth()+"-"+birthdayField.getYear();
+            newChild.getInfo().setBirthdate(birthday);
+
+            Application.getInstance().setNewChild(newChild);
 
             FragmentManager fm = getFragmentManager();
             fm.popBackStack();

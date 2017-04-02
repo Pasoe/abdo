@@ -7,11 +7,9 @@ import java.util.ArrayList;
  */
 
 public class FoodCategory {
-
     private int id;
     private String type;
     private String createdTime;
     private String modifiedTime;
     private ArrayList<Food> foods;
-
 }

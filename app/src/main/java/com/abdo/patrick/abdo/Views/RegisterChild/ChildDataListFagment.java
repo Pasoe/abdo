@@ -55,7 +55,7 @@ public class ChildDataListFagment extends Fragment {
             header.setText("Allergier");
 
             ArrayList<Allergy> allergies = Application.getInstance().get_allergyList();
-            model.InitViews(recyclerView, Application.getInstance().getAllergyListView(allergies));
+            model.InitViews(recyclerView, Application.getInstance().getAllergyListView(allergies, Application.getInstance().getNewChild()));
         }
 
         if(listType.equals("supplements")){
@@ -63,7 +63,9 @@ public class ChildDataListFagment extends Fragment {
             header.setText("Kosttilskud");
 
             ArrayList<Supplement> supplements = Application.getInstance().get_supplementList();
-            model.InitViews(recyclerView, Application.getInstance().getSupplementListView(supplements));
+            model.InitViews(recyclerView, Application.getInstance().getSupplementListView(supplements, Application.getInstance().getNewChild()));
+
+
         }
 
         return view;
