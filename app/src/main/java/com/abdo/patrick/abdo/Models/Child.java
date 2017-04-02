@@ -14,6 +14,7 @@ import java.util.Date;
 public class Child {
 
     private int id;
+    private String guid;
     private String createdTime;
     private String modifiedTime;
     private ChildInfo childInfo;
@@ -25,6 +26,14 @@ public class Child {
     private ArrayList<Registration> registrations;
 
     public Child() {
+        childInfo = new ChildInfo();
+        childAllergies = new ArrayList<ChildAllergy>();
+        childMedicines = new ArrayList<ChildMedicine>();
+        childSupplements = new ArrayList<ChildSupplement>();
+    }
+
+    public Child(String guid) {
+        this.guid = guid;
         childInfo = new ChildInfo();
         childAllergies = new ArrayList<ChildAllergy>();
         childMedicines = new ArrayList<ChildMedicine>();
@@ -47,6 +56,14 @@ public class Child {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getGuid() {
+        return guid;
+    }
+
+    public void setGuid(String guid) {
+        this.guid = guid;
     }
 
     public String getCreatedTime() {

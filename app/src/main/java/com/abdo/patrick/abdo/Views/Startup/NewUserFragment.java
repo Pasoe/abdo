@@ -22,6 +22,8 @@ import com.abdo.patrick.abdo.Views.Shared.RestoreFromEmailFragment;
 import com.abdo.patrick.abdo.Views.Shared.TypeCodeFragment;
 import com.google.gson.Gson;
 
+import java.util.UUID;
+
 import static android.content.Context.MODE_PRIVATE;
 
 /**
@@ -61,7 +63,7 @@ public class NewUserFragment extends Fragment implements View.OnClickListener {
         switch(v.getId()){
             case R.id.new_user:{
                 fragment = new ChildOverviewFragment();
-                Application.getInstance().setNewChild(new Child());
+                Application.getInstance().setNewChild(new Child(UUID.randomUUID().toString()));
                 break;
             }
             case R.id.new_user_code:{

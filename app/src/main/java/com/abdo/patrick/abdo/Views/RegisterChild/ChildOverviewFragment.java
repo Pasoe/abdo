@@ -19,6 +19,7 @@ import com.abdo.patrick.abdo.Models.ChildAllergy;
 import com.abdo.patrick.abdo.Models.ChildMedicine;
 import com.abdo.patrick.abdo.Models.ChildSupplement;
 import com.abdo.patrick.abdo.R;
+import com.abdo.patrick.abdo.Views.Startup.NewUserFragment;
 
 
 /**
@@ -32,6 +33,7 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
     }
 
     private ListController model;
+    private TextView toolbarSave;
 
 
 
@@ -45,6 +47,9 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
 
         TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
         toolbarTitle.setText("Registrer barn");
+        toolbarSave = (TextView) getActivity().findViewById(R.id.toolbar_save);
+        toolbarSave.setVisibility(View.VISIBLE);
+        toolbarSave.setOnClickListener(this);
 
         RelativeLayout child_data_header = (RelativeLayout)  view.findViewById(R.id.create_child_data_category);
         child_data_header.setOnClickListener(this);
@@ -96,6 +101,19 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
     @Override
     public void onClick(View v) {
         Fragment fragment = null;
+
+        if(v == toolbarSave){
+            new com.abdo.patrick.abdo.Api.Child.Post().execute(Application.getInstance().getNewChild());
+
+            toolbarSave.setVisibility(View.INVISIBLE);
+
+            fragment = new NewUserFragment();
+            FragmentManager fragmentManager2 = getFragmentManager();
+            FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
+            fragmentManager2.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            fragmentTransaction2.replace(R.id.main_activity_fragment, fragment);
+            fragmentTransaction2.commit();
+        }
 
         switch(v.getId()){
             case R.id.create_child_data_category:{

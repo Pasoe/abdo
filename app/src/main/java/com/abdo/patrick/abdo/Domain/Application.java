@@ -213,6 +213,12 @@ public class Application extends android.app.Application {
         return newChild;
     }
 
+    public void removeNewChild(){
+        SharedPreferences settings = getSharedPreferences("Abdo", MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.remove("NewChild");
+    }
+
     public boolean newChildExists(){
         SharedPreferences settings = getSharedPreferences("Abdo", MODE_PRIVATE);
         return settings.contains("NewChild");
