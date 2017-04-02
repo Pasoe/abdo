@@ -16,6 +16,7 @@ import com.abdo.patrick.abdo.Controllers.ListController;
 import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.Models.Child;
 import com.abdo.patrick.abdo.Models.ChildAllergy;
+import com.abdo.patrick.abdo.Models.ChildMedicine;
 import com.abdo.patrick.abdo.Models.ChildSupplement;
 import com.abdo.patrick.abdo.R;
 
@@ -63,6 +64,22 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
         TextView supplementContent = (TextView) view.findViewById(R.id.child_overview_supplement_content);
 
         Child newChild = Application.getInstance().getNewChild();
+
+        if(newChild.getInfo() != null){
+            if(newChild.getInfo().getName() != null){
+                stamdataContent.append(newChild.getInfo().getName()+"\n");
+            }
+            if(newChild.getInfo().getGender() != 0){
+                stamdataContent.append(newChild.getInfo().getGenderString()+"\n");
+            }
+            if(newChild.getInfo().getBirthdate() != null){
+                stamdataContent.append(newChild.getInfo().getBirthdateToView()+"\n");
+            }
+        }
+
+        for(ChildMedicine medicine : newChild.getMedicineList()){
+            medicineContent.append(medicine.toString()+"\n");
+        }
 
         for(ChildAllergy allergy : newChild.getAllergies()){
             allergyContent.append(allergy.getType()+"\n");

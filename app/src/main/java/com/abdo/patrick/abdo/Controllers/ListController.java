@@ -1,6 +1,7 @@
 package com.abdo.patrick.abdo.Controllers;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -21,6 +22,7 @@ import com.abdo.patrick.abdo.Models.Supplement;
 import com.abdo.patrick.abdo.R;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildDataListFagment;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildMedicineData;
+import com.abdo.patrick.abdo.Views.RegisterChild.ChildMedicineEditFragment;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildOverviewFragment;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildStamData;
 
@@ -63,6 +65,9 @@ public class ListController {
         if(_childOverviewFragment != null){
             layoutManager = new LinearLayoutManager(_context);
         }
+        if(_childMedicineFragment != null){
+            layoutManager = new LinearLayoutManager(_context);
+        }
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
@@ -83,7 +88,18 @@ public class ListController {
                     int clickedId = rvAdapter.getId(position);
                     String clickedName = rvAdapter.getItemName(position);
 
-                    Fragment fragment = _childOverviewFragment != null ? _childOverviewFragment : _childDataListFagment;
+                    Fragment fragment = null;
+
+                    if(_childOverviewFragment != null){
+                        fragment = _childOverviewFragment;
+                    }
+                    if(_childDataListFagment != null){
+                        fragment = _childDataListFagment;
+                    }
+                    if(_childMedicineFragment != null){
+                        fragment = _childMedicineFragment;
+                    }
+
                     String listType = fragment.getArguments().getString("listType");
 
                     String note = "";
@@ -103,7 +119,13 @@ public class ListController {
                         Application.getInstance().setNewChild(newChild);
                     }
                     else if(listType.equals("medicine")){
-                        Fragment fragment2 = new ChildStamData();
+                        Fragment fragment2 = new ChildMedicineEditFragment();
+
+                        Bundle i = new Bundle();
+                        i.putString("type", Application.getInstance().getNewChild().getMedicineList().get(clickedId).getType());
+                        i.putString("dosage", Application.getInstance().getNewChild().getMedicineList().get(clickedId).getDosage());
+                        fragment2.setArguments(i);
+
                         FragmentManager fragmentManager2 = _childMedicineFragment.getFragmentManager();
                         FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
                         fragmentTransaction2.addToBackStack(null);
@@ -123,7 +145,6 @@ public class ListController {
                         }
                         Application.getInstance().setNewChild(newChild);
                     }
-                    Toast.makeText(_context, note, Toast.LENGTH_SHORT).show();
                 }
                 return false;
             }

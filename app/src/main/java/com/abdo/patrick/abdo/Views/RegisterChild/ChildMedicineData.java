@@ -4,6 +4,8 @@ package com.abdo.patrick.abdo.Views.RegisterChild;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,7 +64,12 @@ public class ChildMedicineData extends Fragment implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         if(v == button){
-            Toast.makeText(getActivity(),"penis", Toast.LENGTH_SHORT).show();
+            Fragment fragment = new ChildMedicineEditFragment();
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.replace(R.id.main_activity_fragment, fragment);
+            fragmentTransaction.commit();
         }
     }
 }
