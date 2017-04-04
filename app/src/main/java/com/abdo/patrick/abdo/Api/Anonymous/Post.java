@@ -1,18 +1,13 @@
 package com.abdo.patrick.abdo.Api.Anonymous;
 
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.Models.Anonymous;
-import com.abdo.patrick.abdo.Views.MainActivity;
 import com.google.gson.Gson;
 
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -45,8 +40,6 @@ public class Post extends AsyncTask<Anonymous, Void, Integer> {
                 OutputStreamWriter outputStreamWriter = new OutputStreamWriter(urlConnection.getOutputStream());
                 outputStreamWriter.write(json);
                 outputStreamWriter.flush();
-
-
 
                 return urlConnection.getResponseCode();
 

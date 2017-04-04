@@ -8,12 +8,10 @@ import com.abdo.patrick.abdo.Models.Feces;
 import com.abdo.patrick.abdo.Models.Food;
 import com.abdo.patrick.abdo.Models.Supplement;
 import com.abdo.patrick.abdo.ViewModels.ListItem;
-import com.abdo.patrick.abdo.Views.MainActivity;
 import com.google.gson.Gson;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.provider.Settings.Secure;
 import android.util.Log;
 
@@ -21,7 +19,6 @@ import com.crashlytics.android.Crashlytics;
 import io.fabric.sdk.android.Fabric;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Khaled on 21-03-2017.
