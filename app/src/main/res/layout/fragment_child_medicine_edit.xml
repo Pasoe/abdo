@@ -4,6 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorBeige"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context="com.abdo.patrick.abdo.Views.RegisterChild.ChildStamData">
 
     <RelativeLayout

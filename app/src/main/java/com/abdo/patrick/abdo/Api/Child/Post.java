@@ -29,7 +29,7 @@ public class Post extends AsyncTask<Child, Void, Integer> {
         // Do some validation here
 
         try {
-            URL url = new URL("http://abdoapi.azurewebsites.net/api/Child/"+Application.getAndroidId(Application.getInstance().getApplicationContext())+"/"+child[0].getGuid());
+            URL url = new URL("http://abdoapi.azurewebsites.net/api/Child/"+Application.getAndroidId(Application.getInstance().getApplicationContext()));
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("POST");
             urlConnection.setRequestProperty("Content-Type", "application/json");

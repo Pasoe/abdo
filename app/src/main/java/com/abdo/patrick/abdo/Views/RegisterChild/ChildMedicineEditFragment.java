@@ -1,6 +1,7 @@
 package com.abdo.patrick.abdo.Views.RegisterChild;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -63,7 +65,33 @@ public class ChildMedicineEditFragment extends Fragment implements View.OnClickL
             }
         }
 
+        medicineField.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean focused) {
+                InputMethodManager keyboard = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (focused)
+                    keyboard.showSoftInput(medicineField, 0);
+                else
+                    keyboard.hideSoftInputFromWindow(medicineField.getWindowToken(), 0);
+            }
+        });
+
+        dosageField.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean focused) {
+                InputMethodManager keyboard = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (focused)
+                    keyboard.showSoftInput(medicineField, 0);
+                else
+                    keyboard.hideSoftInputFromWindow(medicineField.getWindowToken(), 0);
+            }
+        });
+
         return view;
+    }
+
+    public void onBackPressed(){
+
     }
 
     @Override
@@ -101,5 +129,12 @@ public class ChildMedicineEditFragment extends Fragment implements View.OnClickL
             FragmentManager fm = getFragmentManager();
             fm.popBackStack();
         }
+    }
+
+
+    @Override
+    public void onPause() {
+        toolbarSave.setVisibility(View.INVISIBLE);
+        super.onPause();
     }
 }

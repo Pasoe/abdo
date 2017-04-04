@@ -143,6 +143,7 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
             }
         }
 
+        toolbarSave.setVisibility(View.INVISIBLE);
         FragmentManager fragmentManager2 = getFragmentManager();
         FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
         fragmentTransaction2.addToBackStack(null);

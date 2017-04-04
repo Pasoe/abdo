@@ -1,6 +1,7 @@
 package com.abdo.patrick.abdo.Views.RegisterChild;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -51,6 +53,17 @@ public class ChildStamData extends Fragment implements View.OnClickListener{
         birthdayField = (DatePicker) view.findViewById(R.id.stamdata_datepicker);
 
         populateInputFields();
+
+        nameField.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean focused) {
+                InputMethodManager keyboard = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (focused)
+                    keyboard.showSoftInput(nameField, 0);
+                else
+                    keyboard.hideSoftInputFromWindow(nameField.getWindowToken(), 0);
+            }
+        });
 
         return view;
     }

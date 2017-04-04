@@ -122,8 +122,8 @@ public class ListController {
                         Fragment fragment2 = new ChildMedicineEditFragment();
 
                         Bundle i = new Bundle();
-                        i.putString("type", Application.getInstance().getNewChild().getMedicineList().get(clickedId).getType());
-                        i.putString("dosage", Application.getInstance().getNewChild().getMedicineList().get(clickedId).getDosage());
+                        i.putString("type", Application.getInstance().getNewChild().getMedicineList().get(position).getType());
+                        i.putString("dosage", Application.getInstance().getNewChild().getMedicineList().get(position).getDosage());
                         fragment2.setArguments(i);
 
                         FragmentManager fragmentManager2 = _childMedicineFragment.getFragmentManager();
