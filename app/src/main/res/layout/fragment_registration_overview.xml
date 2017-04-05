@@ -1,0 +1,548 @@
+<LinearLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorOrange">
+        <ImageView
+            android:id="@+id/registration_overview_header_icon"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/icon_stamdata"
+            android:tint="@color/colorWhite"
+            />
+        <TextView
+            android:layout_toRightOf="@id/registration_overview_header_icon"
+            android:paddingLeft="10dp"
+            android:paddingRight="20dp"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="16dp"
+            android:text="Hvis du vil, kan du svare på flere spørgsmål her"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+        <ImageView
+            android:id="@+id/registration_done_checkmark"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/icon_checkmark"
+            android:tint="@color/colorGreen"/>
+        <TextView
+            android:layout_below="@id/registration_done_checkmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Din registrering er klar il at blive sendt!"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:background="@color/colorGreen"
+        android:layout_gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Gem din registrering"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/answer_more_button"
+        android:layout_marginTop="10dp"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:background="@color/colorOrange"
+        android:layout_gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Eller svar på flere spørgsmål"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/optional_info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:animateLayoutChanges="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:background="@color/colorWhite"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+            <ImageView
+                android:id="@+id/toilet_icon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_toilet"
+                android:tint="@color/colorOrange"/>
+
+                <ImageView
+                    android:id="@+id/toilet_arrow"
+                    android:layout_width="wrap_content"
+                    android:maxHeight="100dp"
+                    android:maxWidth="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_right_arrow"
+                    android:tint="@color/colorOrange"/>
+            <TextView
+                android:layout_toRightOf="@id/toilet_icon"
+                android:layout_toLeftOf="@id/toilet_arrow"
+                android:paddingLeft="10dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hvordan har din lort set ud i dag?"
+                android:textColor="@color/colorBlack"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:background="@color/colorWhite"
+        android:orientation="vertical"
+        android:layout_marginTop="2dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:id="@+id/food_icon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_food"
+                android:tint="@color/colorBlue"/>
+
+            <ImageView
+                android:id="@+id/food_arrow"
+                android:layout_width="wrap_content"
+                android:maxHeight="100dp"
+                android:maxWidth="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_right_arrow"
+                android:tint="@color/colorBlue"/>
+            <TextView
+                android:layout_toRightOf="@id/food_icon"
+                android:layout_toLeftOf="@id/food_arrow"
+                android:paddingLeft="10dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hvad har du spist i dag?"
+                android:textColor="@color/colorBlack"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:background="@color/colorWhite"
+        android:orientation="vertical"
+        android:layout_marginTop="2dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:id="@+id/sleep_icon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_sleep"
+                android:tint="@color/colorBlack"/>
+
+            <ImageView
+                android:id="@+id/sleep_arrow"
+                android:layout_width="wrap_content"
+                android:maxHeight="100dp"
+                android:maxWidth="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_right_arrow"
+                android:tint="@color/colorBlack"/>
+            <TextView
+                android:layout_toRightOf="@id/sleep_icon"
+                android:layout_toLeftOf="@id/sleep_arrow"
+                android:paddingLeft="10dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hvordan har du sovet i nat?"
+                android:textColor="@color/colorBlack"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:background="@color/colorWhite"
+        android:orientation="vertical"
+        android:layout_marginTop="2dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:id="@+id/mood_icon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_mood"
+                android:tint="@color/colorGreen"/>
+
+            <ImageView
+                android:id="@+id/mood_arrow"
+                android:layout_width="wrap_content"
+                android:maxHeight="100dp"
+                android:maxWidth="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_right_arrow"
+                android:tint="@color/colorGreen"/>
+            <TextView
+                android:layout_toRightOf="@id/mood_icon"
+                android:layout_toLeftOf="@id/mood_arrow"
+                android:paddingLeft="10dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hvordan har dit humør været?"
+                android:textColor="@color/colorBlack"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:background="@color/colorWhite"
+        android:orientation="vertical"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:id="@+id/excersize_icon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_excersize"
+                android:tint="@color/colorPurple"/>
+
+            <ImageView
+                android:id="@+id/excersize_arrow"
+                android:layout_width="wrap_content"
+                android:maxHeight="100dp"
+                android:maxWidth="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_right_arrow"
+                android:tint="@color/colorPurple"/>
+            <TextView
+                android:layout_toRightOf="@id/excersize_icon"
+                android:layout_toLeftOf="@id/excersize_arrow"
+                android:paddingLeft="10dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Har du brugt kroppen meget i dag til leg eller sport?"
+                android:textColor="@color/colorBlack"/>
+        </RelativeLayout>
+    </LinearLayout>
+    </LinearLayout>
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="40dp">-->
+            <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:background="@color/colorOrange">-->
+                <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:src="@drawable/icon_cross"-->
+                    <!--android:tint="@color/colorWhite"/>-->
+                <!--</LinearLayout>-->
+                <!--<LinearLayout-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:layout_height="40dp"-->
+                    <!--android:background="@color/colorGreen">-->
+                    <!--<ImageView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:src="@drawable/icon_checkmark"-->
+                        <!--android:tint="@color/colorWhite"/>-->
+                <!--</LinearLayout>-->
+        <!--</LinearLayout>-->
+</LinearLayout>
+
+
+
+
+
+<!--<LinearLayout-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:orientation="vertical"-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android">-->
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="60dp"-->
+        <!--android:background="@color/colorOrange">-->
+        <!--<ImageView-->
+            <!--android:id="@+id/registration_overview_header_icon"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_width="50dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:src="@drawable/icon_stamdata"-->
+            <!--android:tint="@color/colorWhite"-->
+            <!--/>-->
+        <!--<TextView-->
+            <!--android:layout_toRightOf="@id/registration_overview_header_icon"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:paddingRight="20dp"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:textColor="@color/colorWhite"-->
+            <!--android:textSize="16dp"-->
+            <!--android:text="Hvis du vil, kan du svare på flere spørgsmål her"/>-->
+    <!--</RelativeLayout>-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1">-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="@color/colorBlue"-->
+            <!--android:layout_marginLeft="6dp"-->
+            <!--android:layout_marginTop="6dp"-->
+            <!--android:layout_marginBottom="3dp"-->
+            <!--android:layout_marginRight="3dp"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:layout_weight="3"-->
+                <!--android:src="@drawable/icon_toilet"-->
+                <!--android:tint="@color/colorWhite"/>-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:text="Hvordan har din lort set ud?"-->
+                <!--android:textColor="@color/colorWhite"/>-->
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="@color/colorGreen"-->
+            <!--android:layout_marginLeft="3dp"-->
+            <!--android:layout_marginTop="6dp"-->
+            <!--android:layout_marginBottom="3dp"-->
+            <!--android:layout_marginRight="6dp"-->
+            <!--android:orientation="vertical">-->
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:layout_weight="3"-->
+                <!--android:src="@drawable/icon_food"-->
+                <!--android:tint="@color/colorWhite"/>-->
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:text="Hvad har du spist i dag?"-->
+                <!--android:textColor="@color/colorWhite"/>-->
+        <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1">-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="@color/colorPurple"-->
+            <!--android:layout_marginLeft="6dp"-->
+            <!--android:layout_marginTop="3dp"-->
+            <!--android:layout_marginBottom="3dp"-->
+            <!--android:layout_marginRight="3dp"-->
+            <!--android:orientation="vertical">-->
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:layout_weight="3"-->
+                <!--android:src="@drawable/icon_sleep"-->
+                <!--android:tint="@color/colorWhite"/>-->
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:text="Hvordan har din lort set ud?"-->
+                <!--android:textColor="@color/colorWhite"/>-->
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="@color/colorGrey"-->
+            <!--android:layout_marginLeft="3dp"-->
+            <!--android:layout_marginTop="3dp"-->
+            <!--android:layout_marginBottom="3dp"-->
+            <!--android:layout_marginRight="6dp"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:layout_weight="3"-->
+                <!--android:src="@drawable/icon_mood"-->
+                <!--android:tint="@color/colorWhite"/>-->
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:text="Hvordan har din lort set ud?"-->
+                <!--android:textColor="@color/colorWhite"/>-->
+        <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1">-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="@color/colorBlack"-->
+            <!--android:layout_marginLeft="6dp"-->
+            <!--android:layout_marginTop="3dp"-->
+            <!--android:layout_marginBottom="6dp"-->
+            <!--android:layout_marginRight="3dp"-->
+            <!--android:orientation="vertical">-->
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:layout_weight="3"-->
+                <!--android:src="@drawable/icon_excersize"-->
+                <!--android:tint="@color/colorWhite"/>-->
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:text="Hvordan har din lort set ud?"-->
+                <!--android:textColor="@color/colorWhite"/>-->
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="@color/colorBeige"-->
+            <!--android:layout_marginLeft="3dp"-->
+            <!--android:layout_marginTop="3dp"-->
+            <!--android:layout_marginBottom="6dp"-->
+            <!--android:layout_marginRight="6dp">-->
+        <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="40dp">-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:background="@color/colorOrange">-->
+            <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_weight="1"-->
+                <!--android:src="@drawable/icon_cross"-->
+                <!--android:tint="@color/colorWhite"/>-->
+        <!--</LinearLayout>-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:background="@color/colorGreen">-->
+            <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_weight="1"-->
+                <!--android:src="@drawable/icon_checkmark"-->
+                <!--android:tint="@color/colorWhite"/>-->
+        <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+<!--</LinearLayout>-->
