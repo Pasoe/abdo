@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -45,7 +47,7 @@ public class PainPlacement extends Fragment implements View.OnTouchListener {
         overlay = (ImageView) view.findViewById(R.id.image_overlay);
         underlay = (ImageView) view.findViewById(R.id.image_underlay);
 
-        underlay.setOnTouchListener(this);
+        overlay.setOnTouchListener(this);
 
 
 
@@ -56,27 +58,47 @@ public class PainPlacement extends Fragment implements View.OnTouchListener {
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
 
-        ImageController.Touch touch = imageController.GetTouchedPosition(underlay, motionEvent, ((MainActivity)getActivity()).getToolbarHeight());
+        ImageController.Touch touch = imageController.GetTouchedPosition(overlay, motionEvent, ((MainActivity)getActivity()).getToolbarHeight());
         int color = imageController.GetPixelColor(underlay, touch);
+
+        if (color == -1) return false;
+
+        Bundle i = new Bundle();
 
         switch (color){
 
             case Color.YELLOW:
-                Toast.makeText(getActivity(), "Head!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "Hoved!", Toast.LENGTH_SHORT).show();
+                i.putString("pain_header", "Hvor ondt har du i hovedet?");
                 break;
 
             case Color.RED:
-                Toast.makeText(getActivity(), "Breast!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "Bryst!", Toast.LENGTH_SHORT).show();
+                i.putString("pain_header", "Hvor ondt har du i brystet?");
                 break;
 
             case Color.GREEN:
-                Toast.makeText(getActivity(), "Stomach!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "Mave!", Toast.LENGTH_SHORT).show();
+                i.putString("pain_header", "Hvor ondt har du i maven?");
                 break;
 
             case Color.BLUE:
-                Toast.makeText(getActivity(), "Genitals!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "Penis!", Toast.LENGTH_SHORT).show();
+                i.putString("pain_header", "Hvor ondt har du ved dit kønsorgan");
                 break;
+
+            default:
+                return false;
         }
+
+        Fragment fragment = new PainPlacementRating();
+        fragment.setArguments(i);
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.main_activity_reg_fragment, fragment);
+        fragmentTransaction.commit();
 
         return false;
     }

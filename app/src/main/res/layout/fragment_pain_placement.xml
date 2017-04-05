@@ -7,27 +7,19 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/colorOrange"
-        android:padding="20dp"
+        android:padding="0dp"
         android:layout_marginBottom="2dp"
         >
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
             android:text="Hvor går det ondt henne?"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textColor="@color/colorWhite"/>
 
     </RelativeLayout>
-
-    <ImageView
-        android:id="@+id/image_overlay"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/body_overlay"
-        />
 
     <ImageView
         android:id="@+id/image_underlay"
@@ -35,7 +27,15 @@
         android:layout_height="fill_parent"
         android:scaleType="fitCenter"
         android:src="@drawable/body"
-        android:alpha=".3"
+        android:visibility="invisible"
+        />
+
+    <ImageView
+        android:id="@+id/image_overlay"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/body_overlay"
         />
 
 

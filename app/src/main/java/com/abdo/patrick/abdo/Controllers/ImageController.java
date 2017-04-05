@@ -25,16 +25,17 @@ public class ImageController {
     }
 
 
+    //Actionbar should be 0 if you don't got it implemented in your view Patrick
     public Touch GetTouchedPosition(ImageView imageView, MotionEvent event, int actionbarHeight){
         Touch touch = new Touch();
-        int[] viewCoords = new int[2];
-        imageView.getLocationOnScreen(viewCoords);
+        int[] viewCoordinates = new int[2];
+        imageView.getLocationOnScreen(viewCoordinates);
 
         int touchX = (int) event.getX();
-        int touchY = (int) event.getY() - (actionbarHeight / 2);
+        int touchY = (int) event.getY() - (actionbarHeight > 0 ? (actionbarHeight / 2) : 0);
 
-        touch.setX(touchX - viewCoords[0]); // viewCoords[0] is the X coordinate
-        touch.setY(touchY - viewCoords[1]); // viewCoords[1] is the y coordinate
+        touch.setX(touchX - viewCoordinates[0]);
+        touch.setY(touchY - viewCoordinates[1]);
 
         return touch;
     }
