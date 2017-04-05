@@ -10,10 +10,8 @@
         android:layout_weight="3"
         android:background="@color/colorOrange">
 
-
         <TextView
             android:id="@+id/registration_done_checkmark_background"
-
             android:layout_marginTop="80dp"
             android:layout_width="86dp"
             android:layout_height="86dp"
@@ -86,7 +84,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.5"
         android:layout_marginTop="2dp"
         android:orientation="vertical"
         android:background="@color/colorBlue">
@@ -130,35 +128,191 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             >
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
                 <ImageView
-                    android:layout_alignTop="@id/responded_to_toilet"
-                    android:layout_alignLeft="@id/responded_to_toilet"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/icon_not_filled_vector"
-                    android:tint="@color/colorOrange"/>
-
-                <ImageView
                     android:id="@+id/responded_to_toilet"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/icon_toilet"
                     android:tint="@color/colorWhite"/>
+
                 <ImageView
+                    android:id="@+id/responded_to_toilet_no"
                     android:layout_alignTop="@id/responded_to_toilet"
                     android:layout_alignLeft="@id/responded_to_toilet"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
+                    android:layout_marginLeft="-10dp"
+                    android:layout_marginTop="-10dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:src="@drawable/icon_not_filled_vector"
                     android:tint="@color/colorOrange"/>
+                <ImageView
+                    android:id="@+id/responded_to_toilet_yes"
+                    android:layout_alignTop="@id/responded_to_toilet"
+                    android:layout_alignLeft="@id/responded_to_toilet"
+                    android:layout_marginLeft="-10dp"
+                    android:layout_marginTop="-10dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/icon_checkmark_vector"
+                    android:tint="@color/colorGreen"
+                    android:visibility="invisible"/>
             </RelativeLayout>
 
-        </LinearLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <ImageView
+                    android:id="@+id/responded_to_food"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/icon_food"
+                    android:tint="@color/colorWhite"/>
 
+                <ImageView
+                    android:id="@+id/responded_to_food_no"
+                    android:layout_alignTop="@id/responded_to_food"
+                    android:layout_alignLeft="@id/responded_to_food"
+                    android:layout_marginLeft="-10dp"
+                    android:layout_marginTop="-10dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/icon_not_filled_vector"
+                    android:tint="@color/colorOrange"/>
+                <ImageView
+                    android:id="@+id/responded_to_food_yes"
+                    android:layout_alignTop="@id/responded_to_food"
+                    android:layout_alignLeft="@id/responded_to_food"
+                    android:layout_marginLeft="-10dp"
+                    android:layout_marginTop="-10dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/icon_checkmark_vector"
+                    android:tint="@color/colorGreen"
+                    android:visibility="invisible"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <ImageView
+                    android:id="@+id/responded_to_sleep"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/icon_sleep"
+                    android:tint="@color/colorWhite"/>
+
+                <ImageView
+                    android:id="@+id/responded_to_sleep_ynp"
+                    android:layout_alignTop="@id/responded_to_sleep"
+                    android:layout_alignLeft="@id/responded_to_sleep"
+                    android:layout_marginLeft="-10dp"
+                    android:layout_marginTop="-10dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/icon_not_filled_vector"
+                    android:tint="@color/colorOrange"/>
+
+                <ImageView
+                    android:id="@+id/responded_to_sleep_yes"
+                    android:layout_alignTop="@id/responded_to_sleep"
+                    android:layout_alignLeft="@id/responded_to_sleep"
+                    android:layout_marginLeft="-10dp"
+                    android:layout_marginTop="-10dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/icon_checkmark_vector"
+                    android:tint="@color/colorGreen"
+                    android:visibility="invisible"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <ImageView
+                    android:id="@+id/responded_to_mood"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/icon_mood"
+                    android:tint="@color/colorWhite"/>
+
+                <ImageView
+                    android:id="@+id/responded_to_mood_no"
+                    android:layout_alignTop="@id/responded_to_mood"
+                    android:layout_alignLeft="@id/responded_to_mood"
+                    android:layout_marginLeft="-10dp"
+                    android:layout_marginTop="-10dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/icon_not_filled_vector"
+                    android:tint="@color/colorOrange"/>
+
+                <ImageView
+                    android:id="@+id/responded_to_mood_yes"
+                    android:layout_alignTop="@id/responded_to_mood"
+                    android:layout_alignLeft="@id/responded_to_mood"
+                    android:layout_marginLeft="-10dp"
+                    android:layout_marginTop="-10dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/icon_checkmark_vector"
+                    android:tint="@color/colorGreen"
+                    android:visibility="invisible"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <ImageView
+                    android:id="@+id/responded_to_excersize"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/icon_excersize"
+                    android:tint="@color/colorWhite"/>
+
+                <ImageView
+                    android:id="@+id/responded_to_excersize_no"
+                    android:layout_alignTop="@id/responded_to_excersize"
+                    android:layout_alignLeft="@id/responded_to_excersize"
+                    android:layout_marginLeft="-10dp"
+                    android:layout_marginTop="-10dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/icon_not_filled_vector"
+                    android:tint="@color/colorOrange"/>
+
+                <ImageView
+                    android:id="@+id/responded_to_excersize_yes"
+                    android:layout_alignTop="@id/responded_to_excersize"
+                    android:layout_alignLeft="@id/responded_to_excersize"
+                    android:layout_marginLeft="-10dp"
+                    android:layout_marginTop="-10dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/icon_checkmark_vector"
+                    android:tint="@color/colorGreen"
+                    android:visibility="invisible"/>
+            </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
     </LinearLayout>

@@ -3,6 +3,8 @@ package com.abdo.patrick.abdo.Views.Registraion;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.abdo.patrick.abdo.R;
+import com.abdo.patrick.abdo.Views.Startup.NewUserFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,7 +41,12 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
     @Override
     public void onClick(View v) {
         if(v == answer_more_button){
-
+            Fragment fragment = new RegistrationOverview();
+            FragmentManager fragmentManager2 = getFragmentManager();
+            FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
+            fragmentTransaction2.addToBackStack(null);
+            fragmentTransaction2.replace(R.id.main_activity_reg_fragment, fragment);
+            fragmentTransaction2.commit();
         }
     }
 
