@@ -14,23 +14,23 @@ import com.abdo.patrick.abdo.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RegistrationOverview extends Fragment implements View.OnClickListener{
+public class RegistraionComplete extends Fragment implements View.OnClickListener{
 
 
-    public RegistrationOverview() {
+    public RegistraionComplete() {
         // Required empty public constructor
     }
 
     private RelativeLayout answer_more_button;
-    private LinearLayout optional_info_layout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_registration_overview, container, false);
+        View view = inflater.inflate(R.layout.fragment_registraion_complete, container, false);
 
-        optional_info_layout = (LinearLayout) view.findViewById(R.id.optional_info_layout);
+        answer_more_button = (RelativeLayout) view.findViewById(R.id.answer_more_button);
+        answer_more_button.setOnClickListener(this);
 
         return view;
     }
@@ -38,8 +38,8 @@ public class RegistrationOverview extends Fragment implements View.OnClickListen
     @Override
     public void onClick(View v) {
         if(v == answer_more_button){
-            answer_more_button.setVisibility(View.GONE);
-            optional_info_layout.setVisibility(View.VISIBLE);
+
         }
     }
+
 }

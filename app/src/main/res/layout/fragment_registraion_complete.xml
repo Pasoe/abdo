@@ -1,0 +1,164 @@
+<LinearLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:background="@color/colorOrange">
+
+
+        <TextView
+            android:id="@+id/registration_done_checkmark_background"
+
+            android:layout_marginTop="80dp"
+            android:layout_width="86dp"
+            android:layout_height="86dp"
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorWhite"
+            android:backgroundTint="@color/colorWhite"/>
+
+        <ImageView
+            android:id="@+id/registration_done_checkmark"
+            android:layout_alignTop="@id/registration_done_checkmark_background"
+            android:layout_alignLeft="@id/registration_done_checkmark_background"
+            android:layout_below="@id/registration_done_checkmark_background"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="-32dp"
+            android:layout_marginTop="-32dp"
+            android:src="@drawable/ic_check_circle_black_24dp"
+            android:tint="@color/colorGreen"
+            />
+
+
+        <TextView
+            android:layout_below="@id/registration_done_checkmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Din registrering er klar til at blive sendt!"
+            android:textColor="@color/colorWhite"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/complete_registration_button"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorGreen"
+        android:layout_marginTop="2dp"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/complete_registration_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_checkmark_vector"
+            android:tint="@color/colorWhite"/>
+
+        <ImageView
+            android:id="@+id/complete_registration_arrow"
+            android:layout_width="wrap_content"
+            android:maxHeight="100dp"
+            android:maxWidth="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_right_arrow"
+            android:tint="@color/colorWhite"/>
+        <TextView
+            android:layout_toRightOf="@id/complete_registration_icon"
+            android:layout_toLeftOf="@id/complete_registration_arrow"
+            android:paddingLeft="10dp"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send registrering"
+            android:textColor="@color/colorWhite"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="2dp"
+        android:orientation="vertical"
+        android:background="@color/colorBlue">
+    <RelativeLayout
+        android:id="@+id/answer_more_button"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/answer_more_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/icon_questionmark"
+            android:tint="@color/colorWhite"/>
+
+        <ImageView
+            android:id="@+id/answer_more_arrow"
+            android:layout_width="wrap_content"
+            android:maxHeight="100dp"
+            android:maxWidth="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_right_arrow"
+            android:tint="@color/colorWhite"/>
+        <TextView
+            android:layout_toRightOf="@id/answer_more_icon"
+            android:layout_toLeftOf="@id/answer_more_arrow"
+            android:paddingLeft="10dp"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Svar på flere spørgsmål"
+            android:textColor="@color/colorWhite"/>
+    </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            >
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <ImageView
+                    android:layout_alignTop="@id/responded_to_toilet"
+                    android:layout_alignLeft="@id/responded_to_toilet"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/icon_not_filled_vector"
+                    android:tint="@color/colorOrange"/>
+
+                <ImageView
+                    android:id="@+id/responded_to_toilet"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/icon_toilet"
+                    android:tint="@color/colorWhite"/>
+                <ImageView
+                    android:layout_alignTop="@id/responded_to_toilet"
+                    android:layout_alignLeft="@id/responded_to_toilet"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/icon_not_filled_vector"
+                    android:tint="@color/colorOrange"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    </LinearLayout>
