@@ -78,6 +78,7 @@ public class NewUserFragment extends Fragment implements View.OnClickListener {
 
         FragmentManager fragmentManager2 = getFragmentManager();
         FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
+        fragmentTransaction2.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
         fragmentTransaction2.addToBackStack("wat");
         fragmentTransaction2.replace(R.id.main_activity_fragment, fragment);
         fragmentTransaction2.commit();

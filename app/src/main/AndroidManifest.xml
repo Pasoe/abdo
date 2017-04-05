@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Views.MainActivity">
+        <activity android:name=".Views.SetupActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +23,7 @@
             android:name="io.fabric.ApiKey"
             android:value="4b12071acf0ceb4c75bab1d2e72919e1ae4b7311" />
 
-        <activity android:name=".Views.SetupActivity"></activity>
+        <activity android:name=".Views.MainActivity"></activity>
     </application>
 
 </manifest>
