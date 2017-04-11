@@ -13,4 +13,5 @@
     <color name="colorGrey">#C7C7CD</color>
     <color name="colorPurple">#ab708c</color>
     <color name="colorDarkGrey">#545454</color>
+    <color name="colorLightGrey">#dfdfdf</color>
 </resources>
