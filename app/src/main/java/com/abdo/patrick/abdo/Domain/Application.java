@@ -6,6 +6,7 @@ import com.abdo.patrick.abdo.Models.Child;
 import com.abdo.patrick.abdo.Models.ChildMedicine;
 import com.abdo.patrick.abdo.Models.Feces;
 import com.abdo.patrick.abdo.Models.Food;
+import com.abdo.patrick.abdo.Models.PainLevel;
 import com.abdo.patrick.abdo.Models.Supplement;
 import com.abdo.patrick.abdo.ViewModels.ListItem;
 import com.google.gson.Gson;
@@ -37,6 +38,8 @@ public class Application extends android.app.Application {
     private ArrayList<Feces> _fecesList;
     private ArrayList<Food> _foodList;
 
+    private ArrayList<PainLevel> _painLevel;
+
     //Device properties
     private boolean _registered;
 
@@ -50,7 +53,17 @@ public class Application extends android.app.Application {
         _supplementList = new ArrayList<>();
         _fecesList = new ArrayList<>();
         _foodList = new ArrayList<>();
+
+        _painLevel = new ArrayList<>();
+        _painLevel.add(new PainLevel(1, "Lidt ondt"));
+        _painLevel.add(new PainLevel(2, "Lidt mere ondt"));
+        _painLevel.add(new PainLevel(3, "Ondt"));
+        _painLevel.add(new PainLevel(4, "Rigtig ondt"));
+        _painLevel.add(new PainLevel(5, "Kritisk"));
+
     }
+
+
 
     public static Application getInstance() {
         return instance;
@@ -140,6 +153,21 @@ public class Application extends android.app.Application {
 
 
     public ArrayList<ListItem> getAllergyListView(ArrayList<Allergy> list, Child newChild){
+
+        ArrayList<ListItem> listView = new ArrayList<>();
+        Allergy current;
+
+        for(int i = 0; i < list.size(); i++)
+        {
+            current = list.get(i);
+            listView.add(
+                    new ListItem(current.getId(), current.getType(), newChild.allergyExists(current.getId())));
+        }
+
+        return listView;
+    }
+
+    public ArrayList<ListItem> getPainLevelListView(ArrayList<Allergy> list, Child newChild){
 
         ArrayList<ListItem> listView = new ArrayList<>();
         Allergy current;

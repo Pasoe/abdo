@@ -8,7 +8,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.abdo.patrick.abdo.R;
-import com.abdo.patrick.abdo.Views.Registraion.pain_placement;
+import com.abdo.patrick.abdo.Views.Registraion.RegistraionComplete;
+import com.abdo.patrick.abdo.Views.Registraion.RegistrationOverview;
+import com.abdo.patrick.abdo.Views.Registraion.PainPlacement;
 import com.abdo.patrick.abdo.Views.Startup.NewUserFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,7 +43,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Fragment fr = new pain_placement();
+        Fragment fr = new RegistraionComplete();
         getSupportFragmentManager().beginTransaction().add(R.id.main_activity_reg_fragment, fr).commit();
+    }
+
+    public int getToolbarHeight() {
+        return toolbar.getHeight();
     }
 }

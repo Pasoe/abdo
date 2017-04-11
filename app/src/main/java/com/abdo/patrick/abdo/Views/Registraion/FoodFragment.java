@@ -12,10 +12,10 @@ import com.abdo.patrick.abdo.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class pain_placement extends Fragment {
+public class FoodFragment extends Fragment {
 
 
-    public pain_placement() {
+    public FoodFragment() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,11 @@ public class pain_placement extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pain_placement, container, false);
+        View view = inflater.inflate(R.layout.fragment_food, container, false);
+
+
+
+        return view;
     }
 
 }
