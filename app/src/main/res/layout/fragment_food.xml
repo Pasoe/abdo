@@ -15,7 +15,7 @@
             android:layout_height="50dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:src="@drawable/icon_toilet"
+            android:src="@drawable/icon_food"
             android:tint="@color/colorWhite"/>
         <TextView
             android:layout_width="wrap_content"
@@ -23,7 +23,7 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/food_header_icon"
             android:layout_marginLeft="20dp"
-            android:text="Hvordan har din lort set ud i dag?"
+            android:text="Hvad har du spist i dag?"
             android:textColor="@color/colorWhite"/>
     </RelativeLayout>
 
@@ -36,7 +36,7 @@
         android:layout_marginRight="2dp"
         android:layout_weight="1">
         <LinearLayout
-            android:id="@+id/turd_type_1_button"
+            android:id="@+id/food_breakfast_button"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_marginRight="1dp"
@@ -44,25 +44,27 @@
             android:orientation="vertical"
             android:padding="5dp"
             android:gravity="center_horizontal"
-            android:background="@color/colorLightGrey">
+            android:background="@color/colorGreen">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="2"
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"
-                android:src="@drawable/turd01"/>
+                android:src="@drawable/icon_breakfast"
+                android:tint="@color/colorWhite"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:textAlignment="center"
                 android:layout_gravity="bottom"
-                android:text="Hårde klumper der ligner nødder"/>
+                android:text="Morgenmad"
+                android:textColor="@color/colorWhite"/>
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/turd_type_2_button"
+            android:id="@+id/food_lunch_button"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_marginRight="1dp"
@@ -70,14 +72,148 @@
             android:orientation="vertical"
             android:padding="5dp"
             android:gravity="center_horizontal"
-            android:background="@color/colorLightGrey">
+            android:background="@color/colorDarkGrey">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="2"
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"
-                android:src="@drawable/turd02"/>
+                android:src="@drawable/icon_lunch"
+                android:tint="@color/colorWhite"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:layout_gravity="bottom"
+                android:text="Frokost"
+                android:textColor="@color/colorWhite"
+                />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_weight="1">
+        <LinearLayout
+            android:id="@+id/food_dinner_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginRight="1dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:gravity="center_horizontal"
+            android:background="@color/colorWhite">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:src="@drawable/icon_dinner"
+                android:tint="@color/colorBlack"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:layout_gravity="bottom"
+                android:text="Aftensmad"
+                android:textColor="@color/colorBlack"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/food_fruit_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginRight="1dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:gravity="center_horizontal"
+            android:background="@color/colorBlue">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:src="@drawable/icon_fruit"
+                android:tint="@color/colorWhite"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:layout_gravity="bottom"
+                android:text="Frugt"
+                android:textColor="@color/colorWhite"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_weight="1">
+        <LinearLayout
+            android:id="@+id/food_candy_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginRight="1dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:gravity="center_horizontal"
+            android:background="@color/colorAccent">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:src="@drawable/icon_candy"
+                android:tint="@color/colorWhite"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:layout_gravity="bottom"
+                android:text="Sødt"
+                android:textColor="@color/colorWhite"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/food_no_food_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginRight="1dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:gravity="center_horizontal"
+            android:background="@color/colorPurple">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:src="@drawable/icon_no_food"
+                android:tint="@color/colorWhite"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -85,7 +221,9 @@
                 android:layout_weight="1"
                 android:textAlignment="center"
                 android:layout_gravity="bottom"
-                android:text="Pølseformet, men med klumper"/>
+                android:text="Jeg har ikke spist noget i dag."
+                android:textColor="@color/colorWhite"
+                />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
