@@ -67,6 +67,7 @@ public class ChildMedicineData extends Fragment implements View.OnClickListener 
             Fragment fragment = new ChildMedicineEditFragment();
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.setCustomAnimations(R.anim.enter_from_bot, R.anim.exit_to_top, R.anim.enter_from_top, R.anim.exit_to_bot);
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.replace(R.id.main_activity_fragment, fragment);
             fragmentTransaction.commit();

@@ -25,6 +25,7 @@ import com.abdo.patrick.abdo.Views.RegisterChild.ChildMedicineData;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildMedicineEditFragment;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildOverviewFragment;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildStamData;
+import com.abdo.patrick.abdo.Views.Registraion.PainPlacementRating;
 
 import java.util.ArrayList;
 
@@ -37,6 +38,7 @@ public class ListController {
     private ChildDataListFagment _childDataListFagment;
     private ChildOverviewFragment _childOverviewFragment;
     private ChildMedicineData _childMedicineFragment;
+    private PainPlacementRating _painPlacementRating;
     private Context _context;
 
     public ListController(ChildDataListFagment childDataListFagment) {
@@ -54,20 +56,30 @@ public class ListController {
         _context = _childMedicineFragment.getActivity().getApplicationContext();
     }
 
+    public ListController(PainPlacementRating painPlacementRating){
+        _painPlacementRating = painPlacementRating;
+        _context = _painPlacementRating.getActivity().getApplicationContext();
+    }
+
     public void InitViews(RecyclerView recyclerView, ArrayList data){
 
         final RecyclerView.Adapter adapter = new Adapter(data);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(null);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(_context);
 
-        if(_childDataListFagment != null){
-            layoutManager = new LinearLayoutManager(_context);
-        }
-        if(_childOverviewFragment != null){
-            layoutManager = new LinearLayoutManager(_context);
-        }
-        if(_childMedicineFragment != null){
-            layoutManager = new LinearLayoutManager(_context);
-        }
+//        if(_childDataListFagment != null){
+//            layoutManager = new LinearLayoutManager(_context);
+//        }
+//        if(_childOverviewFragment != null){
+//            layoutManager = new LinearLayoutManager(_context);
+//        }
+//        if(_childMedicineFragment != null){
+//            layoutManager = new LinearLayoutManager(_context);
+//        }
+//        if(_painPlacementRating != null){
+//            layoutManager = new LinearLayoutManager(_context);
+//        }
+
+
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
@@ -99,10 +111,13 @@ public class ListController {
                     if(_childMedicineFragment != null){
                         fragment = _childMedicineFragment;
                     }
+                    if(_childMedicineFragment != null){
+                        fragment = _painPlacementRating;
+                    }
 
-                    String listType = fragment.getArguments().getString("listType");
+                    String listType = fragment.getArguments().getString("listType", "");
 
-                    String note = "";
+
 
                     if(listType.equals("supplements")){
                         Child newChild = Application.getInstance().getNewChild();
@@ -110,11 +125,10 @@ public class ListController {
                         if(exists){
                             newChild.removeSupplement(clickedId);
                             child.findViewById(R.id.row_selected_icon).setVisibility(View.INVISIBLE);
-                            note = "Kosttilskud: "+clickedName + " fjernet";
+
                         }else{
                             newChild.addSupplement(clickedId);
                             child.findViewById(R.id.row_selected_icon).setVisibility(View.VISIBLE);
-                            note = "Kosttilskud: "+clickedName + " tilføjet";
                         }
                         Application.getInstance().setNewChild(newChild);
                     }
@@ -137,11 +151,11 @@ public class ListController {
                         if(newChild.allergyExists(clickedId)){
                             newChild.removeAllergy(clickedId);
                             child.findViewById(R.id.row_selected_icon).setVisibility(View.INVISIBLE);
-                            note = "Allergi: "+clickedName + " fjernet";
+
                         }else{
                             newChild.addAllergy(clickedId);
                             child.findViewById(R.id.row_selected_icon).setVisibility(View.VISIBLE);
-                            note = "Allergi: "+clickedName + " tilføjet";
+
                         }
                         Application.getInstance().setNewChild(newChild);
                     }

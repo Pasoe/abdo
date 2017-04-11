@@ -46,4 +46,8 @@ public class MainActivity extends AppCompatActivity {
         Fragment fr = new RegistraionComplete();
         getSupportFragmentManager().beginTransaction().add(R.id.main_activity_reg_fragment, fr).commit();
     }
+
+    public int getToolbarHeight() {
+        return toolbar.getHeight();
+    }
 }

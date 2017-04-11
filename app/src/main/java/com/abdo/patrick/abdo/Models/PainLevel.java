@@ -6,6 +6,14 @@ package com.abdo.patrick.abdo.Models;
 
 public class PainLevel {
 
+        public PainLevel() {
+        }
+
+        public PainLevel(int id, String level) {
+                this.id = id;
+                this.level = level;
+        }
+
         private int id;
         private String level;
         private String createdTime;
