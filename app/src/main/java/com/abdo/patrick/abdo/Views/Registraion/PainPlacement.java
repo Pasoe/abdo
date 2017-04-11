@@ -69,22 +69,22 @@ public class PainPlacement extends Fragment implements View.OnTouchListener {
 
             case Color.YELLOW:
 //                Toast.makeText(getActivity(), "Hoved!", Toast.LENGTH_SHORT).show();
-                i.putString("pain_header", "Hvor ondt har du i hovedet?");
+                i.putString("pain_header", "Hoved: Hvor ondt gør det?");
                 break;
 
             case Color.RED:
 //                Toast.makeText(getActivity(), "Bryst!", Toast.LENGTH_SHORT).show();
-                i.putString("pain_header", "Hvor ondt har du i brystet?");
+                i.putString("pain_header", "Bryst: Hvor ondt gør det?");
                 break;
 
             case Color.GREEN:
 //                Toast.makeText(getActivity(), "Mave!", Toast.LENGTH_SHORT).show();
-                i.putString("pain_header", "Hvor ondt har du i maven?");
+                i.putString("pain_header", "Mave: Hvor ondt gør det?");
                 break;
 
             case Color.BLUE:
 //                Toast.makeText(getActivity(), "Penis!", Toast.LENGTH_SHORT).show();
-                i.putString("pain_header", "Hvor ondt har du ved dit kønsorgan");
+                i.putString("pain_header", "Penis: Hvor ondt gør det?");
                 break;
 
             default:

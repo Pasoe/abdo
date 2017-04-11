@@ -167,6 +167,21 @@ public class Application extends android.app.Application {
         return listView;
     }
 
+    public ArrayList<ListItem> getPainLevelListView(ArrayList<Allergy> list, Child newChild){
+
+        ArrayList<ListItem> listView = new ArrayList<>();
+        Allergy current;
+
+        for(int i = 0; i < list.size(); i++)
+        {
+            current = list.get(i);
+            listView.add(
+                    new ListItem(current.getId(), current.getType(), newChild.allergyExists(current.getId())));
+        }
+
+        return listView;
+    }
+
     public ArrayList<ListItem> getSupplementListView(ArrayList<Supplement> list, Child newChild){
 
         ArrayList<ListItem> listView = new ArrayList<>();

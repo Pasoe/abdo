@@ -30,6 +30,13 @@
     <string name="child_overview_allergy">Allergi</string>
     <string name="child_overview_supplement">Kosttilskud</string>
 
+    <!-- Pain level strings-->
+    <string name="pain_level_1">Normal</string>
+    <string name="pain_level_2">Mest lyst til at ligge stille</string>
+    <string name="pain_level_3">Tænker hele tiden, på at det gør ondt</string>
+    <string name="pain_level_4">Lyst til at græde</string>
+    <string name="pain_level_5">Græder og kan intet</string>
+
 
     <string name="device_id">QE58711871dds81dg838344fga</string>
 

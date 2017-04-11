@@ -1,9 +1,9 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.abdo.patrick.abdo.Views.Registraion.PainPlacementRating">
-
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,4 +23,124 @@
 
     </RelativeLayout>
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal"
+        android:id="@+id/painlevel_row_1"
+        android:layout_marginBottom="2dp"
+        >
+        <ImageView
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:id="@+id/painlevel_row_1_image"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="6dp"
+            android:src="@drawable/painlevel01" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="6dp"
+            android:id="@+id/painlevel_text_row_1" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal"
+        android:id="@+id/painlevel_row_2"
+        android:layout_marginBottom="2dp"
+        >
+        <ImageView
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:id="@+id/painlevel_row_2_image"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="6dp"
+            android:src="@drawable/painlevel02" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="6dp"
+            android:id="@+id/painlevel_text_row_2" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal"
+        android:id="@+id/painlevel_row_3"
+        android:layout_marginBottom="2dp"
+        >
+        <ImageView
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:id="@+id/painlevel_row_3_image"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="6dp"
+            android:src="@drawable/painlevel03" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="6dp"
+            android:id="@+id/painlevel_text_row_3" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal"
+        android:id="@+id/painlevel_row_4"
+        android:layout_marginBottom="2dp"
+        >
+        <ImageView
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:id="@+id/painlevel_row_4_image"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="6dp"
+            android:src="@drawable/painlevel04" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="6dp"
+            android:id="@+id/painlevel_text_row_4" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal"
+        android:id="@+id/painlevel_row_5"
+        >
+        <ImageView
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:id="@+id/painlevel_row_5_image"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="6dp"
+            android:src="@drawable/painlevel05" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="6dp"
+            android:id="@+id/painlevel_text_row_5" />
+
+    </LinearLayout>
+
+</LinearLayout>
