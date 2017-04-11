@@ -25,6 +25,7 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
     }
 
     private LinearLayout answer_toilet_tile;
+    private LinearLayout answer_food_tile;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,19 +36,29 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
         answer_toilet_tile = (LinearLayout) view.findViewById(R.id.answer_toilet_tile);
         answer_toilet_tile.setOnClickListener(this);
 
+        answer_food_tile = (LinearLayout) view.findViewById(R.id.answer_food_tile);
+        answer_food_tile.setOnClickListener(this);
+
         return view;
     }
 
     @Override
     public void onClick(View v) {
+        Fragment fragment = null;
+
         if(v == answer_toilet_tile){
-            Fragment fragment = new ToiletFragment();
-            FragmentManager fragmentManager2 = getFragmentManager();
-            FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
-            fragmentTransaction2.addToBackStack(null);
-            fragmentTransaction2.replace(R.id.main_activity_reg_fragment, fragment);
-            fragmentTransaction2.commit();
+            fragment = new ToiletFragment();
         }
+        if(v == answer_food_tile){
+            fragment = new FoodFragment();
+        }
+
+        FragmentManager fragmentManager2 = getFragmentManager();
+        FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
+        fragmentTransaction2.addToBackStack(null);
+        fragmentTransaction2.replace(R.id.main_activity_reg_fragment, fragment);
+        fragmentTransaction2.commit();
+
     }
 
 }
