@@ -14,6 +14,7 @@
         android:layout_marginBottom="1dp"
         android:orientation="horizontal">
         <LinearLayout
+            android:id="@+id/answer_pain_tile"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:padding="10dp"
@@ -51,6 +52,7 @@
                 </RelativeLayout>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/answer_toilet_tile"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
@@ -99,6 +101,7 @@
         android:layout_marginLeft="2dp"
         android:layout_marginRight="2dp">
         <LinearLayout
+            android:id="@+id/answer_food_tile"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_marginRight="1dp"
@@ -137,12 +140,13 @@
 
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/answer_sleep_tile"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_marginLeft="1dp"
             android:layout_height="match_parent"
             android:padding="10dp"
-            android:background="@color/colorGrey">
+            android:background="@color/colorDarkGrey">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -152,7 +156,7 @@
                     android:layout_height="100dp"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/icon_sleep"
-                    android:tint="@color/colorBlack"
+                    android:tint="@color/colorWhite"
                     />
                 <ImageView
                     android:layout_below="@id/answered_icon_sleep"
@@ -160,7 +164,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/icon_questionmark"
-                    android:tint="@color/colorBlack"
+                    android:tint="@color/colorWhite"
                     />
                 <ImageView
                     android:layout_below="@id/answered_icon_sleep"
@@ -168,7 +172,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/icon_checkmark_vector"
-                    android:tint="@color/colorBlack"
+                    android:tint="@color/colorWhite"
                     android:visibility="invisible"
                     />
             </RelativeLayout>
@@ -185,6 +189,7 @@
         android:layout_marginBottom="2dp"
         android:orientation="horizontal">
         <LinearLayout
+            android:id="@+id/answer_mood_tile"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_marginRight="1dp"
@@ -222,6 +227,7 @@
             </RelativeLayout>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/answer_exercise_tile"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_marginLeft="1dp"

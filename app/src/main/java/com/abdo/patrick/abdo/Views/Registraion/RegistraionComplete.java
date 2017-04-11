@@ -24,7 +24,7 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
         // Required empty public constructor
     }
 
-    private RelativeLayout answer_more_button;
+    private LinearLayout answer_toilet_tile;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,16 +32,16 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_registraion_complete, container, false);
 
-        answer_more_button = (RelativeLayout) view.findViewById(R.id.answer_more_button);
-        answer_more_button.setOnClickListener(this);
+        answer_toilet_tile = (LinearLayout) view.findViewById(R.id.answer_toilet_tile);
+        answer_toilet_tile.setOnClickListener(this);
 
         return view;
     }
 
     @Override
     public void onClick(View v) {
-        if(v == answer_more_button){
-            Fragment fragment = new RegistrationOverview();
+        if(v == answer_toilet_tile){
+            Fragment fragment = new ToiletFragment();
             FragmentManager fragmentManager2 = getFragmentManager();
             FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
             fragmentTransaction2.addToBackStack(null);
