@@ -117,5 +117,4 @@ public class SetupActivity extends AppCompatActivity {
         else new com.abdo.patrick.abdo.Api.Supplement.Get().execute();
 
     }
-
 }

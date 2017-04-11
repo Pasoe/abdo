@@ -32,6 +32,8 @@ public class Application extends android.app.Application {
 
     private Anonymous _anonymous;
 
+    private int SelectedChild;
+
     private ArrayList<Allergy> _allergyList;
     private ArrayList<Supplement> _supplementList;
     private ArrayList<ChildMedicine> _childMedicineList;
@@ -249,4 +251,15 @@ public class Application extends android.app.Application {
         return settings.contains("NewChild");
     }
 
+    public ArrayList<Food> get_foodList(String foodType){
+        return null;
+    }
+
+    public ArrayList<ListItem> getFoodListView(ArrayList<Food> foodlist, Child child){
+        return null;
+    }
+
+    public Child getCurrentChild(){
+        return null;
+    }
 }

@@ -64,8 +64,6 @@ public class ChildDataListFagment extends Fragment {
 
             ArrayList<Supplement> supplements = Application.getInstance().get_supplementList();
             model.InitViews(recyclerView, Application.getInstance().getSupplementListView(supplements, Application.getInstance().getNewChild()));
-
-
         }
 
         return view;

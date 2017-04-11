@@ -57,11 +57,21 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="0.5"
                 android:textAlignment="center"
                 android:layout_gravity="bottom"
                 android:text="Morgenmad"
                 android:textColor="@color/colorWhite"/>
+
+            <ImageView
+                android:id="@+id/answered_icon_breakfast"
+                android:layout_alignParentBottom="true"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/icon_questionmark"
+                android:tint="@color/colorWhite"
+                />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/food_lunch_button"
@@ -85,11 +95,21 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="0.5"
                 android:textAlignment="center"
                 android:layout_gravity="bottom"
                 android:text="Frokost"
                 android:textColor="@color/colorWhite"
+                />
+
+            <ImageView
+                android:id="@+id/answered_icon_lunch"
+                android:layout_alignParentBottom="true"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/icon_questionmark"
+                android:tint="@color/colorWhite"
                 />
         </LinearLayout>
     </LinearLayout>
@@ -123,11 +143,21 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="0.5"
                 android:textAlignment="center"
                 android:layout_gravity="bottom"
                 android:text="Aftensmad"
                 android:textColor="@color/colorBlack"/>
+
+            <ImageView
+                android:id="@+id/answered_icon_dinner"
+                android:layout_alignParentBottom="true"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/icon_questionmark"
+                android:tint="@color/colorBlack"
+                />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/food_fruit_button"
@@ -151,11 +181,20 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="0.5"
                 android:textAlignment="center"
                 android:layout_gravity="bottom"
                 android:text="Frugt"
                 android:textColor="@color/colorWhite"
+                />
+            <ImageView
+                android:id="@+id/answered_icon_fruit"
+                android:layout_alignParentBottom="true"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/icon_questionmark"
+                android:tint="@color/colorWhite"
                 />
         </LinearLayout>
     </LinearLayout>
@@ -190,11 +229,21 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="0.5"
                 android:textAlignment="center"
                 android:layout_gravity="bottom"
                 android:text="Sødt"
                 android:textColor="@color/colorWhite"/>
+
+            <ImageView
+                android:id="@+id/answered_icon_candy"
+                android:layout_alignParentBottom="true"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/icon_questionmark"
+                android:tint="@color/colorWhite"
+                />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/food_no_food_button"
@@ -216,13 +265,23 @@
                 android:tint="@color/colorWhite"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="0.5"
                 android:textAlignment="center"
                 android:layout_gravity="bottom"
-                android:text="Jeg har ikke spist noget i dag."
+                android:text="Jeg har ikke spist i dag"
                 android:textColor="@color/colorWhite"
+                />
+            <ImageView
+                android:id="@+id/answered_icon_no_food"
+                android:layout_alignParentBottom="true"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/icon_checkmark"
+                android:tint="@color/colorWhite"
+                android:visibility="invisible"
                 />
         </LinearLayout>
     </LinearLayout>
