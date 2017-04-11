@@ -53,17 +53,9 @@ public class Application extends android.app.Application {
         _supplementList = new ArrayList<>();
         _fecesList = new ArrayList<>();
         _foodList = new ArrayList<>();
-
         _painLevel = new ArrayList<>();
-        _painLevel.add(new PainLevel(1, "Lidt ondt"));
-        _painLevel.add(new PainLevel(2, "Lidt mere ondt"));
-        _painLevel.add(new PainLevel(3, "Ondt"));
-        _painLevel.add(new PainLevel(4, "Rigtig ondt"));
-        _painLevel.add(new PainLevel(5, "Kritisk"));
 
     }
-
-
 
     public static Application getInstance() {
         return instance;
@@ -73,6 +65,12 @@ public class Application extends android.app.Application {
     {
         return Secure.getString(context.getContentResolver(), Secure.ANDROID_ID);
     }
+
+    public void addPainLevel(PainLevel painLevel)
+    {
+        _painLevel.add(painLevel);
+    }
+
 
     public ArrayList<Allergy> get_allergyList() {
         return _allergyList;

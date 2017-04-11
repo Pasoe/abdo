@@ -162,6 +162,7 @@
                     android:layout_below="@id/answered_icon_sleep"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/answered_icon_sleep_mark"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/icon_questionmark"
                     android:tint="@color/colorWhite"

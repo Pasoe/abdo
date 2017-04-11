@@ -37,6 +37,27 @@
     <string name="pain_level_4">Lyst til at græde</string>
     <string name="pain_level_5">Græder og kan intet</string>
 
+    <!-- Sleep level strings-->
+    <string name="sleep_level_1">Sov godt hele natten</string>
+    <string name="sleep_level_2">Vågnede et par gange</string>
+    <string name="sleep_level_3">Havde problemer med at falde i søvn</string>
+    <string name="sleep_level_4">Havde uhyggelige drømme</string>
+    <string name="sleep_level_5">Har ikke sovet</string>
+
+    <!-- Mood level strings-->
+    <string name="mood_level_1">Glad</string>
+    <string name="mood_level_2">Ikke rigtig glad</string>
+    <string name="mood_level_3">Er hele tiden bekymret</string>
+    <string name="mood_level_4">Lyst til at græde</string>
+    <string name="mood_level_5">Græder og kan intet</string>
+
+    <!-- Activity level strings-->
+    <string name="activity_level_1">Ingen</string>
+    <string name="activity_level_2">Næsten ingen</string>
+    <string name="activity_level_3">Lidt</string>
+    <string name="activity_level_4">En del</string>
+    <string name="activity_level_5">Rigtig meget</string>
+
 
     <string name="device_id">QE58711871dds81dg838344fga</string>
 
