@@ -32,6 +32,8 @@ public class Application extends android.app.Application {
 
     private Anonymous _anonymous;
 
+    private int SelectedChild;
+
     private ArrayList<Allergy> _allergyList;
     private ArrayList<Supplement> _supplementList;
     private ArrayList<ChildMedicine> _childMedicineList;
@@ -249,4 +251,71 @@ public class Application extends android.app.Application {
         return settings.contains("NewChild");
     }
 
+    public ArrayList<Food> get_foodList(String foodType){
+
+        ArrayList<Food> foodlist = new ArrayList<Food>();
+        if(foodType.equals("breakfast")){
+            int foodCategoyType = 1;
+            foodlist.add(new Food(1, "Toast", foodCategoyType));
+            foodlist.add(new Food(2, "Æg", foodCategoyType));
+            foodlist.add(new Food(3, "Bacon", foodCategoyType));
+            foodlist.add(new Food(4, "Havregryn", foodCategoyType));
+            foodlist.add(new Food(5, "Guldkorn", foodCategoyType));
+        }
+        if(foodType.equals("lunch")){
+            int foodCategoyType = 2;
+            foodlist.add(new Food(1, "Leverpostejsmad", foodCategoyType));
+            foodlist.add(new Food(2, "Baconmad", foodCategoyType));
+            foodlist.add(new Food(3, "Makrelmad", foodCategoyType));
+            foodlist.add(new Food(4, "Ostemad", foodCategoyType));
+            foodlist.add(new Food(5, "Skinke", foodCategoyType));
+        }
+        if(foodType.equals("dinner")){
+            int foodCategoyType = 3;
+            foodlist.add(new Food(1, "Hakkebøffer", foodCategoyType));
+            foodlist.add(new Food(2, "Baconbøffer", foodCategoyType));
+            foodlist.add(new Food(3, "Pasta med kødsovs", foodCategoyType));
+            foodlist.add(new Food(4, "Boller i karry", foodCategoyType));
+            foodlist.add(new Food(5, "Vegetartarteletter", foodCategoyType));
+        }
+        if(foodType.equals("fruit")){
+            int foodCategoyType = 4;
+            foodlist.add(new Food(1, "Æble", foodCategoyType));
+            foodlist.add(new Food(2, "Banan", foodCategoyType));
+            foodlist.add(new Food(3, "Pære", foodCategoyType));
+            foodlist.add(new Food(4, "Kiwi", foodCategoyType));
+            foodlist.add(new Food(5, "Vindrue", foodCategoyType));
+        }
+        if(foodType.equals("candy")){
+            int foodCategoyType = 5;
+            foodlist.add(new Food(1, "Vingummi", foodCategoyType));
+            foodlist.add(new Food(2, "Chokolade", foodCategoyType));
+            foodlist.add(new Food(3, "Chips", foodCategoyType));
+            foodlist.add(new Food(4, "Oregano", foodCategoyType));
+            foodlist.add(new Food(5, "Ostehaps", foodCategoyType));
+        }
+        return foodlist;
+
+
+    }
+
+    public ArrayList<ListItem> getFoodListView(ArrayList<Food> list, Child child){
+        ArrayList<ListItem> listView = new ArrayList<>();
+        Food current;
+
+        for(int i = 0; i < list.size(); i++)
+        {
+            current = list.get(i);
+            listView.add(
+                    //TODO - Set false to be "if food exists in childs list of selected foods"
+                    new ListItem(current.getId(), current.getType(), false));
+        }
+
+        return listView;
+    }
+
+    public Child getCurrentChild(){
+        //TODO - hent rigtigt child, tak
+        return new Child();
+    }
 }
