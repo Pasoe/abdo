@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/colorOrange">
+        android:background="@color/colorPurple">
         <ImageView
             android:id="@+id/food_header_icon"
             android:layout_width="50dp"
@@ -30,16 +30,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="1dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
         android:layout_weight="1">
         <LinearLayout
             android:id="@+id/food_breakfast_button"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_marginRight="1dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="5dp"
@@ -77,7 +72,6 @@
             android:id="@+id/food_lunch_button"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_marginRight="1dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="5dp"
@@ -116,16 +110,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="1dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
         android:layout_weight="1">
         <LinearLayout
             android:id="@+id/food_dinner_button"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_marginRight="1dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="5dp"
@@ -163,7 +152,6 @@
             android:id="@+id/food_fruit_button"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_marginRight="1dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="5dp"
@@ -202,21 +190,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="1dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
         android:layout_weight="1">
         <LinearLayout
             android:id="@+id/food_candy_button"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_marginRight="1dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="5dp"
             android:gravity="center_horizontal"
-            android:background="@color/colorAccent">
+            android:background="@color/colorOrange">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
@@ -249,7 +232,6 @@
             android:id="@+id/food_no_food_button"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_marginRight="1dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="5dp"

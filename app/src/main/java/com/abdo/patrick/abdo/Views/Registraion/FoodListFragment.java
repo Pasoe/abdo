@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.abdo.patrick.abdo.Controllers.RegistrationListController;
@@ -33,6 +34,7 @@ public class FoodListFragment extends Fragment {
 
     private ImageView headerImage;
     private TextView headerText;
+    private RelativeLayout header;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,6 +44,7 @@ public class FoodListFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_food_list, container, false);
 
+        header = (RelativeLayout) view.findViewById(R.id.food_list_header_layout);
         headerImage = (ImageView) view.findViewById(R.id.food_list_header_icon);
         headerText = (TextView) view.findViewById(R.id.food_list_header_text);
 
@@ -61,22 +64,29 @@ public class FoodListFragment extends Fragment {
         if(foodType.equals("breakfast")){
             headerImage.setImageResource(R.drawable.icon_breakfast);
             headerText.setText("Hvad har du fået at spise til morgenmad?");
+            header.setBackgroundColor(getResources().getColor(R.color.colorGreen));
         }
         if(foodType.equals("lunch")){
             headerImage.setImageResource(R.drawable.icon_lunch);
             headerText.setText("Hvad har du fået at spise til frokost?");
+            header.setBackgroundColor(getResources().getColor(R.color.colorBlack));
         }
         if(foodType.equals("dinner")){
             headerImage.setImageResource(R.drawable.icon_dinner);
+            headerImage.setColorFilter(getResources().getColor(R.color.colorBlack));
             headerText.setText("Hvad har du fået at spise til aftensmad?");
+            headerText.setTextColor(getResources().getColor(R.color.colorBlack));
+            header.setBackgroundColor(getResources().getColor(R.color.colorWhite));
         }
         if(foodType.equals("fruit")){
             headerImage.setImageResource(R.drawable.icon_fruit);
             headerText.setText("Hvilke frugter har du spist i dag?");
+            header.setBackgroundColor(getResources().getColor(R.color.colorBlue));
         }
         if(foodType.equals("candy")){
             headerImage.setImageResource(R.drawable.icon_candy);
             headerText.setText("Hvilket slik har du spist i dag?");
+            header.setBackgroundColor(getResources().getColor(R.color.colorOrange));
         }
 
     }
