@@ -3,6 +3,8 @@ package com.abdo.patrick.abdo.Views.Registraion;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,25 +59,42 @@ public class FoodFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        
-        if(v == breakfast_button){
 
+        if(v == no_food_button){
+            //TODO - Sæt childs foodcategory til no-food
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.popBackStack();
+            return;
+        }
+
+        Fragment fragment =  new FoodListFragment();;
+        Bundle i = new Bundle();
+
+        if(v == breakfast_button){
+            i.putString("foodType", "breakfast");
+            fragment.setArguments(i);
         }
         if(v == lunch_button){
-
+            i.putString("foodType", "lunch");
+            fragment.setArguments(i);
         }
         if(v == dinner_button){
-
+            i.putString("foodType", "dinner");
+            fragment.setArguments(i);
         }
         if(v == fruit_button){
-
+            i.putString("foodType", "fruit");
+            fragment.setArguments(i);
         }
         if(v == candy_button){
-
-        }
-        if(v == no_food_button){
-
+            i.putString("foodType", "candy");
+            fragment.setArguments(i);
         }
 
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.main_activity_reg_fragment, fragment);
+        fragmentTransaction.commit();
     }
 }

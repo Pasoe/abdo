@@ -70,36 +70,65 @@ public class RegistrationListController {
 
                     String listType = fragment.getArguments().getString("foodType", "");
 
-
-
-                    if(listType.equals("supplements")){
-                        Child newChild = Application.getInstance().getNewChild();
-                        boolean exists = newChild.supplementExists(clickedId);
+                    if(listType.equals("breakfast")){
+                        Child currentChild = Application.getInstance().getCurrentChild();
+                        boolean exists = currentChild.supplementExists(clickedId);
                         if(exists){
-                            newChild.removeSupplement(clickedId);
+//                            currentChild.removeSupplement(clickedId);
                             child.findViewById(R.id.row_selected_icon).setVisibility(View.INVISIBLE);
 
                         }else{
-                            newChild.addSupplement(clickedId);
+//                            currentChild.addSupplement(clickedId);
                             child.findViewById(R.id.row_selected_icon).setVisibility(View.VISIBLE);
                         }
-                        Application.getInstance().setNewChild(newChild);
                     }
-                    else if(listType.equals("medicine")){
-
-                    }
-                    else if(listType.equals("allergies")){
-                        Child newChild = Application.getInstance().getNewChild();
-                        if(newChild.allergyExists(clickedId)){
-                            newChild.removeAllergy(clickedId);
+                    if(listType.equals("lunch")){
+                        Child currentChild = Application.getInstance().getCurrentChild();
+                        boolean exists = currentChild.supplementExists(clickedId);
+                        if(exists){
+//                            currentChild.removeSupplement(clickedId);
                             child.findViewById(R.id.row_selected_icon).setVisibility(View.INVISIBLE);
 
                         }else{
-                            newChild.addAllergy(clickedId);
+//                            currentChild.addSupplement(clickedId);
                             child.findViewById(R.id.row_selected_icon).setVisibility(View.VISIBLE);
-
                         }
-                        Application.getInstance().setNewChild(newChild);
+                    }
+                    if(listType.equals("dinner")){
+                        Child currentChild = Application.getInstance().getCurrentChild();
+                        boolean exists = currentChild.supplementExists(clickedId);
+                        if(exists){
+//                            currentChild.removeSupplement(clickedId);
+                            child.findViewById(R.id.row_selected_icon).setVisibility(View.INVISIBLE);
+
+                        }else{
+//                            currentChild.addSupplement(clickedId);
+                            child.findViewById(R.id.row_selected_icon).setVisibility(View.VISIBLE);
+                        }
+                    }
+                    if(listType.equals("fruit")){
+                        Child currentChild = Application.getInstance().getCurrentChild();
+                        boolean exists = currentChild.supplementExists(clickedId);
+                        if(exists){
+//                            currentChild.removeSupplement(clickedId);
+                            child.findViewById(R.id.row_selected_icon).setVisibility(View.INVISIBLE);
+
+                        }else{
+//                            currentChild.addSupplement(clickedId);
+                            child.findViewById(R.id.row_selected_icon).setVisibility(View.VISIBLE);
+                        }
+                    }
+                    if(listType.equals("candy")){
+                        Child currentChild = Application.getInstance().getCurrentChild();
+                        boolean exists = currentChild.supplementExists(clickedId);
+                        if(exists){
+//                            currentChild.removeSupplement(clickedId);
+                            child.findViewById(R.id.row_selected_icon).setVisibility(View.INVISIBLE);
+
+                        }else{
+//                            currentChild.addSupplement(clickedId);
+                            child.findViewById(R.id.row_selected_icon).setVisibility(View.VISIBLE);
+                        }
                     }
                 }
                 return false;

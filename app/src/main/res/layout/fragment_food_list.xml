@@ -4,15 +4,23 @@
     android:orientation="vertical" >
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:background="@color/colorOrange">
+        <ImageView
+            android:id="@+id/food_list_header_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:tint="@color/colorWhite"/>
         <TextView
+            android:id="@+id/food_list_header_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorWhite"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"
-            android:id="@+id/food_list_header"/>
+            android:layout_toRightOf="@id/food_list_header_icon"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/colorWhite"/>
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView

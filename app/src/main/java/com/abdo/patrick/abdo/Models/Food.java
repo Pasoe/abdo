@@ -12,5 +12,18 @@ public class Food {
     private int foodCategoryId;
     private String createdTime;
     private String modifiedTime;
-    private ArrayList<Registration> registrations;
+
+    public Food(int id, String type, int foodCategoryId){
+        this.id = id;
+        this.type = type;
+        this.foodCategoryId = foodCategoryId;
+    }
+
+    public String getType(){
+        return type;
+    }
+
+    public int getId(){
+        return id;
+    };
 }
