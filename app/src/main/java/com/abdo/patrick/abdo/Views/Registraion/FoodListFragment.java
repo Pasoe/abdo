@@ -1,7 +1,6 @@
 package com.abdo.patrick.abdo.Views.Registraion;
 
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -15,7 +14,6 @@ import android.widget.TextView;
 import com.abdo.patrick.abdo.Controllers.RegistrationListController;
 import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.Models.Food;
-import com.abdo.patrick.abdo.Models.FoodCategory;
 import com.abdo.patrick.abdo.R;
 
 import java.util.ArrayList;
