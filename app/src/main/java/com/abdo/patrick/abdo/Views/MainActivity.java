@@ -1,11 +1,15 @@
 package com.abdo.patrick.abdo.Views;
 
+import android.content.DialogInterface;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.abdo.patrick.abdo.R;
 import com.abdo.patrick.abdo.Views.Registraion.PainPlacement;
@@ -47,5 +51,34 @@ public class MainActivity extends AppCompatActivity {
 
     public int getToolbarHeight() {
         return toolbar.getHeight();
+    }
+
+
+    private Boolean exit = false;
+    @Override
+    public void onBackPressed() {
+
+        int backStackEntryCount = getSupportFragmentManager().getBackStackEntryCount();
+        if (backStackEntryCount != 0)
+        {
+            super.onBackPressed();
+            return;
+        }
+
+        if (exit) {
+            moveTaskToBack(true);
+        }
+        else
+        {
+            Toast.makeText(this, "Tryk tilbage igen for at lukke appen ned.",
+                    Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    exit = false;
+                }
+            }, 2 * 1000);
+        }
     }
 }

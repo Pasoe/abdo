@@ -1,15 +1,12 @@
 package com.abdo.patrick.abdo.Views.Registraion;
 
 
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -101,36 +98,44 @@ public class Rating extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         final int id = view.getId();
-        String toast = "";
+        int level = 0;
 
         switch (id)
         {
             case R.id.level_row_1:
-                //TODO: add to child object by using "fragment" value
-                toast = "Niveau 1";
+                level = 1;
                 break;
             case R.id.level_row_2:
-                //TODO: add to child object by using "fragment" value
-                toast = "Niveau 2";
+                level = 2;
                 break;
             case R.id.level_row_3:
-                //TODO: add to child object by using "fragment" value
-                toast = "Niveau 3";
+                level = 3;
                 break;
             case R.id.level_row_4:
-                //TODO: add to child object by using "fragment" value
-                toast = "Niveau 4";
+                level = 4;
                 break;
             case R.id.level_row_5:
-                //TODO: add to child object by using "fragment" value
-                toast = "Niveau 5";
+                level = 5;
                 break;
             default:
                 break;
         }
 
-        if (!toast.isEmpty())
-            Toast.makeText(getContext(), toast, Toast.LENGTH_SHORT).show();
+        switch (fragment)
+        {
+            case "sleep":
+                Application.getInstance().getCurrentRegistration().addSleep(level);
+                break;
+            case "mood":
+                Application.getInstance().getCurrentRegistration().addMood(level);
+                break;
+            case "activity":
+                Application.getInstance().getCurrentRegistration().addActivity(level);
+                break;
+            default:
+                Application.getInstance().getCurrentRegistration().addPainLevel(level);
+                break;
+        }
 
         Fragment fragment;
         FragmentManager fragmentManager = getFragmentManager();
@@ -139,6 +144,7 @@ public class Rating extends Fragment implements View.OnClickListener {
 
         if (getArguments().getString("fragment", "").isEmpty())
         {
+            Log.i("Back press", "true");
             fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             fragment = new RegistraionComplete();
             fragmentTransaction.replace(R.id.main_activity_reg_fragment, fragment);
@@ -146,6 +152,7 @@ public class Rating extends Fragment implements View.OnClickListener {
         }
         else
         {
+            Log.i("Back press", "false");
             fragmentManager.popBackStack();
         }
 
@@ -183,27 +190,6 @@ public class Rating extends Fragment implements View.OnClickListener {
         text_row_3.setText(R.string.activity_level_3);
         text_row_4.setText(R.string.activity_level_4);
         text_row_5.setText(R.string.activity_level_5);
-    }
-
-
-    private void AddToRegistration(String type, int level)
-    {
-        if(type.isEmpty() || type.equals("pain"))
-        {
-            Application.getInstance().addPainLevel(new PainLevel(level, type));
-        }
-        else if(type.equals("sleep"))
-        {
-
-        }
-        else if(type.equals("mood"))
-        {
-
-        }
-        else if(type.equals("activity"))
-        {
-
-        }
     }
 
 }

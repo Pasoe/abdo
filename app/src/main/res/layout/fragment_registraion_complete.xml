@@ -171,22 +171,13 @@
                     />
                 <ImageView
                     android:layout_below="@id/answered_icon_sleep"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/answered_icon_sleep_mark"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/icon_questionmark"
-                    android:tint="@color/colorWhite"
-                    />
-                <ImageView
-                    android:layout_below="@id/answered_icon_sleep"
-                    android:layout_alignParentBottom="true"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/icon_checkmark_vector"
+                    android:src="@drawable/icon_questionmark"
                     android:tint="@color/colorWhite"
-                    android:visibility="invisible"
+                    android:id="@+id/answered_icon_sleep_status"
+
                     />
             </RelativeLayout>
         </LinearLayout>
@@ -228,16 +219,7 @@
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/icon_questionmark"
                     android:tint="@color/colorWhite"
-                    />
-                <ImageView
-                    android:layout_below="@id/answered_icon_mood"
-                    android:layout_alignParentBottom="true"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/icon_checkmark_vector"
-                    android:tint="@color/colorWhite"
-                    android:visibility="invisible"
+                    android:id="@+id/answered_icon_mood_status"
                     />
             </RelativeLayout>
         </LinearLayout>
@@ -272,6 +254,7 @@
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/icon_questionmark"
                     android:tint="@color/colorWhite"
+                    android:id="@+id/answered_icon_excersize_status"
                     />
                 <ImageView
                     android:layout_below="@id/answered_icon_excersize"

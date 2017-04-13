@@ -92,27 +92,28 @@ public class SetupActivity extends AppCompatActivity {
         if (lastLogin != Long.MIN_VALUE)
         {
             Period interval = new Period(lastLogin, new Date().getTime());
-            update = interval.getHours() > 1;
+            update = interval.getHours() > 6;
         }
 
         Log.i("INFO", update ? "Data is out of date, asking server for new." : "Using existing data");
-
+        ArrayList<Allergy> allergies =
+                gson.fromJson(allergies_json, new TypeToken<ArrayList<Allergy>>(){}.getType());
+        Application.getInstance().set_allergyList(allergies);
         if (!update && !allergies_json.isEmpty()){
-            ArrayList<Allergy> allergies =
-                    gson.fromJson(allergies_json, new TypeToken<ArrayList<Allergy>>(){}.getType());
-            Application.getInstance().set_allergyList(allergies);
             Log.i("INFO", "Fetched allergies from pref");
             Log.d("DATA", Application.getInstance().get_allergyList().toString());
         }
         else new com.abdo.patrick.abdo.Api.Allergy.Get().execute();
 
+
+        ArrayList<Supplement> supplements =
+                gson.fromJson(supplements_json, new TypeToken<ArrayList<Supplement>>(){}.getType());
+        Application.getInstance().set_supplementList(supplements);
         if (!update && !supplements_json.isEmpty()){
-            ArrayList<Supplement> supplements =
-                    gson.fromJson(supplements_json, new TypeToken<ArrayList<Supplement>>(){}.getType());
-            Application.getInstance().set_supplementList(supplements);
             Log.i("INFO", "Fetched supplements from pref");
             Log.d("DATA", Application.getInstance().get_supplementList().toString());
         }
         else new com.abdo.patrick.abdo.Api.Supplement.Get().execute();
+
     }
 }
