@@ -7,6 +7,7 @@ import com.abdo.patrick.abdo.Models.ChildMedicine;
 import com.abdo.patrick.abdo.Models.Feces;
 import com.abdo.patrick.abdo.Models.Food;
 import com.abdo.patrick.abdo.Models.PainLevel;
+import com.abdo.patrick.abdo.Models.Registration;
 import com.abdo.patrick.abdo.Models.Supplement;
 import com.abdo.patrick.abdo.ViewModels.ListItem;
 import com.google.gson.Gson;
@@ -33,6 +34,7 @@ public class Application extends android.app.Application {
     private Anonymous _anonymous;
 
     private String currentChildGuid;
+    private Registration _currentRegistration;
 
     private ArrayList<Allergy> _allergyList;
     private ArrayList<Supplement> _supplementList;
@@ -57,6 +59,7 @@ public class Application extends android.app.Application {
         _foodList = new ArrayList<>();
         _painLevel = new ArrayList<>();
 
+        _currentRegistration = new Registration();
     }
 
     public static Application getInstance() {
@@ -66,6 +69,10 @@ public class Application extends android.app.Application {
     public static String getAndroidId(Context context)
     {
         return Secure.getString(context.getContentResolver(), Secure.ANDROID_ID);
+    }
+
+    public Registration getCurrentRegistration() {
+        return _currentRegistration;
     }
 
     public void addPainLevel(PainLevel painLevel)

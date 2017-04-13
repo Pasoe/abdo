@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.abdo.patrick.abdo.Controllers.ImageController;
+import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.R;
 import com.abdo.patrick.abdo.Views.MainActivity;
 
@@ -44,6 +45,7 @@ public class PainPlacement extends Fragment implements View.OnTouchListener {
 
         overlay.setOnTouchListener(this);
 
+
         return view;
     }
 
@@ -57,32 +59,36 @@ public class PainPlacement extends Fragment implements View.OnTouchListener {
         if (color == -1) return false;
 
         Bundle i = new Bundle();
+        int painPlacementId;
 
         switch (color){
 
             case Color.YELLOW:
-//                Toast.makeText(getActivity(), "Hoved!", Toast.LENGTH_SHORT).show();
+                painPlacementId = 1;
                 i.putString("rating_header", "Hoved: Hvor ondt gør det?");
                 break;
 
             case Color.RED:
-//                Toast.makeText(getActivity(), "Bryst!", Toast.LENGTH_SHORT).show();
+                painPlacementId = 2;
                 i.putString("rating_header", "Bryst: Hvor ondt gør det?");
                 break;
 
             case Color.GREEN:
-//                Toast.makeText(getActivity(), "Mave!", Toast.LENGTH_SHORT).show();
-                i.putString("rating_header", "Mave: Hvor ondt gør det?");
+                painPlacementId = 3;
+                i.putString("rating_header", "Øvre mave: Hvor ondt gør det?");
                 break;
 
             case Color.BLUE:
-//                Toast.makeText(getActivity(), "Penis!", Toast.LENGTH_SHORT).show();
-                i.putString("rating_header", "Penis: Hvor ondt gør det?");
+                painPlacementId = 4;
+                i.putString("rating_header", "Under mave: Hvor ondt gør det?");
                 break;
 
             default:
                 return false;
         }
+
+        //Set pain placement into registration
+        Application.getInstance().getCurrentRegistration().addPainPlacement(painPlacementId);
 
         Fragment fragment = new Rating();
         fragment.setArguments(i);
