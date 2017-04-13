@@ -19,7 +19,7 @@
             android:layout_height="50dp"
             android:layout_marginRight="10dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
             android:src="@drawable/icon_pain"
             android:tint="@color/colorWhite"/>
         <TextView
@@ -28,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:id="@+id/pain_location"
+            android:layout_marginLeft="10dp"
             android:textSize="18sp"
             android:textColor="@color/colorWhite"/>
 
