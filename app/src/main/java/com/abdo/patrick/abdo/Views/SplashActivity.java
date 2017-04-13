@@ -2,9 +2,12 @@ package com.abdo.patrick.abdo.Views;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.AnimationDrawable;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.abdo.patrick.abdo.Api.Anonymous.Post;
 import com.abdo.patrick.abdo.Domain.Application;
@@ -21,6 +24,8 @@ import org.joda.time.Period;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static java.lang.Thread.sleep;
+
 public class SplashActivity extends AppCompatActivity {
 
     @Override
@@ -28,16 +33,28 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        ImageView imageView = (ImageView) findViewById(R.id.splashimage);
+
+        imageView.setBackgroundResource(R.drawable.splashanimation);
+        AnimationDrawable anim = (AnimationDrawable) imageView.getBackground();
+        anim.start();
+
+
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                if(Application.getInstance().get_anonymous().childrenExists()){
+                    Intent i = new Intent(SplashActivity.this, MainActivity.class);
+                    startActivity(i);
+                } else{
+                    Intent i = new Intent(SplashActivity.this, SetupActivity.class);
+                    startActivity(i);
+                }
+                finish();
+            }
+        }, 3000);
+
+
         syncData();
-
-        if(Application.getInstance().get_anonymous().childrenExists()){
-            Intent i = new Intent(this, MainActivity.class);
-            startActivity(i);
-        } else{
-            Intent i = new Intent(this, SetupActivity.class);
-            startActivity(i);
-        }
-
     }
 
     private void syncData(){
