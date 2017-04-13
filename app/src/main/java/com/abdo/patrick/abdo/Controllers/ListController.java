@@ -32,7 +32,6 @@ public class ListController {
     private ChildDataListFagment _childDataListFagment;
     private ChildOverviewFragment _childOverviewFragment;
     private ChildMedicineData _childMedicineFragment;
-    private Rating _rating;
     private Context _context;
 
     public ListController(ChildDataListFagment childDataListFagment) {
@@ -50,29 +49,10 @@ public class ListController {
         _context = _childMedicineFragment.getActivity().getApplicationContext();
     }
 
-    public ListController(Rating rating){
-        _rating = rating;
-        _context = _rating.getActivity().getApplicationContext();
-    }
-
     public void InitViews(RecyclerView recyclerView, ArrayList data){
 
         final RecyclerView.Adapter adapter = new Adapter(data);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(_context);
-
-//        if(_childDataListFagment != null){
-//            layoutManager = new LinearLayoutManager(_context);
-//        }
-//        if(_childOverviewFragment != null){
-//            layoutManager = new LinearLayoutManager(_context);
-//        }
-//        if(_childMedicineFragment != null){
-//            layoutManager = new LinearLayoutManager(_context);
-//        }
-//        if(_painPlacementRating != null){
-//            layoutManager = new LinearLayoutManager(_context);
-//        }
-
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
@@ -105,13 +85,8 @@ public class ListController {
                     if(_childMedicineFragment != null){
                         fragment = _childMedicineFragment;
                     }
-                    if(_childMedicineFragment != null){
-                        fragment = _rating;
-                    }
 
                     String listType = fragment.getArguments().getString("listType", "");
-
-
 
                     if(listType.equals("supplements")){
                         Child newChild = Application.getInstance().getNewChild();

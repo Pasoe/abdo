@@ -106,7 +106,6 @@ public class SetupActivity extends AppCompatActivity {
         }
         else new com.abdo.patrick.abdo.Api.Allergy.Get().execute();
 
-
         if (!update && !supplements_json.isEmpty()){
             ArrayList<Supplement> supplements =
                     gson.fromJson(supplements_json, new TypeToken<ArrayList<Supplement>>(){}.getType());
@@ -115,6 +114,5 @@ public class SetupActivity extends AppCompatActivity {
             Log.d("DATA", Application.getInstance().get_supplementList().toString());
         }
         else new com.abdo.patrick.abdo.Api.Supplement.Get().execute();
-
     }
 }

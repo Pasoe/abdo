@@ -60,5 +60,4 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             row_selected_icon = (ImageView) view.findViewById(R.id.row_selected_icon);
         }
     }
-
 }

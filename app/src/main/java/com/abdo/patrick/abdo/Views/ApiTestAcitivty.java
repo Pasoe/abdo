@@ -23,7 +23,6 @@ public class ApiTestAcitivty extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_api_test_acitivty);
 
-
         textView = (TextView) findViewById(R.id.textViewApiTest);
 
         button = (Button) findViewById(R.id.buttonApiTest);

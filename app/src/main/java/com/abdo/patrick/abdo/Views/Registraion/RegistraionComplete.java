@@ -92,7 +92,6 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.main_activity_reg_fragment, fragment);
         fragmentTransaction.commit();
-
     }
 
     @Override

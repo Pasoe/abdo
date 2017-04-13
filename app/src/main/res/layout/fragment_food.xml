@@ -50,7 +50,6 @@
                 android:adjustViewBounds="true"
                 android:src="@drawable/icon_breakfast"
                 android:tint="@color/colorWhite"/>
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -59,7 +58,6 @@
                 android:layout_gravity="bottom"
                 android:text="Morgenmad"
                 android:textColor="@color/colorWhite"/>
-
             <ImageView
                 android:id="@+id/answered_icon_breakfast"
                 android:layout_alignParentBottom="true"
@@ -70,6 +68,7 @@
                 android:tint="@color/colorWhite"
                 />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/food_lunch_button"
             android:layout_width="0dp"
@@ -89,7 +88,6 @@
                 android:adjustViewBounds="true"
                 android:src="@drawable/icon_lunch"
                 android:tint="@color/colorWhite"/>
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -97,9 +95,7 @@
                 android:textAlignment="center"
                 android:layout_gravity="bottom"
                 android:text="Frokost"
-                android:textColor="@color/colorWhite"
-                />
-
+                android:textColor="@color/colorWhite"/>
             <ImageView
                 android:id="@+id/answered_icon_lunch"
                 android:layout_alignParentBottom="true"
@@ -111,6 +107,7 @@
                 />
         </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -135,7 +132,6 @@
                 android:adjustViewBounds="true"
                 android:src="@drawable/icon_dinner"
                 android:tint="@color/colorWhite"/>
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -144,7 +140,6 @@
                 android:layout_gravity="bottom"
                 android:text="Aftensmad"
                 android:textColor="@color/colorWhite"/>
-
             <ImageView
                 android:id="@+id/answered_icon_dinner"
                 android:layout_alignParentBottom="true"
@@ -155,6 +150,7 @@
                 android:tint="@color/colorWhite"
                 />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/food_fruit_button"
             android:layout_width="0dp"
@@ -175,7 +171,6 @@
                 android:adjustViewBounds="true"
                 android:src="@drawable/icon_fruit"
                 android:tint="@color/colorWhite"/>
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -183,8 +178,7 @@
                 android:textAlignment="center"
                 android:layout_gravity="bottom"
                 android:text="Frugt"
-                android:textColor="@color/colorWhite"
-                />
+                android:textColor="@color/colorWhite"/>
             <ImageView
                 android:id="@+id/answered_icon_fruit"
                 android:layout_alignParentBottom="true"
@@ -192,8 +186,7 @@
                 android:layout_height="30dp"
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/icon_questionmark"
-                android:tint="@color/colorWhite"
-                />
+                android:tint="@color/colorWhite"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -201,6 +194,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+
         <LinearLayout
             android:id="@+id/food_candy_button"
             android:layout_width="0dp"
@@ -220,7 +214,6 @@
                 android:adjustViewBounds="true"
                 android:src="@drawable/icon_candy"
                 android:tint="@color/colorWhite"/>
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -229,7 +222,6 @@
                 android:layout_gravity="bottom"
                 android:text="Sødt"
                 android:textColor="@color/colorWhite"/>
-
             <ImageView
                 android:id="@+id/answered_icon_candy"
                 android:layout_alignParentBottom="true"
@@ -240,6 +232,7 @@
                 android:tint="@color/colorWhite"
                 />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/food_no_food_button"
             android:layout_width="0dp"
@@ -259,7 +252,6 @@
                 android:adjustViewBounds="true"
                 android:src="@drawable/icon_no_food"
                 android:tint="@color/colorWhite"/>
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -267,8 +259,7 @@
                 android:textAlignment="center"
                 android:layout_gravity="bottom"
                 android:text="Jeg har ikke spist i dag"
-                android:textColor="@color/colorWhite"
-                />
+                android:textColor="@color/colorWhite"/>
             <ImageView
                 android:id="@+id/answered_icon_no_food"
                 android:layout_alignParentBottom="true"
@@ -277,8 +268,7 @@
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/icon_checkmark"
                 android:tint="@color/colorWhite"
-                android:visibility="invisible"
-                />
+                android:visibility="invisible" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
