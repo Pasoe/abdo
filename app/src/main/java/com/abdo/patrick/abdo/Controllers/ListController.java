@@ -10,22 +10,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.abdo.patrick.abdo.Adapter;
 import com.abdo.patrick.abdo.Domain.Application;
-import com.abdo.patrick.abdo.Models.Activity;
-import com.abdo.patrick.abdo.Models.Allergy;
 import com.abdo.patrick.abdo.Models.Child;
-import com.abdo.patrick.abdo.Models.Supplement;
 import com.abdo.patrick.abdo.R;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildDataListFagment;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildMedicineData;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildMedicineEditFragment;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildOverviewFragment;
-import com.abdo.patrick.abdo.Views.RegisterChild.ChildStamData;
-import com.abdo.patrick.abdo.Views.Registraion.PainPlacementRating;
+import com.abdo.patrick.abdo.Views.Registraion.Rating;
 
 import java.util.ArrayList;
 
@@ -38,7 +32,7 @@ public class ListController {
     private ChildDataListFagment _childDataListFagment;
     private ChildOverviewFragment _childOverviewFragment;
     private ChildMedicineData _childMedicineFragment;
-    private PainPlacementRating _painPlacementRating;
+    private Rating _rating;
     private Context _context;
 
     public ListController(ChildDataListFagment childDataListFagment) {
@@ -56,9 +50,9 @@ public class ListController {
         _context = _childMedicineFragment.getActivity().getApplicationContext();
     }
 
-    public ListController(PainPlacementRating painPlacementRating){
-        _painPlacementRating = painPlacementRating;
-        _context = _painPlacementRating.getActivity().getApplicationContext();
+    public ListController(Rating rating){
+        _rating = rating;
+        _context = _rating.getActivity().getApplicationContext();
     }
 
     public void InitViews(RecyclerView recyclerView, ArrayList data){
@@ -112,7 +106,7 @@ public class ListController {
                         fragment = _childMedicineFragment;
                     }
                     if(_childMedicineFragment != null){
-                        fragment = _painPlacementRating;
+                        fragment = _rating;
                     }
 
                     String listType = fragment.getArguments().getString("listType", "");

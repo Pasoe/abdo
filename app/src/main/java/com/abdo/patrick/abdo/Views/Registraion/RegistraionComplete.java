@@ -24,8 +24,13 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
         // Required empty public constructor
     }
 
-    private LinearLayout answer_toilet_tile;
-    private LinearLayout answer_food_tile;
+    private LinearLayout
+             answer_toilet_tile
+            ,answer_food_tile
+            ,answer_sleep_tile
+            ,answer_mood_tile
+            ,answer_activity_tile
+            ,answer_pain_tile;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,12 +44,25 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
         answer_food_tile = (LinearLayout) view.findViewById(R.id.answer_food_tile);
         answer_food_tile.setOnClickListener(this);
 
+        answer_sleep_tile = (LinearLayout) view.findViewById(R.id.answer_sleep_tile);
+        answer_sleep_tile.setOnClickListener(this);
+
+        answer_mood_tile = (LinearLayout) view.findViewById(R.id.answer_mood_tile);
+        answer_mood_tile.setOnClickListener(this);
+
+        answer_activity_tile = (LinearLayout) view.findViewById(R.id.answer_exercise_tile);
+        answer_activity_tile.setOnClickListener(this);
+
+        answer_pain_tile = (LinearLayout) view.findViewById(R.id.answer_pain_tile);
+        answer_pain_tile.setOnClickListener(this);
+
         return view;
     }
 
     @Override
     public void onClick(View v) {
         Fragment fragment = null;
+        Bundle bundle = new Bundle();
 
         if(v == answer_toilet_tile){
             fragment = new ToiletFragment();
@@ -53,12 +71,34 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
             fragment = new FoodFragment();
         }
 
-        FragmentManager fragmentManager2 = getFragmentManager();
-        FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
-        fragmentTransaction2.addToBackStack(null);
-        fragmentTransaction2.replace(R.id.main_activity_reg_fragment, fragment);
-        fragmentTransaction2.commit();
+        if(v == answer_sleep_tile){
+            bundle.putString("fragment", "sleep");
+        }
+        if(v == answer_mood_tile){
+            bundle.putString("fragment", "mood");
+        }
+        if(v == answer_activity_tile){
+            bundle.putString("fragment", "activity");
+        }
+        if(v == answer_pain_tile){
+            bundle.putString("fragment", "pain");
+        }
 
+        if (fragment == null) fragment = new Rating();
+        if (!bundle.isEmpty()) fragment.setArguments(bundle);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.main_activity_reg_fragment, fragment);
+        fragmentTransaction.commit();
+
+    }
+
+    @Override
+    public void onResume() {
+
+        super.onResume();
     }
 
 }

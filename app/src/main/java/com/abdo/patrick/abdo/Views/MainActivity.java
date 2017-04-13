@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Fragment fr = new RegistraionComplete();
+        Fragment fr = new PainPlacement();
         getSupportFragmentManager().beginTransaction().add(R.id.main_activity_reg_fragment, fr).commit();
     }
 
