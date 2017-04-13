@@ -6,16 +6,26 @@
     tools:context="com.abdo.patrick.abdo.Views.Registraion.Rating">
 
     <RelativeLayout
+        android:id="@+id/rating_header"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/colorOrange"
         android:padding="0dp"
         android:layout_marginBottom="2dp"
         >
+        <ImageView
+            android:id="@+id/rating_header_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/icon_pain"
+            android:tint="@color/colorWhite"/>
         <TextView
+            android:layout_toRightOf="@+id/rating_header_icon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_centerVertical="true"
             android:id="@+id/pain_location"
             android:textSize="18sp"

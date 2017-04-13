@@ -73,15 +73,19 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
 
         if(v == answer_sleep_tile){
             bundle.putString("fragment", "sleep");
+            bundle.putString("rating_header", "Hvor godt har du sovet?");
         }
         if(v == answer_mood_tile){
             bundle.putString("fragment", "mood");
+            bundle.putString("rating_header", "Har du været i godt humør?");
         }
         if(v == answer_activity_tile){
             bundle.putString("fragment", "activity");
+            bundle.putString("rating_header", "Har du brugt kroppen i dag?");
         }
         if(v == answer_pain_tile){
             bundle.putString("fragment", "pain");
+            bundle.putString("rating_header", "Hvor ondt gør det?");
         }
 
         if (fragment == null) fragment = new Rating();
