@@ -137,26 +137,24 @@ public class Rating extends Fragment implements View.OnClickListener {
                 break;
         }
 
-        Fragment fragment;
         FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
 
-        if (getArguments().getString("fragment", "").isEmpty())
+        if (!getArguments().getString("fragment", "").isEmpty())
+        {
+            Log.i("Back press", "false");
+            fragmentManager.popBackStack();
+        }
+        else
         {
             Log.i("Back press", "true");
+            Fragment fragment;
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
             fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             fragment = new RegistraionComplete();
             fragmentTransaction.replace(R.id.main_activity_reg_fragment, fragment);
             fragmentTransaction.commit();
         }
-        else
-        {
-            Log.i("Back press", "false");
-            fragmentManager.popBackStack();
-        }
-
-
     }
 
 
