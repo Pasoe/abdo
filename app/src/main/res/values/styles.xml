@@ -28,68 +28,6 @@
         <item name="colorControlHighlight">@color/colorWhite</item>
     </style>
 
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
-    penis
     //Button style
     <style name="button" parent="android:Widget.Button">
         <item name="android:gravity">center_vertical|center_horizontal</item>
@@ -104,7 +42,4 @@
         <item name="android:focusable">true</item>
         <item name="android:clickable">true</item>
     </style>
-
-
-
 </resources>

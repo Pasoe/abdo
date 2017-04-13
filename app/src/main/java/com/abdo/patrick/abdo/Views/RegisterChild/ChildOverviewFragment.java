@@ -1,6 +1,7 @@
 package com.abdo.patrick.abdo.Views.RegisterChild;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -19,6 +20,8 @@ import com.abdo.patrick.abdo.Models.ChildAllergy;
 import com.abdo.patrick.abdo.Models.ChildMedicine;
 import com.abdo.patrick.abdo.Models.ChildSupplement;
 import com.abdo.patrick.abdo.R;
+import com.abdo.patrick.abdo.Views.MainActivity;
+import com.abdo.patrick.abdo.Views.SplashActivity;
 import com.abdo.patrick.abdo.Views.Startup.NewUserFragment;
 
 
@@ -109,12 +112,15 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
 
             toolbarSave.setVisibility(View.INVISIBLE);
 
-            fragment = new NewUserFragment();
-            FragmentManager fragmentManager2 = getFragmentManager();
-            FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
-            fragmentManager2.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-            fragmentTransaction2.replace(R.id.main_activity_fragment, fragment);
-            fragmentTransaction2.commit();
+            Intent i = new Intent(getActivity(), MainActivity.class);
+            startActivity(i);
+
+//            fragment = new NewUserFragment();
+//            FragmentManager fragmentManager2 = getFragmentManager();
+//            FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
+//            fragmentManager2.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+//            fragmentTransaction2.replace(R.id.main_activity_fragment, fragment);
+//            fragmentTransaction2.commit();
         }
 
         switch(v.getId()){
