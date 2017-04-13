@@ -20,7 +20,6 @@ import com.abdo.patrick.abdo.Views.RegisterChild.ChildMedicineData;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildMedicineEditFragment;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildOverviewFragment;
 import com.abdo.patrick.abdo.Views.Registraion.FoodListFragment;
-import com.abdo.patrick.abdo.Views.Registraion.PainPlacementRating;
 
 import java.util.ArrayList;
 

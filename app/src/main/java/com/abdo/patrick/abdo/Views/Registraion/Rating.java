@@ -1,15 +1,21 @@
 package com.abdo.patrick.abdo.Views.Registraion;
 
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +35,7 @@ public class Rating extends Fragment implements View.OnClickListener {
             ,text_row_4
             ,text_row_5;
 
+
     private String fragment = "pain";  //Default
 
     public Rating() {
@@ -41,8 +48,11 @@ public class Rating extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_pain_placement_rating, container, false);
 
-        TextView painLocation_header = (TextView) view.findViewById(R.id.pain_location);
-        painLocation_header.setText(getArguments().getString("pain_header", ""));
+        //Header
+        RelativeLayout header = (RelativeLayout) view.findViewById(R.id.rating_header);
+        ImageView header_icon = (ImageView) view.findViewById(R.id.rating_header_icon);
+        TextView header_text = (TextView) view.findViewById(R.id.pain_location);
+        header_text.setText(getArguments().getString("rating_header", ""));
 
         LinearLayout layout_row_1 = (LinearLayout) view.findViewById(R.id.level_row_1); layout_row_1.setOnClickListener(this);
         LinearLayout layout_row_2 = (LinearLayout) view.findViewById(R.id.level_row_2); layout_row_2.setOnClickListener(this);
@@ -58,26 +68,31 @@ public class Rating extends Fragment implements View.OnClickListener {
 
         switch (getArguments().getString("fragment", ""))
         {
-            case "pain":
-                PainFragment_Init();
-                fragment = "pain";
-                break;
             case "sleep":
                 SleepFragment_Init();
                 fragment = "sleep";
+                header.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorDarkGrey));
+                header_icon.setImageResource(R.drawable.icon_sleep);
+
                 break;
             case "mood":
                 MoodFragment_Init();
                 fragment = "mood";
+                header.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorBlue));
+                header_icon.setImageResource(R.drawable.icon_mood);
                 break;
             case "activity":
                 ActivityFragment_Init();
                 fragment = "activity";
+                header.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPurple));
+                header_icon.setImageResource(R.drawable.icon_excersize);
                 break;
 
             default:
                 PainFragment_Init();
                 fragment = "";
+                header.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorOrange));
+                header_icon.setImageResource(R.drawable.icon_pain);
                 break;
         }
         return view;
