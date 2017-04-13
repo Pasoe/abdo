@@ -1,10 +1,7 @@
 package com.abdo.patrick.abdo.Controllers;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
@@ -15,12 +12,7 @@ import com.abdo.patrick.abdo.Adapter;
 import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.Models.Child;
 import com.abdo.patrick.abdo.R;
-import com.abdo.patrick.abdo.Views.RegisterChild.ChildDataListFagment;
-import com.abdo.patrick.abdo.Views.RegisterChild.ChildMedicineData;
-import com.abdo.patrick.abdo.Views.RegisterChild.ChildMedicineEditFragment;
-import com.abdo.patrick.abdo.Views.RegisterChild.ChildOverviewFragment;
 import com.abdo.patrick.abdo.Views.Registraion.FoodListFragment;
-import com.abdo.patrick.abdo.Views.Registraion.PainPlacementRating;
 
 import java.util.ArrayList;
 
