@@ -22,5 +22,4 @@
         android:layout_centerVertical="true"
         android:visibility="invisible"
         />
-
 </RelativeLayout>

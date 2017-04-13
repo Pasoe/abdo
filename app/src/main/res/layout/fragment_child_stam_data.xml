@@ -15,8 +15,7 @@
         android:layout_weight="1"
         android:background="@color/colorBlue"
         android:padding="20dp"
-        android:layout_marginBottom="2dp"
-        >
+        android:layout_marginBottom="2dp">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -73,7 +72,6 @@
                 android:maxLines="1"
                 android:imeOptions="actionDone"/>
         </LinearLayout>
-
     </RelativeLayout>
 
     <RelativeLayout
@@ -98,7 +96,6 @@
             android:layout_toRightOf="@id/stamdata_gender_row_icon"
             android:paddingLeft="20dp"
             android:paddingRight="20dp">
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -131,7 +128,6 @@
                     android:text="Pige"/>
             </RadioGroup>
         </LinearLayout>
-
     </RelativeLayout>
 
     <RelativeLayout
@@ -172,5 +168,4 @@
             </DatePicker>
         </LinearLayout>
     </RelativeLayout>
-
 </LinearLayout>

@@ -8,10 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.abdo.patrick.abdo.R;
-import com.abdo.patrick.abdo.Views.Registraion.RegistraionComplete;
-import com.abdo.patrick.abdo.Views.Registraion.RegistrationOverview;
 import com.abdo.patrick.abdo.Views.Registraion.PainPlacement;
-import com.abdo.patrick.abdo.Views.Startup.NewUserFragment;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -8,8 +8,7 @@
     <include
         layout="@layout/fragment_child_data_list_fagment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-         />
+        android:layout_height="wrap_content"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/medicine_add_button"
@@ -24,6 +23,5 @@
         android:scaleType="center"
         android:tint="@color/colorWhite"
         android:elevation="2dp"
-        app:backgroundTint="@color/colorBlue"
-        />
+        app:backgroundTint="@color/colorBlue"/>
 </RelativeLayout>

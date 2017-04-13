@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.abdo.patrick.abdo.Views.Registraion.ToiletFragment">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -58,6 +57,7 @@
                 android:layout_gravity="bottom"
                 android:text="Hårde klumper der ligner nødder"/>
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/turd_type_2_button"
             android:layout_width="0dp"
@@ -75,7 +75,6 @@
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"
                 android:src="@drawable/turd02"/>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
@@ -118,6 +117,7 @@
                 android:layout_gravity="bottom"
                 android:text="Pølseformet men med regner på ydersiden"/>
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/turd_type_4_button"
             android:layout_width="0dp"
@@ -178,6 +178,7 @@
                 android:layout_gravity="bottom"
                 android:text="Bløde klumper med skarpe kanter"/>
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/turd_type_6_button"
             android:layout_width="0dp"
@@ -195,7 +196,6 @@
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"
                 android:src="@drawable/turd06"/>
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -228,7 +228,6 @@
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"
                 android:src="@drawable/turd07"/>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
@@ -237,6 +236,7 @@
                 android:layout_gravity="bottom"
                 android:text="Vandig uden klumper. Kun væske"/>
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/turd_type_8_button"
             android:layout_width="0dp"
@@ -253,7 +253,6 @@
                 android:layout_weight="2"
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"/>
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

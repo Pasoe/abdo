@@ -23,8 +23,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="15dp"
             android:src="@drawable/icon_plus"
-            android:tint="#FFFFFF"
-            />
+            android:tint="#FFFFFF"/>
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView

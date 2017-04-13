@@ -7,9 +7,6 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical">
-
-    <!--  Her skal indsættes "guide" billede af indtastning af dele-kode-funktionaliteten  -->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -37,7 +34,6 @@
                 android:textSize="24dp"
                 android:textColor="@color/colorWhite"/>
         </LinearLayout>
-
     <LinearLayout
         android:layout_marginTop="1dp"
         android:layout_marginBottom="1dp"
@@ -51,7 +47,6 @@
         android:paddingBottom="10dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
-
         >
             <ImageView
                 android:layout_width="125dp"
@@ -72,7 +67,6 @@
                 android:textSize="16dp"
                 android:textColor="@color/colorWhite"/>
         </LinearLayout>
-
     <LinearLayout
         android:layout_marginTop="1dp"
         android:layout_width="match_parent"
@@ -94,5 +88,4 @@
             android:imeOptions="actionDone"
             android:textColor="@color/colorBlack"/>
     </LinearLayout>
-
 </LinearLayout>
