@@ -80,9 +80,6 @@ public class ImageController {
         return red == 34 && green == 177 && blue == 76;
     }
 
-
-
-
 public class Touch {
 
         private int x;

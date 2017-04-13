@@ -24,7 +24,6 @@ public class PainPlacement extends Fragment implements View.OnTouchListener {
     ImageView overlay;
     ImageView underlay;
 
-
     ImageController imageController;
 
     public PainPlacement() {
@@ -44,8 +43,6 @@ public class PainPlacement extends Fragment implements View.OnTouchListener {
         underlay = (ImageView) view.findViewById(R.id.image_underlay);
 
         overlay.setOnTouchListener(this);
-
-
 
         return view;
     }
