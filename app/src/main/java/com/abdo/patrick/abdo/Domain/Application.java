@@ -32,7 +32,7 @@ public class Application extends android.app.Application {
 
     private Anonymous _anonymous;
 
-    private int SelectedChild;
+    private String currentChildGuid;
 
     private ArrayList<Allergy> _allergyList;
     private ArrayList<Supplement> _supplementList;
@@ -244,6 +244,11 @@ public class Application extends android.app.Application {
         editor.remove("NewChild");
     }
 
+    public void addNewChildToAnonymous(Child child){
+        _anonymous.addNewChild(child);
+        currentChildGuid = child.getGuid();
+    }
+
     public boolean newChildExists(){
         SharedPreferences settings = getSharedPreferences("Abdo", MODE_PRIVATE);
         return settings.contains("NewChild");
@@ -314,6 +319,7 @@ public class Application extends android.app.Application {
 
     public Child getCurrentChild(){
         //TODO - hent rigtigt child, tak
+        _anonymous.getChild(currentChildGuid);
         return new Child();
     }
 }

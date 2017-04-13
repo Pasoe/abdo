@@ -54,7 +54,6 @@ public class SetupActivity extends AppCompatActivity {
             }
         });
 
-
         Fragment fr = new NewUserFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.main_activity_fragment, fr).commit();
 

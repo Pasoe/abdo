@@ -80,4 +80,16 @@ public class Anonymous {
     }
 
 
+    public Child getChild(String currentChildGuid) {
+        Child child = null;
+        for(Child c : children){
+            if(!c.getGuid().equals(currentChildGuid)) continue;
+                child = c;
+        }
+        return child;
+    }
+
+    public void addNewChild(Child newChild){
+        children.add(newChild);
+    }
 }

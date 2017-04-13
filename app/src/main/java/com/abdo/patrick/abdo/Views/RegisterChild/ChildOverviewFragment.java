@@ -104,6 +104,8 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
 
         if(v == toolbarSave){
             new com.abdo.patrick.abdo.Api.Child.Post().execute(Application.getInstance().getNewChild());
+            Application.getInstance().addNewChildToAnonymous(Application.getInstance().getNewChild());
+            Application.getInstance().removeNewChild();
 
             toolbarSave.setVisibility(View.INVISIBLE);
 
