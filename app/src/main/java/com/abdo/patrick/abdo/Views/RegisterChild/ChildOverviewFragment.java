@@ -114,6 +114,8 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
 
             Intent i = new Intent(getActivity(), MainActivity.class);
             startActivity(i);
+            getActivity().finish();
+            return;
 
 //            fragment = new NewUserFragment();
 //            FragmentManager fragmentManager2 = getFragmentManager();
