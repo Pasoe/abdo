@@ -67,14 +67,12 @@ public class FoodListFragment extends Fragment {
         if(foodType.equals("lunch")){
             headerImage.setImageResource(R.drawable.icon_lunch);
             headerText.setText("Hvad har du fået at spise til frokost?");
-            header.setBackgroundColor(getResources().getColor(R.color.colorBlack));
+            header.setBackgroundColor(getResources().getColor(R.color.colorBrown));
         }
         if(foodType.equals("dinner")){
             headerImage.setImageResource(R.drawable.icon_dinner);
-            headerImage.setColorFilter(getResources().getColor(R.color.colorBlack));
             headerText.setText("Hvad har du fået at spise til aftensmad?");
-            headerText.setTextColor(getResources().getColor(R.color.colorBlack));
-            header.setBackgroundColor(getResources().getColor(R.color.colorWhite));
+            header.setBackgroundColor(getResources().getColor(R.color.colorDarkGrey));
         }
         if(foodType.equals("fruit")){
             headerImage.setImageResource(R.drawable.icon_fruit);

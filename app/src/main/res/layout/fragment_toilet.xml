@@ -30,10 +30,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="2dp"
         android:layout_marginBottom="1dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
         android:layout_weight="1">
         <LinearLayout
             android:id="@+id/turd_type_1_button"
@@ -44,7 +41,7 @@
             android:orientation="vertical"
             android:padding="5dp"
             android:gravity="center_horizontal"
-            android:background="@color/colorLightGrey">
+            android:background="@color/colorGrey">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
@@ -65,12 +62,12 @@
             android:id="@+id/turd_type_2_button"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="5dp"
             android:gravity="center_horizontal"
-            android:background="@color/colorLightGrey">
+            android:background="@color/colorGrey">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
@@ -92,10 +89,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="1dp"
         android:layout_marginBottom="1dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
         android:layout_weight="1">
         <LinearLayout
             android:id="@+id/turd_type_3_button"
@@ -106,7 +101,7 @@
             android:orientation="vertical"
             android:padding="5dp"
             android:gravity="center_horizontal"
-            android:background="@color/colorLightGrey">
+            android:background="@color/colorGrey">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
@@ -127,12 +122,12 @@
             android:id="@+id/turd_type_4_button"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="5dp"
             android:gravity="center_horizontal"
-            android:background="@color/colorLightGrey">
+            android:background="@color/colorGrey">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
@@ -154,10 +149,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="1dp"
         android:layout_marginBottom="1dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
         android:layout_weight="1">
         <LinearLayout
             android:id="@+id/turd_type_5_button"
@@ -168,7 +161,7 @@
             android:orientation="vertical"
             android:padding="5dp"
             android:gravity="center_horizontal"
-            android:background="@color/colorLightGrey">
+            android:background="@color/colorGrey">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
@@ -189,12 +182,12 @@
             android:id="@+id/turd_type_6_button"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="5dp"
             android:gravity="center_horizontal"
-            android:background="@color/colorLightGrey">
+            android:background="@color/colorGrey">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
@@ -216,10 +209,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="1dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
+        android:layout_marginTop="1dp"
         android:layout_weight="1">
         <LinearLayout
             android:id="@+id/turd_type_7_button"
@@ -230,7 +220,7 @@
             android:orientation="vertical"
             android:padding="5dp"
             android:gravity="center_horizontal"
-            android:background="@color/colorLightGrey">
+            android:background="@color/colorGrey">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
@@ -251,12 +241,12 @@
             android:id="@+id/turd_type_8_button"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="5dp"
             android:gravity="center_horizontal"
-            android:background="@color/colorLightGrey">
+            android:background="@color/colorGrey">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
