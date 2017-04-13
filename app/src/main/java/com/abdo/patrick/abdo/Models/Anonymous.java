@@ -25,6 +25,7 @@ public class Anonymous {
     public Anonymous(String deviceId, String deviceName) {
         this.deviceId = deviceId;
         this.deviceName = deviceName;
+        children = new ArrayList<>();
     }
 
     @Override
@@ -80,4 +81,36 @@ public class Anonymous {
     }
 
 
+    public Child getChild(String currentChildGuid) {
+        Child child = null;
+        for(Child c : children){
+            if(!c.getGuid().equals(currentChildGuid)) continue;
+                child = c;
+        }
+        return child;
+    }
+
+    public void addNewChild(Child newChild){
+        if(children == null){
+            children = new ArrayList<>();
+        }
+        children.add(newChild);
+    }
+
+    public void setChildren(ArrayList<Child> children){
+        this.children = children;
+    }
+
+    public ArrayList<Child> getChildren(){
+        return children;
+    }
+
+    public boolean childrenExists(){
+        if(children == null){
+            return false;
+        } else if(children.isEmpty()){
+            return false;
+        }
+        return true;
+    }
 }

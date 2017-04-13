@@ -54,65 +54,7 @@ public class SetupActivity extends AppCompatActivity {
             }
         });
 
-
         Fragment fr = new NewUserFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.main_activity_fragment, fr).commit();
-
-
-        //Getting shared preference with the name <Abdo>
-        SharedPreferences settings = getSharedPreferences("Abdo", MODE_PRIVATE);
-        Gson gson = new Gson();
-        boolean registered = settings.getBoolean("REG", false);
-        Anonymous anonymous;
-
-        //If anonymous not registered in shared preference
-        if (!registered){
-            //Create anonymous and call anonymous-post web service
-            anonymous = new Anonymous(Application.getAndroidId(getApplicationContext()), android.os.Build.MODEL);
-            new Post().execute(anonymous);
-            Log.i("INFO", "Creating new anonymous");
-        }
-        else
-        {
-            String json = settings.getString("Anonymous", "");
-            anonymous = gson.fromJson(json, Anonymous.class);
-            Log.i("INFO", "Retrieved anonymous from shared preferences");
-        }
-        Application.getInstance().set_anonymous(anonymous);
-
-
-        //Get allergies and supplements from pref.
-        String allergies_json = settings.getString("Allergies", "");
-        String supplements_json = settings.getString("Supplements", "");
-
-        //Get last time data was saved to pref
-        long lastLogin = settings.getLong("DataTimestamp", Long.MIN_VALUE);
-        boolean update = true;
-
-        if (lastLogin != Long.MIN_VALUE)
-        {
-            Period interval = new Period(lastLogin, new Date().getTime());
-            update = interval.getHours() > 1;
-        }
-
-        Log.i("INFO", update ? "Data is out of date, asking server for new." : "Using existing data");
-
-        if (!update && !allergies_json.isEmpty()){
-            ArrayList<Allergy> allergies =
-                    gson.fromJson(allergies_json, new TypeToken<ArrayList<Allergy>>(){}.getType());
-            Application.getInstance().set_allergyList(allergies);
-            Log.i("INFO", "Fetched allergies from pref");
-            Log.d("DATA", Application.getInstance().get_allergyList().toString());
-        }
-        else new com.abdo.patrick.abdo.Api.Allergy.Get().execute();
-
-        if (!update && !supplements_json.isEmpty()){
-            ArrayList<Supplement> supplements =
-                    gson.fromJson(supplements_json, new TypeToken<ArrayList<Supplement>>(){}.getType());
-            Application.getInstance().set_supplementList(supplements);
-            Log.i("INFO", "Fetched supplements from pref");
-            Log.d("DATA", Application.getInstance().get_supplementList().toString());
-        }
-        else new com.abdo.patrick.abdo.Api.Supplement.Get().execute();
     }
 }

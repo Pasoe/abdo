@@ -32,7 +32,7 @@ public class Application extends android.app.Application {
 
     private Anonymous _anonymous;
 
-    private int SelectedChild;
+    private String currentChildGuid;
 
     private ArrayList<Allergy> _allergyList;
     private ArrayList<Supplement> _supplementList;
@@ -244,6 +244,41 @@ public class Application extends android.app.Application {
         editor.remove("NewChild");
     }
 
+    public void addNewChildToAnonymous(Child child){
+        _anonymous.addNewChild(child);
+        currentChildGuid = child.getGuid();
+
+        updateChildListInSharedPreferences(_anonymous.getChildren());
+        updateCurrentChildInSharedPreferences(currentChildGuid);
+    }
+
+    private void updateCurrentChildInSharedPreferences(String currentChildGuid) {
+        SharedPreferences settings = getSharedPreferences("Abdo", MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+
+        editor.putString("CurrentChild",currentChildGuid);
+
+        editor.apply();
+        editor.commit();
+    }
+
+    public void updateChildListInSharedPreferences(ArrayList<Child> children){
+        SharedPreferences settings = getSharedPreferences("Abdo", MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+
+        Gson gson = new Gson();
+        String json = gson.toJson(_anonymous.getChildren());
+
+        editor.putString("Children",json);
+
+        editor.apply();
+        editor.commit();
+    }
+
+    public void set_children(ArrayList<Child> children){
+        _anonymous.setChildren(children);
+    }
+
     public boolean newChildExists(){
         SharedPreferences settings = getSharedPreferences("Abdo", MODE_PRIVATE);
         return settings.contains("NewChild");
@@ -314,6 +349,11 @@ public class Application extends android.app.Application {
 
     public Child getCurrentChild(){
         //TODO - hent rigtigt child, tak
+        _anonymous.getChild(currentChildGuid);
         return new Child();
+    }
+
+    public void set_currentChild(String childguid){
+        currentChildGuid = childguid;
     }
 }
