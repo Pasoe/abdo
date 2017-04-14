@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.abdo.patrick.abdo.Views.Registraion.Rating">
+    tools:context="com.abdo.patrick.abdo.Views.Registraion.Rating"
+    android:background="#FFFFFF">
 
     <RelativeLayout
         android:id="@+id/rating_header"
@@ -37,22 +38,23 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/colorWhite"
+        android:background="@color/colorOrange"
         android:orientation="horizontal"
         android:id="@+id/level_row_1"
         android:layout_marginBottom="2dp">
 
         <ImageView
-            android:layout_width="52dp"
-            android:layout_height="52dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:id="@+id/level_row_1_image"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="6dp"
-            android:src="@drawable/painlevel01" />
+            android:src="@drawable/icon_rating_5" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:textColor="#FFFFFF"
             android:layout_marginLeft="6dp"
             android:id="@+id/level_text_row_1" />
     </LinearLayout>
@@ -61,22 +63,23 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/colorWhite"
+        android:background="@color/colorOrange"
         android:orientation="horizontal"
         android:id="@+id/level_row_2"
         android:layout_marginBottom="2dp">
 
         <ImageView
-            android:layout_width="52dp"
-            android:layout_height="52dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:id="@+id/level_row_2_image"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="6dp"
-            android:src="@drawable/painlevel02" />
+            android:src="@drawable/icon_rating_4" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:textColor="#FFFFFF"
             android:layout_marginLeft="6dp"
             android:id="@+id/level_text_row_2" />
     </LinearLayout>
@@ -85,22 +88,23 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/colorWhite"
+        android:background="@color/colorOrange"
         android:orientation="horizontal"
         android:id="@+id/level_row_3"
         android:layout_marginBottom="2dp">
 
         <ImageView
-            android:layout_width="52dp"
-            android:layout_height="52dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:id="@+id/level_row_3_image"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="6dp"
-            android:src="@drawable/painlevel03" />
+            android:src="@drawable/icon_rating_3" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:textColor="#FFFFFF"
             android:layout_marginLeft="6dp"
             android:id="@+id/level_text_row_3" />
     </LinearLayout>
@@ -109,21 +113,22 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/colorWhite"
+        android:background="@color/colorOrange"
         android:orientation="horizontal"
         android:id="@+id/level_row_4"
         android:layout_marginBottom="2dp">
         <ImageView
-            android:layout_width="52dp"
-            android:layout_height="52dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:id="@+id/level_row_4_image"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="6dp"
-            android:src="@drawable/painlevel04" />
+            android:src="@drawable/icon_rating_2" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:textColor="#FFFFFF"
             android:layout_marginLeft="6dp"
             android:id="@+id/level_text_row_4" />
     </LinearLayout>
@@ -132,21 +137,22 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/colorWhite"
+        android:background="@color/colorOrange"
         android:orientation="horizontal"
         android:id="@+id/level_row_5">
         <ImageView
-            android:layout_width="52dp"
-            android:layout_height="52dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:id="@+id/level_row_5_image"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="6dp"
-            android:src="@drawable/painlevel05" />
+            android:src="@drawable/icon_rating_1" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="6dp"
+            android:textColor="#FFFFFF"
             android:id="@+id/level_text_row_5" />
     </LinearLayout>
 </LinearLayout>

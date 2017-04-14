@@ -32,6 +32,20 @@ public class Rating extends Fragment implements View.OnClickListener {
             ,text_row_4
             ,text_row_5;
 
+    private ImageView
+            image_row_1,
+            image_row_2,
+            image_row_3,
+            image_row_4,
+            image_row_5;
+
+    private LinearLayout
+            layout_row_1,
+            layout_row_2,
+            layout_row_3,
+            layout_row_4,
+            layout_row_5;
+
 
     private String fragment = "pain";  //Default
 
@@ -51,17 +65,23 @@ public class Rating extends Fragment implements View.OnClickListener {
         TextView header_text = (TextView) view.findViewById(R.id.pain_location);
         header_text.setText(getArguments().getString("rating_header", ""));
 
-        LinearLayout layout_row_1 = (LinearLayout) view.findViewById(R.id.level_row_1); layout_row_1.setOnClickListener(this);
-        LinearLayout layout_row_2 = (LinearLayout) view.findViewById(R.id.level_row_2); layout_row_2.setOnClickListener(this);
-        LinearLayout layout_row_3 = (LinearLayout) view.findViewById(R.id.level_row_3); layout_row_3.setOnClickListener(this);
-        LinearLayout layout_row_4 = (LinearLayout) view.findViewById(R.id.level_row_4); layout_row_4.setOnClickListener(this);
-        LinearLayout layout_row_5 = (LinearLayout) view.findViewById(R.id.level_row_5); layout_row_5.setOnClickListener(this);
+        layout_row_1 = (LinearLayout) view.findViewById(R.id.level_row_1); layout_row_1.setOnClickListener(this);
+        layout_row_2 = (LinearLayout) view.findViewById(R.id.level_row_2); layout_row_2.setOnClickListener(this);
+        layout_row_3 = (LinearLayout) view.findViewById(R.id.level_row_3); layout_row_3.setOnClickListener(this);
+        layout_row_4 = (LinearLayout) view.findViewById(R.id.level_row_4); layout_row_4.setOnClickListener(this);
+        layout_row_5 = (LinearLayout) view.findViewById(R.id.level_row_5); layout_row_5.setOnClickListener(this);
 
         text_row_1 = (TextView) view.findViewById(R.id.level_text_row_1);
         text_row_2 = (TextView) view.findViewById(R.id.level_text_row_2);
         text_row_3 = (TextView) view.findViewById(R.id.level_text_row_3);
         text_row_4 = (TextView) view.findViewById(R.id.level_text_row_4);
         text_row_5 = (TextView) view.findViewById(R.id.level_text_row_5);
+
+        image_row_1 = (ImageView) view.findViewById(R.id.level_row_1_image);
+        image_row_2 = (ImageView) view.findViewById(R.id.level_row_2_image);
+        image_row_3 = (ImageView) view.findViewById(R.id.level_row_3_image);
+        image_row_4 = (ImageView) view.findViewById(R.id.level_row_4_image);
+        image_row_5 = (ImageView) view.findViewById(R.id.level_row_5_image);
 
         switch (getArguments().getString("fragment", ""))
         {
@@ -70,7 +90,6 @@ public class Rating extends Fragment implements View.OnClickListener {
                 fragment = "sleep";
                 header.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorDarkGrey));
                 header_icon.setImageResource(R.drawable.icon_sleep);
-
                 break;
             case "mood":
                 MoodFragment_Init();
@@ -164,6 +183,18 @@ public class Rating extends Fragment implements View.OnClickListener {
         text_row_3.setText(R.string.pain_level_3);
         text_row_4.setText(R.string.pain_level_4);
         text_row_5.setText(R.string.pain_level_5);
+
+        image_row_1.setImageResource(R.drawable.icon_rating_6);
+        image_row_2.setImageResource(R.drawable.icon_rating_4);
+        image_row_3.setImageResource(R.drawable.icon_rating_3);
+        image_row_4.setImageResource(R.drawable.icon_rating_2);
+        image_row_5.setImageResource(R.drawable.icon_rating_1);
+
+        layout_row_1.setBackgroundColor(getResources().getColor(R.color.colorOrange));
+        layout_row_2.setBackgroundColor(getResources().getColor(R.color.colorOrange));
+        layout_row_3.setBackgroundColor(getResources().getColor(R.color.colorOrange));
+        layout_row_4.setBackgroundColor(getResources().getColor(R.color.colorOrange));
+        layout_row_5.setBackgroundColor(getResources().getColor(R.color.colorOrange));
     }
 
     private void SleepFragment_Init(){
@@ -172,6 +203,18 @@ public class Rating extends Fragment implements View.OnClickListener {
         text_row_3.setText(R.string.sleep_level_3);
         text_row_4.setText(R.string.sleep_level_4);
         text_row_5.setText(R.string.sleep_level_5);
+
+        image_row_1.setImageResource(R.drawable.icon_rating_6);
+        image_row_2.setImageResource(R.drawable.icon_rating_4);
+        image_row_3.setImageResource(R.drawable.icon_rating_3);
+        image_row_4.setImageResource(R.drawable.icon_rating_2);
+        image_row_5.setImageResource(R.drawable.icon_rating_1);
+
+        layout_row_1.setBackgroundColor(getResources().getColor(R.color.colorDarkGrey));
+        layout_row_2.setBackgroundColor(getResources().getColor(R.color.colorDarkGrey));
+        layout_row_3.setBackgroundColor(getResources().getColor(R.color.colorDarkGrey));
+        layout_row_4.setBackgroundColor(getResources().getColor(R.color.colorDarkGrey));
+        layout_row_5.setBackgroundColor(getResources().getColor(R.color.colorDarkGrey));
     }
 
     private void MoodFragment_Init(){
@@ -180,6 +223,18 @@ public class Rating extends Fragment implements View.OnClickListener {
         text_row_3.setText(R.string.mood_level_3);
         text_row_4.setText(R.string.mood_level_4);
         text_row_5.setText(R.string.mood_level_5);
+
+        image_row_1.setImageResource(R.drawable.icon_rating_6);
+        image_row_2.setImageResource(R.drawable.icon_rating_4);
+        image_row_3.setImageResource(R.drawable.icon_rating_3);
+        image_row_4.setImageResource(R.drawable.icon_rating_2);
+        image_row_5.setImageResource(R.drawable.icon_rating_1);
+
+        layout_row_1.setBackgroundColor(getResources().getColor(R.color.colorBlue));
+        layout_row_2.setBackgroundColor(getResources().getColor(R.color.colorBlue));
+        layout_row_3.setBackgroundColor(getResources().getColor(R.color.colorBlue));
+        layout_row_4.setBackgroundColor(getResources().getColor(R.color.colorBlue));
+        layout_row_5.setBackgroundColor(getResources().getColor(R.color.colorBlue));
     }
 
     private void ActivityFragment_Init(){
@@ -188,6 +243,17 @@ public class Rating extends Fragment implements View.OnClickListener {
         text_row_3.setText(R.string.activity_level_3);
         text_row_4.setText(R.string.activity_level_4);
         text_row_5.setText(R.string.activity_level_5);
-    }
 
+        image_row_1.setImageResource(R.drawable.icon_rating_1);
+        image_row_2.setImageResource(R.drawable.icon_rating_2);
+        image_row_3.setImageResource(R.drawable.icon_rating_3);
+        image_row_4.setImageResource(R.drawable.icon_rating_4);
+        image_row_5.setImageResource(R.drawable.icon_rating_5);
+
+        layout_row_1.setBackgroundColor(getResources().getColor(R.color.colorPurple));
+        layout_row_2.setBackgroundColor(getResources().getColor(R.color.colorPurple));
+        layout_row_3.setBackgroundColor(getResources().getColor(R.color.colorPurple));
+        layout_row_4.setBackgroundColor(getResources().getColor(R.color.colorPurple));
+        layout_row_5.setBackgroundColor(getResources().getColor(R.color.colorPurple));
+    }
 }
