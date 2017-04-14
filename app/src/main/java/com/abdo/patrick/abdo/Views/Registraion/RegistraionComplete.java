@@ -34,9 +34,11 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
             ,answer_pain_tile;
 
     private ImageView
-             statusSleep
-            ,statusMood
-            ,statusActivity;
+             sleepStatus
+            ,moodStatus
+            ,activityStatus
+            ,toiletStatus
+            ,foodStatus;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,9 +46,11 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_registraion_complete, container, false);
 
-        statusSleep = (ImageView) view.findViewById(R.id.answered_icon_sleep_status);
-        statusMood = (ImageView) view.findViewById(R.id.answered_icon_mood_status);
-        statusActivity = (ImageView) view.findViewById(R.id.answered_icon_excersize_status);
+        sleepStatus = (ImageView) view.findViewById(R.id.answered_icon_sleep_status);
+        moodStatus = (ImageView) view.findViewById(R.id.answered_icon_mood_status);
+        activityStatus = (ImageView) view.findViewById(R.id.answered_icon_excersize_status);
+        toiletStatus = (ImageView) view.findViewById(R.id.answered_icon_toilet_status);
+        foodStatus = (ImageView) view.findViewById(R.id.answered_icon_food_status);
 
         answer_toilet_tile = (LinearLayout) view.findViewById(R.id.answer_toilet_tile);
         answer_toilet_tile.setOnClickListener(this);
@@ -110,22 +114,33 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
 
     @Override
     public void onResume() {
-        Log.i("onResume", Application.getInstance().getCurrentRegistration().toString());
+        Log.i("onResume, registration", Application.getInstance().getCurrentRegistration().toString());
 
         if (Application.getInstance().getCurrentRegistration().getSleepId() != null)
         {
-            statusSleep.setImageResource(R.drawable.icon_checkmark_vector);
-        }else statusSleep.setImageResource(R.drawable.icon_questionmark);
+            sleepStatus.setImageResource(R.drawable.icon_checkmark_vector);
+        }else sleepStatus.setImageResource(R.drawable.icon_questionmark);
 
         if (Application.getInstance().getCurrentRegistration().getActivityId() != null)
         {
-            statusActivity.setImageResource(R.drawable.icon_checkmark_vector);
-        }else statusActivity.setImageResource(R.drawable.icon_questionmark);
+            activityStatus.setImageResource(R.drawable.icon_checkmark_vector);
+        }else activityStatus.setImageResource(R.drawable.icon_questionmark);
 
         if (Application.getInstance().getCurrentRegistration().getMoodId() != null)
         {
-            statusMood.setImageResource(R.drawable.icon_checkmark_vector);
-        }else statusMood.setImageResource(R.drawable.icon_questionmark);
+            moodStatus.setImageResource(R.drawable.icon_checkmark_vector);
+        }else moodStatus.setImageResource(R.drawable.icon_questionmark);
+
+        if (Application.getInstance().getCurrentRegistration().getFecesId() != null)
+        {
+            toiletStatus.setImageResource(R.drawable.icon_checkmark_vector);
+        }else toiletStatus.setImageResource(R.drawable.icon_questionmark);
+
+        if (Application.getInstance().getCurrentRegistration().getFoods().size() > 0 ||
+                Application.getInstance().getCurrentRegistration().hasFood())
+        {
+            foodStatus.setImageResource(R.drawable.icon_checkmark_vector);
+        }else foodStatus.setImageResource(R.drawable.icon_questionmark);
 
 
         super.onResume();

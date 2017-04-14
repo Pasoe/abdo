@@ -5,11 +5,14 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.R;
 
 /**
@@ -25,6 +28,13 @@ public class FoodFragment extends Fragment implements View.OnClickListener {
     LinearLayout candy_button;
     LinearLayout no_food_button;
 
+    ImageView breakfastStatus
+            ,lunchStatus
+            ,dinnerStatus
+            ,fruitStatus
+            ,candyStatus
+            ,noFoodStatus;
+
     public FoodFragment() {
         // Required empty public constructor
     }
@@ -35,6 +45,13 @@ public class FoodFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_food, container, false);
+
+        breakfastStatus = (ImageView) view.findViewById(R.id.answered_icon_breakfast);
+        lunchStatus = (ImageView) view.findViewById(R.id.answered_icon_lunch);
+        dinnerStatus = (ImageView) view.findViewById(R.id.answered_icon_dinner);
+        fruitStatus = (ImageView) view.findViewById(R.id.answered_icon_fruit);
+        candyStatus = (ImageView) view.findViewById(R.id.answered_icon_candy);
+        noFoodStatus = (ImageView) view.findViewById(R.id.answered_icon_no_food);
 
         breakfast_button = (LinearLayout) view.findViewById(R.id.food_breakfast_button);
         breakfast_button.setOnClickListener(this);
@@ -61,7 +78,9 @@ public class FoodFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
 
         if(v == no_food_button){
-            //TODO - Sæt childs foodcategory til no-food
+            Application.getInstance().getCurrentRegistration().setHasFood(!
+                    Application.getInstance().getCurrentRegistration().hasFood());
+            Application.getInstance().getCurrentRegistration().getFoods().clear();
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.popBackStack();
             return;
@@ -71,23 +90,23 @@ public class FoodFragment extends Fragment implements View.OnClickListener {
         Bundle i = new Bundle();
 
         if(v == breakfast_button){
-            i.putString("foodType", "breakfast");
+            i.putString("foodType", "Morgenmad");
             fragment.setArguments(i);
         }
         if(v == lunch_button){
-            i.putString("foodType", "lunch");
+            i.putString("foodType", "Frokost");
             fragment.setArguments(i);
         }
         if(v == dinner_button){
-            i.putString("foodType", "dinner");
+            i.putString("foodType", "Aftensmad");
             fragment.setArguments(i);
         }
         if(v == fruit_button){
-            i.putString("foodType", "fruit");
+            i.putString("foodType", "Frugt");
             fragment.setArguments(i);
         }
         if(v == candy_button){
-            i.putString("foodType", "candy");
+            i.putString("foodType", "Sødt");
             fragment.setArguments(i);
         }
 
@@ -96,5 +115,47 @@ public class FoodFragment extends Fragment implements View.OnClickListener {
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.main_activity_reg_fragment, fragment);
         fragmentTransaction.commit();
+    }
+
+    public void onResume() {
+        Log.i("onResume, food overview", Application.getInstance().getCurrentRegistration().getFoods().toString());
+        Log.i("onResume, has food", ""+Application.getInstance().getCurrentRegistration().hasFood());
+
+        int visibility =
+                (
+                        Application.getInstance().getCurrentRegistration().getFoods().isEmpty()
+                        && Application.getInstance().getCurrentRegistration().hasFood()
+                )
+                        ?
+                        View.VISIBLE : View.INVISIBLE;
+
+        noFoodStatus.setVisibility(visibility);
+
+        if (Application.getInstance().getCurrentRegistration().RegisteredFoodContainsCategory("Morgenmad"))
+        {
+            breakfastStatus.setImageResource(R.drawable.icon_checkmark_vector);
+        }else breakfastStatus.setImageResource(R.drawable.icon_questionmark);
+
+        if (Application.getInstance().getCurrentRegistration().RegisteredFoodContainsCategory("Frokost"))
+        {
+            lunchStatus.setImageResource(R.drawable.icon_checkmark_vector);
+        }else lunchStatus.setImageResource(R.drawable.icon_questionmark);
+
+        if (Application.getInstance().getCurrentRegistration().RegisteredFoodContainsCategory("Aftensmad"))
+        {
+            dinnerStatus.setImageResource(R.drawable.icon_checkmark_vector);
+        }else dinnerStatus.setImageResource(R.drawable.icon_questionmark);
+
+        if (Application.getInstance().getCurrentRegistration().RegisteredFoodContainsCategory("Frugt"))
+        {
+            fruitStatus.setImageResource(R.drawable.icon_checkmark_vector);
+        }else fruitStatus.setImageResource(R.drawable.icon_questionmark);
+
+        if (Application.getInstance().getCurrentRegistration().RegisteredFoodContainsCategory("Sødt"))
+        {
+            candyStatus.setImageResource(R.drawable.icon_checkmark_vector);
+        }else candyStatus.setImageResource(R.drawable.icon_questionmark);
+
+        super.onResume();
     }
 }

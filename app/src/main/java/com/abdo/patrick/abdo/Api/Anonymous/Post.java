@@ -21,9 +21,11 @@ public class Post extends AsyncTask<Anonymous, Void, Integer> {
     protected void onPreExecute() {
 
     }
+    private Anonymous _anonymous;
 
     protected Integer doInBackground(Anonymous... anonymous) {
         // Do some validation here
+        _anonymous = anonymous[0];
 
         try {
             URL url = new URL("http://abdoapi.azurewebsites.net/api/Anonymous");
@@ -63,7 +65,7 @@ public class Post extends AsyncTask<Anonymous, Void, Integer> {
             if(response == HttpURLConnection.HTTP_CONFLICT)
                 Log.i("INFO", "User already exists");
 
-            Application.getInstance().AddAnonymousToPreference();
+            Application.getInstance().AddItemToPreference("Anonymous", _anonymous);
         }
 
 

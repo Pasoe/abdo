@@ -53,33 +53,34 @@ public class FoodListFragment extends Fragment {
         setHeader(foodType);
 
         ArrayList<Food> food = Application.getInstance().get_foodList(foodType);
-        model.InitViews(recyclerView, Application.getInstance().getFoodListView(food, Application.getInstance().getCurrentChild()));
+        model.InitViews(recyclerView, Application.getInstance().getFoodListView(food,
+                Application.getInstance().getCurrentRegistration().getFoods()));
 
         return view;
     }
 
     private void setHeader(String foodType){
-        if(foodType.equals("breakfast")){
+        if(foodType.equals("Morgenmad")){
             headerImage.setImageResource(R.drawable.icon_breakfast);
             headerText.setText("Hvad har du fået at spise til morgenmad?");
             header.setBackgroundColor(getResources().getColor(R.color.colorGreen));
         }
-        if(foodType.equals("lunch")){
+        if(foodType.equals("Frokost")){
             headerImage.setImageResource(R.drawable.icon_lunch);
             headerText.setText("Hvad har du fået at spise til frokost?");
             header.setBackgroundColor(getResources().getColor(R.color.colorBrown));
         }
-        if(foodType.equals("dinner")){
+        if(foodType.equals("Aftensmad")){
             headerImage.setImageResource(R.drawable.icon_dinner);
             headerText.setText("Hvad har du fået at spise til aftensmad?");
             header.setBackgroundColor(getResources().getColor(R.color.colorDarkGrey));
         }
-        if(foodType.equals("fruit")){
+        if(foodType.equals("Frugt")){
             headerImage.setImageResource(R.drawable.icon_fruit);
             headerText.setText("Hvilke frugter har du spist i dag?");
             header.setBackgroundColor(getResources().getColor(R.color.colorBlue));
         }
-        if(foodType.equals("candy")){
+        if(foodType.equals("Sødt")){
             headerImage.setImageResource(R.drawable.icon_candy);
             headerText.setText("Hvilket slik har du spist i dag?");
             header.setBackgroundColor(getResources().getColor(R.color.colorOrange));

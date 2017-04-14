@@ -1,7 +1,6 @@
 package com.abdo.patrick.abdo.Controllers;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
@@ -10,7 +9,7 @@ import android.view.View;
 
 import com.abdo.patrick.abdo.Adapter;
 import com.abdo.patrick.abdo.Domain.Application;
-import com.abdo.patrick.abdo.Models.Child;
+import com.abdo.patrick.abdo.Models.Food;
 import com.abdo.patrick.abdo.R;
 import com.abdo.patrick.abdo.Views.Registraion.FoodListFragment;
 
@@ -52,89 +51,25 @@ public class RegistrationListController {
                 if(child != null && gestureDetector.onTouchEvent(e)) {
                     int position = rv.getChildAdapterPosition(child);
                     int clickedId = rvAdapter.getId(position);
-                    String clickedName = rvAdapter.getItemName(position);
 
-                    Fragment fragment = null;
+                    Food food = Application.getInstance().FindFood(clickedId);
 
-                    if(_foodListFragment != null){
-                        fragment = _foodListFragment;
-                    }
+                    if (food == null) return false;
 
-                    String listType = fragment.getArguments().getString("foodType", "");
+                    int visibility = Application.getInstance().getCurrentRegistration().addFood(food) != -1 ?
+                            View.VISIBLE :
+                            View.INVISIBLE;
 
-                    if(listType.equals("breakfast")){
-                        Child currentChild = Application.getInstance().getCurrentChild();
-                        boolean exists = currentChild.supplementExists(clickedId);
-                        if(exists){
-//                            currentChild.removeSupplement(clickedId);
-                            child.findViewById(R.id.row_selected_icon).setVisibility(View.INVISIBLE);
-
-                        }else{
-//                            currentChild.addSupplement(clickedId);
-                            child.findViewById(R.id.row_selected_icon).setVisibility(View.VISIBLE);
-                        }
-                    }
-                    if(listType.equals("lunch")){
-                        Child currentChild = Application.getInstance().getCurrentChild();
-                        boolean exists = currentChild.supplementExists(clickedId);
-                        if(exists){
-//                            currentChild.removeSupplement(clickedId);
-                            child.findViewById(R.id.row_selected_icon).setVisibility(View.INVISIBLE);
-
-                        }else{
-//                            currentChild.addSupplement(clickedId);
-                            child.findViewById(R.id.row_selected_icon).setVisibility(View.VISIBLE);
-                        }
-                    }
-                    if(listType.equals("dinner")){
-                        Child currentChild = Application.getInstance().getCurrentChild();
-                        boolean exists = currentChild.supplementExists(clickedId);
-                        if(exists){
-//                            currentChild.removeSupplement(clickedId);
-                            child.findViewById(R.id.row_selected_icon).setVisibility(View.INVISIBLE);
-
-                        }else{
-//                            currentChild.addSupplement(clickedId);
-                            child.findViewById(R.id.row_selected_icon).setVisibility(View.VISIBLE);
-                        }
-                    }
-                    if(listType.equals("fruit")){
-                        Child currentChild = Application.getInstance().getCurrentChild();
-                        boolean exists = currentChild.supplementExists(clickedId);
-                        if(exists){
-//                            currentChild.removeSupplement(clickedId);
-                            child.findViewById(R.id.row_selected_icon).setVisibility(View.INVISIBLE);
-
-                        }else{
-//                            currentChild.addSupplement(clickedId);
-                            child.findViewById(R.id.row_selected_icon).setVisibility(View.VISIBLE);
-                        }
-                    }
-                    if(listType.equals("candy")){
-                        Child currentChild = Application.getInstance().getCurrentChild();
-                        boolean exists = currentChild.supplementExists(clickedId);
-                        if(exists){
-//                            currentChild.removeSupplement(clickedId);
-                            child.findViewById(R.id.row_selected_icon).setVisibility(View.INVISIBLE);
-
-                        }else{
-//                            currentChild.addSupplement(clickedId);
-                            child.findViewById(R.id.row_selected_icon).setVisibility(View.VISIBLE);
-                        }
-                    }
+                    child.findViewById(R.id.row_selected_icon).setVisibility(visibility);
                 }
                 return false;
             }
 
             @Override
-            public void onTouchEvent(RecyclerView rv, MotionEvent e) {
-
-            }
+            public void onTouchEvent(RecyclerView rv, MotionEvent e){}
 
             @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-            }
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept){}
         });
     }
 }

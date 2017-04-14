@@ -78,7 +78,7 @@ public class Get extends AsyncTask<Void, Void, String> {
                 }
 
                 Application.getInstance().set_supplementList(list);
-                Application.getInstance().AddSupplementsToPreference();
+                Application.getInstance().AddItemToPreference("Supplements", list);
                 response = "DATA FETCHED INTO MODEL";
 
             } catch (JSONException e) {

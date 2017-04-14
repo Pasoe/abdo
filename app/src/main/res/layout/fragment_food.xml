@@ -266,7 +266,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/icon_checkmark"
+                android:src="@drawable/icon_checkmark_vector"
                 android:tint="@color/colorWhite"
                 android:visibility="invisible" />
         </LinearLayout>
