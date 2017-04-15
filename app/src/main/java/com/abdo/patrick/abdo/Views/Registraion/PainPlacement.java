@@ -45,6 +45,14 @@ public class PainPlacement extends Fragment implements View.OnTouchListener {
 
         overlay.setOnTouchListener(this);
 
+        if(Application.getInstance().getCurrentChild().isBoy()){
+            overlay.setImageResource(R.drawable.abdo_boy);
+            underlay.setImageResource(R.drawable.abdo_boy_underlay);
+        }else{
+            overlay.setImageResource(R.drawable.abdo_girl);
+            underlay.setImageResource(R.drawable.abdo_girl_underlay);
+        }
+
 
         return view;
     }

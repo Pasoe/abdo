@@ -173,4 +173,10 @@ public class Child {
     public ChildInfo getInfo(){
         return childInfo;
     }
+
+    public boolean isBoy() {
+        if(getInfo().getGender() == 1)
+            return true;
+        return false;
+    }
 }

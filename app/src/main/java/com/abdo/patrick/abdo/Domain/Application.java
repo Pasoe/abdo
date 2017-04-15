@@ -355,9 +355,8 @@ public class Application extends android.app.Application {
     }
 
     public Child getCurrentChild(){
-        //TODO - hent rigtigt child, tak
-        _anonymous.getChild(currentChildGuid);
-        return new Child();
+        Child child = _anonymous.getChild(currentChildGuid);
+        return child;
     }
 
     public void set_currentChild(String childguid){

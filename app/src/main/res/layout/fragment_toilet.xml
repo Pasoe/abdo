@@ -22,7 +22,7 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/toilet_header_icon"
             android:layout_marginLeft="10dp"
-            android:text="Hvordan har din lort set ud i dag?"
+            android:text="Hvordan har dine pølser set ud i dag?"
             android:textSize="18sp"
             android:textColor="@color/colorWhite"/>
     </RelativeLayout>

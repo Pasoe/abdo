@@ -98,6 +98,7 @@ public class SplashActivity extends AppCompatActivity {
             ArrayList<Child> children = gson.fromJson(children_json, new TypeToken<ArrayList<Child>>(){}.getType());
             Application.getInstance().set_children(children);
             Log.i("INFO", "Children fetched from shared preferences");
+            Log.i("INFO", "Children fetched: "+children_json);
 
             if(currentChild_json.isEmpty()){
                 Application.getInstance().set_currentChild(children.get(0).getGuid());

@@ -3,11 +3,16 @@ package com.abdo.patrick.abdo.Controllers;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.Views.Registraion.PainPlacement;
+
+import static java.security.AccessController.getContext;
 
 /**
  * Created by Khaled on 04-04-2017.
@@ -31,18 +36,23 @@ public class ImageController {
         int[] viewCoordinates = new int[2];
         imageView.getLocationOnScreen(viewCoordinates);
 
-        int touchX = (int) event.getX();
-        int touchY = (int) event.getY() - (actionbarHeight > 0 ? (actionbarHeight / 2) : 0);
+        Log.i("INFO", "viewCoordinates: "+viewCoordinates[0]+" - "+viewCoordinates[1]);
 
-        touch.setX(touchX - viewCoordinates[0]);
-        touch.setY(touchY - viewCoordinates[1]);
+        int touchX = (int) event.getX();
+        int touchY = (int) event.getY();
+
+        Log.i("INFO", "Touch coordinates: "+touchX+" - "+touchY);
+
+        touch.setX(touchX);
+        touch.setY(touchY);
 
         return touch;
     }
-
     public int GetPixelColor(ImageView imageView, Touch touch) {
 
-        final Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+        Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+
+        touch.setY((int) ((touch.getY()*1.41)));
 
         if (bitmap.getWidth() < touch.getX() || bitmap.getHeight() < touch.getY()
                 || touch.getX() < 0 || touch.getY() < 0) return -1;
@@ -52,6 +62,8 @@ public class ImageController {
         int redValue = Color.red(pixel);
         int blueValue = Color.blue(pixel);
         int greenValue = Color.green(pixel);
+
+        Log.i("INFO", "Touched color: "+redValue+" "+greenValue+" "+blueValue);
 
         if (isYellow(redValue, greenValue, blueValue)) return Color.YELLOW;
 
