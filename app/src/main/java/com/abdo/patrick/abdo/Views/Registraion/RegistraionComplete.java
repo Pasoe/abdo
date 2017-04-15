@@ -1,19 +1,28 @@
 package com.abdo.patrick.abdo.Views.Registraion;
 
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
+import com.abdo.patrick.abdo.Api.Registration.Post;
 import com.abdo.patrick.abdo.Domain.Application;
+import com.abdo.patrick.abdo.Models.Registration;
 import com.abdo.patrick.abdo.R;
+import com.abdo.patrick.abdo.Views.MainActivity;
+
+import java.util.UUID;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,10 +42,14 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
             ,answer_activity_tile
             ,answer_pain_tile;
 
+    private RelativeLayout complete_registration_button;
+
     private ImageView
-             statusSleep
-            ,statusMood
-            ,statusActivity;
+             sleepStatus
+            ,moodStatus
+            ,activityStatus
+            ,toiletStatus
+            ,foodStatus;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,9 +57,14 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_registraion_complete, container, false);
 
-        statusSleep = (ImageView) view.findViewById(R.id.answered_icon_sleep_status);
-        statusMood = (ImageView) view.findViewById(R.id.answered_icon_mood_status);
-        statusActivity = (ImageView) view.findViewById(R.id.answered_icon_excersize_status);
+        sleepStatus = (ImageView) view.findViewById(R.id.answered_icon_sleep_status);
+        moodStatus = (ImageView) view.findViewById(R.id.answered_icon_mood_status);
+        activityStatus = (ImageView) view.findViewById(R.id.answered_icon_excersize_status);
+        toiletStatus = (ImageView) view.findViewById(R.id.answered_icon_toilet_status);
+        foodStatus = (ImageView) view.findViewById(R.id.answered_icon_food_status);
+
+        complete_registration_button = (RelativeLayout) view.findViewById(R.id.complete_registration_button);
+        complete_registration_button.setOnClickListener(this);
 
         answer_toilet_tile = (LinearLayout) view.findViewById(R.id.answer_toilet_tile);
         answer_toilet_tile.setOnClickListener(this);
@@ -73,6 +91,8 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
     public void onClick(View v) {
         Fragment fragment = null;
         Bundle bundle = new Bundle();
+        boolean sendRegistrationClicked = false;
+        boolean modifyPainPlacement = false;
 
         if(v == answer_toilet_tile){
             fragment = new ToiletFragment();
@@ -94,38 +114,103 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
             bundle.putString("rating_header", "Har du brugt kroppen i dag?");
         }
         if(v == answer_pain_tile){
-            bundle.putString("fragment", "pain");
-            bundle.putString("rating_header", "Hvor ondt gør det?");
+            modifyPainPlacement = !modifyPainPlacement;
+            bundle.putString("fragment", "modifiy_pain");
+
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragment = new PainPlacement();
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.replace(R.id.main_activity_reg_fragment, fragment);
+            fragmentTransaction.commit();
         }
 
-        if (fragment == null) fragment = new Rating();
-        if (!bundle.isEmpty()) fragment.setArguments(bundle);
+        if (v == complete_registration_button)
+        {
+            sendRegistrationClicked = !sendRegistrationClicked;
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.popup_theme);
+            builder.setTitle("Send registrering");
+            builder.setMessage("Vil du sende?")
+                    .setCancelable(false)
+                    .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Registration registration = Application.getInstance().getCurrentRegistration();
+                            //Add GUID to registration
+                            if (registration.getGuid() == null || registration.getGuid().isEmpty())
+                                registration.setGuid(UUID.randomUUID().toString());
 
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.replace(R.id.main_activity_reg_fragment, fragment);
-        fragmentTransaction.commit();
+                            //Call api
+                            new Post().execute(registration);
+                            Toast.makeText(getContext(), "Registrering sendt!", Toast.LENGTH_SHORT).show();
+
+                            //Clear current registration
+                            Application.getInstance().InitiateCurrentRegistration();
+
+                            //Go back to pain placement
+                            Fragment fragment = new PainPlacement();
+                            FragmentManager fragmentManager = getFragmentManager();
+
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                            fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
+                            fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                            fragmentTransaction.replace(R.id.main_activity_reg_fragment, fragment);
+                            fragmentTransaction.commit();
+
+                        }
+                    })
+                    .setNegativeButton("Nej", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
+
+        if (!sendRegistrationClicked && !modifyPainPlacement)
+        {
+            if (fragment == null) fragment = new Rating();
+            if (!bundle.isEmpty()) fragment.setArguments(bundle);
+
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.replace(R.id.main_activity_reg_fragment, fragment);
+            fragmentTransaction.commit();
+        }
     }
 
     @Override
     public void onResume() {
-        Log.i("onResume", Application.getInstance().getCurrentRegistration().toString());
+        Log.i("onResume, registration", Application.getInstance().getCurrentRegistration().toString());
 
         if (Application.getInstance().getCurrentRegistration().getSleepId() != null)
         {
-            statusSleep.setImageResource(R.drawable.icon_checkmark_vector);
-        }else statusSleep.setImageResource(R.drawable.icon_questionmark);
+            sleepStatus.setImageResource(R.drawable.icon_checkmark_vector);
+        }else sleepStatus.setImageResource(R.drawable.icon_questionmark);
 
         if (Application.getInstance().getCurrentRegistration().getActivityId() != null)
         {
-            statusActivity.setImageResource(R.drawable.icon_checkmark_vector);
-        }else statusActivity.setImageResource(R.drawable.icon_questionmark);
+            activityStatus.setImageResource(R.drawable.icon_checkmark_vector);
+        }else activityStatus.setImageResource(R.drawable.icon_questionmark);
 
         if (Application.getInstance().getCurrentRegistration().getMoodId() != null)
         {
-            statusMood.setImageResource(R.drawable.icon_checkmark_vector);
-        }else statusMood.setImageResource(R.drawable.icon_questionmark);
+            moodStatus.setImageResource(R.drawable.icon_checkmark_vector);
+        }else moodStatus.setImageResource(R.drawable.icon_questionmark);
+
+        if (Application.getInstance().getCurrentRegistration().getFecesId() != null)
+        {
+            toiletStatus.setImageResource(R.drawable.icon_checkmark_vector);
+        }else toiletStatus.setImageResource(R.drawable.icon_questionmark);
+
+        if ( Application.getInstance().getCurrentRegistration().getFoods() != null &&
+                (Application.getInstance().getCurrentRegistration().getFoods().size() > 0 ||
+                        Application.getInstance().getCurrentRegistration().hasNoFood()))
+        {
+            foodStatus.setImageResource(R.drawable.icon_checkmark_vector);
+        }else foodStatus.setImageResource(R.drawable.icon_questionmark);
 
 
         super.onResume();

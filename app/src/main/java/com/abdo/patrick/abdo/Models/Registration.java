@@ -1,5 +1,7 @@
 package com.abdo.patrick.abdo.Models;
 
+import com.abdo.patrick.abdo.Domain.Application;
+
 import java.util.ArrayList;
 
 /**
@@ -19,10 +21,11 @@ public class Registration {
     private String modifiedTime;
     private Integer moodId;
     private Integer sleepId;
+    private boolean hasNoFood = false;
+    private ArrayList<Food> foods;
 
     //Virtual
     private Child child;
-    private ArrayList<Food> foods;
     private Feces feces;
     private Sleep sleep;
     private Mood mood;
@@ -30,6 +33,14 @@ public class Registration {
     private PainPlacement painPlacement;
     private PainLevel painLevel;
 
+
+    public String getGuid() {
+        return guid;
+    }
+
+    public void setGuid(String guid) {
+        this.guid = guid;
+    }
 
     public void addPainPlacement(int painPlacementId)
     {
@@ -61,24 +72,12 @@ public class Registration {
         this.moodId = moodId;
     }
 
-    public String getGuid() {
-        return guid;
-    }
-
     public Integer getFecesId() {
         return fecesId;
     }
 
     public Integer getActivityId() {
         return activityId;
-    }
-
-    public Integer getPainPlacementId() {
-        return painPlacementId;
-    }
-
-    public Integer getPainLevelId() {
-        return painLevelId;
     }
 
     public Integer getMoodId() {
@@ -89,16 +88,56 @@ public class Registration {
         return sleepId;
     }
 
+    public boolean hasNoFood() {
+        return hasNoFood;
+    }
+
+    public void setHasNoFood(boolean hasNoFood) {
+        this.hasNoFood = hasNoFood;
+    }
+
+    public ArrayList<Food> getFoods() {
+        return foods;
+    }
+
+    public void setFoods(ArrayList<Food> list) {
+        foods = list;
+    }
+
+    public int addFood(Food food)
+    {
+        if (foods.contains(food) && foods.remove(food)) return -1; //return -1 if already exists
+        hasNoFood = false;
+        foods.add(food);
+        return 0;
+    }
+
+    public boolean RegisteredFoodContainsCategory(String category) {
+
+        int categoryId = Application.getInstance().getCategoryId(category);
+        if (categoryId == -1) return false;
+
+        for(Food food : foods) {
+            if(food.getFoodCategoryId() == categoryId) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return "Registration{" +
+                "id=" + id +
                 ", guid='" + guid + '\'' +
                 ", fecesId=" + fecesId +
                 ", activityId=" + activityId +
-                ", painPlacementId=" + painPlacementId +
-                ", painLevelId=" + painLevelId +
                 ", moodId=" + moodId +
                 ", sleepId=" + sleepId +
+                ", painPlacementId=" + painPlacementId +
+                ", painLevelId=" + painLevelId +
+                ", hasNoFood=" + hasNoFood +
+                ", foods=" + foods +
                 '}';
     }
 }

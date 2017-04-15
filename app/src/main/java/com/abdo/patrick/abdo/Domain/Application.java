@@ -6,6 +6,7 @@ import com.abdo.patrick.abdo.Models.Child;
 import com.abdo.patrick.abdo.Models.ChildMedicine;
 import com.abdo.patrick.abdo.Models.Feces;
 import com.abdo.patrick.abdo.Models.Food;
+import com.abdo.patrick.abdo.Models.FoodCategory;
 import com.abdo.patrick.abdo.Models.PainLevel;
 import com.abdo.patrick.abdo.Models.Registration;
 import com.abdo.patrick.abdo.Models.Supplement;
@@ -38,9 +39,33 @@ public class Application extends android.app.Application {
 
     private ArrayList<Allergy> _allergyList;
     private ArrayList<Supplement> _supplementList;
-    private ArrayList<ChildMedicine> _childMedicineList;
     private ArrayList<Feces> _fecesList;
     private ArrayList<Food> _foodList;
+    private ArrayList<FoodCategory> _foodCategoryList;
+
+    public ArrayList<Feces> get_fecesList() {
+        return _fecesList;
+    }
+
+    public void set_fecesList(ArrayList<Feces> _fecesList) {
+        this._fecesList = _fecesList;
+    }
+
+    public ArrayList<Food> get_foodList() {
+        return _foodList;
+    }
+
+    public void set_foodList(ArrayList<Food> _foodList) {
+        this._foodList = _foodList;
+    }
+
+    public ArrayList<FoodCategory> get_foodCategoryList() {
+        return _foodCategoryList;
+    }
+
+    public void set_foodCategoryList(ArrayList<FoodCategory> _foodCategoryList) {
+        this._foodCategoryList = _foodCategoryList;
+    }
 
     private ArrayList<PainLevel> _painLevel;
 
@@ -59,7 +84,7 @@ public class Application extends android.app.Application {
         _foodList = new ArrayList<>();
         _painLevel = new ArrayList<>();
 
-        _currentRegistration = new Registration();
+        InitiateCurrentRegistration();
     }
 
     public static Application getInstance() {
@@ -75,9 +100,13 @@ public class Application extends android.app.Application {
         return _currentRegistration;
     }
 
-    public void addPainLevel(PainLevel painLevel)
-    {
-        _painLevel.add(painLevel);
+    public Food FindFood(int id) {
+        for(Food food : _foodList) {
+            if(food.getId() == id) {
+                return food;
+            }
+        }
+        return null;
     }
 
 
@@ -105,76 +134,29 @@ public class Application extends android.app.Application {
         this._anonymous = _anonymous;
     }
 
-    public void AddAllergiesToPreference(){
+
+    public void AddItemToPreference(String itemName, Object item){
         SharedPreferences settings = getSharedPreferences("Abdo", MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
 
         Gson gson = new Gson();
-        String json = gson.toJson(_allergyList);
+        String json = gson.toJson(item);
 
         Long now = new Date().getTime();
-        editor.putString("Allergies", json);
+        editor.putString(itemName, json);
         editor.putLong("DataTimestamp", now);
 
         editor.apply();
         editor.commit();
 
-        Log.i("INFO", "SharedPreference: Allergies = " +json+ ", DataTimestamp = " +now);
+        Log.i("INFO", "SharedPreference: " +itemName+ " = " +json+ "+" +
+                "\nDataTimestamp = " +now);
+
     }
 
-    public void AddSupplementsToPreference(){
-        SharedPreferences settings = getSharedPreferences("Abdo", MODE_PRIVATE);
-        SharedPreferences.Editor editor = settings.edit();
-
-        Gson gson = new Gson();
-        String json = gson.toJson(_supplementList);
-
-        Long now = new Date().getTime();
-        editor.putString("Supplements", json);
-        editor.putLong("DataTimestamp", now);
-
-        editor.apply();
-        editor.commit();
-
-        Log.i("INFO", "SharedPreference: Supplements = " +json+ ", DataTimestamp = " +now);
-    }
-
-    public void AddAnonymousToPreference(){
-
-        SharedPreferences settings = getSharedPreferences("Abdo", MODE_PRIVATE);
-        SharedPreferences.Editor editor = settings.edit();
-
-        Gson gson = new Gson();
-        String json = gson.toJson(_anonymous);
-
-        _registered = !json.isEmpty();
-
-        editor.putString("Anonymous", json);
-        editor.putBoolean("REG", _registered);
-
-        editor.apply();
-        editor.commit();
-
-        Log.i("INFO", "SharedPreference: REG = " +_registered+ ", Anonymous = " +json);
-    }
 
 
     public ArrayList<ListItem> getAllergyListView(ArrayList<Allergy> list, Child newChild){
-
-        ArrayList<ListItem> listView = new ArrayList<>();
-        Allergy current;
-
-        for(int i = 0; i < list.size(); i++)
-        {
-            current = list.get(i);
-            listView.add(
-                    new ListItem(current.getId(), current.getType(), newChild.allergyExists(current.getId())));
-        }
-
-        return listView;
-    }
-
-    public ArrayList<ListItem> getPainLevelListView(ArrayList<Allergy> list, Child newChild){
 
         ArrayList<ListItem> listView = new ArrayList<>();
         Allergy current;
@@ -291,55 +273,23 @@ public class Application extends android.app.Application {
         return settings.contains("NewChild");
     }
 
-    public ArrayList<Food> get_foodList(String foodType){
 
-        ArrayList<Food> foodlist = new ArrayList<Food>();
-        if(foodType.equals("breakfast")){
-            int foodCategoyType = 1;
-            foodlist.add(new Food(1, "Toast", foodCategoyType));
-            foodlist.add(new Food(2, "Æg", foodCategoyType));
-            foodlist.add(new Food(3, "Bacon", foodCategoyType));
-            foodlist.add(new Food(4, "Havregryn", foodCategoyType));
-            foodlist.add(new Food(5, "Guldkorn", foodCategoyType));
-        }
-        if(foodType.equals("lunch")){
-            int foodCategoyType = 2;
-            foodlist.add(new Food(1, "Leverpostejsmad", foodCategoyType));
-            foodlist.add(new Food(2, "Baconmad", foodCategoyType));
-            foodlist.add(new Food(3, "Makrelmad", foodCategoyType));
-            foodlist.add(new Food(4, "Ostemad", foodCategoyType));
-            foodlist.add(new Food(5, "Skinke", foodCategoyType));
-        }
-        if(foodType.equals("dinner")){
-            int foodCategoyType = 3;
-            foodlist.add(new Food(1, "Hakkebøffer", foodCategoyType));
-            foodlist.add(new Food(2, "Baconbøffer", foodCategoyType));
-            foodlist.add(new Food(3, "Pasta med kødsovs", foodCategoyType));
-            foodlist.add(new Food(4, "Boller i karry", foodCategoyType));
-            foodlist.add(new Food(5, "Vegetartarteletter", foodCategoyType));
-        }
-        if(foodType.equals("fruit")){
-            int foodCategoyType = 4;
-            foodlist.add(new Food(1, "Æble", foodCategoyType));
-            foodlist.add(new Food(2, "Banan", foodCategoyType));
-            foodlist.add(new Food(3, "Pære", foodCategoyType));
-            foodlist.add(new Food(4, "Kiwi", foodCategoyType));
-            foodlist.add(new Food(5, "Vindrue", foodCategoyType));
-        }
-        if(foodType.equals("candy")){
-            int foodCategoyType = 5;
-            foodlist.add(new Food(1, "Vingummi", foodCategoyType));
-            foodlist.add(new Food(2, "Chokolade", foodCategoyType));
-            foodlist.add(new Food(3, "Chips", foodCategoyType));
-            foodlist.add(new Food(4, "Oregano", foodCategoyType));
-            foodlist.add(new Food(5, "Ostehaps", foodCategoyType));
-        }
-        return foodlist;
+    public ArrayList<Food> get_foodList(String type)
+    {
+        ArrayList<Food> foods = new ArrayList<>();
+        int categoryId = getCategoryId(type);
 
+        if (categoryId == -1) return foods;
 
+        for (Food food : _foodList)
+        {
+            if (food.getFoodCategoryId() == categoryId) foods.add(food);
+        }
+        return foods;
     }
 
-    public ArrayList<ListItem> getFoodListView(ArrayList<Food> list, Child child){
+
+    public ArrayList<ListItem> getFoodListView(ArrayList<Food> list, ArrayList<Food> regFoods){
         ArrayList<ListItem> listView = new ArrayList<>();
         Food current;
 
@@ -347,8 +297,7 @@ public class Application extends android.app.Application {
         {
             current = list.get(i);
             listView.add(
-                    //TODO - Set false to be "if food exists in childs list of selected foods"
-                    new ListItem(current.getId(), current.getType(), false));
+                    new ListItem(current.getId(), current.getType(), regFoods.contains(current)));
         }
 
         return listView;
@@ -361,5 +310,20 @@ public class Application extends android.app.Application {
 
     public void set_currentChild(String childguid){
         currentChildGuid = childguid;
+    }
+
+    public int getCategoryId(String categoryName)
+    {
+        for (FoodCategory category: _foodCategoryList)
+        {
+            if (category.getIdByType(categoryName) == -1) continue;
+            return  category.getIdByType(categoryName);
+        }
+        return -1;
+    }
+
+    public void InitiateCurrentRegistration(){
+        _currentRegistration = new Registration();
+        _currentRegistration.setFoods(new ArrayList<Food>());
     }
 }

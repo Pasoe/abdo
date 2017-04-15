@@ -1,34 +1,39 @@
-package com.abdo.patrick.abdo.Api.Anonymous;
+package com.abdo.patrick.abdo.Api.Registration;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.Models.Anonymous;
+import com.abdo.patrick.abdo.Models.Child;
+import com.abdo.patrick.abdo.Models.Registration;
 import com.google.gson.Gson;
-
 
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.zip.CheckedInputStream;
 
 /**
- * Created by Khaled on 21-03-2017.
+ * Created by Khaled on 15-04-2017.
  */
 
-public class Post extends AsyncTask<Anonymous, Void, Integer> {
+public class Post extends AsyncTask<Registration, Void, Integer> {
+
+    private String deviceId;
+    private String childGuid;
 
     protected void onPreExecute() {
-
+        deviceId = Application.getAndroidId(Application.getInstance().getApplicationContext());
+        childGuid = Application.getInstance().getNewChild().getGuid();
     }
-    private Anonymous _anonymous;
 
-    protected Integer doInBackground(Anonymous... anonymous) {
+
+    protected Integer doInBackground(Registration... registration) {
         // Do some validation here
-        _anonymous = anonymous[0];
 
         try {
-            URL url = new URL("http://abdoapi.azurewebsites.net/api/Anonymous");
+            URL url = new URL("http://abdoapi.azurewebsites.net/api/Registration/"+deviceId+"/"+childGuid);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("POST");
             urlConnection.setRequestProperty("Content-Type", "application/json");
@@ -36,7 +41,7 @@ public class Post extends AsyncTask<Anonymous, Void, Integer> {
             try {
                 urlConnection.connect();
                 Gson gson = new Gson();
-                String json = gson.toJson(anonymous[0]);
+                String json = gson.toJson(registration[0]);
                 Log.d("DATA", json);
 
                 OutputStreamWriter outputStreamWriter = new OutputStreamWriter(urlConnection.getOutputStream());
@@ -58,18 +63,11 @@ public class Post extends AsyncTask<Anonymous, Void, Integer> {
     protected void onPostExecute(Integer response) {
         super.onPostExecute(response);
 
-        //If anonymous is created or anonymous already exists
-        if(response == HttpURLConnection.HTTP_OK ||
-                response == HttpURLConnection.HTTP_CONFLICT)
-        {
-            if(response == HttpURLConnection.HTTP_CONFLICT)
-                Log.i("INFO", "User already exists");
+        if(response == HttpURLConnection.HTTP_OK )
+            Log.i("Api: Registration", "Registration added successfully");
+        else Log.i("Api: Registration", "An error occurred");
 
-            Application.getInstance().AddItemToPreference("Anonymous", _anonymous);
-        }
-
-
-        Log.i("SERVER", "Server returned: "+response);
+        Log.i("Api: Registration", "Server returned: "+response);
 
     }
 }

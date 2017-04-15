@@ -116,7 +116,7 @@
                 android:layout_weight="1"
                 android:textAlignment="center"
                 android:layout_gravity="bottom"
-                android:text="Pølseformet men med regner på ydersiden"/>
+                android:text="Pølseformet men med revner på ydersiden"/>
         </LinearLayout>
 
         <LinearLayout

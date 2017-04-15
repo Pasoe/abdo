@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 import android.widget.LinearLayout;
 
+import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.R;
 
 /**
@@ -61,31 +62,34 @@ public class ToiletFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        int type = 0;
 
         if(v == turd_type_1){
-
+            type = 2;
         }
         if(v == turd_type_2){
-
+            type = 3;
         }
         if(v == turd_type_3){
-
+            type = 4;
         }
         if(v == turd_type_4){
-
+            type = 5;
         }
         if(v == turd_type_5){
-
+            type = 6;
         }
         if(v == turd_type_6){
-
+            type = 7;
         }
         if(v == turd_type_7){
-
+            type = 8;
         }
         if(v == turd_type_8){
-
+            type = 1;
         }
+
+        if (type != 0 ) Application.getInstance().getCurrentRegistration().addFeces(type);
 
         FragmentManager fragmentManager2 = getFragmentManager();
         fragmentManager2.popBackStack();

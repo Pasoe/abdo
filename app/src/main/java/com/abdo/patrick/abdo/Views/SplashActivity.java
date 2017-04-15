@@ -14,6 +14,9 @@ import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.Models.Allergy;
 import com.abdo.patrick.abdo.Models.Anonymous;
 import com.abdo.patrick.abdo.Models.Child;
+import com.abdo.patrick.abdo.Models.Feces;
+import com.abdo.patrick.abdo.Models.Food;
+import com.abdo.patrick.abdo.Models.FoodCategory;
 import com.abdo.patrick.abdo.Models.Supplement;
 import com.abdo.patrick.abdo.R;
 import com.google.gson.Gson;
@@ -115,6 +118,9 @@ public class SplashActivity extends AppCompatActivity {
         //Get allergies and supplements from pref.
         String allergies_json = settings.getString("Allergies", "");
         String supplements_json = settings.getString("Supplements", "");
+        String foods_json = settings.getString("Foods", "");
+        String foodCategories_json = settings.getString("FoodCategories", "");
+        String feces_json = settings.getString("Feces", "");
 
         //Get last time data was saved to pref
         long lastLogin = settings.getLong("DataTimestamp", Long.MIN_VALUE);
@@ -123,7 +129,7 @@ public class SplashActivity extends AppCompatActivity {
         if (lastLogin != Long.MIN_VALUE)
         {
             Period interval = new Period(lastLogin, new Date().getTime());
-            update = interval.getHours() > 1;
+            update = interval.getHours() > 6;
         }
 
         Log.i("INFO", update ? "Data is out of date, asking server for new." : "Using existing data");
@@ -145,5 +151,32 @@ public class SplashActivity extends AppCompatActivity {
             Log.d("DATA", Application.getInstance().get_supplementList().toString());
         }
         else new com.abdo.patrick.abdo.Api.Supplement.Get().execute();
+
+        if (!update && !foods_json.isEmpty()){
+            ArrayList<Food> foods =
+                    gson.fromJson(foods_json, new TypeToken<ArrayList<Food>>(){}.getType());
+            Application.getInstance().set_foodList(foods);
+            Log.i("INFO", "Fetched foods from pref");
+            Log.d("DATA", Application.getInstance().get_foodList().toString());
+        }
+        else new com.abdo.patrick.abdo.Api.Food.Get().execute();
+
+        if (!update && !foodCategories_json.isEmpty()){
+            ArrayList<FoodCategory> foodCategories =
+                    gson.fromJson(foodCategories_json, new TypeToken<ArrayList<FoodCategory>>(){}.getType());
+            Application.getInstance().set_foodCategoryList(foodCategories);
+            Log.i("INFO", "Fetched food categories from pref");
+            Log.d("DATA", Application.getInstance().get_foodCategoryList().toString());
+        }
+        else new com.abdo.patrick.abdo.Api.FoodCategory.Get().execute();
+
+        if (!update && !feces_json.isEmpty()){
+            ArrayList<Feces> feces =
+                    gson.fromJson(feces_json, new TypeToken<ArrayList<Feces>>(){}.getType());
+            Application.getInstance().set_fecesList(feces);
+            Log.i("INFO", "Fetched feces from pref");
+            Log.d("DATA", Application.getInstance().get_fecesList().toString());
+        }
+        else new com.abdo.patrick.abdo.Api.Feces.Get().execute();
     }
 }

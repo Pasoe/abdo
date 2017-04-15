@@ -1,28 +1,24 @@
-package com.abdo.patrick.abdo.Api.Allergy;
+package com.abdo.patrick.abdo.Api.FoodCategory;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.abdo.patrick.abdo.Domain.Application;
-import com.abdo.patrick.abdo.Models.Allergy;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.abdo.patrick.abdo.Models.Food;
+import com.abdo.patrick.abdo.Models.FoodCategory;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONTokener;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
- * Created by Khaled on 26-03-2017.
+ * Created by Khaled on 14-04-2017.
  */
 
 public class Get extends AsyncTask<Void, Void, String> {
@@ -30,12 +26,11 @@ public class Get extends AsyncTask<Void, Void, String> {
     protected void onPreExecute() {
 
     }
-
     protected String doInBackground(Void... params) {
         // Do some validation here
 
         try {
-            URL url = new URL("http://abdoapi.azurewebsites.net/api/Allergy");
+            URL url = new URL("http://abdoapi.azurewebsites.net/api/FoodCategory");
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.setRequestProperty("Content-Type", "application/json");
@@ -65,24 +60,24 @@ public class Get extends AsyncTask<Void, Void, String> {
 
             try {
                 JSONArray array = new JSONArray(response);
-                ArrayList<Allergy> list = new ArrayList<>();
+                ArrayList<FoodCategory> list = new ArrayList<>();
 
                 for (int i = 0; i < array.length(); i++)
                 {
                     JSONObject object = array.getJSONObject(i);
-                    Allergy allergy = new Allergy();
-                    allergy.setId(object.getInt("Id"));
-                    allergy.setType(object.getString("Type"));
-                    allergy.setCreatedTime(object.getString("CreatedTime"));
-                    allergy.setModifiedTime(object.getString("ModifiedTime"));
+                    FoodCategory foodCategory = new FoodCategory();
+                    foodCategory.setId(object.getInt("Id"));
+                    foodCategory.setType(object.getString("Type"));
+                    foodCategory.setCreatedTime(object.getString("CreatedTime"));
+                    foodCategory.setModifiedTime(object.getString("ModifiedTime"));
 
-                    list.add(allergy);
-                    Log.d("DATA, iterate: "+i, allergy.toString());
+                    list.add(foodCategory);
+                    Log.d("DATA, iterate: "+i, foodCategory.toString());
 
                 }
 
-                Application.getInstance().set_allergyList(list);
-                Application.getInstance().AddItemToPreference("Allergies", list);
+                Application.getInstance().set_foodCategoryList(list);
+                Application.getInstance().AddItemToPreference("FoodCategories", list);
                 response = "DATA FETCHED INTO MODEL";
 
             } catch (JSONException e) {
@@ -92,4 +87,5 @@ public class Get extends AsyncTask<Void, Void, String> {
         }
         Log.i("INFO", response);
     }
+
 }
