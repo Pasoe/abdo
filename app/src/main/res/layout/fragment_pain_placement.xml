@@ -25,7 +25,9 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/registration_background"
+        >
         <ImageView
             android:id="@+id/image_underlay"
             android:layout_width="400dp"

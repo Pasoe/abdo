@@ -51,7 +51,7 @@ public class ImageController {
     public int GetPixelColor(ImageView imageView, Touch touch) {
 
         Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
-        
+
         touch.setY((int) ((touch.getY()*1.41)));
 
         if (bitmap.getWidth() < touch.getX() || bitmap.getHeight() < touch.getY()
