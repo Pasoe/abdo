@@ -141,22 +141,28 @@ public class Rating extends Fragment implements View.OnClickListener {
 
         if (!getArguments().getString("fragment", "").isEmpty())
         {
-            Log.i("Back press", "false");
-            fragmentManager.popBackStack();
+
+            if (!getArguments().getString("fragment", "").equals("modify_pain"))
+                fragmentManager.popBackStack();
+            else
+            {
+                ClearBackStack_GoHome(fragmentManager);
+            }
         }
-        else
-        {
-            Log.i("Back press", "true");
-            Fragment fragment;
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
-            fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-            fragment = new RegistraionComplete();
-            fragmentTransaction.replace(R.id.main_activity_reg_fragment, fragment);
-            fragmentTransaction.commit();
-        }
+        else ClearBackStack_GoHome(fragmentManager);
+
     }
 
+    private void ClearBackStack_GoHome(FragmentManager fragmentManager)
+    {
+        Fragment fragment;
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
+        fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        fragment = new RegistraionComplete();
+        fragmentTransaction.replace(R.id.main_activity_reg_fragment, fragment);
+        fragmentTransaction.commit();
+    }
 
     private void PainFragment_Init(){
         text_row_1.setText(R.string.pain_level_1);

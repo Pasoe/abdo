@@ -22,10 +22,11 @@ import com.abdo.patrick.abdo.Views.MainActivity;
  */
 public class PainPlacement extends Fragment implements View.OnTouchListener {
 
-    ImageView overlay;
-    ImageView underlay;
+    private ImageView overlay;
+    private ImageView underlay;
 
-    ImageController imageController;
+    private ImageController imageController;
+    private String fragment_arg = "";
 
     public PainPlacement() {
         // Required empty public constructor
@@ -45,6 +46,8 @@ public class PainPlacement extends Fragment implements View.OnTouchListener {
 
         overlay.setOnTouchListener(this);
 
+        if (getArguments() != null)
+            fragment_arg = getArguments().getString("fragment", "");
 
         return view;
     }
@@ -91,6 +94,7 @@ public class PainPlacement extends Fragment implements View.OnTouchListener {
         Application.getInstance().getCurrentRegistration().addPainPlacement(painPlacementId);
 
         Fragment fragment = new Rating();
+        i.putString("fragment", fragment_arg);
         fragment.setArguments(i);
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

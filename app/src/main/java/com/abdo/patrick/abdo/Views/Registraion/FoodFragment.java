@@ -78,8 +78,8 @@ public class FoodFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
 
         if(v == no_food_button){
-            Application.getInstance().getCurrentRegistration().setHasFood(!
-                    Application.getInstance().getCurrentRegistration().hasFood());
+            Application.getInstance().getCurrentRegistration().setHasNoFood(!
+                    Application.getInstance().getCurrentRegistration().hasNoFood());
             Application.getInstance().getCurrentRegistration().getFoods().clear();
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.popBackStack();
@@ -119,12 +119,12 @@ public class FoodFragment extends Fragment implements View.OnClickListener {
 
     public void onResume() {
         Log.i("onResume, food overview", Application.getInstance().getCurrentRegistration().getFoods().toString());
-        Log.i("onResume, has food", ""+Application.getInstance().getCurrentRegistration().hasFood());
+        Log.i("onResume, has food", ""+Application.getInstance().getCurrentRegistration().hasNoFood());
 
         int visibility =
                 (
                         Application.getInstance().getCurrentRegistration().getFoods().isEmpty()
-                        && Application.getInstance().getCurrentRegistration().hasFood()
+                        && Application.getInstance().getCurrentRegistration().hasNoFood()
                 )
                         ?
                         View.VISIBLE : View.INVISIBLE;

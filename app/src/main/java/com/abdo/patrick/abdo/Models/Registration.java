@@ -21,7 +21,7 @@ public class Registration {
     private String modifiedTime;
     private Integer moodId;
     private Integer sleepId;
-    private boolean hasFood = false;
+    private boolean hasNoFood = false;
     private ArrayList<Food> foods;
 
     //Virtual
@@ -36,6 +36,10 @@ public class Registration {
 
     public String getGuid() {
         return guid;
+    }
+
+    public void setGuid(String guid) {
+        this.guid = guid;
     }
 
     public void addPainPlacement(int painPlacementId)
@@ -84,12 +88,12 @@ public class Registration {
         return sleepId;
     }
 
-    public boolean hasFood() {
-        return hasFood;
+    public boolean hasNoFood() {
+        return hasNoFood;
     }
 
-    public void setHasFood(boolean hasFood) {
-        this.hasFood = hasFood;
+    public void setHasNoFood(boolean hasNoFood) {
+        this.hasNoFood = hasNoFood;
     }
 
     public ArrayList<Food> getFoods() {
@@ -103,7 +107,7 @@ public class Registration {
     public int addFood(Food food)
     {
         if (foods.contains(food) && foods.remove(food)) return -1; //return -1 if already exists
-        hasFood = false;
+        hasNoFood = false;
         foods.add(food);
         return 0;
     }
@@ -132,7 +136,7 @@ public class Registration {
                 ", sleepId=" + sleepId +
                 ", painPlacementId=" + painPlacementId +
                 ", painLevelId=" + painLevelId +
-                ", has food=" + hasFood +
+                ", hasNoFood=" + hasNoFood +
                 ", foods=" + foods +
                 '}';
     }

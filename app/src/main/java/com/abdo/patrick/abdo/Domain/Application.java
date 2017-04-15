@@ -84,8 +84,7 @@ public class Application extends android.app.Application {
         _foodList = new ArrayList<>();
         _painLevel = new ArrayList<>();
 
-        _currentRegistration = new Registration();
-        _currentRegistration.setFoods(new ArrayList<Food>());
+        InitiateCurrentRegistration();
     }
 
     public static Application getInstance() {
@@ -322,5 +321,10 @@ public class Application extends android.app.Application {
             return  category.getIdByType(categoryName);
         }
         return -1;
+    }
+
+    public void InitiateCurrentRegistration(){
+        _currentRegistration = new Registration();
+        _currentRegistration.setFoods(new ArrayList<Food>());
     }
 }
