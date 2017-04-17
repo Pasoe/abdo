@@ -68,6 +68,8 @@ public class SplashActivity extends AppCompatActivity {
 
         syncChildData(settings, gson);
 
+        seedStaticData(settings, gson);
+
         syncStaticData(settings, gson);
     }
 
@@ -178,5 +180,145 @@ public class SplashActivity extends AppCompatActivity {
             Log.d("DATA", Application.getInstance().get_fecesList().toString());
         }
         else new com.abdo.patrick.abdo.Api.Feces.Get().execute();
+    }
+
+    private void seedStaticData(SharedPreferences settings, Gson gson){
+        SharedPreferences.Editor editor = settings.edit();
+
+        String allergies_json = settings.getString("Allergies", "");
+        String supplements_json = settings.getString("Supplements", "");
+        String foods_json = settings.getString("Foods", "");
+        String foodCategories_json = settings.getString("FoodCategories", "");
+        String feces_json = settings.getString("Feces", "");
+
+        if(allergies_json.isEmpty()){
+            Log.i("INFO", "Allergies not found in prefs. Seeding allergies.");
+
+            ArrayList<Allergy> allergies = new ArrayList<>();
+            allergies.add(new Allergy(1, "Pollen"));
+            allergies.add(new Allergy(2, "Laktose"));
+            allergies.add(new Allergy(3, "Støv"));
+            allergies.add(new Allergy(4, "Græs"));
+            allergies.add(new Allergy(5, "Ananas"));
+            allergies.add(new Allergy(6, "Latex"));
+            allergies.add(new Allergy(7, "Uld"));
+            allergies.add(new Allergy(8, "Hår"));
+            allergies.add(new Allergy(9, "Hund"));
+            allergies.add(new Allergy(10, "Kat"));
+            allergies.add(new Allergy(11, "Hest"));
+            allergies.add(new Allergy(12, "Birk"));
+
+            Application.getInstance().set_allergyList(allergies);
+            String json = gson.toJson(allergies);
+            editor.putString("Allergies", json);
+
+            Log.i("INFO", "Allergies saved in prefs and application: "+json);
+        }else{
+            Log.i("INFO", "Allergies found in prefs. No seeding needed");
+        }
+
+        if(supplements_json.isEmpty()){
+            Log.i("INFO", "Supplements not found in prefs. Seeding supplements.");
+
+            ArrayList<Supplement> supplements = new ArrayList<>();
+            supplements.add(new Supplement(1, "A-vitamin"));
+            supplements.add(new Supplement(2, "B-vitamin"));
+            supplements.add(new Supplement(3, "C-vitamin"));
+            supplements.add(new Supplement(4, "D-vitamin"));
+            supplements.add(new Supplement(5, "E-vitamin"));
+            supplements.add(new Supplement(6, "K-vitamin"));
+
+            Application.getInstance().set_supplementList(supplements);
+            String json = gson.toJson(supplements);
+            editor.putString("Supplements", json);
+
+            Log.i("INFO", "Supplements saved in prefs and application: "+json);
+        }else{
+            Log.i("INFO", "Supplements found in prefs. No seeding needed");
+        }
+
+        if(foodCategories_json.isEmpty()){
+            Log.i("INFO", "Food categories not found in prefs. Seeding food categories.");
+
+            ArrayList<FoodCategory> foodcategories = new ArrayList<>();
+            foodcategories.add(new FoodCategory(1, "Morgenmad"));
+            foodcategories.add(new FoodCategory(2, "Frokost"));
+            foodcategories.add(new FoodCategory(3, "Aftensmad"));
+            foodcategories.add(new FoodCategory(4, "Sødt"));
+            foodcategories.add(new FoodCategory(5, "Frugt"));
+
+            Application.getInstance().set_foodCategoryList(foodcategories);
+            String json = gson.toJson(foodcategories);
+            editor.putString("FoodCategories", json);
+
+            Log.i("INFO", "Food categories saved in prefs and application: "+json);
+        }else{
+            Log.i("INFO", "Food categories found in prefs. No seeding needed");
+        }
+
+        if(foods_json.isEmpty()){
+            Log.i("INFO", "Food not found in prefs. Seeding food.");
+
+            ArrayList<Food> foods = new ArrayList<>();
+            foods.add(new Food(1, "Havregryn", 1));
+            foods.add(new Food(2, "Yoghurt", 1));
+            foods.add(new Food(3, "Brød", 1));
+            foods.add(new Food(4, "Æg", 1));
+            foods.add(new Food(6, "Leverpostejsmad", 2));
+            foods.add(new Food(7, "Kartoffelmad", 2));
+            foods.add(new Food(8, "Tomatmad", 2));
+            foods.add(new Food(9, "Agurkmad", 2));
+            foods.add(new Food(11, "Boller i karry", 3));
+            foods.add(new Food(12, "Bruger", 3));
+            foods.add(new Food(13, "Pizza", 3));
+            foods.add(new Food(14, "Kebab", 3));
+            foods.add(new Food(16, "Lakrids", 4));
+            foods.add(new Food(17, "Vingummi", 4));
+            foods.add(new Food(18, "Oreo", 4));
+            foods.add(new Food(19, "Is", 4));
+            foods.add(new Food(21, "Banan", 5));
+            foods.add(new Food(22, "Æble", 5));
+            foods.add(new Food(23, "Pære", 5));
+            foods.add(new Food(24, "Dragefrugt", 5));
+
+            Application.getInstance().get_foodCategoryList().get(0).setFoods(new ArrayList<>(foods.subList(0, 3)));
+            Application.getInstance().get_foodCategoryList().get(1).setFoods(new ArrayList<>(foods.subList(4, 7)));
+            Application.getInstance().get_foodCategoryList().get(2).setFoods(new ArrayList<>(foods.subList(8, 11)));
+            Application.getInstance().get_foodCategoryList().get(3).setFoods(new ArrayList<>(foods.subList(12, 15)));
+            Application.getInstance().get_foodCategoryList().get(4).setFoods(new ArrayList<>(foods.subList(16, 19)));
+
+            Application.getInstance().set_foodList(foods);
+            String json = gson.toJson(foods);
+            editor.putString("Foods: ", json);
+
+            Log.i("INFO", "Foods saved in prefs and application: "+json);
+        }else{
+            Log.i("INFO", "Foods found in prefs. No seeding needed");
+        }
+
+
+        if(feces_json.isEmpty()){
+            Log.i("INFO", "Feces not found in prefs. Seeding feces.");
+
+            ArrayList<Feces> feces = new ArrayList<>();
+            feces.add(new Feces(1, "Ingen afføring"));
+            feces.add(new Feces(2, "Hårde klumper der ligner nødder"));
+            feces.add(new Feces(3, "Pølseformet, men med klumper"));
+            feces.add(new Feces(4, "Pølseformet men med revner på ydersiden"));
+            feces.add(new Feces(5, "Ligner en pølse eller orm, smidig og blød"));
+            feces.add(new Feces(6, "Bløde klumper med skarpe kanter"));
+            feces.add(new Feces(7, "Iturevne småstykker"));
+            feces.add(new Feces(8, "Vandig uden klumper. Kun væske"));
+
+            Application.getInstance().set_fecesList(feces);
+            String json = gson.toJson(feces);
+            editor.putString("Feces", json);
+
+            Log.i("INFO", "Feces saved in prefs and application: "+json);
+        }else{
+            Log.i("INFO", "Feces found in prefs. No seeding needed");
+        }
+
+
     }
 }

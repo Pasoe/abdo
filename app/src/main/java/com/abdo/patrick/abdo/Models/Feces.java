@@ -13,6 +13,11 @@ public class Feces {
     public Feces() {
     }
 
+    public Feces(int id, String type) {
+        this.id = id;
+        this.type = type;
+    }
+
     public int getId() {
         return id;
     }

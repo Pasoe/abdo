@@ -16,6 +16,15 @@ public class FoodCategory {
     public FoodCategory() {
     }
 
+    public FoodCategory(int id, String type){
+        this.id = id;
+        this.type = type;
+    }
+
+    public void setFoods(ArrayList<Food> food){
+        foods = food;
+    }
+
     public int getId() {
         return id;
     }
