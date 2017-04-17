@@ -276,15 +276,29 @@ public class Application extends android.app.Application {
 
     public ArrayList<Food> get_foodList(String type)
     {
+        Log.d("Food list: get_foodList", "Invoker()");
+        Log.d("Food list: get_foodList", "Type = " +type);
         ArrayList<Food> foods = new ArrayList<>();
         int categoryId = getCategoryId(type);
+        Log.d("Food list: get_foodList", "Category id = " +categoryId);
 
         if (categoryId == -1) return foods;
 
+        Log.d("Food list: get_foodList", "Fishing correct food list");
+        Log.d("Food list: get_foodList", "Current food list count: " +_foodList.size());
         for (Food food : _foodList)
         {
-            if (food.getFoodCategoryId() == categoryId) foods.add(food);
+            Log.d("Food list: get_foodList", "Current food:" +food.toString());
+            if (food.getFoodCategoryId() == categoryId)
+            {
+                foods.add(food);
+                Log.d("Food list: get_foodList", "Food added!");
+            }
+            else
+                Log.d("Food list: get_foodList", "Food discarded!");
+
         }
+        Log.d("Food list: get_foodList", "Returning "+type+" list:" +foods.toString());
         return foods;
     }
 
