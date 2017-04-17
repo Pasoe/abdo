@@ -15,6 +15,15 @@ public class Allergy {
     private String createdTime;
     private String modifiedTime;
 
+    public Allergy(){
+
+    }
+
+    public Allergy(int id, String type){
+        this.id = id;
+        this.type = type;
+    }
+
     @Override
     public String toString() {
         return "Allergy{" +
