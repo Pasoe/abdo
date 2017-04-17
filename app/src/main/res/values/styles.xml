@@ -43,20 +43,10 @@
         <item name="android:clickable">true</item>
     </style>
 
-
-
-    <style name="popup_theme" parent="@android:style/Theme.Light">
-        <item name="colorPrimary">@color/colorDarkGrey</item>
-        <item name="colorPrimaryDark">@color/colorDarkGrey</item>
-        <item name="colorAccent">@color/colorWhite</item>
-        <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:textCursorDrawable">@null</item>
-        <item name="android:windowBackground">@color/colorGreen</item>
-        <item name="android:buttonStyle">@style/button</item>
-        <item name="colorControlNormal">@color/colorBlack</item>
-        <item name="colorControlActivated">@color/colorBlack</item>
-        <item name="colorControlHighlight">@color/colorBlack</item>
-        <item name="android:textColorPrimary">@color/colorWhite</item>
+    //Dialog with slide animation
+    <style name="DialogAnimation" parent="@android:style/Theme.Light">
+        <item name="android:windowEnterAnimation">@anim/slide_up_dialog</item>
+        <item name="android:windowExitAnimation">@anim/slide_bottom_dialog</item>
     </style>
 
 </resources>

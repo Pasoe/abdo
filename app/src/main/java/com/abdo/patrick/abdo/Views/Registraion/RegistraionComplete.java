@@ -1,13 +1,17 @@
 package com.abdo.patrick.abdo.Views.Registraion;
 
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.view.ContextThemeWrapper;
+import android.text.Html;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -128,10 +132,8 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
         if (v == complete_registration_button)
         {
             sendRegistrationClicked = !sendRegistrationClicked;
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.popup_theme);
-            builder.setTitle("Send registrering");
-            builder.setMessage("Vil du sende?")
-                    .setCancelable(false)
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setMessage(Html.fromHtml("<font color='#FFFFFF'>Vil du sende din registrering?</font>"))
                     .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             Registration registration = Application.getInstance().getCurrentRegistration();
@@ -164,8 +166,10 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
                             dialog.cancel();
                         }
                     });
-            AlertDialog alert = builder.create();
-            alert.show();
+            AlertDialog dialog = builder.create();
+            dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+            dialog.show();
+            dialog.getWindow().setBackgroundDrawableResource(R.color.colorGreen);
         }
 
         if (!sendRegistrationClicked && !modifyPainPlacement)
