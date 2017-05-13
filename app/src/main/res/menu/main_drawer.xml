@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_register"
+            android:icon="@drawable/icon_home_black"
+            android:title="@string/nav_register" />
+        <item
+            android:id="@+id/nav_childinfo"
+            android:icon="@drawable/icon_childinfo"
+            android:title="@string/nav_childinfo" />
+        <item
+            android:id="@+id/nav_calendar"
+            android:icon="@drawable/icon_calendar_black"
+            android:title="@string/nav_calender" />
+
+        <item
+            android:id="@+id/nav_sharecode"
+            android:icon="@drawable/icons_sharecode_black"
+            android:title="@string/nav_sharecode" />
+    </group>
+
+    <item android:title="Dine indstillinger">
+        <menu>
+            <item
+                android:id="@+id/nav_restore"
+                android:title="@string/nav_restore" />
+        </menu>
+    </item>
+
+</menu>

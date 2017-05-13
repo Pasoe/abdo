@@ -1,13 +1,18 @@
 package com.abdo.patrick.abdo.Views;
 
 import android.content.DialogInterface;
+import android.content.res.Configuration;
 import android.os.Handler;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -17,12 +22,19 @@ import com.abdo.patrick.abdo.Views.Registraion.PainPlacement;
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mDrawerToggle;
+    private CharSequence mTitle;
+    private CharSequence mDrawerTitle;
+    private NavigationView navigation;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -45,12 +57,93 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerToggle = new ActionBarDrawerToggle(
+                this,                  /* host Activity */
+                mDrawerLayout,         /* DrawerLayout object */
+                R.string.navigation_drawer_open,  /* "open drawer" description */
+                R.string.navigation_drawer_close  /* "close drawer" description */
+        ) {
+
+            /** Called when a drawer has settled in a completely closed state. */
+            public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
+                getSupportActionBar().setTitle(mTitle);
+            }
+
+            /** Called when a drawer has settled in a completely open state. */
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                getSupportActionBar().setTitle(mDrawerTitle);
+            }
+        };
+        mDrawerToggle.setDrawerIndicatorEnabled(false);
+
+        // Set the drawer toggle as the DrawerListener
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setHomeButtonEnabled(true);
+
+        navigation = (NavigationView) findViewById(R.id.nav_view);
+        navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                int id = menuItem.getItemId();
+                switch (id) {
+                    case R.id.nav_register:
+                        Toast.makeText(MainActivity.this, "home clicked", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.nav_childinfo:
+                        Toast.makeText(MainActivity.this, "stamdata clicked", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.nav_calendar:
+                        Toast.makeText(MainActivity.this, "calendar clicked", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.nav_sharecode:
+                        Toast.makeText(MainActivity.this, "delekode clicked", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.nav_restore:
+                        Toast.makeText(MainActivity.this, "restore clicked", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+                return false;
+            }
+        });
+
+
         Fragment fr = new PainPlacement();
         getSupportFragmentManager().beginTransaction().add(R.id.main_activity_reg_fragment, fr).commit();
     }
 
     public int getToolbarHeight() {
         return toolbar.getHeight();
+    }
+
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Pass the event to ActionBarDrawerToggle, if it returns
+        // true, then it has handled the app icon touch event
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        // Handle your other action bar items...
+
+        return super.onOptionsItemSelected(item);
     }
 
 
