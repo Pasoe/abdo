@@ -24,6 +24,7 @@
                 android:layout_gravity="center"
                 android:tint="@color/colorWhite"/>
             <TextView
+                android:id="@+id/sharecode_header"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -56,6 +57,7 @@
                 android:layout_weight="2"
                 android:tint="@color/colorWhite"/>
             <TextView
+                android:id="@+id/sharecode_helptext"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -73,7 +75,8 @@
         android:layout_height="0dp"
         android:layout_weight="0.5"
         android:layout_gravity="bottom"
-        android:background="@color/colorWhite">
+        android:background="@color/colorWhite"
+        android:id="@+id/inputShareCodeLayout">
         <EditText
             android:id="@+id/editTextInputCode"
             android:layout_width="match_parent"
@@ -88,4 +91,36 @@
             android:imeOptions="actionDone"
             android:textColor="@color/colorBlack"/>
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:layout_gravity="bottom"
+        android:background="@color/colorWhite"
+        android:id="@+id/generateShareCodeLayout"
+        android:visibility="gone">
+        <TextView
+            android:id="@+id/generatedCodeField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="20px"
+            android:layout_marginRight="20px"
+            android:textColor="@color/colorBlack"
+            android:textIsSelectable="true"
+            android:textSize="24dp"
+            android:text="516487"
+            android:visibility="invisible"/>
+        <Button
+            android:id="@+id/generatedCodeButton"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:text="Generer delekode"
+            android:layout_centerInParent="true"
+            android:background="@color/colorPurple"/>
+
+    </RelativeLayout>
+
 </LinearLayout>

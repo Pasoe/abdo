@@ -25,6 +25,7 @@
             android:layout_gravity="center"
             android:tint="@color/colorWhite"/>
         <TextView
+            android:id="@+id/restore_header"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -57,6 +58,7 @@
             android:layout_weight="2"
             android:tint="@color/colorWhite"/>
         <TextView
+            android:id="@+id/restore_helptext"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"

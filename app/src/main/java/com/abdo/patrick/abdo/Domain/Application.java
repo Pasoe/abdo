@@ -345,4 +345,9 @@ public class Application extends android.app.Application {
         _currentRegistration = new Registration();
         _currentRegistration.setFoods(new ArrayList<Food>());
     }
+
+    public Registration FindRegistration(int clickedId) {
+        //TODO - returer korrekt registrerng
+        return new Registration();
+    }
 }

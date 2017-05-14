@@ -27,16 +27,32 @@ public class RestoreFromEmailFragment extends Fragment implements View.OnClickLi
     }
 
     public TextView toolbarSave;
+    private Boolean saveEmail = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_restore_from_email, container, false);
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+        if(getArguments() != null){
+            saveEmail = getArguments().getBoolean("save", false);
+        }
+
         TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
         toolbarTitle.setText(getResources().getString(R.string.title_restore));
+
+        if(!saveEmail) {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }else{
+            TextView restoreHeader = (TextView) view.findViewById(R.id.restore_header);
+            TextView restoreHelpText = (TextView) view.findViewById(R.id.restore_helptext);
+
+            restoreHeader.setText("Tilnyt din email");
+            restoreHelpText.setText("Tilknytter du en email til din abdo bruger, kan du gendanne dine indstillinger på andre enheder.");
+        }
+
+
 
         toolbarSave = (TextView) getActivity().findViewById(R.id.toolbar_save);
         toolbarSave.setVisibility(View.VISIBLE);
@@ -61,7 +77,7 @@ public class RestoreFromEmailFragment extends Fragment implements View.OnClickLi
     @Override
     public void onClick(View v) {
         if(v == v.findViewById(R.id.toolbar_save)){
-            //SAVE CODE!
+            //TODO - GEM EMAIL PÅ SERVER SGU!
 
             FragmentManager fm = getFragmentManager();
             fm.popBackStack();

@@ -1,7 +1,6 @@
 package com.abdo.patrick.abdo.Views;
 
 import android.support.v4.app.FragmentManager;
-import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
@@ -9,7 +8,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -24,6 +22,9 @@ import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.R;
 import com.abdo.patrick.abdo.Views.RegisterChild.ChildOverviewFragment;
 import com.abdo.patrick.abdo.Views.Registraion.PainPlacement;
+import com.abdo.patrick.abdo.Views.Shared.RegistrationOverviewFragment;
+import com.abdo.patrick.abdo.Views.Shared.RestoreFromEmailFragment;
+import com.abdo.patrick.abdo.Views.Shared.TypeCodeFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -96,22 +97,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 int id = menuItem.getItemId();
-                switch (id) {
-                    case R.id.nav_childinfo:
-                        displayView();
-                        mDrawerLayout.closeDrawer(navigation);
-//                        Toast.makeText(MainActivity.this, "stamdata clicked", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.nav_calendar:
-                        Toast.makeText(MainActivity.this, "calendar clicked", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.nav_sharecode:
-                        Toast.makeText(MainActivity.this, "delekode clicked", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.nav_restore:
-                        Toast.makeText(MainActivity.this, "restore clicked", Toast.LENGTH_SHORT).show();
-                        break;
-                }
+                displayView(id);
+                mDrawerLayout.closeDrawer(navigation);
                 return false;
             }
         });
@@ -177,11 +164,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void displayView(){
-        Fragment fragment = new ChildOverviewFragment();
+    private void displayView(int id){
+
+        Fragment fragment = null;
         Bundle i = new Bundle();
-        i.putBoolean("edit", true);
-        fragment.setArguments(i);
+
+        switch (id) {
+            case R.id.nav_childinfo:
+                fragment = new ChildOverviewFragment();
+                i.putBoolean("edit", true);
+                fragment.setArguments(i);
+                break;
+            case R.id.nav_calendar:
+                fragment = new RegistrationOverviewFragment();
+                i.putBoolean("generate", true);
+                fragment.setArguments(i);
+                break;
+            case R.id.nav_sharecode:
+                fragment = new TypeCodeFragment();
+                i.putBoolean("generate", true);
+                fragment.setArguments(i);
+                break;
+            case R.id.nav_restore:
+                fragment = new RestoreFromEmailFragment();
+                i.putBoolean("save", true);
+                fragment.setArguments(i);
+                break;
+        }
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.addToBackStack(null);
