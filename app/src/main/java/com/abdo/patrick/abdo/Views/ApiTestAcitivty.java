@@ -4,13 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import com.abdo.patrick.abdo.Api.Allergy.*;
-import com.abdo.patrick.abdo.Api.Child.GetById;
-import com.abdo.patrick.abdo.Domain.Application;
-import com.abdo.patrick.abdo.Models.Anonymous;
 import com.abdo.patrick.abdo.R;
 
 public class ApiTestAcitivty extends AppCompatActivity implements View.OnClickListener {
@@ -36,7 +31,7 @@ public class ApiTestAcitivty extends AppCompatActivity implements View.OnClickLi
         if (view.getId() == button.getId()){
 
             //Get all allergies
-            new Get().execute();
+          //  new Get().execute();
 //            new GetById().execute("1");
 
             //Post a new anonymous

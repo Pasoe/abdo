@@ -1,17 +1,14 @@
 package com.abdo.patrick.abdo.Views.Registraion;
 
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.view.ContextThemeWrapper;
 import android.text.Html;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,12 +17,13 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.abdo.patrick.abdo.Api.Registration.Post;
+import com.abdo.patrick.abdo.Api.OkHttp;
 import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.Models.Registration;
 import com.abdo.patrick.abdo.R;
-import com.abdo.patrick.abdo.Views.MainActivity;
+import com.google.gson.Gson;
 
+import java.io.IOException;
 import java.util.UUID;
 
 /**
@@ -55,11 +53,15 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
             ,toiletStatus
             ,foodStatus;
 
+    private OkHttp okHttp;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_registraion_complete, container, false);
+
+        okHttp = new OkHttp();
 
         sleepStatus = (ImageView) view.findViewById(R.id.answered_icon_sleep_status);
         moodStatus = (ImageView) view.findViewById(R.id.answered_icon_mood_status);
@@ -142,8 +144,18 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
                                 registration.setGuid(UUID.randomUUID().toString());
 
                             //Call api
-                            new Post().execute(registration);
-                            Toast.makeText(getContext(), "Registrering sendt!", Toast.LENGTH_SHORT).show();
+                            try {
+                                Gson gson = new Gson();
+                                String deviceId = Application.getAndroidId(Application.getInstance().getApplicationContext());
+                                String childGuid = Application.getInstance().getNewChild().getGuid();
+
+                                okHttp.post(getString(R.string.api_registration)+deviceId+"/"+childGuid, gson.toJson(registration));
+
+                                Toast.makeText(getContext(), "Registrering sendt!", Toast.LENGTH_SHORT).show();
+                            }
+                            catch (IOException e) {
+                                e.printStackTrace();
+                            }
 
                             //Clear current registration
                             Application.getInstance().InitiateCurrentRegistration();

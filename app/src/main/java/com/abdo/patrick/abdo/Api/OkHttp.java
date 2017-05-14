@@ -4,13 +4,13 @@ import android.util.Log;
 
 import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.Models.Allergy;
+import com.abdo.patrick.abdo.Models.Anonymous;
+import com.abdo.patrick.abdo.Models.Feces;
+import com.abdo.patrick.abdo.Models.Food;
+import com.abdo.patrick.abdo.Models.FoodCategory;
 import com.abdo.patrick.abdo.Models.Supplement;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -54,6 +54,9 @@ public class OkHttp {
                     LogFailure(response, "POST");
                 else
                   LogSuccess(response, "POST", null);
+
+                //Clean temporary values after each post
+                Application.getInstance().removeNewChild();
             }
         });
     }
@@ -97,6 +100,46 @@ public class OkHttp {
                         Log.i("OkHttp", "Retrieved " +list.size()+" supplements.");
                     }
                     //Supplement
+
+                    if (classOfT == Food.class){
+                        ArrayList<Food> list = gson.fromJson(responseData,
+                                new TypeToken<ArrayList<Food>>(){}.getType());
+
+                        Application.getInstance().set_foodList(list);
+                        Application.getInstance().AddItemToPreference("Foods", list);
+                        Log.i("OkHttp", "Retrieved " +list.size()+" foods.");
+                    }
+                    //Foods
+
+                    if (classOfT == Feces.class){
+                        ArrayList<Feces> list = gson.fromJson(responseData,
+                                new TypeToken<ArrayList<Feces>>(){}.getType());
+
+                        Application.getInstance().set_fecesList(list);
+                        Application.getInstance().AddItemToPreference("Feces", list);
+                        Log.i("OkHttp", "Retrieved " +list.size()+" feces.");
+                    }
+                    //Feces
+
+                    if (classOfT == FoodCategory.class){
+                        ArrayList<FoodCategory> list = gson.fromJson(responseData,
+                                new TypeToken<ArrayList<FoodCategory>>(){}.getType());
+
+                        Application.getInstance().set_foodCategoryList(list);
+                        Application.getInstance().AddItemToPreference("FoodCategories", list);
+                        Log.i("OkHttp", "Retrieved " +list.size()+" food categories.");
+                    }
+                    //Food categories
+
+                    if (classOfT == Anonymous.class){
+                        Anonymous anonymous = gson.fromJson(responseData, Anonymous.class);
+
+                        Application.getInstance().set_anonymous(anonymous);
+                        Log.i("OkHttp", "Retrieved the following anonymous\n" +
+                                "Device id  : "+anonymous.getDeviceId()+"\n" +
+                                "Device name: "+anonymous.getDeviceName());
+                    }
+                    //Anonymous
                 }
             }
         });

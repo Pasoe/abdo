@@ -3,13 +3,12 @@ package com.abdo.patrick.abdo.Views;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.abdo.patrick.abdo.Api.Anonymous.Post;
 import com.abdo.patrick.abdo.Api.OkHttp;
 import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.Models.Allergy;
@@ -28,10 +27,6 @@ import org.joda.time.Period;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-
-import okhttp3.OkHttpClient;
-
-import static java.lang.Thread.sleep;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -195,7 +190,15 @@ public class SplashActivity extends AppCompatActivity {
             Log.i("INFO", "Fetched foods from pref");
             Log.d("DATA", Application.getInstance().get_foodList().toString());
         }
-        else new com.abdo.patrick.abdo.Api.Food.Get().execute();
+        else
+        {
+            try {
+                okHttp.get(getString(R.string.api_food), Food.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        //else new com.abdo.patrick.abdo.Api.Food.Get().execute();
 
         if (!update && !foodCategories_json.isEmpty()){
             ArrayList<FoodCategory> foodCategories =
@@ -204,7 +207,15 @@ public class SplashActivity extends AppCompatActivity {
             Log.i("INFO", "Fetched food categories from pref");
             Log.d("DATA", Application.getInstance().get_foodCategoryList().toString());
         }
-        else new com.abdo.patrick.abdo.Api.FoodCategory.Get().execute();
+        else
+        {
+            try {
+                okHttp.get(getString(R.string.api_foodcategory), FoodCategory.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        //else new com.abdo.patrick.abdo.Api.FoodCategory.Get().execute();
 
         if (!update && !feces_json.isEmpty()){
             ArrayList<Feces> feces =
@@ -213,7 +224,15 @@ public class SplashActivity extends AppCompatActivity {
             Log.i("INFO", "Fetched feces from pref");
             Log.d("DATA", Application.getInstance().get_fecesList().toString());
         }
-        else new com.abdo.patrick.abdo.Api.Feces.Get().execute();
+        else
+        {
+            try {
+                okHttp.get(getString(R.string.api_feces), Feces.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        //else new com.abdo.patrick.abdo.Api.Feces.Get().execute();
     }
 
     private void seedStaticData(SharedPreferences settings, Gson gson){
