@@ -1,11 +1,6 @@
 package com.abdo.patrick.abdo.Models;
 
-import android.util.Log;
-
-import org.json.JSONArray;
-
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by Khaled on 21-03-2017.
@@ -14,39 +9,43 @@ import java.util.Date;
 public class Child {
 
     private int id;
-    private String guid;
-    private String createdTime;
-    private String modifiedTime;
-    private ChildInfo childInfo;
-    private ShareCode shareCode;
-    private ArrayList<ChildAllergy> childAllergies;
-    private ArrayList<ChildMedicine> childMedicines;
-    private ArrayList<ChildSupplement> childSupplements;
-    private ArrayList<Anonymous> anonymous;
-    private ArrayList<Registration> registrations;
+    private String Guid;
+    private String CreatedTime;
+    private String ModifiedTime;
+    private ChildInfo ChildInfo;
+    private ShareCode ShareCode;
+    private ArrayList<ChildAllergy> ChildAllergies;
+    private ArrayList<ChildMedicine> ChildMedicines;
+    private ArrayList<ChildSupplement> ChildSupplements;
+    private ArrayList<Anonymous> Anonymous;
+    private ArrayList<Registration> Registrations;
 
     public Child() {
-        childInfo = new ChildInfo();
-        childAllergies = new ArrayList<ChildAllergy>();
-        childMedicines = new ArrayList<ChildMedicine>();
-        childSupplements = new ArrayList<ChildSupplement>();
+        ChildInfo = new ChildInfo();
+        ChildAllergies = new ArrayList<ChildAllergy>();
+        ChildMedicines = new ArrayList<ChildMedicine>();
+        ChildSupplements = new ArrayList<ChildSupplement>();
     }
 
     public Child(String guid) {
-        this.guid = guid;
-        childInfo = new ChildInfo();
-        childAllergies = new ArrayList<ChildAllergy>();
-        childMedicines = new ArrayList<ChildMedicine>();
-        childSupplements = new ArrayList<ChildSupplement>();
+        this.Guid = guid;
+        ChildInfo = new ChildInfo();
+        ChildAllergies = new ArrayList<ChildAllergy>();
+        ChildMedicines = new ArrayList<ChildMedicine>();
+        ChildSupplements = new ArrayList<ChildSupplement>();
     }
 
     @Override
     public String toString() {
         return "Child{" +
-                "id=" + id +
-                ", createdTime='" + createdTime + '\'' +
-                ", modifiedTime='" + modifiedTime + '\'' +
-                ", anonymous=" + anonymous +
+                "Guid='" + Guid + '\'' +
+                ", CreatedTime='" + CreatedTime + '\'' +
+                ", ModifiedTime='" + ModifiedTime + '\'' +
+                ", ChildInfo=" + ChildInfo +
+                ", ShareCode=" + ShareCode +
+                ", ChildAllergies=" + ChildAllergies +
+                ", ChildMedicines=" + ChildMedicines +
+                ", ChildSupplements=" + ChildSupplements +
                 '}';
     }
 
@@ -59,49 +58,53 @@ public class Child {
     }
 
     public String getGuid() {
-        return guid;
+        return Guid;
+    }
+
+    public com.abdo.patrick.abdo.Models.ChildInfo getChildInfo() {
+        return ChildInfo;
     }
 
     public void setGuid(String guid) {
-        this.guid = guid;
+        this.Guid = guid;
     }
 
     public String getCreatedTime() {
-        return createdTime;
+        return CreatedTime;
     }
 
     public void setCreatedTime(String createdTime) {
-        this.createdTime = createdTime;
+        this.CreatedTime = createdTime;
     }
 
     public String getModifiedTime() {
-        return modifiedTime;
+        return ModifiedTime;
     }
 
     public void setModifiedTime(String modifiedTime) {
-        this.modifiedTime = modifiedTime;
+        this.ModifiedTime = modifiedTime;
     }
 
     public ArrayList<ChildAllergy> getAllergies(){
-        return childAllergies;
+        return ChildAllergies;
     }
 
     public void addAllergy(int id){
         ChildAllergy allergy = new ChildAllergy(id);
-        childAllergies.add(allergy);
+        ChildAllergies.add(allergy);
     }
 
     public void removeAllergy(int id){
-        for(ChildAllergy allergy : childAllergies){
+        for(ChildAllergy allergy : ChildAllergies){
             if(allergy.getId() == id){
-                childAllergies.remove(allergy);
+                ChildAllergies.remove(allergy);
                 return;
             }
         }
     }
 
     public boolean allergyExists(int id){
-        for(ChildAllergy allergy : childAllergies){
+        for(ChildAllergy allergy : ChildAllergies){
             if(allergy.getId() == id){
                 return true;
             }
@@ -110,25 +113,25 @@ public class Child {
     }
 
     public ArrayList<ChildSupplement> getSupplements(){
-        return childSupplements;
+        return ChildSupplements;
     }
 
     public void addSupplement(int id){
         ChildSupplement supplement = new ChildSupplement(id);
-        childSupplements.add(supplement);
+        ChildSupplements.add(supplement);
     }
 
     public void removeSupplement(int id){
-        for(ChildSupplement supplement : childSupplements){
+        for(ChildSupplement supplement : ChildSupplements){
             if(supplement.getId() == id){
-                childSupplements.remove(supplement);
+                ChildSupplements.remove(supplement);
                 return;
             }
         }
     }
 
     public boolean supplementExists(int id){
-        for(ChildSupplement supplement : childSupplements){
+        for(ChildSupplement supplement : ChildSupplements){
             if(supplement.getId() == id){
                 return true;
             }
@@ -137,18 +140,18 @@ public class Child {
     }
 
     public ArrayList<ChildMedicine> getMedicineList(){
-        return childMedicines;
+        return ChildMedicines;
     }
 
     public void addMedicine(String type, String dosage){
         ChildMedicine newMedicine = new ChildMedicine();
         newMedicine.setType(type);
         newMedicine.setDosage(dosage);
-        childMedicines.add(newMedicine);
+        ChildMedicines.add(newMedicine);
     }
 
     public void updateMedicine(String oldType, String oldDosage, String type, String dosage){
-        for(ChildMedicine medicine : childMedicines){
+        for(ChildMedicine medicine : ChildMedicines){
             if(medicine.getType().equals(oldType) && medicine.getDosage().equals(oldDosage)){
                 medicine.setType(type);
                 medicine.setDosage(dosage);
@@ -158,20 +161,20 @@ public class Child {
     }
 
     public void removeMedicine(String type, String dosage){
-        for(ChildMedicine medicine : childMedicines){
+        for(ChildMedicine medicine : ChildMedicines){
             if(medicine.getType().equals(type) && medicine.getDosage().equals(dosage)){
-                childMedicines.remove(medicine);
+                ChildMedicines.remove(medicine);
                 return;
             }
         }
     }
 
     public void setInfo(ChildInfo info){
-        childInfo = info;
+        ChildInfo = info;
     }
 
     public ChildInfo getInfo(){
-        return childInfo;
+        return ChildInfo;
     }
 
     public boolean isBoy() {

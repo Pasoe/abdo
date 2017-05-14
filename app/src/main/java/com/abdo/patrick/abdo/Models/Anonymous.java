@@ -1,10 +1,6 @@
 package com.abdo.patrick.abdo.Models;
 
-import org.json.JSONArray;
-
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Khaled on 21-03-2017.
@@ -12,78 +8,78 @@ import java.util.List;
 
 public class Anonymous {
 
-    private int id;
-    private String deviceId;
-    private String deviceName;
-    private String createdTime;
-    private String modifiedTime;
-    private ArrayList<Child> children;
+    private int Id;
+    private String DeviceId;
+    private String DeviceName;
+    private String CreatedTime;
+    private String ModifiedTime;
+    private ArrayList<Child> Children;
 
     public Anonymous() {
     }
 
     public Anonymous(String deviceId, String deviceName) {
-        this.deviceId = deviceId;
-        this.deviceName = deviceName;
-        children = new ArrayList<>();
+        this.DeviceId = deviceId;
+        this.DeviceName = deviceName;
+        Children = new ArrayList<>();
     }
 
     @Override
     public String toString() {
         return "Anonymous{" +
-                "id=" + id +
-                ", deviceId='" + deviceId + '\'' +
-                ", deviceName='" + deviceName + '\'' +
-                ", createdTime='" + createdTime + '\'' +
-                ", modifiedTime='" + modifiedTime + '\'' +
-                ", children=" + children +
+                "Id=" + Id +
+                ", DeviceId='" + DeviceId + '\'' +
+                ", DeviceName='" + DeviceName + '\'' +
+                ", CreatedTime='" + CreatedTime + '\'' +
+                ", ModifiedTime='" + ModifiedTime + '\'' +
+                ", Children=" + Children +
                 '}';
     }
 
     public int getId() {
-        return id;
+        return Id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.Id = id;
     }
 
     public String getDeviceId() {
-        return deviceId;
+        return DeviceId;
     }
 
     public void setDeviceId(String deviceId) {
-        this.deviceId = deviceId;
+        this.DeviceId = deviceId;
     }
 
     public String getDeviceName() {
-        return deviceName;
+        return DeviceName;
     }
 
     public void setDeviceName(String deviceName) {
-        this.deviceName = deviceName;
+        this.DeviceName = deviceName;
     }
 
     public String getCreatedTime() {
-        return createdTime;
+        return CreatedTime;
     }
 
     public void setCreatedTime(String createdTime) {
-        this.createdTime = createdTime;
+        this.CreatedTime = createdTime;
     }
 
     public String getModifiedTime() {
-        return modifiedTime;
+        return ModifiedTime;
     }
 
     public void setModifiedTime(String modifiedTime) {
-        this.modifiedTime = modifiedTime;
+        this.ModifiedTime = modifiedTime;
     }
 
 
     public Child getChild(String currentChildGuid) {
         Child child = null;
-        for(Child c : children){
+        for(Child c : Children){
             if(!c.getGuid().equals(currentChildGuid)) continue;
                 child = c;
         }
@@ -91,24 +87,24 @@ public class Anonymous {
     }
 
     public void addNewChild(Child newChild){
-        if(children == null){
-            children = new ArrayList<>();
+        if(Children == null){
+            Children = new ArrayList<>();
         }
-        children.add(newChild);
+        Children.add(newChild);
     }
 
     public void setChildren(ArrayList<Child> children){
-        this.children = children;
+        this.Children = children;
     }
 
     public ArrayList<Child> getChildren(){
-        return children;
+        return Children;
     }
 
     public boolean childrenExists(){
-        if(children == null){
+        if(Children == null){
             return false;
-        } else if(children.isEmpty()){
+        } else if(Children.isEmpty()){
             return false;
         }
         return true;

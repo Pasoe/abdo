@@ -59,6 +59,12 @@
     <string name="activity_level_5">Rigtig meget</string>
 
 
+    <!--Web api-->
+    <string name="api_anonymous">http://abdoapi.azurewebsites.net/api/anonymous/</string>
+    <string name="api_allergy">http://abdoapi.azurewebsites.net/api/allergy/</string>
+    <string name="api_supplement">http://abdoapi.azurewebsites.net/api/supplement/</string>
+
+
     <string name="device_id">QE58711871dds81dg838344fga</string>
 
 </resources>
