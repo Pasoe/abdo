@@ -1,22 +1,28 @@
 package com.abdo.patrick.abdo.Views;
 
+import android.support.v4.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.R;
+import com.abdo.patrick.abdo.Views.RegisterChild.ChildOverviewFragment;
 import com.abdo.patrick.abdo.Views.Registraion.PainPlacement;
 
 public class MainActivity extends AppCompatActivity {
@@ -95,7 +101,9 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "home clicked", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_childinfo:
-                        Toast.makeText(MainActivity.this, "stamdata clicked", Toast.LENGTH_SHORT).show();
+                        displayView();
+                        mDrawerLayout.closeDrawer(navigation);
+//                        Toast.makeText(MainActivity.this, "stamdata clicked", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.nav_calendar:
                         Toast.makeText(MainActivity.this, "calendar clicked", Toast.LENGTH_SHORT).show();
@@ -111,9 +119,34 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        updateNavdrawerData();
 
         Fragment fr = new PainPlacement();
         getSupportFragmentManager().beginTransaction().add(R.id.main_activity_reg_fragment, fr).commit();
+    }
+
+    public void updateNavdrawerData() {
+        TextView childName = ((TextView) navigation.getHeaderView(0).findViewById(R.id.nav_header_name));
+        ImageView childImage = ((ImageView) navigation.getHeaderView(0).findViewById(R.id.img_profile));
+
+        if(Application.getInstance().getCurrentChild() != null){
+            if(Application.getInstance().getCurrentChild().getInfo() != null){
+
+                if(TextUtils.isEmpty(Application.getInstance().getCurrentChild().getInfo().getName())){
+                    childName.setText("Intet navn");
+                }else{
+                    childName.setText(Application.getInstance().getCurrentChild().getInfo().getName());
+                }
+
+                if(Application.getInstance().getCurrentChild().getInfo().getGender() == 2){
+                    childImage.setImageDrawable(getResources().getDrawable(R.drawable.girl_thumbnail));
+                }else{
+                    childImage.setImageDrawable(getResources().getDrawable(R.drawable.boy_thumbnail));
+                }
+            }
+        }
+
+
     }
 
     public int getToolbarHeight() {
@@ -146,6 +179,18 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    private void displayView(){
+        Fragment fragment = new ChildOverviewFragment();
+        Bundle i = new Bundle();
+        i.putBoolean("edit", true);
+        fragment.setArguments(i);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.main_activity_reg_fragment, fragment);
+        fragmentTransaction.commit();
+    }
 
     private Boolean exit = false;
     @Override

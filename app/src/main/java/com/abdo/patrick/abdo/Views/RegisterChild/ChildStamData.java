@@ -34,12 +34,23 @@ public class ChildStamData extends Fragment implements View.OnClickListener{
     private RadioButton genderBoyField;
     private RadioButton genderGirlField;
     private DatePicker birthdayField;
+    private Child newChild;
+    private Boolean editMode = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_child_stam_data, container, false);
+
+        if(getArguments() != null){
+            editMode = getArguments().getBoolean("edit", false);
+        }
+        if(editMode){
+            newChild = Application.getInstance().getCurrentChild();
+        }else{
+            newChild = Application.getInstance().getNewChild();
+        }
 
         TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
         toolbarTitle.setText("Stamdata");
@@ -69,7 +80,7 @@ public class ChildStamData extends Fragment implements View.OnClickListener{
     }
 
     private void populateInputFields(){
-        Child newChild = Application.getInstance().getNewChild();
+
         if(newChild.getInfo() != null){
             if(newChild.getInfo().getName() != null){
                 nameField.setText(newChild.getInfo().getName());
@@ -99,7 +110,6 @@ public class ChildStamData extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if(v == v.findViewById(R.id.toolbar_save)){
-            Child newChild = Application.getInstance().getNewChild();
 
             newChild.getInfo().setName(nameField.getText().toString());
             if(genderBoyField.isChecked()){
@@ -110,7 +120,11 @@ public class ChildStamData extends Fragment implements View.OnClickListener{
             String birthday = birthdayField.getDayOfMonth()+"-"+birthdayField.getMonth()+"-"+birthdayField.getYear();
             newChild.getInfo().setBirthdate(birthday);
 
-            Application.getInstance().setNewChild(newChild);
+            if(editMode){
+                Application.getInstance().updateCurrentChildData(newChild);
+            }else{
+                Application.getInstance().setNewChild(newChild);
+            }
 
             FragmentManager fm = getFragmentManager();
             fm.popBackStack();

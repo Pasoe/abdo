@@ -251,6 +251,11 @@ public class Application extends android.app.Application {
         editor.commit();
     }
 
+    public void updateCurrentChildData(Child child){
+        _anonymous.updateChild(child);
+        updateChildListInSharedPreferences(_anonymous.getChildren());
+    }
+
     public void updateChildListInSharedPreferences(ArrayList<Child> children){
         SharedPreferences settings = getSharedPreferences("Abdo", MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();

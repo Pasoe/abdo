@@ -37,6 +37,8 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
 
     private ListController model;
     private TextView toolbarSave;
+    private Boolean editMode = false;
+    private Child newChild;
 
 
 
@@ -48,11 +50,19 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.create_child_list, container, false);
 
+        if(getArguments() != null){
+            editMode = getArguments().getBoolean("edit", false);
+        }
+
         TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
-        toolbarTitle.setText("Registrer barn");
-        toolbarSave = (TextView) getActivity().findViewById(R.id.toolbar_save);
-        toolbarSave.setVisibility(View.VISIBLE);
-        toolbarSave.setOnClickListener(this);
+        if(editMode){
+            toolbarTitle.setText("Rediger");
+        }else{
+            toolbarTitle.setText("Registrer barn");
+            toolbarSave = (TextView) getActivity().findViewById(R.id.toolbar_save);
+            toolbarSave.setVisibility(View.VISIBLE);
+            toolbarSave.setOnClickListener(this);
+        }
 
         RelativeLayout child_data_header = (RelativeLayout)  view.findViewById(R.id.create_child_data_category);
         child_data_header.setOnClickListener(this);
@@ -71,7 +81,12 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
         TextView allergyContent = (TextView) view.findViewById(R.id.child_overview_allergy_content);
         TextView supplementContent = (TextView) view.findViewById(R.id.child_overview_supplement_content);
 
-        Child newChild = Application.getInstance().getNewChild();
+
+        if(editMode){
+            newChild = Application.getInstance().getCurrentChild();
+        }else{
+            newChild = Application.getInstance().getNewChild();
+        }
 
         if(newChild.getInfo() != null){
             if(newChild.getInfo().getName() != null){
@@ -97,15 +112,25 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
             supplementContent.append(supplement.getDescription()+"\n");
         }
 
+        ((MainActivity)getActivity()).updateNavdrawerData();
+
         return view;
     }
 
+    @Override
+    public void onDetach(){
+        if(editMode){
+            new com.abdo.patrick.abdo.Api.Child.Post().execute(Application.getInstance().getCurrentChild());
+        }
+        super.onDetach();
+    }
 
     @Override
     public void onClick(View v) {
         Fragment fragment = null;
 
         if(v == toolbarSave){
+
             new com.abdo.patrick.abdo.Api.Child.Post().execute(Application.getInstance().getNewChild());
             Application.getInstance().addNewChildToAnonymous(Application.getInstance().getNewChild());
             Application.getInstance().removeNewChild();
@@ -128,12 +153,16 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
         switch(v.getId()){
             case R.id.create_child_data_category:{
                 fragment = new ChildStamData();
+                Bundle i = new Bundle();
+                i.putBoolean("edit", editMode);
+                fragment.setArguments(i);
                 break;
             }
             case R.id.create_child_medicine_category:{
                 fragment = new ChildMedicineData();
                 Bundle i = new Bundle();
                 i.putString("listType", "medicine");
+                i.putBoolean("edit", editMode);
                 fragment.setArguments(i);
                 break;
             }
@@ -141,6 +170,7 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
                 fragment = new ChildDataListFagment();
                 Bundle i = new Bundle();
                 i.putString("listType", "allergies");
+                i.putBoolean("edit", editMode);
                 fragment.setArguments(i);
                 break;
             }
@@ -148,17 +178,24 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
                 fragment = new ChildDataListFagment();
                 Bundle i = new Bundle();
                 i.putString("listType", "supplements");
+                i.putBoolean("edit", editMode);
                 fragment.setArguments(i);
                 break;
             }
         }
 
-        toolbarSave.setVisibility(View.INVISIBLE);
-        FragmentManager fragmentManager2 = getFragmentManager();
-        FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
-        fragmentTransaction2.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
-        fragmentTransaction2.addToBackStack(null);
-        fragmentTransaction2.replace(R.id.main_activity_fragment, fragment);
-        fragmentTransaction2.commit();
+        if(!editMode){
+            toolbarSave.setVisibility(View.INVISIBLE);
+        }
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
+        fragmentTransaction.addToBackStack(null);
+        if(editMode){
+            fragmentTransaction.replace(R.id.main_activity_reg_fragment, fragment);
+        }else{
+            fragmentTransaction.replace(R.id.main_activity_fragment, fragment);
+        }
+        fragmentTransaction.commit();
     }
 }

@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.abdo.patrick.abdo.Controllers.ImageController;
 import com.abdo.patrick.abdo.Domain.Application;
@@ -38,6 +39,9 @@ public class PainPlacement extends Fragment implements View.OnTouchListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_pain_placement, container, false);
+
+        TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
+        toolbarTitle.setText("abdo");
 
         imageController = new ImageController(this);
 
