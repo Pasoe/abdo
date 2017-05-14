@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -57,6 +58,12 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
         TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
         if(editMode){
             toolbarTitle.setText("Rediger");
+            ImageView editIcon = (ImageView) view.findViewById(R.id.stamdata_header_image);
+            editIcon.setImageDrawable(getResources().getDrawable(R.drawable.icon_edit));
+
+            TextView editHeaderText = (TextView) view.findViewById(R.id.stamdata_header_text);
+            editHeaderText.setText("Rediger information om dit barn her");
+
         }else{
             toolbarTitle.setText("Registrer barn");
             toolbarSave = (TextView) getActivity().findViewById(R.id.toolbar_save);
@@ -112,7 +119,9 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
             supplementContent.append(supplement.getDescription()+"\n");
         }
 
-        ((MainActivity)getActivity()).updateNavdrawerData();
+        if(editMode) {
+            ((MainActivity) getActivity()).updateNavdrawerData();
+        }
 
         return view;
     }
@@ -120,6 +129,7 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
     @Override
     public void onDetach(){
         if(editMode){
+            //TODO - fix api kald
             new com.abdo.patrick.abdo.Api.Child.Post().execute(Application.getInstance().getCurrentChild());
         }
         super.onDetach();

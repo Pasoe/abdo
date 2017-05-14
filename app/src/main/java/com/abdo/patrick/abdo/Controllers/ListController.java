@@ -124,12 +124,17 @@ public class ListController {
                             i.putString("type", Application.getInstance().getNewChild().getMedicineList().get(position).getType());
                             i.putString("dosage", Application.getInstance().getNewChild().getMedicineList().get(position).getDosage());
                         }
+                        i.putBoolean("edit", editMode);
                         fragment2.setArguments(i);
 
                         FragmentManager fragmentManager2 = _childMedicineFragment.getFragmentManager();
                         FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
                         fragmentTransaction2.addToBackStack(null);
-                        fragmentTransaction2.replace(R.id.main_activity_fragment, fragment2);
+                        if(editMode){
+                            fragmentTransaction2.replace(R.id.main_activity_reg_fragment, fragment2);
+                        }else{
+                            fragmentTransaction2.replace(R.id.main_activity_fragment, fragment2);
+                        }
                         fragmentTransaction2.commit();
                     }
                     else if(listType.equals("allergies")){

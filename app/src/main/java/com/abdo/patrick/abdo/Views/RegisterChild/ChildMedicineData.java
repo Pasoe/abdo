@@ -34,6 +34,7 @@ public class ChildMedicineData extends Fragment implements View.OnClickListener 
 
 
     private FloatingActionButton button;
+    private Boolean editMode;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,6 +45,7 @@ public class ChildMedicineData extends Fragment implements View.OnClickListener 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_child_medicine_data, container, false);
 
+        editMode = getArguments().getBoolean("edit", false);
 
         TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
 
@@ -56,7 +58,11 @@ public class ChildMedicineData extends Fragment implements View.OnClickListener 
         toolbarTitle.setText("Medicin");
         header.setText("Medicin");
 
-        model.InitViews(recyclerView, Application.getInstance().getMedicineListView(Application.getInstance().getNewChild().getMedicineList(), Application.getInstance().getNewChild()));
+        if(editMode){
+            model.InitViews(recyclerView, Application.getInstance().getMedicineListView(Application.getInstance().getCurrentChild().getMedicineList(), Application.getInstance().getCurrentChild()));
+        }else{
+            model.InitViews(recyclerView, Application.getInstance().getMedicineListView(Application.getInstance().getNewChild().getMedicineList(), Application.getInstance().getNewChild()));
+        }
 
         return view;
     }
@@ -65,11 +71,19 @@ public class ChildMedicineData extends Fragment implements View.OnClickListener 
     public void onClick(View v) {
         if(v == button){
             Fragment fragment = new ChildMedicineEditFragment();
+            Bundle i = new Bundle();
+            i.putBoolean("edit", editMode);
+            fragment.setArguments(i);
+
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.setCustomAnimations(R.anim.enter_from_bot, R.anim.exit_to_top, R.anim.enter_from_top, R.anim.exit_to_bot);
             fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.replace(R.id.main_activity_fragment, fragment);
+            if(editMode){
+                fragmentTransaction.replace(R.id.main_activity_reg_fragment, fragment);
+            }else{
+                fragmentTransaction.replace(R.id.main_activity_fragment, fragment);
+            }
             fragmentTransaction.commit();
         }
     }
