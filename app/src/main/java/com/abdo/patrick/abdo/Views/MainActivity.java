@@ -97,9 +97,6 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 int id = menuItem.getItemId();
                 switch (id) {
-                    case R.id.nav_register:
-                        Toast.makeText(MainActivity.this, "home clicked", Toast.LENGTH_SHORT).show();
-                        break;
                     case R.id.nav_childinfo:
                         displayView();
                         mDrawerLayout.closeDrawer(navigation);
