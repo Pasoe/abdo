@@ -181,6 +181,10 @@ public class Child {
         return false;
     }
 
+    public void addRegistration(Registration reg){
+        registrations.add(reg);
+    }
+
     public ArrayList<Registration> getRegistrations(){
         return registrations;
     }

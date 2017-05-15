@@ -141,6 +141,10 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
                             if (registration.getGuid() == null || registration.getGuid().isEmpty())
                                 registration.setGuid(UUID.randomUUID().toString());
 
+                            //Save registration locally
+                            Application.getInstance().getCurrentChild().addRegistration(registration);
+                            Application.getInstance().updateCurrentChildData(Application.getInstance().getCurrentChild());
+
                             //Call api
                             new Post().execute(registration);
                             Toast.makeText(getContext(), "Registrering sendt!", Toast.LENGTH_SHORT).show();
