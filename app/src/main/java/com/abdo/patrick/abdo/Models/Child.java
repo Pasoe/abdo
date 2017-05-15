@@ -30,6 +30,7 @@ public class Child {
         childAllergies = new ArrayList<ChildAllergy>();
         childMedicines = new ArrayList<ChildMedicine>();
         childSupplements = new ArrayList<ChildSupplement>();
+        registrations = new ArrayList<Registration>();
     }
 
     public Child(String guid) {
@@ -178,5 +179,13 @@ public class Child {
         if(getInfo().getGender() == 1)
             return true;
         return false;
+    }
+
+    public void addRegistration(Registration reg){
+        registrations.add(reg);
+    }
+
+    public ArrayList<Registration> getRegistrations(){
+        return registrations;
     }
 }

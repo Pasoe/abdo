@@ -65,6 +65,8 @@ public class ListController {
                 }
 
             });
+            private Child newChild;
+
             @Override
             public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
                 Adapter rvAdapter = (Adapter)rv.getAdapter();
@@ -87,9 +89,15 @@ public class ListController {
                     }
 
                     String listType = fragment.getArguments().getString("listType", "");
+                    Boolean editMode = fragment.getArguments().getBoolean("edit", false);
 
                     if(listType.equals("supplements")){
-                        Child newChild = Application.getInstance().getNewChild();
+                        if(editMode){
+                            newChild = Application.getInstance().getCurrentChild();
+                        }else{
+                            newChild = Application.getInstance().getNewChild();
+                        }
+
                         boolean exists = newChild.supplementExists(clickedId);
                         if(exists){
                             newChild.removeSupplement(clickedId);
@@ -99,34 +107,56 @@ public class ListController {
                             newChild.addSupplement(clickedId);
                             child.findViewById(R.id.row_selected_icon).setVisibility(View.VISIBLE);
                         }
-                        Application.getInstance().setNewChild(newChild);
+                        if(editMode) {
+                            Application.getInstance().updateCurrentChildData(newChild);
+                        }else{
+                            Application.getInstance().setNewChild(newChild);
+                        }
                     }
                     else if(listType.equals("medicine")){
                         Fragment fragment2 = new ChildMedicineEditFragment();
 
                         Bundle i = new Bundle();
-                        i.putString("type", Application.getInstance().getNewChild().getMedicineList().get(position).getType());
-                        i.putString("dosage", Application.getInstance().getNewChild().getMedicineList().get(position).getDosage());
+                        if(editMode){
+                            i.putString("type", Application.getInstance().getCurrentChild().getMedicineList().get(position).getType());
+                            i.putString("dosage", Application.getInstance().getCurrentChild().getMedicineList().get(position).getDosage());
+                        }else{
+                            i.putString("type", Application.getInstance().getNewChild().getMedicineList().get(position).getType());
+                            i.putString("dosage", Application.getInstance().getNewChild().getMedicineList().get(position).getDosage());
+                        }
+                        i.putBoolean("edit", editMode);
                         fragment2.setArguments(i);
 
                         FragmentManager fragmentManager2 = _childMedicineFragment.getFragmentManager();
                         FragmentTransaction fragmentTransaction2 = fragmentManager2.beginTransaction();
                         fragmentTransaction2.addToBackStack(null);
-                        fragmentTransaction2.replace(R.id.main_activity_fragment, fragment2);
+                        if(editMode){
+                            fragmentTransaction2.replace(R.id.main_activity_reg_fragment, fragment2);
+                        }else{
+                            fragmentTransaction2.replace(R.id.main_activity_fragment, fragment2);
+                        }
                         fragmentTransaction2.commit();
                     }
                     else if(listType.equals("allergies")){
-                        Child newChild = Application.getInstance().getNewChild();
+
+                        if(editMode){
+                            newChild = Application.getInstance().getCurrentChild();
+                        }else{
+                            newChild = Application.getInstance().getNewChild();
+                        }
+
                         if(newChild.allergyExists(clickedId)){
                             newChild.removeAllergy(clickedId);
                             child.findViewById(R.id.row_selected_icon).setVisibility(View.INVISIBLE);
-
                         }else{
                             newChild.addAllergy(clickedId);
                             child.findViewById(R.id.row_selected_icon).setVisibility(View.VISIBLE);
-
                         }
-                        Application.getInstance().setNewChild(newChild);
+                        if(editMode) {
+                            Application.getInstance().updateCurrentChildData(newChild);
+                        }else{
+                            Application.getInstance().setNewChild(newChild);
+                        }
                     }
                 }
                 return false;

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,16 +35,22 @@ public class ChildMedicineEditFragment extends Fragment implements View.OnClickL
     private EditText dosageField;
     private String type;
     private String dosage;
-    private Bundle editParameters;
+    private String editParameters;
     private RelativeLayout deleteButton;
+    private Boolean editMode;
+    private Child newChild;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        editParameters = getArguments();
+        if(getArguments().getString("type") != null && getArguments().getString("dosage") != null){
+            editParameters = getArguments().getString("type")+getArguments().getString("dosage");
+        }
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_child_medicine_edit, container, false);
+
+        editMode = getArguments().getBoolean("edit", false);
 
         TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
         toolbarTitle.setText("Medicin");
@@ -90,13 +97,16 @@ public class ChildMedicineEditFragment extends Fragment implements View.OnClickL
         return view;
     }
 
-    public void onBackPressed(){
-
-    }
-
     @Override
     public void onClick(View v) {
+        if(editMode){
+            newChild = Application.getInstance().getCurrentChild();
+        }else{
+            newChild = Application.getInstance().getNewChild();
+        }
+
         if(v == toolbarSave){
+
             if(medicineField.getText().toString().equals("") || dosageField.getText().toString().equals("")){
                 Toast.makeText(getActivity(),"Begge felter skal udfyldes", Toast.LENGTH_SHORT).show();
                 return;
@@ -104,9 +114,7 @@ public class ChildMedicineEditFragment extends Fragment implements View.OnClickL
 
             toolbarSave.setVisibility(View.INVISIBLE);
 
-            Child newChild = Application.getInstance().getNewChild();
-
-            if(editParameters != null) {
+            if(!TextUtils.isEmpty(editParameters)) {
                 if(getArguments().containsKey("type") && getArguments().containsKey("dosage")){
                     newChild.updateMedicine(getArguments().getString("type"), getArguments().getString("dosage"), medicineField.getText().toString(), dosageField.getText().toString());
                     deleteButton.setVisibility(View.INVISIBLE);
@@ -115,7 +123,12 @@ public class ChildMedicineEditFragment extends Fragment implements View.OnClickL
                 newChild.addMedicine(medicineField.getText().toString(), dosageField.getText().toString());
             }
 
-            Application.getInstance().setNewChild(newChild);
+            if(editMode){
+                Application.getInstance().updateCurrentChildData(newChild);
+            }else{
+                Application.getInstance().setNewChild(newChild);
+            }
+
             FragmentManager fm = getFragmentManager();
             fm.popBackStack();
         }
@@ -123,9 +136,14 @@ public class ChildMedicineEditFragment extends Fragment implements View.OnClickL
             toolbarSave.setVisibility(View.INVISIBLE);
             deleteButton.setVisibility(View.INVISIBLE);
 
-            Child newChild = Application.getInstance().getNewChild();
             newChild.removeMedicine(getArguments().getString("type"), getArguments().getString("dosage"));
-            Application.getInstance().setNewChild(newChild);
+
+            if(editMode){
+                Application.getInstance().updateCurrentChildData(newChild);
+            }else{
+                Application.getInstance().setNewChild(newChild);
+            }
+
             FragmentManager fm = getFragmentManager();
             fm.popBackStack();
         }

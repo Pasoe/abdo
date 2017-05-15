@@ -49,13 +49,19 @@ public class ChildDataListFagment extends Fragment {
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.child_data_list);
 
         String listType = getArguments().getString("listType");
+        Boolean editMode = getArguments().getBoolean("edit", false);
 
         if(listType.equals("allergies")){
             toolbarTitle.setText("Allergier");
             header.setText("Allergier");
 
             ArrayList<Allergy> allergies = Application.getInstance().get_allergyList();
-            model.InitViews(recyclerView, Application.getInstance().getAllergyListView(allergies, Application.getInstance().getNewChild()));
+            if(editMode){
+                model.InitViews(recyclerView, Application.getInstance().getAllergyListView(allergies, Application.getInstance().getCurrentChild()));
+            }else{
+                model.InitViews(recyclerView, Application.getInstance().getAllergyListView(allergies, Application.getInstance().getNewChild()));
+            }
+
         }
 
         if(listType.equals("supplements")){
@@ -63,7 +69,11 @@ public class ChildDataListFagment extends Fragment {
             header.setText("Kosttilskud");
 
             ArrayList<Supplement> supplements = Application.getInstance().get_supplementList();
-            model.InitViews(recyclerView, Application.getInstance().getSupplementListView(supplements, Application.getInstance().getNewChild()));
+            if(editMode){
+                model.InitViews(recyclerView, Application.getInstance().getSupplementListView(supplements, Application.getInstance().getCurrentChild()));
+            }else{
+                model.InitViews(recyclerView, Application.getInstance().getSupplementListView(supplements, Application.getInstance().getNewChild()));
+            }
         }
 
         return view;

@@ -90,6 +90,14 @@ public class Anonymous {
         return child;
     }
 
+    public void updateChild(Child child){
+        for(Child c : children){
+            if(!c.getGuid().equals(child.getGuid())) continue;
+            children.remove(c);
+        }
+        children.add(child);
+    }
+
     public void addNewChild(Child newChild){
         if(children == null){
             children = new ArrayList<>();
