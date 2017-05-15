@@ -11,6 +11,7 @@ import com.abdo.patrick.abdo.Models.PainLevel;
 import com.abdo.patrick.abdo.Models.Registration;
 import com.abdo.patrick.abdo.Models.Supplement;
 import com.abdo.patrick.abdo.ViewModels.ListItem;
+import com.abdo.patrick.abdo.ViewModels.RegistrationListItem;
 import com.google.gson.Gson;
 
 import android.content.Context;
@@ -98,6 +99,10 @@ public class Application extends android.app.Application {
 
     public Registration getCurrentRegistration() {
         return _currentRegistration;
+    }
+
+    public void set_currentRegistration(Registration reg){
+        _currentRegistration = reg;
     }
 
     public Food FindFood(int id) {
@@ -196,6 +201,20 @@ public class Application extends android.app.Application {
             current = list.get(i);
             listView.add(
                     new ListItem(current.getId(), current.getType()+" ("+current.getDosage()+")", false));
+        }
+
+        return listView;
+    }
+
+    public ArrayList<RegistrationListItem> getRegistrationListView(ArrayList<Registration> list){
+        ArrayList<RegistrationListItem> listView = new ArrayList<>();
+        Registration current;
+
+        for(int i = 0; i < list.size(); i++)
+        {
+            current = list.get(i);
+            listView.add(
+                    new RegistrationListItem(current.getGuid(), current.getCreatedTime()));
         }
 
         return listView;

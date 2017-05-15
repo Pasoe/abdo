@@ -10,7 +10,10 @@ import android.view.ViewGroup;
 
 import com.abdo.patrick.abdo.Controllers.RegistrationOverviewController;
 import com.abdo.patrick.abdo.Domain.Application;
+import com.abdo.patrick.abdo.Models.Registration;
 import com.abdo.patrick.abdo.R;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,7 +25,7 @@ public class RegistrationOverviewFragment extends Fragment {
         // Required empty public constructor
     }
 
-    private RegistrationOverviewController controller;
+    private RegistrationOverviewController model;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,10 +33,12 @@ public class RegistrationOverviewFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_registration_overview, container, false);
 
-        controller = new RegistrationOverviewController(this);
+        model = new RegistrationOverviewController(this);
+
+        ArrayList<Registration> list = Application.getInstance().getCurrentChild().getRegistrations();
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.child_registration_list);
-        controller.InitViews(recyclerView, Application.getInstance().getCurrentChild().getRegistrations());
+        model.InitViews(recyclerView, Application.getInstance().getRegistrationListView(list));
 
         return view;
     }

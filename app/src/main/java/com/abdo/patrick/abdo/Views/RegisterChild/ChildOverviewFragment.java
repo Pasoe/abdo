@@ -135,7 +135,7 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
     public void onDetach(){
         if(editMode){
             //TODO - fix api kald
-            new com.abdo.patrick.abdo.Api.Child.Post().execute(Application.getInstance().getCurrentChild());
+//            new com.abdo.patrick.abdo.Api.Child.Post().execute(Application.getInstance().getCurrentChild());
         }
         super.onDetach();
     }

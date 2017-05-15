@@ -112,6 +112,14 @@ public class Registration {
         return 0;
     }
 
+    public String getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(String createdTime) {
+        this.createdTime = createdTime;
+    }
+
     public boolean RegisteredFoodContainsCategory(String category) {
 
         int categoryId = Application.getInstance().getCategoryId(category);

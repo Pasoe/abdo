@@ -6,12 +6,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import com.abdo.patrick.abdo.Adapter;
 import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.Models.Food;
 import com.abdo.patrick.abdo.Models.Registration;
 import com.abdo.patrick.abdo.R;
+import com.abdo.patrick.abdo.RegistrationAdapter;
 import com.abdo.patrick.abdo.Views.Registraion.FoodListFragment;
 import com.abdo.patrick.abdo.Views.Shared.RegistrationOverviewFragment;
 
@@ -32,7 +34,7 @@ public class RegistrationOverviewController {
 
     public void InitViews(RecyclerView recyclerView, ArrayList data){
 
-        final RecyclerView.Adapter adapter = new Adapter(data);
+        final RecyclerView.Adapter adapter = new RegistrationAdapter(data);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(_context);
 
         recyclerView.setLayoutManager(layoutManager);
@@ -48,13 +50,13 @@ public class RegistrationOverviewController {
             });
             @Override
             public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-                Adapter rvAdapter = (Adapter)rv.getAdapter();
+                RegistrationAdapter rvAdapter = (RegistrationAdapter)rv.getAdapter();
                 View child = rv.findChildViewUnder(e.getX(), e.getY());
                 if(child != null && gestureDetector.onTouchEvent(e)) {
                     int position = rv.getChildAdapterPosition(child);
-                    int clickedId = rvAdapter.getId(position);
+                    String clickedId = rvAdapter.getItemGuid(position);
 
-                    Registration reg = Application.getInstance().FindRegistration(clickedId);
+                    Toast.makeText(_context, "Clicked registration: "+clickedId, Toast.LENGTH_SHORT).show();
 
                 }
                 return false;
