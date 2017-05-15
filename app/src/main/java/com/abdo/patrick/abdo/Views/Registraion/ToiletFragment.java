@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.R;
 
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -57,41 +58,95 @@ public class ToiletFragment extends Fragment implements View.OnClickListener {
         turd_type_7.setOnClickListener(this);
         turd_type_8.setOnClickListener(this);
 
+        Integer fecesId = Application.getInstance().getCurrentRegistration().getFecesId();
+        if(fecesId != null){
+            setInitialFecesColor(fecesId);
+        }
+
         return view;
     }
 
     @Override
     public void onClick(View v) {
         int type = 0;
+        resetBackgroundColor();
 
         if(v == turd_type_1){
             type = 2;
+            turd_type_1.setBackgroundColor(getResources().getColor(R.color.colorPurple));
         }
         if(v == turd_type_2){
             type = 3;
+            turd_type_2.setBackgroundColor(getResources().getColor(R.color.colorPurple));
         }
         if(v == turd_type_3){
             type = 4;
+            turd_type_3.setBackgroundColor(getResources().getColor(R.color.colorPurple));
         }
         if(v == turd_type_4){
             type = 5;
+            turd_type_4.setBackgroundColor(getResources().getColor(R.color.colorPurple));
         }
         if(v == turd_type_5){
             type = 6;
+            turd_type_5.setBackgroundColor(getResources().getColor(R.color.colorPurple));
         }
         if(v == turd_type_6){
             type = 7;
+            turd_type_6.setBackgroundColor(getResources().getColor(R.color.colorPurple));
         }
         if(v == turd_type_7){
             type = 8;
+            turd_type_7.setBackgroundColor(getResources().getColor(R.color.colorPurple));
         }
         if(v == turd_type_8){
             type = 1;
+            turd_type_8.setBackgroundColor(getResources().getColor(R.color.colorPurple));
         }
 
         if (type != 0 ) Application.getInstance().getCurrentRegistration().addFeces(type);
 
         FragmentManager fragmentManager2 = getFragmentManager();
         fragmentManager2.popBackStack();
+    }
+
+    private void resetBackgroundColor(){
+        turd_type_1.setBackgroundColor(getResources().getColor(R.color.colorGrey));
+        turd_type_2.setBackgroundColor(getResources().getColor(R.color.colorGrey));
+        turd_type_3.setBackgroundColor(getResources().getColor(R.color.colorGrey));
+        turd_type_4.setBackgroundColor(getResources().getColor(R.color.colorGrey));
+        turd_type_5.setBackgroundColor(getResources().getColor(R.color.colorGrey));
+        turd_type_6.setBackgroundColor(getResources().getColor(R.color.colorGrey));
+        turd_type_7.setBackgroundColor(getResources().getColor(R.color.colorGrey));
+        turd_type_8.setBackgroundColor(getResources().getColor(R.color.colorGrey));
+    }
+
+    private void setInitialFecesColor(int fecesId){
+        switch(fecesId)   {
+            case 1:
+                turd_type_8.setBackgroundColor(getResources().getColor(R.color.colorPurple));
+                break;
+            case 2:
+                turd_type_1.setBackgroundColor(getResources().getColor(R.color.colorPurple));
+                break;
+            case 3:
+                turd_type_2.setBackgroundColor(getResources().getColor(R.color.colorPurple));
+                break;
+            case 4:
+                turd_type_3.setBackgroundColor(getResources().getColor(R.color.colorPurple));
+                break;
+            case 5:
+                turd_type_4.setBackgroundColor(getResources().getColor(R.color.colorPurple));
+                break;
+            case 6:
+                turd_type_5.setBackgroundColor(getResources().getColor(R.color.colorPurple));
+                break;
+            case 7:
+                turd_type_6.setBackgroundColor(getResources().getColor(R.color.colorPurple));
+                break;
+            case 8:
+                turd_type_7.setBackgroundColor(getResources().getColor(R.color.colorPurple));
+                break;
+        }
     }
 }

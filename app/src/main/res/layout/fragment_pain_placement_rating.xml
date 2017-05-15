@@ -34,7 +34,7 @@
             android:textColor="@color/colorWhite"/>
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -47,19 +47,33 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/level_row_1_image"
-            android:layout_gravity="center_vertical"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="6dp"
             android:src="@drawable/icon_rating_5" />
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/level_row_1_selected"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:tint="@color/colorWhite"
+            android:layout_marginRight="6dp"
+            android:visibility="invisible"
+            android:src="@drawable/icon_checkmark_vector" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/level_row_1_image"
+            android:layout_toLeftOf="@id/level_row_1_selected"
             android:textColor="#FFFFFF"
             android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
             android:id="@+id/level_text_row_1" />
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -72,19 +86,33 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/level_row_2_image"
-            android:layout_gravity="center_vertical"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="6dp"
             android:src="@drawable/icon_rating_4" />
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/level_row_2_selected"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:tint="@color/colorWhite"
+            android:layout_marginRight="6dp"
+            android:visibility="invisible"
+            android:src="@drawable/icon_checkmark_vector" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/level_row_2_image"
+            android:layout_toLeftOf="@id/level_row_2_selected"
             android:textColor="#FFFFFF"
             android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
             android:id="@+id/level_text_row_2" />
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -97,19 +125,33 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/level_row_3_image"
-            android:layout_gravity="center_vertical"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="6dp"
             android:src="@drawable/icon_rating_3" />
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/level_row_3_selected"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:tint="@color/colorWhite"
+            android:layout_marginRight="6dp"
+            android:visibility="invisible"
+            android:src="@drawable/icon_checkmark_vector" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/level_row_3_image"
+            android:layout_toLeftOf="@id/level_row_3_selected"
             android:textColor="#FFFFFF"
             android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
             android:id="@+id/level_text_row_3" />
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -121,19 +163,33 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/level_row_4_image"
-            android:layout_gravity="center_vertical"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="6dp"
             android:src="@drawable/icon_rating_2" />
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/level_row_4_selected"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:tint="@color/colorWhite"
+            android:layout_marginRight="6dp"
+            android:visibility="invisible"
+            android:src="@drawable/icon_checkmark_vector" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/level_row_4_image"
+            android:layout_toLeftOf="@id/level_row_4_selected"
             android:textColor="#FFFFFF"
             android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
             android:id="@+id/level_text_row_4" />
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -144,15 +200,29 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/level_row_5_image"
-            android:layout_gravity="center_vertical"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="6dp"
             android:src="@drawable/icon_rating_1" />
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/level_row_5_selected"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:tint="@color/colorWhite"
+            android:layout_marginRight="6dp"
+            android:visibility="invisible"
+            android:src="@drawable/icon_checkmark_vector" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="6dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/level_row_5_image"
+            android:layout_toLeftOf="@id/level_row_5_selected"
             android:textColor="#FFFFFF"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
             android:id="@+id/level_text_row_5" />
-    </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

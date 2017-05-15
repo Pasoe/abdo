@@ -69,4 +69,17 @@ public class Food {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object object)
+    {
+        boolean isEqual= false;
+
+        if (object != null && object instanceof Food)
+        {
+            isEqual = (this.Id == ((Food) object).Id && this.FoodCategoryId == ((Food) object).FoodCategoryId);
+        }
+        return isEqual;
+    }
+
+
 }
