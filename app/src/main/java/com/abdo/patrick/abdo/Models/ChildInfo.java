@@ -5,46 +5,57 @@ package com.abdo.patrick.abdo.Models;
  */
 
 public class ChildInfo {
-    private String name;
-    private String birthdate;
-    private int gender;
-    private String createdTime;
-    private String modifiedTime;
+    private String Name;
+    private String Birthdate;
+    private int Gender;
+    private String CreatedTime;
+    private String ModifiedTime;
+
+    @Override
+    public String toString() {
+        return "ChildInfo{" +
+                "Name='" + Name + '\'' +
+                ", Birthdate='" + Birthdate + '\'' +
+                ", Gender=" + Gender +
+                ", CreatedTime='" + CreatedTime + '\'' +
+                ", ModifiedTime='" + ModifiedTime + '\'' +
+                '}';
+    }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.Name = name;
     }
 
     public String getBirthdate() {
-        return birthdate;
+        return Birthdate;
     }
 
     public String getBirthdateToView() {
-        String[] datearray = birthdate.split("-");
+        String[] datearray = Birthdate.split("-");
         datearray[1] = Integer.toString(Integer.parseInt(datearray[1])+1);
         return datearray[0]+"-"+datearray[1]+"-"+datearray[2];
     }
 
     public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
+        this.Birthdate = birthdate;
     }
 
     public int getGender() {
-        return gender;
+        return Gender;
     }
 
     public void setGender(int gender) {
-        this.gender = gender;
+        this.Gender = gender;
     }
 
     public String getGenderString(){
-        if(gender == 1){
+        if(Gender == 1){
             return "Dreng";
-        }else if(gender == 2){
+        }else if(Gender == 2){
             return "Pige";
         }
         return "";

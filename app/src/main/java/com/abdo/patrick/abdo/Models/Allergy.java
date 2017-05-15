@@ -1,69 +1,65 @@
 package com.abdo.patrick.abdo.Models;
 
-import com.abdo.patrick.abdo.ViewModels.ListItem;
-
-import java.util.ArrayList;
-
 /**
  * Created by Khaled on 26-03-2017.
  */
 
 public class Allergy {
 
-    private int id;
-    private String type;
-    private String createdTime;
-    private String modifiedTime;
+    private int Id;
+    private String Type;
+    private String CreatedTime;
+    private String ModifiedTime;
 
     public Allergy(){
 
     }
 
     public Allergy(int id, String type){
-        this.id = id;
-        this.type = type;
+        this.Id = id;
+        this.Type = type;
     }
 
     @Override
     public String toString() {
         return "Allergy{" +
-                "id=" + id +
-                ", type='" + type + '\'' +
-                ", createdTime='" + createdTime + '\'' +
-                ", modifiedTime='" + modifiedTime + '\'' +
+                "Id=" + Id +
+                ", Type='" + Type + '\'' +
+                ", CreatedTime='" + CreatedTime + '\'' +
+                ", ModifiedTime='" + ModifiedTime + '\'' +
                 '}';
     }
 
     public int getId() {
-        return id;
+        return Id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.Id = id;
     }
 
     public String getType() {
-        return type;
+        return Type;
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.Type = type;
     }
 
     public String getCreatedTime() {
-        return createdTime;
+        return CreatedTime;
     }
 
     public void setCreatedTime(String createdTime) {
-        this.createdTime = createdTime;
+        this.CreatedTime = createdTime;
     }
 
     public String getModifiedTime() {
-        return modifiedTime;
+        return ModifiedTime;
     }
 
     public void setModifiedTime(String modifiedTime) {
-        this.modifiedTime = modifiedTime;
+        this.ModifiedTime = modifiedTime;
     }
 
     @Override
@@ -73,7 +69,7 @@ public class Allergy {
             return false;
 
         Allergy allergy = (Allergy) obj;
-        if (allergy.getId() == this.id && allergy.getType().equals(this.type))
+        if (allergy.getId() == this.Id && allergy.getType().equals(this.Type))
             return true;
 
         return false;

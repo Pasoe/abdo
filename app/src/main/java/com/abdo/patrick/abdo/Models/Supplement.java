@@ -6,59 +6,59 @@ package com.abdo.patrick.abdo.Models;
 
 public class Supplement {
 
-    private int id;
-    private String description;
-    private String createdTime;
-    private String modifiedTime;
+    private int Id;
+    private String Description;
+    private String CreatedTime;
+    private String ModifiedTime;
 
     public Supplement() {
     }
 
     public Supplement(int id, String description) {
-        this.id = id;
-        this.description = description;
+        this.Id = id;
+        this.Description = description;
     }
 
     @Override
     public String toString() {
         return "Supplement{" +
-                "id=" + id +
-                ", description='" + description + '\'' +
-                ", createdTime='" + createdTime + '\'' +
-                ", modifiedTime='" + modifiedTime + '\'' +
+                "Id=" + Id +
+                ", Description='" + Description + '\'' +
+                ", CreatedTime='" + CreatedTime + '\'' +
+                ", ModifiedTime='" + ModifiedTime + '\'' +
                 '}';
     }
 
     public int getId() {
-        return id;
+        return Id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.Id = id;
     }
 
     public String getDescription() {
-        return description;
+        return Description;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.Description = description;
     }
 
     public String getCreatedTime() {
-        return createdTime;
+        return CreatedTime;
     }
 
     public void setCreatedTime(String createdTime) {
-        this.createdTime = createdTime;
+        this.CreatedTime = createdTime;
     }
 
     public String getModifiedTime() {
-        return modifiedTime;
+        return ModifiedTime;
     }
 
     public void setModifiedTime(String modifiedTime) {
-        this.modifiedTime = modifiedTime;
+        this.ModifiedTime = modifiedTime;
     }
 
     @Override
@@ -68,7 +68,7 @@ public class Supplement {
             return false;
 
         Supplement supp = (Supplement) obj;
-        if (supp.getId() == this.id && supp.getDescription().equals(this.description))
+        if (supp.getId() == this.Id && supp.getDescription().equals(this.Description))
             return true;
 
         return false;

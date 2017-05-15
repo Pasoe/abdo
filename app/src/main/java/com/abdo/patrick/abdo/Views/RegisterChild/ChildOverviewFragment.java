@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.abdo.patrick.abdo.Api.OkHttp;
 import com.abdo.patrick.abdo.Controllers.ListController;
 import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.Models.Child;
@@ -24,6 +25,9 @@ import com.abdo.patrick.abdo.R;
 import com.abdo.patrick.abdo.Views.MainActivity;
 import com.abdo.patrick.abdo.Views.SplashActivity;
 import com.abdo.patrick.abdo.Views.Startup.NewUserFragment;
+import com.google.gson.Gson;
+
+import java.io.IOException;
 
 
 /**
@@ -41,13 +45,14 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
     private Boolean editMode = false;
     private Child newChild;
 
-
+    private OkHttp okHttp;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         model = new ListController(this);
+        okHttp = new OkHttp();
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.create_child_list, container, false);
 
@@ -141,7 +146,16 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
 
         if(v == toolbarSave){
 
-            new com.abdo.patrick.abdo.Api.Child.Post().execute(Application.getInstance().getNewChild());
+            try {
+                String deviceId = Application.getAndroidId(Application.getInstance().getApplicationContext());
+                Gson gson = new Gson();
+                okHttp.post(getString(R.string.api_child)+deviceId, gson.toJson(Application.getInstance().getNewChild()));
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            //new com.abdo.patrick.abdo.Api.Child.Post().execute(Application.getInstance().getNewChild());
             Application.getInstance().addNewChildToAnonymous(Application.getInstance().getNewChild());
             Application.getInstance().removeNewChild();
 

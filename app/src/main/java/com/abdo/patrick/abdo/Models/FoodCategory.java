@@ -7,70 +7,70 @@ import java.util.ArrayList;
  */
 
 public class FoodCategory {
-    private int id;
-    private String type;
-    private String createdTime;
-    private String modifiedTime;
-    private ArrayList<Food> foods;
+    private int Id;
+    private String Type;
+    private String CreatedTime;
+    private String ModifiedTime;
+    private ArrayList<Food> Foods;
 
     public FoodCategory() {
     }
 
     public FoodCategory(int id, String type){
-        this.id = id;
-        this.type = type;
+        this.Id = id;
+        this.Type = type;
     }
 
     public void setFoods(ArrayList<Food> food){
-        foods = food;
+        Foods = food;
     }
 
     public int getId() {
-        return id;
+        return Id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.Id = id;
     }
 
     public String getType() {
-        return type;
+        return Type;
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.Type = type;
     }
 
     public String getCreatedTime() {
-        return createdTime;
+        return CreatedTime;
     }
 
     public void setCreatedTime(String createdTime) {
-        this.createdTime = createdTime;
+        this.CreatedTime = createdTime;
     }
 
     public String getModifiedTime() {
-        return modifiedTime;
+        return ModifiedTime;
     }
 
     public void setModifiedTime(String modifiedTime) {
-        this.modifiedTime = modifiedTime;
+        this.ModifiedTime = modifiedTime;
     }
 
     @Override
     public String toString() {
         return "FoodCategory{" +
-                "id=" + id +
-                ", type='" + type + '\'' +
-                ", createdTime='" + createdTime + '\'' +
-                ", modifiedTime='" + modifiedTime + '\'' +
+                "Id=" + Id +
+                ", Type='" + Type + '\'' +
+                ", CreatedTime='" + CreatedTime + '\'' +
+                ", ModifiedTime='" + ModifiedTime + '\'' +
                 '}';
     }
 
-    //Return the id if the type is equal or -1
+    //Return the Id if the Type is equal or -1
     public int getIdByType(String type)
     {
-        return this.type.equals(type) ? this.id : -1;
+        return this.Type.equals(type) ? this.Id : -1;
     }
 
 }
