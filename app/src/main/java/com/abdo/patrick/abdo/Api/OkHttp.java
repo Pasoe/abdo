@@ -1,6 +1,10 @@
 package com.abdo.patrick.abdo.Api;
 
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.Models.Allergy;
@@ -9,14 +13,19 @@ import com.abdo.patrick.abdo.Models.Feces;
 import com.abdo.patrick.abdo.Models.Food;
 import com.abdo.patrick.abdo.Models.FoodCategory;
 import com.abdo.patrick.abdo.Models.Supplement;
+import com.abdo.patrick.abdo.Views.Shared.TypeCodeFragment;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.w3c.dom.Text;
+
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.HttpUrl;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -29,11 +38,14 @@ import okhttp3.Response;
 
 public class OkHttp {
 
-    private Gson gson = new Gson();
+    public OkHttp(){}
+
     public static final MediaType JSON
             = MediaType.parse("application/json; charset=utf-8");
 
     private OkHttpClient client = new OkHttpClient();
+
+    private Gson gson = new Gson();
 
     public void post(String url, String json) throws IOException{
 
@@ -53,10 +65,22 @@ public class OkHttp {
                 if (!response.isSuccessful())
                     LogFailure(response, "POST");
                 else
-                  LogSuccess(response, "POST", null);
+                {
+                    LogSuccess(response, "POST", null);
+                    HttpUrl url = response.networkResponse().request().url();
 
-                //Clean temporary values after each post
-                Application.getInstance().removeNewChild();
+                    //0 = "api", 1 = {controller name}, 2..n = arguments
+                    List<String> pathSegments = url.encodedPathSegments();
+                    String controllerName = pathSegments.get(1);
+
+                    switch (controllerName)
+                    {
+                        case "child":
+                            //Clear tmp values for the posted child
+                            Application.getInstance().removeNewChild();
+                            break;
+                    }
+                }
             }
         });
     }
@@ -146,7 +170,7 @@ public class OkHttp {
     }
 
 
-    private void LogFailure(final Response response, String call){
+    public static void LogFailure(final Response response, String call){
         Log.i("OkHttp",
                 "Failure : {"+call+"}             \n" +
                 "Protocol: "+response.protocol()+"\n" +
@@ -156,7 +180,7 @@ public class OkHttp {
 
     }
 
-    private void LogSuccess(final Response response, String call, String responseData){
+    public static void LogSuccess(final Response response, String call, String responseData){
         Log.i("OkHttp",
                 "Success : {"+call+"}             \n" +
                 "Code    : "+response.code()    +"\n" +

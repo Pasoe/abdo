@@ -20,6 +20,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -43,35 +44,26 @@ public class OkHttpTest {
     @Test
     public void GetControllerName() throws Exception {
         final Request request = new Request.Builder()
-                .url("http://abdoapi.azurewebsites.net/api/Allergy")
+                .url("http://abdoapi.azurewebsites.net/api/allergy")
                 .build();
 
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
+        Response response = client.newCall(request).execute();
+        HttpUrl url = response.networkResponse().request().url();
 
-            @Override
-            public void onResponse(Call call, final Response response) throws IOException {
-
-                if (!response.isSuccessful())
-                    LogFailure(response, "GET");
-                else
-                {
-                    LogSuccess(response, "GET", response.body().string());
-                    HttpUrl url = response.networkResponse().request().url();
-                    System.out.println(url.toString());
-                }
-            }
-        });
+        //0 = "api", 1 = {controller name}, 2..n = arguments
+        List<String> pathSegments = url.encodedPathSegments();
+        System.out.println("Controller name: "+pathSegments.get(1));
     }
 
 
-    /*@Test
+    @Test
     public void GetAllergies() throws Exception {
-        OkHttp httpController = new OkHttp();
-        String result = httpController.get("http://abdoapi.azurewebsites.net/api/Allergy", Allergy.class);
+        final Request request = new Request.Builder()
+                .url("http://abdoapi.azurewebsites.net/api/allergy")
+                .build();
+
+        Response response = client.newCall(request).execute();
+        String result = response.body().string();
         System.out.println(result);
 
         //Option 1: Fetch by JsonArray/JsonObject
@@ -89,46 +81,7 @@ public class OkHttpTest {
 
         //Check result for unit test
         assertNotEquals(result, "");
-    }*/
-
-    /*@Test
-    public void GetChildById() throws Exception {
-        //Child GUID: 73585885-6BBD-43EA-A74D-C6D4FCECB602
-        //DeviceId: DBC0191D-4E9A-41C8-9BDC-AEE8867F34D8
-        //Name: Jens Jensen
-
-        String guid = "73585885-6BBD-43EA-A74D-C6D4FCECB602";
-        String deviceId = "DBC0191D-4E9A-41C8-9BDC-AEE8867F34D8";
-        String name = "";
-        OkHttp httpController = new OkHttp();
-        String result = httpController.get("http://abdoapi.azurewebsites.net/api/Child/"+deviceId+"/"+guid);
-        System.out.println(result);
-
-        Gson gson = new Gson();
-        Child child = gson.fromJson(result, Child.class);
-        System.out.println(child.toString());
-        name = child.getChildInfo().getName();
-
-        assertEquals(name, "Jens Jensen");
-    }*/
-
-
-    private void LogFailure(final Response response, String call){
-        Log.i("OkHttp",
-                "Failure : {"+call+"}             \n" +
-                        "Protocol: "+response.protocol()+"\n" +
-                        "Code    : "+response.code()    +"\n" +
-                        "Message : "+response.message() +"\n" +
-                        "URL     : "+response.networkResponse().request().url());
-
     }
 
-    private void LogSuccess(final Response response, String call, String responseData){
-        Log.i("OkHttp",
-                "Success : {"+call+"}             \n" +
-                        "Code    : "+response.code()    +"\n" +
-                        "Response: "+responseData       +"\n" +
-                        "URL     : "+response.networkResponse().request().url());
 
-    }
 }

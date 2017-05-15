@@ -360,6 +360,8 @@ public class Application extends android.app.Application {
         return -1;
     }
 
+
+
     public void InitiateCurrentRegistration(){
         _currentRegistration = new Registration();
         _currentRegistration.setFoods(new ArrayList<Food>());

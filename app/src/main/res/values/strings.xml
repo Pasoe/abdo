@@ -68,6 +68,10 @@
     <string name="api_foodcategory">http://abdoapi.azurewebsites.net/api/foodcategory/</string>
     <string name="api_child">http://abdoapi.azurewebsites.net/api/child/</string>
     <string name="api_food">http://abdoapi.azurewebsites.net/api/food/</string>
+    <string name="api_sharecode">http://abdoapi.azurewebsites.net/api/sharecode/</string>
+
+
+    <string name="error">Der skete en fejl.</string>
 
 
     <string name="device_id">QE58711871dds81dg838344fga</string>
