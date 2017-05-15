@@ -88,6 +88,8 @@ public class Registration {
         return sleepId;
     }
 
+    public Integer getPainLevelId() {return painLevelId; };
+
     public boolean hasNoFood() {
         return hasNoFood;
     }

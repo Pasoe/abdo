@@ -47,6 +47,7 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
             ,answer_pain_tile;
 
     private RelativeLayout complete_registration_button;
+    private RelativeLayout save_reg_button;
 
     private ImageView
              sleepStatus
@@ -57,6 +58,8 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
 
     private OkHttp okHttp;
 
+    private Boolean editMode = false;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -64,6 +67,19 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
         View view = inflater.inflate(R.layout.fragment_registraion_complete, container, false);
 
         okHttp = new OkHttp();
+
+        if(getArguments() != null){
+            editMode = getArguments().getBoolean("edit", false);
+        }
+
+        if(editMode){
+            RelativeLayout send_reg_button = (RelativeLayout) view.findViewById(R.id.complete_registration_button);
+            send_reg_button.setVisibility(View.GONE);
+
+            save_reg_button = (RelativeLayout) view.findViewById(R.id.save_edit_registration_button);
+            save_reg_button.setOnClickListener(this);
+            save_reg_button.setVisibility(View.VISIBLE);
+        }
 
         sleepStatus = (ImageView) view.findViewById(R.id.answered_icon_sleep_status);
         moodStatus = (ImageView) view.findViewById(R.id.answered_icon_mood_status);
@@ -189,6 +205,17 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
             dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
             dialog.show();
             dialog.getWindow().setBackgroundDrawableResource(R.color.colorGreen);
+        }
+
+        if(v == save_reg_button){
+            Application.getInstance().updateCurrentRegistration();
+            Application.getInstance().InitiateCurrentRegistration();
+
+            //TODO - UPDATE THE SERVER WITH CHANGES
+
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.popBackStack();
+            return;
         }
 
         if (!sendRegistrationClicked && !modifyPainPlacement)
