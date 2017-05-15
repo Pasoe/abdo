@@ -25,7 +25,7 @@ public class Child {
         ChildAllergies = new ArrayList<ChildAllergy>();
         ChildMedicines = new ArrayList<ChildMedicine>();
         ChildSupplements = new ArrayList<ChildSupplement>();
-        registrations = new ArrayList<Registration>();
+        Registrations = new ArrayList<Registration>();
     }
 
     public Child(String guid) {
@@ -185,10 +185,10 @@ public class Child {
     }
 
     public void addRegistration(Registration reg){
-        registrations.add(reg);
+        Registrations.add(0, reg);
     }
 
     public ArrayList<Registration> getRegistrations(){
-        return registrations;
+        return Registrations;
     }
 }

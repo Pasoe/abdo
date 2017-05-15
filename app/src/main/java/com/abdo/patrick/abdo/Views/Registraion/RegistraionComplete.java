@@ -24,6 +24,8 @@ import com.abdo.patrick.abdo.R;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.UUID;
 
 /**
@@ -142,6 +144,7 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
                             //Add GUID to registration
                             if (registration.getGuid() == null || registration.getGuid().isEmpty())
                                 registration.setGuid(UUID.randomUUID().toString());
+                            registration.setCreatedTime(new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()));
 
                             //Save registration locally
                             Application.getInstance().getCurrentChild().addRegistration(registration);
@@ -151,7 +154,7 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
                             try {
                                 Gson gson = new Gson();
                                 String deviceId = Application.getAndroidId(Application.getInstance().getApplicationContext());
-                                String childGuid = Application.getInstance().getNewChild().getGuid();
+                                String childGuid = Application.getInstance().getCurrentChild().getGuid();
 
                                 okHttp.post(getString(R.string.api_registration)+deviceId+"/"+childGuid, gson.toJson(registration));
 

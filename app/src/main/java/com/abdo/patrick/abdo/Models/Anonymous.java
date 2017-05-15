@@ -87,11 +87,11 @@ public class Anonymous {
     }
 
     public void updateChild(Child child){
-        for(Child c : children){
+        for(Child c : Children){
             if(!c.getGuid().equals(child.getGuid())) continue;
-            children.remove(c);
+            Children.remove(c);
         }
-        children.add(child);
+        Children.add(child);
     }
 
     public void addNewChild(Child newChild){
