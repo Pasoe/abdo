@@ -290,4 +290,34 @@
             android:text="Send registrering"
             android:textColor="@color/colorWhite"/>
     </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/save_edit_registration_button"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.4"
+        android:layout_marginTop="1dp"
+        android:background="@color/colorGreen"
+        android:layout_gravity="center"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/save_edit_registration_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_checkmark_vector"
+            android:tint="@color/colorWhite"/>
+
+        <TextView
+            android:layout_toRightOf="@id/save_edit_registration_icon"
+            android:paddingLeft="10dp"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gem registrering"
+            android:textColor="@color/colorWhite"/>
+    </RelativeLayout>
+
 </LinearLayout>

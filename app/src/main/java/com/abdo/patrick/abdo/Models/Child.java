@@ -188,6 +188,21 @@ public class Child {
         Registrations.add(0, reg);
     }
 
+    public Registration getRegistration(String guid){
+        for(Registration reg : Registrations){
+            if(reg.getGuid().equals(guid)){
+                return reg;
+            }
+        }
+        return null;
+    }
+
+    public void updateRegistration(Registration reg){
+        int index = Registrations.indexOf(reg);
+        Registrations.remove(index);
+        Registrations.add(index, reg);
+    }
+
     public ArrayList<Registration> getRegistrations(){
         return Registrations;
     }
