@@ -39,7 +39,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
-                android:src="@android:drawable/arrow_down_float"/>
+                android:src="@android:drawable/arrow_down_float"
+                android:visibility="invisible"/>
         </RelativeLayout>
 
         <TextView
