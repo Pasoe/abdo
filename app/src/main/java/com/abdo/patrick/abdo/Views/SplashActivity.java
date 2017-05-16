@@ -30,8 +30,6 @@ import java.util.Date;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private OkHttp okHttp;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,8 +54,6 @@ public class SplashActivity extends AppCompatActivity {
                 finish();
             }
         }, 2500);
-
-        okHttp = new OkHttp();
 
         Application.getInstance().getDataSync().seedStaticData();
         Application.getInstance().getDataSync().syncAllData();
