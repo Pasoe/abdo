@@ -10,19 +10,19 @@ import java.util.ArrayList;
 
 public class Registration {
 
-    private int id;
-    private String guid;
-    private int childId;
-    private Integer fecesId;
-    private Integer activityId;
-    private Integer painPlacementId;
-    private Integer painLevelId;
-    private String createdTime;
-    private String modifiedTime;
-    private Integer moodId;
-    private Integer sleepId;
+    private int Id;
+    private String Guid;
+    private int ChildId;
+    private Integer FecesId;
+    private Integer ActivityId;
+    private Integer PainPlacementId;
+    private Integer PainLevelId;
+    private String CreatedTime;
+    private String ModifiedTime;
+    private Integer MoodId;
+    private Integer SleepId;
     private boolean hasNoFood = false;
-    private ArrayList<Food> foods;
+    private ArrayList<Food> Foods;
 
     //Virtual
     private Child child;
@@ -35,60 +35,60 @@ public class Registration {
 
 
     public String getGuid() {
-        return guid;
+        return Guid;
     }
 
     public void setGuid(String guid) {
-        this.guid = guid;
+        this.Guid = guid;
     }
 
     public void addPainPlacement(int painPlacementId)
     {
-        this.painPlacementId = painPlacementId;
+        this.PainPlacementId = painPlacementId;
     }
 
     public void addPainLevel(int painLevelId)
     {
-        this.painLevelId = painLevelId;
+        this.PainLevelId = painLevelId;
     }
 
     public void addSleep(int sleepId)
     {
-        this.sleepId = sleepId;
+        this.SleepId = sleepId;
     }
 
     public void addActivity(int activityId)
     {
-        this.activityId = activityId;
+        this.ActivityId = activityId;
     }
 
     public void addFeces(int fecesId)
     {
-        this.fecesId = fecesId;
+        this.FecesId = fecesId;
     }
 
     public void addMood(int moodId)
     {
-        this.moodId = moodId;
+        this.MoodId = moodId;
     }
 
     public Integer getFecesId() {
-        return fecesId;
+        return FecesId;
     }
 
     public Integer getActivityId() {
-        return activityId;
+        return ActivityId;
     }
 
     public Integer getMoodId() {
-        return moodId;
+        return MoodId;
     }
 
     public Integer getSleepId() {
-        return sleepId;
+        return SleepId;
     }
 
-    public Integer getPainLevelId() {return painLevelId; };
+    public Integer getPainLevelId() {return PainLevelId; };
 
     public boolean hasNoFood() {
         return hasNoFood;
@@ -99,27 +99,32 @@ public class Registration {
     }
 
     public ArrayList<Food> getFoods() {
-        return foods;
+        return Foods;
     }
 
     public void setFoods(ArrayList<Food> list) {
-        foods = list;
+        Foods = list;
     }
 
     public int addFood(Food food)
     {
-        if (foods.contains(food) && foods.remove(food)) return -1; //return -1 if already exists
+        if (Foods.contains(food) && Foods.remove(food)) return -1; //return -1 if already exists
         hasNoFood = false;
-        foods.add(food);
+        Foods.add(food);
         return 0;
     }
 
     public String getCreatedTime() {
-        return createdTime;
+        int spaceIndex = CreatedTime.indexOf("T");
+        if (spaceIndex != -1)
+        {
+            CreatedTime = CreatedTime.substring(0, spaceIndex);
+        }
+        return CreatedTime;
     }
 
     public void setCreatedTime(String createdTime) {
-        this.createdTime = createdTime;
+        this.CreatedTime = createdTime;
     }
 
     public boolean RegisteredFoodContainsCategory(String category) {
@@ -127,7 +132,7 @@ public class Registration {
         int categoryId = Application.getInstance().getCategoryId(category);
         if (categoryId == -1) return false;
 
-        for(Food food : foods) {
+        for(Food food : Foods) {
             if(food.getFoodCategoryId() == categoryId) {
                 return true;
             }
@@ -138,16 +143,16 @@ public class Registration {
     @Override
     public String toString() {
         return "Registration{" +
-                "id=" + id +
-                ", guid='" + guid + '\'' +
-                ", fecesId=" + fecesId +
-                ", activityId=" + activityId +
-                ", moodId=" + moodId +
-                ", sleepId=" + sleepId +
-                ", painPlacementId=" + painPlacementId +
-                ", painLevelId=" + painLevelId +
+                "Id=" + Id +
+                ", Guid='" + Guid + '\'' +
+                ", FecesId=" + FecesId +
+                ", ActivityId=" + ActivityId +
+                ", MoodId=" + MoodId +
+                ", SleepId=" + SleepId +
+                ", PainPlacementId=" + PainPlacementId +
+                ", PainLevelId=" + PainLevelId +
                 ", hasNoFood=" + hasNoFood +
-                ", foods=" + foods +
+                ", Foods=" + Foods +
                 '}';
     }
 }
