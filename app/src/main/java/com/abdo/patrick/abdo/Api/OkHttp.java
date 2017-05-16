@@ -1,23 +1,19 @@
 package com.abdo.patrick.abdo.Api;
 
-import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.Models.Allergy;
 import com.abdo.patrick.abdo.Models.Anonymous;
+import com.abdo.patrick.abdo.Models.Child;
 import com.abdo.patrick.abdo.Models.Feces;
 import com.abdo.patrick.abdo.Models.Food;
 import com.abdo.patrick.abdo.Models.FoodCategory;
+import com.abdo.patrick.abdo.Models.ShareCode;
 import com.abdo.patrick.abdo.Models.Supplement;
-import com.abdo.patrick.abdo.Views.Shared.TypeCodeFragment;
+import com.abdo.patrick.abdo.Views.MainActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -110,7 +106,7 @@ public class OkHttp {
                                 new TypeToken<ArrayList<Allergy>>(){}.getType());
 
                         Application.getInstance().set_allergyList(list);
-                        Application.getInstance().AddItemToPreference("Allergies", list);
+                        Application.getInstance().addItemToPreference("Allergies", list);
                         Log.i("OkHttp", "Retrieved " +list.size()+" allergies.");
                     }
                     //Allergies
@@ -120,7 +116,7 @@ public class OkHttp {
                                 new TypeToken<ArrayList<Supplement>>(){}.getType());
 
                         Application.getInstance().set_supplementList(list);
-                        Application.getInstance().AddItemToPreference("Supplements", list);
+                        Application.getInstance().addItemToPreference("Supplements", list);
                         Log.i("OkHttp", "Retrieved " +list.size()+" supplements.");
                     }
                     //Supplement
@@ -130,7 +126,7 @@ public class OkHttp {
                                 new TypeToken<ArrayList<Food>>(){}.getType());
 
                         Application.getInstance().set_foodList(list);
-                        Application.getInstance().AddItemToPreference("Foods", list);
+                        Application.getInstance().addItemToPreference("Foods", list);
                         Log.i("OkHttp", "Retrieved " +list.size()+" foods.");
                     }
                     //Foods
@@ -140,7 +136,7 @@ public class OkHttp {
                                 new TypeToken<ArrayList<Feces>>(){}.getType());
 
                         Application.getInstance().set_fecesList(list);
-                        Application.getInstance().AddItemToPreference("Feces", list);
+                        Application.getInstance().addItemToPreference("Feces", list);
                         Log.i("OkHttp", "Retrieved " +list.size()+" feces.");
                     }
                     //Feces
@@ -150,7 +146,7 @@ public class OkHttp {
                                 new TypeToken<ArrayList<FoodCategory>>(){}.getType());
 
                         Application.getInstance().set_foodCategoryList(list);
-                        Application.getInstance().AddItemToPreference("FoodCategories", list);
+                        Application.getInstance().addItemToPreference("FoodCategories", list);
                         Log.i("OkHttp", "Retrieved " +list.size()+" food categories.");
                     }
                     //Food categories

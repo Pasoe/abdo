@@ -9,6 +9,7 @@ import com.abdo.patrick.abdo.Models.Food;
 import com.abdo.patrick.abdo.Models.FoodCategory;
 import com.abdo.patrick.abdo.Models.PainLevel;
 import com.abdo.patrick.abdo.Models.Registration;
+import com.abdo.patrick.abdo.Models.ShareCode;
 import com.abdo.patrick.abdo.Models.Supplement;
 import com.abdo.patrick.abdo.ViewModels.ListItem;
 import com.abdo.patrick.abdo.ViewModels.RegistrationListItem;
@@ -20,7 +21,11 @@ import android.provider.Settings.Secure;
 import android.util.Log;
 
 import com.crashlytics.android.Crashlytics;
+import com.google.gson.reflect.TypeToken;
+
 import io.fabric.sdk.android.Fabric;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -149,7 +154,7 @@ public class Application extends android.app.Application {
     }
 
 
-    public void AddItemToPreference(String itemName, Object item){
+    public void addItemToPreference(String itemName, Object item){
         SharedPreferences settings = getSharedPreferences("Abdo", MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
 
@@ -158,6 +163,7 @@ public class Application extends android.app.Application {
 
         Long now = new Date().getTime();
         editor.putString(itemName, json);
+        editor.putLong(itemName+"_timestamp", now);
         editor.putLong("DataTimestamp", now);
 
         editor.apply();
@@ -169,6 +175,32 @@ public class Application extends android.app.Application {
     }
 
 
+    /*public <T> getItemFromPreference(String itemName,Class<T> tClass, boolean array){
+        SharedPreferences settings = getSharedPreferences("Abdo", MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+
+        Gson gson = new Gson();
+        T object;
+
+
+        if (!array)
+            object = gson.fromJson(itemName, tClass);
+        else
+        {
+            Object type;
+            switch (tClass)
+            {
+                case tClass = ShareCode.class:
+
+            }
+
+            Type listType = new TypeToken<ArrayList<tClass>>(){}.getType();
+            object = gson.fromJson(itemName, listType);
+        }
+
+
+
+    }*/
 
     public ArrayList<ListItem> getAllergyListView(ArrayList<Allergy> list, Child newChild){
 
