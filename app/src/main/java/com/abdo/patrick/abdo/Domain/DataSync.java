@@ -61,7 +61,7 @@ public class DataSync {
                 Log.i("INFO", "No anonymous found in prefs. Creating new.");
                 anonymous = new Anonymous(Application.getAndroidId(Application.getInstance().getApplicationContext()), android.os.Build.MODEL);
                 postNewAnonymous(anonymous);
-                Application.getInstance().AddItemToPreference("Anonymous", anonymous);
+                Application.getInstance().addItemToPreference("Anonymous", anonymous);
             }else{
                 String json = settings.getString("Anonymous", "");
                 anonymous = gson.fromJson(json, Anonymous.class);
