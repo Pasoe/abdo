@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.R;
 import com.abdo.patrick.abdo.Views.Startup.NewUserFragment;
 
@@ -39,6 +40,9 @@ public class SetupActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Application.getInstance().getDataSync().seedStaticData();
+        Application.getInstance().getDataSync().syncAllData();
 
         Fragment fr = new NewUserFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.main_activity_fragment, fr).commit();

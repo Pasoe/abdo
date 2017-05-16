@@ -105,6 +105,9 @@ public class MainActivity extends AppCompatActivity {
 
         updateNavdrawerData();
 
+        Application.getInstance().getDataSync().seedStaticData();
+        Application.getInstance().getDataSync().syncAllData();
+
         Fragment fr = new PainPlacement();
         getSupportFragmentManager().beginTransaction().add(R.id.main_activity_reg_fragment, fr).commit();
     }
@@ -122,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                     childName.setText(Application.getInstance().getCurrentChild().getInfo().getName());
                 }
 
-                if(Application.getInstance().getCurrentChild().getInfo().getGender() == 2){
+                if(Application.getInstance().getCurrentChild().getInfo().getGender() == 2 || Application.getInstance().getCurrentChild().getInfo().getGender() == 0){
                     childImage.setImageDrawable(getResources().getDrawable(R.drawable.girl_thumbnail));
                 }else{
                     childImage.setImageDrawable(getResources().getDrawable(R.drawable.boy_thumbnail));

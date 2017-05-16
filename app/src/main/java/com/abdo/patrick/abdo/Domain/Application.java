@@ -33,6 +33,8 @@ public class Application extends android.app.Application {
 
     private static Application instance;
 
+    private DataSync dataSync;
+
     private Anonymous _anonymous;
 
     private String currentChildGuid;
@@ -43,6 +45,60 @@ public class Application extends android.app.Application {
     private ArrayList<Feces> _fecesList;
     private ArrayList<Food> _foodList;
     private ArrayList<FoodCategory> _foodCategoryList;
+
+    private ArrayList<PainLevel> _painLevel;
+
+    //Device properties
+    private boolean _registered;
+
+    @Override
+    public void onCreate() {  super.onCreate();
+        Fabric.with(this, new Crashlytics());
+
+        instance = this;
+        dataSync = new DataSync();
+
+        _allergyList = new ArrayList<>();
+        _supplementList = new ArrayList<>();
+        _fecesList = new ArrayList<>();
+        _foodList = new ArrayList<>();
+        _foodCategoryList = new ArrayList<>();
+        _painLevel = new ArrayList<>();
+
+
+
+        InitiateCurrentRegistration();
+    }
+
+    public static Application getInstance() {
+        return instance;
+    }
+
+    public static String getAndroidId(Context context)
+    {
+        return Secure.getString(context.getContentResolver(), Secure.ANDROID_ID);
+    }
+
+    public DataSync getDataSync() {
+        return dataSync;
+    }
+
+    public Registration getCurrentRegistration() {
+        return _currentRegistration;
+    }
+
+    public void set_currentRegistration(Registration reg){
+        _currentRegistration = reg;
+    }
+
+    public Food FindFood(int id) {
+        for(Food food : _foodList) {
+            if(food.getId() == id) {
+                return food;
+            }
+        }
+        return null;
+    }
 
     public ArrayList<Feces> get_fecesList() {
         return _fecesList;
@@ -67,53 +123,6 @@ public class Application extends android.app.Application {
     public void set_foodCategoryList(ArrayList<FoodCategory> _foodCategoryList) {
         this._foodCategoryList = _foodCategoryList;
     }
-
-    private ArrayList<PainLevel> _painLevel;
-
-    //Device properties
-    private boolean _registered;
-
-    @Override
-    public void onCreate() {  super.onCreate();
-  Fabric.with(this, new Crashlytics());
-
-        instance = this;
-
-        _allergyList = new ArrayList<>();
-        _supplementList = new ArrayList<>();
-        _fecesList = new ArrayList<>();
-        _foodList = new ArrayList<>();
-        _painLevel = new ArrayList<>();
-
-        InitiateCurrentRegistration();
-    }
-
-    public static Application getInstance() {
-        return instance;
-    }
-
-    public static String getAndroidId(Context context)
-    {
-        return Secure.getString(context.getContentResolver(), Secure.ANDROID_ID);
-    }
-
-    public Registration getCurrentRegistration() {
-        return _currentRegistration;
-    }
-
-    public void set_currentRegistration(Registration reg){
-        _currentRegistration = reg;
-    }
-
-    public Food FindFood(int id) {
-        for(Food food : _foodList) {
-            if(food.getId() == id) {
-                return food;
-            }
-        }
-        return null;
-    }
-
 
     public ArrayList<Allergy> get_allergyList() {
         return _allergyList;
@@ -342,8 +351,11 @@ public class Application extends android.app.Application {
     }
 
     public Child getCurrentChild(){
-        Child child = _anonymous.getChild(currentChildGuid);
-        return child;
+        if(currentChildGuid != null) {
+            Child child = _anonymous.getChild(currentChildGuid);
+            return child;
+        }else
+            return null;
     }
 
     public void set_currentChild(String childguid){
