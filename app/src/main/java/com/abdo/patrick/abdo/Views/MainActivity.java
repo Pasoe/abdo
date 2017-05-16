@@ -105,6 +105,9 @@ public class MainActivity extends AppCompatActivity {
 
         updateNavdrawerData();
 
+        Application.getInstance().getDataSync().seedStaticData();
+        Application.getInstance().getDataSync().syncAllData();
+
         Fragment fr = new PainPlacement();
         getSupportFragmentManager().beginTransaction().add(R.id.main_activity_reg_fragment, fr).commit();
     }
