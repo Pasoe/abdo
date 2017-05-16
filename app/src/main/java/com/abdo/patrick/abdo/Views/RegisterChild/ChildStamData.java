@@ -102,7 +102,7 @@ public class ChildStamData extends Fragment implements View.OnClickListener{
 
             if(newChild.getInfo().getBirthdate() != null) {
                 String[] datearray = newChild.getInfo().getBirthdate().split("-");
-                birthdayField.init(Integer.parseInt(datearray[2]), Integer.parseInt(datearray[1]), Integer.parseInt(datearray[0]),null);
+                birthdayField.init(Integer.parseInt(datearray[0]), Integer.parseInt(datearray[1]), Integer.parseInt(datearray[2]),null);
             }
         }
     }
@@ -117,7 +117,7 @@ public class ChildStamData extends Fragment implements View.OnClickListener{
             }else if(genderGirlField.isChecked()){
                 newChild.getInfo().setGender(2);
             }
-            String birthday = birthdayField.getDayOfMonth()+"-"+birthdayField.getMonth()+"-"+birthdayField.getYear();
+            String birthday = birthdayField.getYear()+"-"+(birthdayField.getMonth())+"-"+birthdayField.getDayOfMonth();
             newChild.getInfo().setBirthdate(birthday);
 
             if(editMode){

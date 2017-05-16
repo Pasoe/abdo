@@ -1,71 +1,69 @@
 package com.abdo.patrick.abdo.Models;
 
-import com.abdo.patrick.abdo.Domain.Application;
-
 /**
  * Created by Khaled on 27-03-2017.
  */
 
 public class ChildMedicine {
 
-    private int id;
-    private String type;
-    private String dosage;
-    private String createdTime;
-    private String modifiedTime;
+    private int Id;
+    private String Type;
+    private String Dosage;
+    private String CreatedTime;
+    private String ModifiedTime;
 
     public ChildMedicine(){
 
     }
 
     public ChildMedicine(String type, String dosage){
-        this.type = type;
-        this.dosage = type;
+        this.Type = type;
+        this.Dosage = type;
     }
 
     public int getId() {
-        return id;
+        return Id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.Id = id;
     }
 
     public String getType() {
-        return type;
+        return Type;
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.Type = type;
     }
 
     public String getDosage() {
-        return dosage;
+        return Dosage;
     }
 
     public void setDosage(String dosage) {
-        this.dosage = dosage;
+        this.Dosage = dosage;
     }
 
     public String getCreatedTime() {
-        return createdTime;
+        return CreatedTime;
     }
 
     public void setCreatedTime(String createdTime) {
-        this.createdTime = createdTime;
+        this.CreatedTime = createdTime;
     }
 
     public String getModifiedTime() {
-        return modifiedTime;
+        return ModifiedTime;
     }
 
     public void setModifiedTime(String modifiedTime) {
-        this.modifiedTime = modifiedTime;
+        this.ModifiedTime = modifiedTime;
     }
 
     @Override
     public String toString(){
-        return type+" ("+dosage+")";
+        return Type +" ("+ Dosage +")";
     }
 }
 

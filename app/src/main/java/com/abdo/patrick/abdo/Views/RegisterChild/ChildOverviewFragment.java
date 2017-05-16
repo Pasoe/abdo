@@ -128,6 +128,7 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
             ((MainActivity) getActivity()).updateNavdrawerData();
         }
 
+        Log.i("DEBUG", newChild.toString());
         return view;
     }
 

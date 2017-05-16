@@ -7,18 +7,28 @@ import com.abdo.patrick.abdo.Domain.Application;
  */
 
 public class ChildSupplement {
-    private int id;
-    private int supplementId;
-    private String createdTime;
-    private String modifiedTime;
+    private int Id;
+    private int SupplementId;
+    private String CreatedTime;
+    private String ModifiedTime;
 
     public ChildSupplement(int id){
-        supplementId = id;
+        SupplementId = id;
+    }
+
+    @Override
+    public String toString() {
+        return "ChildSupplement{" +
+                "Id=" + Id +
+                ", SupplementId=" + SupplementId +
+                ", CreatedTime='" + CreatedTime + '\'' +
+                ", ModifiedTime='" + ModifiedTime + '\'' +
+                '}';
     }
 
     public String getDescription(){
         for(Supplement supplement : Application.getInstance().get_supplementList()){
-            if(supplement.getId() == this.supplementId){
+            if(supplement.getId() == this.SupplementId){
                 return supplement.getDescription();
             }
         }
@@ -26,6 +36,6 @@ public class ChildSupplement {
     }
 
     public int getId(){
-        return supplementId;
+        return SupplementId;
     }
 }

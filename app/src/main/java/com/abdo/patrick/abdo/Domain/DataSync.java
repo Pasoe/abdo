@@ -97,6 +97,7 @@ public class DataSync {
             }else{
                 if(children_json.isEmpty()){
                     Log.i("INFO", "No children found in shared preferences");
+                    return;
                 } else {
                     Application.getInstance().set_children(children);
                     Log.i("INFO", "Children fetched from shared preferences");

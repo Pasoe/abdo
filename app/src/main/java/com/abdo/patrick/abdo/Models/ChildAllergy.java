@@ -8,26 +8,36 @@ import com.abdo.patrick.abdo.Domain.Application;
 
 public class ChildAllergy {
 
-    private int id;
-    private int allergyId;
-    private String createdTime;
-    private String modifiedTime;
+    private int Id;
+    private int AllergyId;
+    private String CreatedTime;
+    private String ModifiedTime;
 
     public ChildAllergy(int id){
-        allergyId = id;
+        AllergyId = id;
     }
 
     public String getType(){
         for(Allergy allergy : Application.getInstance().get_allergyList()){
-            if(allergy.getId() == this.allergyId){
+            if(allergy.getId() == this.AllergyId){
                 return allergy.getType();
             }
         }
         return null;
     }
 
+    @Override
+    public String toString() {
+        return "ChildAllergy{" +
+                "Id=" + Id +
+                ", AllergyId=" + AllergyId +
+                ", CreatedTime='" + CreatedTime + '\'' +
+                ", ModifiedTime='" + ModifiedTime + '\'' +
+                '}';
+    }
+
     public int getId(){
-        return allergyId;
+        return AllergyId;
     }
 }
 

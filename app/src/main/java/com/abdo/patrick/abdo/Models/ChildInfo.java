@@ -1,5 +1,7 @@
 package com.abdo.patrick.abdo.Models;
 
+import android.util.Log;
+
 /**
  * Created by Khaled on 27-03-2017.
  */
@@ -35,9 +37,18 @@ public class ChildInfo {
     }
 
     public String getBirthdateToView() {
+
+        int spaceIndex = Birthdate.indexOf("T");
+        if (spaceIndex != -1)
+        {
+            Birthdate = Birthdate.substring(0, spaceIndex);
+        }
+
         String[] datearray = Birthdate.split("-");
+        Log.d("DEBUG", "Birthdate: " +Birthdate);
+        Log.d("DEBUG", "Bithdate array: " +datearray[0] +" "+ datearray[1] +" "+ datearray[2]);
         datearray[1] = Integer.toString(Integer.parseInt(datearray[1])+1);
-        return datearray[0]+"-"+datearray[1]+"-"+datearray[2];
+        return datearray[2]+"-"+datearray[1]+"-"+datearray[0];
     }
 
     public void setBirthdate(String birthdate) {
