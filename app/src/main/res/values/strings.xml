@@ -73,6 +73,10 @@
 
     <string name="error">Der skete en fejl.</string>
 
+    <string name="sharecode_generate_full">Med en delekode, kan andre enheder få adgang til dette barns data. Koden er aktiv i 5 minutter efter generering."</string>
+    <string name="sharecode_generated">Du kan nu dele dit barns data med nedenstående delekode</string>
+
+    <string name="sharecode_text">Indast delekode</string>
 
     <string name="device_id">QE58711871dds81dg838344fga</string>
 

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Child {
 
-    private int id;
+    private int Id;
     private String Guid;
     private String CreatedTime;
     private String ModifiedTime;
@@ -50,19 +50,23 @@ public class Child {
                 '}';
     }
 
+    public ShareCode getShareCode() {
+        return this.ShareCode != null ? this.ShareCode: (this.ShareCode = new ShareCode());
+    }
+
     public int getId() {
-        return id;
+        return Id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.Id = id;
     }
 
     public String getGuid() {
         return Guid;
     }
 
-    public com.abdo.patrick.abdo.Models.ChildInfo getChildInfo() {
+    public ChildInfo getChildInfo() {
         return ChildInfo;
     }
 

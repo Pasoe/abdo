@@ -31,7 +31,7 @@
                 android:layout_gravity="center"
                 android:paddingLeft="20dp"
                 android:paddingRight="10dp"
-                android:text="Indtast delekode"
+                android:text="@string/sharecode_text"
                 android:textSize="24dp"
                 android:textColor="@color/colorWhite"/>
         </LinearLayout>
