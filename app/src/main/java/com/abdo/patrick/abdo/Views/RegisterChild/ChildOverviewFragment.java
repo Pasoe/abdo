@@ -1,6 +1,8 @@
 package com.abdo.patrick.abdo.Views.RegisterChild;
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,8 +19,10 @@ import android.widget.TextView;
 import com.abdo.patrick.abdo.Api.OkHttp;
 import com.abdo.patrick.abdo.Controllers.ListController;
 import com.abdo.patrick.abdo.Domain.Application;
+import com.abdo.patrick.abdo.Models.Allergy;
 import com.abdo.patrick.abdo.Models.Child;
 import com.abdo.patrick.abdo.Models.ChildAllergy;
+import com.abdo.patrick.abdo.Models.ChildInfo;
 import com.abdo.patrick.abdo.Models.ChildMedicine;
 import com.abdo.patrick.abdo.Models.ChildSupplement;
 import com.abdo.patrick.abdo.R;
@@ -28,6 +32,7 @@ import com.abdo.patrick.abdo.Views.Startup.NewUserFragment;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 /**
@@ -45,6 +50,8 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
     private Boolean editMode = false;
     private Child newChild;
 
+    private boolean modified = false;
+    private Child tmp = new Child();
     private OkHttp okHttp;
 
     @Override
@@ -134,11 +141,86 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
 
     @Override
     public void onDetach(){
-        if(editMode){
-            //TODO - fix api kald
-//            new com.abdo.patrick.abdo.Api.Child.Post().execute(Application.getInstance().getCurrentChild());
+
+        if (editMode)
+        {
+            modified = !tmp.equals(Application.getInstance().getCurrentChild());
+            Log.d("onDetach", "tmp: "+tmp.toString());
+            Log.d("onDetach", "cur: "+Application.getInstance().getCurrentChild().toString());
+            Log.d("onDetach", "Edit mode: "+editMode);
+            Log.d("onDetach", "Modified: "+modified);
+        }
+        if(editMode && modified){
+            try
+            {
+                Gson gson = new Gson();
+                String childApiURL = getString(R.string.api_child);
+                String deviceId = Application.getAndroidId(getContext());
+                String JSON = gson.toJson(Application.getInstance().getCurrentChild());
+                Log.d("DEBUG", JSON);
+
+                okHttp.put(childApiURL + deviceId, JSON);
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
         }
         super.onDetach();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+
+        Log.d("onAttach", "Checking arguments");
+        if(getArguments() != null){
+            editMode = getArguments().getBoolean("edit", false);
+            Log.d("onAttach", "Arguments not null");
+        }
+        else Log.d("onAttach", "Arguments are null");
+
+        Log.d("onAttach", "Checking edit mode");
+        if(editMode)
+        {
+            Log.d("onAttach", "Edit mode true");
+            //Take snapshot of current child
+            Child cur = Application.getInstance().getCurrentChild();
+            ChildInfo curInfo = cur.getInfo();
+
+            Log.d("onAttach", "Creating temporary child");
+
+            String guid = cur.getGuid();
+            String name = curInfo.getName();
+            String birthdate = curInfo.getBirthdate();
+            int gender = curInfo.getGender();
+
+            ArrayList<ChildAllergy> allergies = new ArrayList<>();
+            for (ChildAllergy t: cur.getAllergies())
+            {
+                allergies.add(t);
+            }
+
+            ArrayList<ChildSupplement> supplements = new ArrayList<>();
+            for (ChildSupplement t: cur.getSupplements())
+            {
+                supplements.add(t);
+            }
+
+            ArrayList<ChildMedicine> medicines = new ArrayList<>();
+            for (ChildMedicine t: cur.getMedicineList())
+            {
+                medicines.add(t);
+            }
+
+            tmp = new Child(guid, allergies, medicines, supplements, name, birthdate, gender);
+
+            Log.d("onAttach", "tmp: "+tmp.toString());
+            Log.d("onAttach", "cur: "+Application.getInstance().getCurrentChild().toString());
+
+        }
+        else Log.d("onAttach", "Edit mode false");
+
+        super.onAttach(context);
     }
 
     @Override

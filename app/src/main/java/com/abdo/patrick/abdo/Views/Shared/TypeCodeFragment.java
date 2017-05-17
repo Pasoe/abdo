@@ -247,17 +247,20 @@ public class TypeCodeFragment extends Fragment implements View.OnClickListener {
         @Override
         protected void onPostExecute(Response response) {
 
-            if (response.code() == HttpURLConnection.HTTP_OK)
+            if (response != null)
             {
-                ApplyGeneratedCode();
-                OkHttp.LogSuccess(response, "POST", "No data");
+                if (response.code() == HttpURLConnection.HTTP_OK)
+                {
+                    ApplyGeneratedCode();
+                    OkHttp.LogSuccess(response, "POST", "No data");
+                }
+                else
+                {
+                    FailureGeneratedCode();
+                    OkHttp.LogFailure(response, "POST");
+                }
             }
-            else
-            {
-                FailureGeneratedCode();
-                OkHttp.LogFailure(response, "POST");
-            }
-
+            else Log.i("AsyncTask/OkHttp", "Response is null");
         }
     }
 
