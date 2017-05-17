@@ -13,14 +13,20 @@ public class ChildInfo {
     private String CreatedTime;
     private String ModifiedTime;
 
+    public ChildInfo(){}
+
+    public ChildInfo(String name, String birthdate, int gender) {
+        Name = name;
+        Birthdate = birthdate;
+        Gender = gender;
+    }
+
     @Override
     public String toString() {
         return "ChildInfo{" +
                 "Name='" + Name + '\'' +
                 ", Birthdate='" + Birthdate + '\'' +
                 ", Gender=" + Gender +
-                ", CreatedTime='" + CreatedTime + '\'' +
-                ", ModifiedTime='" + ModifiedTime + '\'' +
                 '}';
     }
 

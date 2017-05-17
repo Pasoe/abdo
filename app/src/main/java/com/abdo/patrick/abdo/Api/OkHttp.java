@@ -166,6 +166,43 @@ public class OkHttp {
     }
 
 
+    public void put(String url, String json) throws IOException{
+
+        RequestBody body = RequestBody.create(JSON, json);
+        final Request request = new Request.Builder()
+                .url(url)
+                .put(body)
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, final Response response) throws IOException {
+                if (!response.isSuccessful())
+                    LogFailure(response, "PUT");
+                else
+                {
+                    LogSuccess(response, "PUT", null);
+                    HttpUrl url = response.networkResponse().request().url();
+
+                    //0 = "api", 1 = {controller name}, 2..n = arguments
+                    List<String> pathSegments = url.encodedPathSegments();
+                    String controllerName = pathSegments.get(1);
+
+                    switch (controllerName)
+                    {
+                        case "child":
+                            //Child updated successfully
+                            break;
+                    }
+                }
+            }
+        });
+    }
+
     public static void LogFailure(final Response response, String call){
         Log.i("OkHttp",
                 "Failure : {"+call+"}             \n" +

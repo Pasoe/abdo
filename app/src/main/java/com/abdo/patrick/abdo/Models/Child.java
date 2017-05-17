@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Created by Khaled on 21-03-2017.
  */
 
-public class Child {
+public class Child implements Cloneable {
 
     private int Id;
     private String Guid;
@@ -21,6 +21,15 @@ public class Child {
     private ArrayList<ChildSupplement> ChildSupplements;
     private ArrayList<Anonymous> Anonymous;
     private ArrayList<Registration> Registrations;
+
+    public Child(String guid, ArrayList<ChildAllergy> alg, ArrayList<ChildMedicine> mdcn,
+                 ArrayList<ChildSupplement> supp, String name, String birthdate, int gender) {
+        this.Guid = guid;
+        this.ChildAllergies = alg;
+        this.ChildSupplements = supp;
+        this.ChildMedicines = mdcn;
+        this.ChildInfo = new ChildInfo(name, birthdate, gender);
+    }
 
     public Child() {
         ChildInfo = new ChildInfo();
@@ -38,14 +47,12 @@ public class Child {
         ChildSupplements = new ArrayList<ChildSupplement>();
     }
 
+
     @Override
     public String toString() {
         return "Child{" +
                 "Guid='" + Guid + '\'' +
-                ", CreatedTime='" + CreatedTime + '\'' +
-                ", ModifiedTime='" + ModifiedTime + '\'' +
                 ", ChildInfo=" + ChildInfo +
-                ", ShareCode=" + ShareCode +
                 ", ChildAllergies=" + ChildAllergies +
                 ", ChildMedicines=" + ChildMedicines +
                 ", ChildSupplements=" + ChildSupplements +
@@ -54,6 +61,10 @@ public class Child {
 
     public ShareCode getShareCode() {
         return this.ShareCode != null ? this.ShareCode: (this.ShareCode = new ShareCode());
+    }
+
+    public void setShareCode(com.abdo.patrick.abdo.Models.ShareCode shareCode) {
+        ShareCode = shareCode;
     }
 
     public int getId() {
@@ -213,5 +224,54 @@ public class Child {
 
     public ArrayList<Registration> getRegistrations(){
         return Registrations;
+    }
+
+    public void setChildAllergies(ArrayList<ChildAllergy> childAllergies) {
+        ChildAllergies = childAllergies;
+    }
+
+    public void setChildMedicines(ArrayList<ChildMedicine> childMedicines) {
+        ChildMedicines = childMedicines;
+    }
+
+    public void setChildSupplements(ArrayList<ChildSupplement> childSupplements) {
+        ChildSupplements = childSupplements;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        Child c = (Child) obj;
+
+        Log.d("Equals","this: " +this.toString());
+        Log.d("Equals","obj : " + obj.toString());
+
+        if (this.Guid.equals(c.getGuid()))
+            if (this.ChildInfo.getName().equals(c.getInfo().getName()))
+                if (this.ChildInfo.getBirthdate().equals(c.getInfo().getBirthdate()))
+                    if (this.ChildInfo.getGender() == c.getInfo().getGender())
+                        if (isTwoArrayListsWithSameValues(this.ChildAllergies, c.ChildAllergies))
+                            if (isTwoArrayListsWithSameValues(this.ChildMedicines, c.ChildMedicines))
+                                if (isTwoArrayListsWithSameValues(this.ChildSupplements, c.ChildSupplements)) return true;
+        return false;
+    }
+
+    private boolean isTwoArrayListsWithSameValues(ArrayList<?> list1, ArrayList<?> list2)
+    {
+        //null checking
+        if(list1==null && list2==null)
+            return true;
+        if((list1 == null && list2 != null) || (list1 != null && list2 == null))
+            return false;
+
+        if(list1.size()!=list2.size())
+            return false;
+        for(Object itemList1: list1)
+        {
+            if(!list2.contains(itemList1))
+                return false;
+        }
+
+        return true;
     }
 }
