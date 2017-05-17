@@ -118,8 +118,8 @@ public class FoodFragment extends Fragment implements View.OnClickListener {
     }
 
     public void onResume() {
-        Log.i("onResume, food overview", Application.getInstance().getCurrentRegistration().getFoods().toString());
-        Log.i("onResume, has food", ""+Application.getInstance().getCurrentRegistration().hasNoFood());
+        //Log.i("onResume, food overview", Application.getInstance().getCurrentRegistration().getFoods().toString());
+        //Log.i("onResume, has food", ""+Application.getInstance().getCurrentRegistration().hasNoFood());
 
         int visibility =
                 (

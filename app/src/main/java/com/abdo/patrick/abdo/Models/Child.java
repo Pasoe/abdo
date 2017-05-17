@@ -1,5 +1,7 @@
 package com.abdo.patrick.abdo.Models;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 /**
@@ -193,6 +195,8 @@ public class Child {
     }
 
     public Registration getRegistration(String guid){
+        if (Registrations == null) return null;
+        Log.d("DEBUG", "Child registrations: "+Registrations.toString());
         for(Registration reg : Registrations){
             if(reg.getGuid().equals(guid)){
                 return reg;
