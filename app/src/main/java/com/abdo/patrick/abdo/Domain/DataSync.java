@@ -1,5 +1,6 @@
 package com.abdo.patrick.abdo.Domain;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
@@ -39,10 +40,26 @@ public class DataSync {
         okHttp = new OkHttp();
     }
 
-    public void syncAllData(){
+    public void syncAllData(Context context){
         seedAnonymousData();
         seedChildData();
+        getChildFromServer(context);
         syncStaticData();
+    }
+
+    private void getChildFromServer(Context context){
+        try
+        {
+            OkHttp okHttp = new OkHttp();
+            String deviceId = Application.getAndroidId(context);
+            String childApiUrl = "http://abdoapi.azurewebsites.net/api/child/"+deviceId;
+
+            okHttp.get(childApiUrl, Child.class);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     public void seedAnonymousData(){

@@ -42,7 +42,7 @@ public class SetupActivity extends AppCompatActivity {
         });
 
         Application.getInstance().getDataSync().seedStaticData();
-        Application.getInstance().getDataSync().syncAllData();
+        Application.getInstance().getDataSync().syncAllData(getApplicationContext());
 
         Fragment fr = new NewUserFragment();
         getSupportFragmentManager().beginTransaction().add(R.id.main_activity_fragment, fr).commit();

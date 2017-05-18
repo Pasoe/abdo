@@ -160,6 +160,15 @@ public class OkHttp {
                                 "Device name: "+anonymous.getDeviceName());
                     }
                     //Anonymous
+
+                    if (classOfT == Child.class){
+                        Child child = gson.fromJson(responseData, Child.class);
+
+                        Application.getInstance().updateCurrentChildData(child);
+                        Log.i("OkHttp", "Retrieved the following child\n" + child.toString());
+
+                    }
+                    //Child
                 }
             }
         });

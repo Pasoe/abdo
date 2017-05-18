@@ -56,6 +56,6 @@ public class SplashActivity extends AppCompatActivity {
         }, 2500);
 
         Application.getInstance().getDataSync().seedStaticData();
-        Application.getInstance().getDataSync().syncAllData();
+        Application.getInstance().getDataSync().syncAllData(getApplicationContext());
     }
 }
