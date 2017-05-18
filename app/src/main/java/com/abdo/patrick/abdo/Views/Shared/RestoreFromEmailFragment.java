@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.abdo.patrick.abdo.R;
 
@@ -52,11 +53,11 @@ public class RestoreFromEmailFragment extends Fragment implements View.OnClickLi
             restoreHelpText.setText("Tilknytter du en email til din abdo bruger, kan du gendanne dine indstillinger på andre enheder.");
         }
 
-
-
-        toolbarSave = (TextView) getActivity().findViewById(R.id.toolbar_save);
-        toolbarSave.setVisibility(View.VISIBLE);
-        toolbarSave.setOnClickListener(this);
+        //TODO - uncomment this when implementing restore functionality
+        Toast.makeText(getActivity(), "This feature is not yet implemented", Toast.LENGTH_SHORT).show();
+//        toolbarSave = (TextView) getActivity().findViewById(R.id.toolbar_save);
+//        toolbarSave.setVisibility(View.VISIBLE);
+//        toolbarSave.setOnClickListener(this);
 
         final EditText editText = (EditText) view.findViewById(R.id.editTextInputEmail);
 
@@ -86,7 +87,8 @@ public class RestoreFromEmailFragment extends Fragment implements View.OnClickLi
 
     @Override
     public void onPause() {
-        toolbarSave.setVisibility(View.INVISIBLE);
+        //TODO - Uncomment when functionality is implemented
+//        toolbarSave.setVisibility(View.INVISIBLE);
         super.onPause();
     }
 

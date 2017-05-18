@@ -72,6 +72,8 @@ public class Rating extends Fragment implements View.OnClickListener {
         TextView header_text = (TextView) view.findViewById(R.id.pain_location);
         header_text.setText(getArguments().getString("rating_header", ""));
 
+        TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
+
         layout_row_1 = (RelativeLayout) view.findViewById(R.id.level_row_1); layout_row_1.setOnClickListener(this);
         layout_row_2 = (RelativeLayout) view.findViewById(R.id.level_row_2); layout_row_2.setOnClickListener(this);
         layout_row_3 = (RelativeLayout) view.findViewById(R.id.level_row_3); layout_row_3.setOnClickListener(this);
@@ -101,18 +103,21 @@ public class Rating extends Fragment implements View.OnClickListener {
             case "sleep":
                 SleepFragment_Init();
                 fragment = "sleep";
+                toolbarTitle.setText("Søvn");
                 header.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorDarkGrey));
                 header_icon.setImageResource(R.drawable.icon_sleep);
                 break;
             case "mood":
                 MoodFragment_Init();
                 fragment = "mood";
+                toolbarTitle.setText("Humør");
                 header.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorBlue));
                 header_icon.setImageResource(R.drawable.icon_mood);
                 break;
             case "activity":
                 ActivityFragment_Init();
                 fragment = "activity";
+                toolbarTitle.setText("Aktivitet");
                 header.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPurple));
                 header_icon.setImageResource(R.drawable.icon_excersize);
                 break;
@@ -120,6 +125,7 @@ public class Rating extends Fragment implements View.OnClickListener {
             default:
                 PainFragment_Init();
                 fragment = "";
+                toolbarTitle.setText("Smerte");
                 header.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorOrange));
                 header_icon.setImageResource(R.drawable.icon_pain);
                 break;
@@ -156,16 +162,31 @@ public class Rating extends Fragment implements View.OnClickListener {
         switch (fragment)
         {
             case "sleep":
-                Application.getInstance().getCurrentRegistration().addSleep(level);
+                if(Application.getInstance().getCurrentRegistration().getSleepId() != null &&
+                        Application.getInstance().getCurrentRegistration().getSleepId() == level){
+                    Application.getInstance().getCurrentRegistration().addSleep(null);
+                }else{
+                    Application.getInstance().getCurrentRegistration().addSleep(level);
+                }
                 break;
             case "mood":
-                Application.getInstance().getCurrentRegistration().addMood(level);
+                if(Application.getInstance().getCurrentRegistration().getMoodId() != null &&
+                        Application.getInstance().getCurrentRegistration().getMoodId() == level){
+                    Application.getInstance().getCurrentRegistration().addMood(null);
+                }else{
+                    Application.getInstance().getCurrentRegistration().addMood(level);
+                }
                 break;
             case "activity":
-                Application.getInstance().getCurrentRegistration().addActivity(level);
+                if(Application.getInstance().getCurrentRegistration().getActivityId() != null &&
+                        Application.getInstance().getCurrentRegistration().getActivityId() == level){
+                    Application.getInstance().getCurrentRegistration().addActivity(null);
+                }else{
+                    Application.getInstance().getCurrentRegistration().addActivity(level);
+                }
                 break;
             default:
-                Application.getInstance().getCurrentRegistration().addPainLevel(level);
+                    Application.getInstance().getCurrentRegistration().addPainLevel(level);
                 break;
         }
 
@@ -187,6 +208,13 @@ public class Rating extends Fragment implements View.OnClickListener {
 
     private void ClearBackStack_GoHome(FragmentManager fragmentManager)
     {
+        if(Application.editMode){
+            fragmentManager.popBackStack();
+            fragmentManager.popBackStack();
+            Application.editMode = false;
+            return;
+        }
+
         Fragment fragment;
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);

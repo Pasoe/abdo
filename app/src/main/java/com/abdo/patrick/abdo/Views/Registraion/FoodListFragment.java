@@ -39,6 +39,9 @@ public class FoodListFragment extends Fragment {
                              Bundle savedInstanceState) {
         model = new RegistrationListController(this);
 
+        TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
+        toolbarTitle.setText("Mad");
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_food_list, container, false);
 

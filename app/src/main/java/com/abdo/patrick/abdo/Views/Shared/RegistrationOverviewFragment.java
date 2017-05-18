@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.abdo.patrick.abdo.Api.OkHttp;
 import com.abdo.patrick.abdo.Controllers.RegistrationOverviewController;
@@ -44,6 +45,9 @@ public class RegistrationOverviewFragment extends Fragment {
         model = new RegistrationOverviewController(this);
         okHttp = new OkHttp();
 
+        TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
+        toolbarTitle.setText("Registreringer");
+
         ArrayList<Registration> list = Application.getInstance().getCurrentChild().getRegistrations();
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.child_registration_list);
@@ -59,6 +63,11 @@ public class RegistrationOverviewFragment extends Fragment {
         //TODO: Check if modified
 
         ArrayList<Registration> cur_registrations = Application.getInstance().getCurrentChild().getRegistrations();
+        if(Application.getInstance().getStoredCurrentRegistration() != null) {
+            Application.getInstance().set_currentRegistration(Application.getInstance().getStoredCurrentRegistration());
+        }else{
+            Application.getInstance().InitiateCurrentRegistration();
+        }
 
         try {
             Gson gson = new Gson();

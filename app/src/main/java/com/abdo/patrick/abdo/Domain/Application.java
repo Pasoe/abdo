@@ -51,6 +51,8 @@ public class Application extends android.app.Application {
     private ArrayList<Food> _foodList;
     private ArrayList<FoodCategory> _foodCategoryList;
 
+    public static boolean editMode = false;
+
     private ArrayList<PainLevel> _painLevel;
 
     //Device properties
@@ -174,6 +176,20 @@ public class Application extends android.app.Application {
 
     }
 
+
+    public Registration getStoredCurrentRegistration(){
+        SharedPreferences settings = getSharedPreferences("Abdo", MODE_PRIVATE);
+        String json = settings.getString("storedreg", "");
+
+        if(!json.isEmpty()){
+            Gson gson = new Gson();
+
+            Registration reg = gson.fromJson(json, Registration.class);
+            Log.i("INFO", "SharedPreference: fetched stored registration - "+json);
+            return reg;
+        }
+        return null;
+    }
 
     /*public <T> getItemFromPreference(String itemName,Class<T> tClass, boolean array){
         SharedPreferences settings = getSharedPreferences("Abdo", MODE_PRIVATE);

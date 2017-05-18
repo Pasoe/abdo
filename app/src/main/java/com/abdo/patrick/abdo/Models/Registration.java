@@ -1,5 +1,7 @@
 package com.abdo.patrick.abdo.Models;
 
+import android.support.annotation.IntegerRes;
+
 import com.abdo.patrick.abdo.Domain.Application;
 
 import java.util.ArrayList;
@@ -47,17 +49,17 @@ public class Registration {
         this.PainPlacementId = painPlacementId;
     }
 
-    public void addPainLevel(int painLevelId)
+    public void addPainLevel(Integer painLevelId)
     {
         this.PainLevelId = painLevelId;
     }
 
-    public void addSleep(int sleepId)
+    public void addSleep(Integer sleepId)
     {
         this.SleepId = sleepId;
     }
 
-    public void addActivity(int activityId)
+    public void addActivity(Integer activityId)
     {
         this.ActivityId = activityId;
     }
@@ -67,7 +69,7 @@ public class Registration {
         this.FecesId = fecesId;
     }
 
-    public void addMood(int moodId)
+    public void addMood(Integer moodId)
     {
         this.MoodId = moodId;
     }

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.R;
@@ -39,6 +40,9 @@ public class ToiletFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_toilet, container, false);
+
+        TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
+        toolbarTitle.setText("Afføring");
 
         turd_type_1 = (LinearLayout) view.findViewById(R.id.turd_type_1_button);
         turd_type_2 = (LinearLayout) view.findViewById(R.id.turd_type_2_button);

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.abdo.patrick.abdo.Domain.Application;
 import com.abdo.patrick.abdo.R;
@@ -45,6 +46,9 @@ public class FoodFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_food, container, false);
+
+        TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
+        toolbarTitle.setText("Mad");
 
         breakfastStatus = (ImageView) view.findViewById(R.id.answered_icon_breakfast);
         lunchStatus = (ImageView) view.findViewById(R.id.answered_icon_lunch);

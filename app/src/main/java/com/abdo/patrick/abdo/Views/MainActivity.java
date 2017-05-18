@@ -182,6 +182,7 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new RegistrationOverviewFragment();
                 i.putBoolean("generate", true);
                 fragment.setArguments(i);
+                Application.getInstance().addItemToPreference("storedreg", Application.getInstance().getCurrentRegistration());
                 break;
             case R.id.nav_sharecode:
                 fragment = new TypeCodeFragment();
@@ -196,6 +197,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         FragmentManager fragmentManager = getSupportFragmentManager();
+
+        int count = fragmentManager.getBackStackEntryCount();
+        for(int j = 0; j < count; ++j) {
+            fragmentManager.popBackStack();
+        }
+
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.main_activity_reg_fragment, fragment);

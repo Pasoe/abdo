@@ -44,7 +44,6 @@ public class ChildDataListFagment extends Fragment {
 
         TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
 
-
         TextView header = (TextView)view.findViewById(R.id.child_data_list_header);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.child_data_list);
 

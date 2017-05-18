@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.abdo.patrick.abdo.Api.OkHttp;
@@ -65,6 +66,9 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_registraion_complete, container, false);
+
+        TextView toolbarTitle = (TextView) getActivity().findViewById(R.id.toolbar_title);
+        toolbarTitle.setText("Oversigt");
 
         okHttp = new OkHttp();
 
@@ -140,6 +144,7 @@ public class RegistraionComplete extends Fragment implements View.OnClickListene
         if(v == answer_pain_tile){
             modifyPainPlacement = !modifyPainPlacement;
             bundle.putString("fragment", "modifiy_pain");
+            Application.getInstance().editMode = true;
 
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

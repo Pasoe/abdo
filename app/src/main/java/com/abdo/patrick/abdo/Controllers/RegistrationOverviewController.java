@@ -70,7 +70,7 @@ public class RegistrationOverviewController {
                     fragment.setArguments(i);
                     FragmentManager fragmentManager = _registrationOverview.getFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.addToBackStack("editreg");
                     fragmentTransaction.replace(R.id.main_activity_reg_fragment, fragment);
 
                     fragmentTransaction.commit();
