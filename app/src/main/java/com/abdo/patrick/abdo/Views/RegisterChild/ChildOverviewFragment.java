@@ -144,11 +144,14 @@ public class ChildOverviewFragment extends Fragment implements View.OnClickListe
 
         if (editMode)
         {
-            modified = !tmp.equals(Application.getInstance().getCurrentChild());
-            Log.d("onDetach", "tmp: "+tmp.toString());
-            Log.d("onDetach", "cur: "+Application.getInstance().getCurrentChild().toString());
-            Log.d("onDetach", "Edit mode: "+editMode);
-            Log.d("onDetach", "Modified: "+modified);
+            if (tmp != null && Application.getInstance().getCurrentChild() != null)
+            {
+                modified = !tmp.equals(Application.getInstance().getCurrentChild());
+                Log.d("onDetach", "tmp: "+tmp.toString());
+                Log.d("onDetach", "cur: "+Application.getInstance().getCurrentChild().toString());
+                Log.d("onDetach", "Edit mode: "+editMode);
+                Log.d("onDetach", "Modified: "+modified);
+            }
         }
         if(editMode && modified){
             try
