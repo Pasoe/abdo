@@ -126,8 +126,10 @@ public class DataSync {
                 Log.i("INFO", "Current child already set in application.");
             }else{
                 if (currentChild_json.isEmpty()) {
-                    Application.getInstance().set_currentChild(children.get(0).getGuid());
-                    Log.i("INFO", "Current child not found in shared preferences. Setting first child to current.");
+                    if(!children.isEmpty()) {
+                        Application.getInstance().set_currentChild(children.get(0).getGuid());
+                        Log.i("INFO", "Current child not found in shared preferences. Setting first child to current.");
+                    }
                 } else {
                     Application.getInstance().set_currentChild(currentChild_json);
                     Log.i("INFO", "Current child fetched from shared preferences");

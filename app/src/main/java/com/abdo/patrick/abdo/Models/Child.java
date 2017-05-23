@@ -248,7 +248,7 @@ public class Child implements Cloneable {
 
         if (this.Guid.equals(c.getGuid()))
             if (this.ChildInfo.getName().equals(c.getInfo().getName()))
-                if (this.ChildInfo.getBirthdate().equals(c.getInfo().getBirthdate()))
+                if (this.ChildInfo.getBirthdate() != null && c.getInfo().getBirthdate() != null && (this.ChildInfo.getBirthdate().equals(c.getInfo().getBirthdate())))
                     if (this.ChildInfo.getGender() == c.getInfo().getGender())
                         if (isTwoArrayListsWithSameValues(this.ChildAllergies, c.ChildAllergies))
                             if (isTwoArrayListsWithSameValues(this.ChildMedicines, c.ChildMedicines))

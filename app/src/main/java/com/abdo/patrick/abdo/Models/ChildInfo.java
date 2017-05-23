@@ -13,7 +13,9 @@ public class ChildInfo {
     private String CreatedTime;
     private String ModifiedTime;
 
-    public ChildInfo(){}
+    public ChildInfo(){
+        Name = "";
+    }
 
     public ChildInfo(String name, String birthdate, int gender) {
         Name = name;

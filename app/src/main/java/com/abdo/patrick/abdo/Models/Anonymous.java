@@ -79,17 +79,19 @@ public class Anonymous {
 
     public Child getChild(String currentChildGuid) {
         Child child = null;
-        for(Child c : Children){
-            if(!c.getGuid().equals(currentChildGuid)) continue;
-                child = c;
+        for(int j = 0; j < Children.size(); j++){
+            if(Children.get(j).getGuid().equals(currentChildGuid)) {
+                child = Children.get(j);
+            }
         }
         return child;
     }
 
     public void updateChild(Child child){
-        for(Child c : Children){
-            if(!c.getGuid().equals(child.getGuid())) continue;
-            Children.remove(c);
+        for(int j = 0; j < Children.size(); j++){
+            if(Children.get(j).getGuid().equals(child.getGuid())) {
+                Children.remove(Children.get(j));
+            }
         }
         Children.add(child);
     }

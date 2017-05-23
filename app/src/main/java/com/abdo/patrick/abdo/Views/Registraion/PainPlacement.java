@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -52,6 +53,9 @@ public class PainPlacement extends Fragment implements View.OnTouchListener {
 
         if (getArguments() != null)
             fragment_arg = getArguments().getString("fragment", "");
+
+        Log.i("PainPlacement", "Curreny child" + Application.getInstance().getCurrentChild());
+        Log.i("PainPlacement", "Curreny child" + Application.getInstance().getCurrentChild());
         if(Application.getInstance().getCurrentChild().isBoy()){
             overlay.setImageResource(R.drawable.abdo_boy);
             underlay.setImageResource(R.drawable.abdo_boy_underlay);
