@@ -59,7 +59,8 @@ public class Application extends android.app.Application {
     private boolean _registered;
 
     @Override
-    public void onCreate() {  super.onCreate();
+    public void onCreate() {
+        super.onCreate();
         Fabric.with(this, new Crashlytics());
 
         instance = this;
