@@ -71,7 +71,7 @@
             android:textColor="@color/colorWhite"/>
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_marginTop="1dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -84,12 +84,19 @@
             android:layout_height="wrap_content"
             android:hint="@string/type_email_hint"
             android:textColorHint="@color/colorGreen"
-            android:layout_gravity="center"
+            android:layout_centerInParent="true"
             android:layout_marginLeft="20px"
             android:layout_marginRight="20px"
             android:inputType="textEmailAddress"
             android:maxLines="1"
             android:imeOptions="actionDone"
             android:textColor="@color/colorBlack"/>
-    </LinearLayout>
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:id="@+id/progressbar_email"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="invisible"
+            style="@android:style/Widget.ProgressBar"/>
+    </RelativeLayout>
 </LinearLayout>

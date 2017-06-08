@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +47,7 @@ public class RestoreFromEmailFragment extends Fragment implements View.OnClickLi
     public TextView toolbarSave;
     private Boolean saveEmail = false;
     public EditText editText;
+    public ProgressBar progressbar;
 
 
     @Override
@@ -77,6 +79,9 @@ public class RestoreFromEmailFragment extends Fragment implements View.OnClickLi
         toolbarSave.setVisibility(View.VISIBLE);
         toolbarSave.setOnClickListener(this);
 
+        progressbar = (ProgressBar) view.findViewById(R.id.progressbar_email);
+        progressbar.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.colorGreen), android.graphics.PorterDuff.Mode.MULTIPLY);
+
         editText = (EditText) view.findViewById(R.id.editTextInputEmail);
         if(saveEmail && Application.getInstance().get_anonymous().getEmail() != null){
             editText.setText(Application.getInstance().get_anonymous().getEmail());
@@ -101,6 +106,9 @@ public class RestoreFromEmailFragment extends Fragment implements View.OnClickLi
         if(v == v.findViewById(R.id.toolbar_save)){
 
             if(saveEmail) {
+                editText.setVisibility(View.INVISIBLE);
+                progressbar.setVisibility(View.VISIBLE);
+
                 SaveEmail saveMail = new SaveEmail();
                 saveMail.execute(editText.getText().toString());
             }else{
@@ -119,11 +127,18 @@ public class RestoreFromEmailFragment extends Fragment implements View.OnClickLi
     private void ApplyEmail(){
         Application.getInstance().get_anonymous().setEmail(editText.getText().toString());
         Application.getInstance().addItemToPreference("Anonymous", Application.getInstance().get_anonymous());
+        toolbarSave.setVisibility(View.INVISIBLE);
+        progressbar.setEnabled(true);
+        progressbar.setVisibility(View.INVISIBLE);
+        editText.setVisibility(View.VISIBLE);
         FragmentManager fm = getFragmentManager();
         fm.popBackStack();
     }
 
     private void FailedToPostEmail(){
+        progressbar.setEnabled(true);
+        progressbar.setVisibility(View.INVISIBLE);
+        editText.setVisibility(View.VISIBLE);
         Toast.makeText(Application.getInstance().getApplicationContext(), "Kunne ikke gemme emailen", Toast.LENGTH_SHORT).show();
     }
 
@@ -170,7 +185,10 @@ public class RestoreFromEmailFragment extends Fragment implements View.OnClickLi
                     OkHttp.LogFailure(response, "POST");
                 }
             }
-            else Log.i("AsyncTask/OkHttp", "Response is null");
+            else {
+                FailedToPostEmail();
+                Log.i("AsyncTask/OkHttp", "Response is null");
+            }
         }
     }
 
