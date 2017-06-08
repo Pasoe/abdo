@@ -69,7 +69,7 @@
     <string name="api_child">http://abdoapi.azurewebsites.net/api/child/</string>
     <string name="api_food">http://abdoapi.azurewebsites.net/api/food/</string>
     <string name="api_sharecode">http://abdoapi.azurewebsites.net/api/sharecode/</string>
-
+    <string name="api_email">http://abdoapi.azurewebsites.net/api/email/</string>
 
     <string name="error">Der skete en fejl.</string>
 

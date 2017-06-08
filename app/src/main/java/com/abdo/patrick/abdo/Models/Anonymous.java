@@ -14,6 +14,7 @@ public class Anonymous {
     private String CreatedTime;
     private String ModifiedTime;
     private ArrayList<Child> Children;
+    private String email;
 
     public Anonymous() {
     }
@@ -118,5 +119,13 @@ public class Anonymous {
             return false;
         }
         return true;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
